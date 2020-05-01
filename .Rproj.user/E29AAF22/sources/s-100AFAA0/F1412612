@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587929396606.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4140672217",
+    "id" : "F1412612",
+    "lastKnownWriteTime" : 1588283178,
+    "last_content_update" : 1588352769975,
+    "path" : "~/pj_physcraper/physcraper_ms/physcraper_ms.Rmd",
+    "project_path" : "physcraper_ms.Rmd",
+    "properties" : {
+        "cursorPosition" : "68,33",
+        "scrollLine" : "50"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

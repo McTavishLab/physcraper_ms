@@ -1,0 +1,71 @@
+---
+# Example from https://joss.readthedocs.io/en/latest/submitting.html
+title: 'Physcraper: A Python package for continually updated gene trees'
+tags:
+  - Python
+  - phylogenetics
+  - update
+  - species tree
+  - Open Tree
+authors:
+  - name: Luna L. Sanchez Reyes
+    orcid: 0000-0000-0000-0000
+    affiliation: 1 # (Multiple affiliations must be quoted, like this: "1, 2")
+  - name: Emily Jane McTavish
+    orcid: 0000-0000-0000-0000
+    affiliation: 1
+affiliations:
+ - name: University of California, Merced
+   index: 1
+ - name: Institution 2
+   index: 2
+citation_author: Sanchez-Reyes et. al.
+date: 24 April 2020
+year: 2020
+bibliography: paper.bib
+output: rticles::joss_article
+csl: apa.csl
+journal: JOSS
+---
+
+# Summary
+
+Update trees that were reported on a published peer-reviewed study, uploaded to Treebase and to the Open Tree of Life database
+
+# Examples
+
+Updating trees from @schoch2009ascomycota
+
+1. Get study id from Open Tree of Life using R
+  - Getting the treebase ID (which is not fully exposed on the Treebase website home page of the study, so you have to look it up manually)
+```{r}
+rotl::studies_find_studies(property = "treebaseId", value = "S2137")
+```
+
+1. Download the alignment from Treebase
+  - If you are on the Treebase home page of the study, you can navigate to the matrix tab, and manually download the alignments that were used to reconstruct the trees reported on the study that were also uploaded to Treebase and to the Open Tree of Life repository.
+  - Alternatively, you can use a command to download everything into your working folder:
+```
+```
+In this example, all alignments posted on Treebase were used to reconstruct both trees.
+
+1. With the study id and the alignment files saved locally, we can do a physcraper run with the command:
+
+```{bash}
+opentree_scrape.py -s pg_238 -t tree109 -a treebase_alns/pg_238-LSU-M3956.nex -as "nexus" -o tmp
+```
+
+
+# Tols on the same path:
+
+Tools that do similar things:
+pyPhlawd [@smith2019pyphlawd]
+SUPERSMART [@antonelli]
+
+
+
+# Acknowledgements
+
+We acknowledge contributions from
+
+# References
