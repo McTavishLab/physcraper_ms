@@ -43,9 +43,10 @@ rotl::studies_find_studies(property = "treebaseId", value = "S2137")
 ```
 
 1. Download the alignment from Treebase
-  - If you are on the Treebase home page of the study, you can navigate to the matrix tab, and manually download the alignments that were used to reconstruct the trees reported on the study that were also uploaded to Treebase and to the Open Tree of Life repository.
-  - Alternatively, you can use a command to download everything into your working folder:
+If you are on the Treebase home page of the study, you can navigate to the matrix tab, and manually download the alignments that were used to reconstruct the trees reported on the study that were also uploaded to Treebase and to the Open Tree of Life repository.
+  To make this task easier, you can use a command to download everything into your working folder:
 ```
+auto_scrape.py -s pg_238 -t tree109 -o ../physcraper_example/treebase_alns
 ```
 In this example, all alignments posted on Treebase were used to reconstruct both trees.
 
