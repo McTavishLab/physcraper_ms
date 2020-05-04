@@ -30,19 +30,57 @@ journal: JOSS
 
 # Summary
 
-Update trees that were reported on a published peer-reviewed study, uploaded to Treebase and to the Open Tree of Life database
+1. Phylogenies are still a key part of research in all areas of biology. The nonspecialist
+can use one of the many tools available to automatize phylogenetic reconstruction.
+However, interpretation of results, comparison with previously available phylogenetic
+hypotheses, and choosing of one phylogeny for discussion still impose difficulties
+to one that is not a specialist on phylogenetic methods or on a particular group of study.
+
+1. Physcraper is an open‐source Python program that automatizes the update of public
+phylogenies by making use of public DNA sequence data and taxonomic information.
+
+1. Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
+hypothesis based on public expert phylogentic knowledge.
+The phylogenetics and group specialist will find it useful as a tool to facilitate comparison
+of alternative phylogenetic hypotheses (topologies).
+***Is physcraper intended for the nonspecialist?? We have two types of nonspecialists:
+the ones that do not know about phylogenetic methods and the ones that might know
+about phylogenetic methods but do not know of a certain biological group.***
+
+1. Physcraper implements node by node comparison of the the original and the updated
+trees using the conflict API of OToL.
+
+1. We hope the physcraper workflow encourages researchers on their data sharing practices.
+
+1. Physcraper can be used with any OS. Detailed instructions for installation and
+use are available at <https://github.com/McTavishLab/physcraper>.
+
 
 # Intro
 
+There is a lot of phylogenetic knowledge already available.
+Some of it has been made public at OToL.
+Most or all public phylogenies have the potential to be updated with the ever increasing
+amount of genetic data that is available on GenBank.
+There are now various methods to automatize use of GenBank data for phylogenetic reconstruction, which are
+generally intended to facilitate the use of phylogenetic knowledge for the nonspecialist.
+However, none of them provide a means to compare with previously available expert
+knowledge on a particular group.
+
+A key aspect of the standard phylogenetic workflow is comparison with already existing
+phylogenetic hypotheses and with phylogenies that are considered "best" by experts
+not only in phylogenetics, but also experts of the focal group of study.
+
 It is well known that GenBank holds enormous amounts of genetic data, and it continues to grow.
-A lot of this genetic data has the potential to be used to reconstruct the phylogenetic history of various organisms [@sanderson2008phylota].
+A lot of this genetic data has the potential to be used to reconstruct the phylogenetic
+history of various organisms [@sanderson2008phylota].
 Pipelines that harness this potential have been available for over a decade now, such
 as the Phylota brower, and PHLAWD. New ones keep on being developed, such as SUPERSMART
 and the upgraded version of PHLAWD, PyPHLAWD.
 Notably large phylogenies have been constructed using some of these tools,
 Some other have not been used that much. So, how well accepted is this approach in the community?
 
-Concerns:
+Concerns with these tools:
 Errors in identification of sequences
 Little control along the process
 Too much of a black box?
@@ -51,30 +89,32 @@ Most of these phylogenies are being constructed by people learning about the met
 so they want to know what is going on.
 
 The pipelines are so powerful and they will give you an answer, but there
-is no way to assess if it is better than previous answers, it just assumes it is better because it used more data.
+is no way to assess if it is better than previous answers, it just assumes it is
+better because it used more data.
 
 All these pipelines start tree consruction from zero?
 
-The goal of Physcraper is to build upon previous phylogenegtic knowledge,
-allowing a direct comparison of existing phylogenies to phylogenies constructed
-using new information obtained from GenBank
+The goal of Physcraper is to build upon previous phylogenetic knowledge,
+allowing a direct comparison of existing phylogenies to phylogenies that are constructed
+using new genetic data from GenBank
 
 To achieve this, Physcraper uses the Open Tree of Life phylesystem and connects it
-to the TreeBase database, to use the original DNA dataset matrices that produced
-a phylogeny in the OToL database as
-a starting point to get new genetic data belonging to the focal group of study, and
-update the phylogenetic relationships displayed by that dataset in particular.
-
-
-Physcraper also allows node by node comparison of the trees, using the conflict API of OToL.
+to the TreeBase database, to (1) get the original DNA dataset matrices (alignments) that produced
+a phylogeny that was published and then made available in the OToL database, (2)
+use this DNA alignments as a starting point to get new genetic data belonging
+to the focal group of study, to (3) finally update the phylogenetic relationships in the group.
 
 A less automated workflow is one in which the alignments that generated the published
 phylogeny are stored in other public database (such as DRYAD) or elsewhere (the users computer), and
 are provided by the users.
 
-The original tree is used as starting tree for the phylogenetic searches, but it
+The original tree is by defualt used as starting tree for the phylogenetic searches, but it
 can also be set as a full topological constraint or not used at all, depending on
 the goals of the user.
+
+Physcraper implements node by node comparison of the the original and the updated trees, using the conflict API of OToL.
+
+# Physcraper
 
 
 # Examples
