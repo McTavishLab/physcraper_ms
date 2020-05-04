@@ -27,13 +27,7 @@ output: rticles::joss_article
 csl: apa.csl
 journal: JOSS
 ---
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "##",
-  eval = TRUE
-)
-```
+
 
 # Summary
 
@@ -147,21 +141,32 @@ The first step, is to get the Open Tree of Life study id. There are some options
 - you can get the study id using R tools:
   - By using the treebase ID of the study (which is not fully exposed on the
     Treebase website home page of the study, so you have to really look it up manually):
-```{r, treebase, eval = TRUE}
+
+```r
 rotl::studies_find_studies(property = "treebaseId", value = "S2137")
+##   study_ids n_trees         tree_ids candidate
+## 1    pg_238       2 tree109, tree110          
+##   study_year title
+## 1       2009      
+##                                 study_doi
+## 1 http://dx.doi.org/10.1093/sysbio/syp020
 ```
   - By using the name of the focal clade of study (but this behaved very differently):
-```{r, focal, eval = FALSE}
+
+```r
 rotl::studies_find_studies(property="ot:focalCladeOTTTaxonName", value="Ascomycota")
 ```
 
 Once we have the study id, we can gather the trees published on that study:
-```{r, treeids, eval = TRUE}
+
+```r
 rotl::get_tree_ids(rotl::get_study_meta("pg_238"))
+## [1] "tree109" "tree110"
 rotl::candidate_for_synth(rotl::get_study_meta("pg_238"))
+## NULL
 my_trees <- rotl::get_study("pg_238")
 ```
-Both trees from this study have `r ape::Ntip(my_trees[[1]])` tips.
+Both trees from this study have 434 tips.
 
 Let's check what the trees look like:
 
