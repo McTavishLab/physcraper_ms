@@ -1,0 +1,32 @@
+# Phylota overview
+
+Phylota was published as a website to summarize and browse the phylogenetic potential of the GenBank
+database [@sanderson2008phylota].
+
+Since then, it has been cited 122 times for different reasons.
+
+1. As an example study of very large and comprehensive phylogeny from minedDNA sequence data, (even if no phylogeny was published there, only the method to do so):
+  - @beaulieu2012modeling
+  -
+
+1. As an example tool that mines GenBak data for phylogenetic reconstruction:
+  - original publication of PHLAWD [@smith2009mega]
+  -
+
+1. When the software was actually used to construct a DNA data set for phylogenetic reconstruction of:
+  - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
+  - A 56 tip phylogeny of crustacean zooplancton [@helmus2010communities] -- ecological study
+  - A 63 tip phylogeny of the Salmonidae family [@crete2012salmonidae]
+  - A 321 tip phylogeny of Testudines [@thomson2010sparse]
+
+1. When the website was used to identify sequences and markers available in
+GenBank for a particular group, In this cases, the dataset mining was performed with other tools, or not performed at all and just used for discussion:
+  - A 812 tips phylogeny of the Order Chiroptera [@shi2015speciation] -- dataset constructed with PHLAWD
+  - A 1276 tips phylogeny of the Fabaceae [@legume2013legume] -- dataset constructed by hand (I think??)
+  - A review of dated phylogenies of fire-prone tropical savanna species from Brazil [@simon2012cerrado] -- just for discussion of the lack of markers available for these species on GenBank
+
+1. Sometimes, it was cited by mistake:
+    - In this 630 tip phylogeny of the Caryophyllaceae study [@greenberg2011caryophyllaceae] it might have been originally
+    cited as an example of large phylogenies that reflect well supported relationships
+    from previous smaller phylogenies. However, it was removed from the text but
+    not from the final list of references. The DNA data set was constructed by hand most probably.
