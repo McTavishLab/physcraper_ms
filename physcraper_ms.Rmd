@@ -57,7 +57,7 @@ about phylogenetic methods but do not know of a certain biological group.***
 1. Physcraper implements node by node comparison of the the original and the updated
 trees using the conflict API of OToL.
 
-1. We hope the physcraper workflow encourages researchers on their data sharing practices.
+1. We hope the physcraper workflow demonstrates the benefits of open results in phylogenetics and encourages researchers to strive for better data sharing practices.
 
 1. Physcraper can be used with any OS. Detailed instructions for installation and
 use are available at <https://github.com/McTavishLab/physcraper>.
@@ -125,7 +125,7 @@ Physcraper implements node by node comparison of the the original and the update
 
 
 
-# Examples
+# Use case/ example
 
 Imagine you are starting to work on a new biological group X. You have not much of an idea about
 its phylogenetic relationships, you are a newly established researcher, and the group
@@ -139,6 +139,8 @@ different and contrasting opinions.
 Somewhere along these months or even years doing this task, you looked into the
 the OToL database. You found in there some or all the published trees of X, along
 with a tree that has been deemed the best tree by curators and ideally experts on X?
+
+## Ascomycota Example
 
 Let's be more specific now about our X group and say it is the Ascomycota.
 The best tree currently available in OToL was published by @schoch2009ascomycota.
@@ -163,31 +165,34 @@ my_trees <- rotl::get_study("pg_238")
 ```
 Both trees from this study have `r ape::Ntip(my_trees[[1]])` tips.
 
-Let's check what the trees look like:
+Let's check what one of the trees looks like:
 
+```{r fungi-phylo, eval = TRUE, fig.retina = 2, fig.height = 4}
+ape::plot.phylo(my_trees[[1]], type = "fan", cex = 0.1)
 ```
-ape::plotPhylo(my_trees[[1]])
-```
-
-
-
-
-
-
-
 
 1. Download the alignment from Treebase
 If you are on the Treebase home page of the study, you can navigate to the matrix tab, and manually download the alignments that were used to reconstruct the trees reported on the study that were also uploaded to Treebase and to the Open Tree of Life repository.
-  To make this task easier, you can use a command to download everything into your working folder:
+To make this task easier, you can use a command to download everything into your working folder:
 ```
-auto_scrape.py -s pg_238 -t tree109 -o ../physcraper_example/treebase_alns
+physcraper_run.py -s pg_238 -t tree109 -o ../physcraper_example/pg_238
 ```
 In this example, all alignments posted on Treebase were used to reconstruct both trees.
 
 1. With the study id and the alignment files saved locally, we can do a physcraper run with the command:
 
 ```
-opentree_scrape.py -s pg_238 -t tree109 -a treebase_alns/pg_238-LSU-M3956.nex -as "nexus" -o tmp
+physcraper_run.py -s pg_238 -t tree109 -a treebase_alns/pg_238tree109.aln -as "nexus" -o pg_238
+```
+
+## Testudines example
+
+Phylogeny of the Testudines 6 tips from @crawford2012more
+There is just one tree in OToL.
+There is just one alignment on [treebase](https://treebase.org/treebase-web/search/study/matrices.html?id=12742) with all the 1 145 loci.
+
+```
+physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ -o pg_2573
 ```
 
 
