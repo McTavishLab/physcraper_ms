@@ -1,3 +1,33 @@
+---
+# Example from https://joss.readthedocs.io/en/latest/submitting.html
+title: 'Physcraper: A Python package for continually updated gene trees'
+tags:
+  - Python
+  - phylogenetics
+  - update
+  - species tree
+  - Open Tree
+authors:
+  - name: Luna L. Sanchez Reyes
+    orcid: 0000-0000-0000-0000
+    affiliation: 1 # (Multiple affiliations must be quoted, like this: "1, 2")
+  - name: Emily Jane McTavish
+    orcid: 0000-0000-0000-0000
+    affiliation: 1
+affiliations:
+ - name: University of California, Merced
+   index: 1
+citation_author: Sanchez-Reyes et. al.
+date: 24 April 2020
+year: 2020
+bibliography: paper.bib
+output: rticles::joss_article
+csl: apa.csl
+journal: JOSS
+---
+
+
+
 
 # Abstract
 
@@ -147,21 +177,30 @@ The first step, is to get the Open Tree of Life study id. There are some options
 - you can get the study id using R tools:
   - By using the treebase ID of the study (which is not fully exposed on the
     Treebase website home page of the study, so you have to really look it up manually):
-```{r, treebase, eval = TRUE}
+
+```r
 rotl::studies_find_studies(property = "treebaseId", value = "S2137")
+##   study_ids n_trees         tree_ids candidate study_year title
+## 1    pg_238       2 tree109, tree110                 2009      
+##                                 study_doi
+## 1 http://dx.doi.org/10.1093/sysbio/syp020
 ```
   - By using the name of the focal clade of study (but this behaved very differently):
-```{r, focal, eval = FALSE}
+
+```r
 rotl::studies_find_studies(property="ot:focalCladeOTTTaxonName", value="Ascomycota")
 ```
 
 Once we have the study id, we can gather the trees published on that study:
-```{r, treeids, eval = TRUE}
+
+```r
 rotl::get_tree_ids(rotl::get_study_meta("pg_238"))
+## [1] "tree109" "tree110"
 rotl::candidate_for_synth(rotl::get_study_meta("pg_238"))
+## NULL
 my_trees <- rotl::get_study("pg_238")
 ```
-Both trees from this study have `r ape::Ntip(my_trees[[1]])` tips.
+Both trees from this study have 434 tips.
 
 Let's check what one of the trees looks like:
 
