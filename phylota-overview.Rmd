@@ -5,25 +5,49 @@ database [@sanderson2008phylota].
 
 Since then, it has been cited 122 times for different reasons.
 
-1. As an example study of very large and comprehensive phylogeny from minedDNA sequence data, (even if no phylogeny was published there, only the method to do so):
+1. As an example study of very large and comprehensive phylogeny from mined DNA sequence data, (even if no phylogeny was really published there, only the method to do so):
   - @beaulieu2012modeling
   -
 
-1. As an example tool that mines GenBak data for phylogenetic reconstruction:
+1. As an example of a tool that mines GenBank data for phylogenetic reconstruction:
   - original publication of PHLAWD [@smith2009mega]
-  -
+  - an analysis identifying research priorities and data requirements for resolving
+  the red algal tree of life [@verbruggen2010data]
+  - a review for ecologists about phylogenetic tools [@roquet2013building]
 
-1. When the software was actually used to construct a DNA data set for phylogenetic reconstruction of:
+1. When the software was actually used to construct (partially or in full) a DNA
+data set to be used for phylogenetic reconstruction:
   - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
   - A 56 tip phylogeny of crustacean zooplancton [@helmus2010communities] -- ecological study
   - A 63 tip phylogeny of the Salmonidae family [@crete2012salmonidae]
   - A 321 tip phylogeny of Testudines [@thomson2010sparse]
+  - A 69 taxa phylogeny of the family Cyprinodontidae of the pupfish [@martin2011trophic]
+  - A 2,957 taxa phylogeny of the class Moniloformopses of living ferns [@lehtonen2011towards]
+  - A 2,573 species phylogeny of the Papilionoidea [@hardy2014specialization]
+  - A 23 taxa phylogeny of the California flora [@anacker2011origins]
+  - Phylogenies of 6 different clades of flowering plants representing an independent
+  evolutionary origin of extrafloral nectaries: *Byttneria* (Malvaceae), *Pleopeltis* (Polypodiaceae),
+  *Polygoneae* (Polygoneaceae), *Senna* (Fabaceae), *Turnera* (Passifloraceae), and *Viburnum*
+  (Adoxaceae) [@weber2014defense].
+  - To supplement DNA data sets of various pre-existing mammalian phylogenetic trees
+  sampled at different taxonomic levels [@faurby2015species]
+  -
 
 1. When the website was used to identify sequences and markers available in
-GenBank for a particular group, In this cases, the dataset mining was performed with other tools, or not performed at all and just used for discussion:
-  - A 812 tips phylogeny of the Order Chiroptera [@shi2015speciation] -- dataset constructed with PHLAWD
-  - A 1276 tips phylogeny of the Fabaceae [@legume2013legume] -- dataset constructed by hand (I think??)
-  - A review of dated phylogenies of fire-prone tropical savanna species from Brazil [@simon2012cerrado] -- just for discussion of the lack of markers available for these species on GenBank
+GenBank for a particular group. In this cases, the dataset mining was either performed
+with other tools, or not performed at all and just used for discussion:
+  - A 812 tips phylogeny of the Order Chiroptera [@shi2015speciation] -- dataset
+  constructed with PHLAWD
+  - A 1276 tips phylogeny of the Fabaceae [@legume2013legume] -- dataset constructed
+  by hand (I think??)
+  - A review of dated phylogenies of fire-prone tropical savanna species from Brazil
+  [@simon2012cerrado] -- just for discussion of the lack of markers available for
+  these species on GenBank
+  - A review of the phylogeetic sof the Apicomplexa, a parasitic phylum on unicellular
+  protists [@morrison2009apicomplexa].
+  - Three  data sets from phylota (the suborder Pleurodira of side-necked turtles;
+    the family Cactaceae of cacti; and the Amorpheae, a clade of legumes) were used
+    to demonstrate and exemplify phylogenetic decisiveness [@sanderson2010phylogenomics]
 
 1. Sometimes, it was cited by mistake:
     - In this 630 tip phylogeny of the Caryophyllaceae study [@greenberg2011caryophyllaceae] it might have been originally
