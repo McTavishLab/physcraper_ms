@@ -9,7 +9,8 @@ hypotheses, and choosing of one phylogeny for downstream analyses and discussion
 to one that is not a specialist either on phylogenetic methods or on a particular group of study.
 
 1. Physcraper is an open‐source, command-line Python program that automatizes the update of published
-phylogenies by making use of public DNA sequence data and taxonomic information.
+phylogenies by making use of public DNA sequence data and taxonomic information,
+providing a framework for comparison of phylogenies.
 
 1. Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
 hypothesis based on already available expert phylogentic knowledge.
@@ -22,7 +23,7 @@ about phylogenetic methods but do not know much acbout a certain biological grou
 1. Physcraper implements node by node comparison of the the original and the updated
 trees using the conflict API of OToL.
 
-1. We hope the physcraper workflow demonstrates the benefits of open results in phylogenetics and encourages researchers to strive for better data sharing practices.
+1. We hope the physcraper workflow demonstrates the benefits of opening results in phylogenetics and encourages researchers to strive for better data sharing practices.
 
 1. Physcraper can be used with any OS. Detailed instructions for installation and
 use are available at <https://github.com/McTavishLab/physcraper>.
@@ -31,12 +32,12 @@ use are available at <https://github.com/McTavishLab/physcraper>.
 # Intro
 
 Phylogenies are important.
-Genetrating phylogenies is not easy.
+Generating phylogenies is not easy.
 The process of phylogenetic reconstruction implies many steps that can be generalized to the following:
-1. Obtention of molecular or morphological character data -- get DNA from some organisms and sequence it, or get it from an only repository, such as GenBank.
-1. Assemble a hypothesis of homology that can be used to reconstruct phylogenetic relationships -- Create a matrix of your character data, by aligning the sequences, in the case of molecular data.
-1. Analyse this hypothesis of homology to infer relationships among the organisms you are studying -- Use different available programs to infer molecular evolution, trees and times of divergence.
-1. Discuss the inferred relationships in the context of previous hypothesis, the biology and biogeography of the organisms, etc. -- Answer the question, *is this solution fair/reasonable?*
+1. Obtention of molecular or morphological character data -- get DNA from some organisms and sequence it, or get it from an online repository, such as GenBank.
+1. Assemble a hypothesis of homology -- Create a matrix of your character data, by aligning the sequences, in the case of molecular data.
+1. Analyse this hypothesis of homology to infer phylogenetic relationships among the organisms you are studying -- Use different available programs to infer molecular evolution, trees and times of divergence.
+1. Discuss the inferred relationships in the context of previous hypothesis, the biology and biogeography of the organisms, etc. -- Answer the question, *is this phylogenetic solution fair/reasonable?*
 
 Each of these steps require different types of specialized training: in the field,
 in the lab, in front of a computer, discussions with experts in the methods, and/or in the biological group of study.
@@ -45,13 +46,13 @@ All of these steps also require considerable amounts of time for training and im
 In the past decade, various studies have developed solutions to automatize the first and second steps, by creating
 pipelines that mine already available molecular data from the GenBank repository,
 to obtain homologous characters that can be used for phylogenetic reconstruction.
-Automatizating the assembly of the character data set is a crucial step towards
-reproducibility in a task that was otherwise primarily artisanal and hence largely
-non-reproducible.
 These tools have been presented as aid for the nonspecialist to decrease some of
 the difficulties in the generation of phylogenetic knowledge. However, they are
 not that often used as so, suggesting that there are still difficulties for the nonspecialist.
-Even the phylogenetic community has some reserves towards these tools.
+The phylogenetic community has some reserves towards these tools, too. Mainly because they sometimes act as a black box.
+However, automatizating the assembly of the character data set is a crucial step towards
+reproducibility for a task that was otherwise primarily artisanal and hence largely
+non-reproducible.
 
 Even if it is hard to obtain phylogenies, we invest copious amounts of time and energy in generating them.
 They are crucial to solve problems such as food security, global warming, global health.
@@ -110,18 +111,44 @@ the goals of the user.
 
 Physcraper implements node by node comparison of the the original and the updated trees, using the conflict API of OToL.
 
-# Physcraper overview
+# How does Physcraper work?
 
-## Study tree and alignment downloading
+## Study tree and alignment
 
-## DNA sequence download and cleaning
+- The phylogenetic tree has to be in Open Tree of Life. You can choose form a variety of ytrees supporting any node of the Tree of Life.
+- The alignment should be a gene alignment that was used to generate the tree. The alignments are usually stored in treebase or dryad.
+  If it is stored in Treebase, it can be downloaded by pyscraper. If it is on dryad, it has to be provided by the user.
+- Taxon name matching step: check that taxon names on the tips of the trees are in the character matrix and visceversa.
+- A csv file with the summary of taxon name matching is produced for the user.
+- Unmatched taxon names are dropped from the tree and alignment. ***What is the minimum amount of tips necessary for a physcraper run??***
+- A .tre and .aln files are generated for a physcraper run.
+
+## DNA sequence search and cleaning
+
+- The first step is to identify the taxonomic MRCA of all species in the tree. The taxonomic MRCA
+  is the closest phylogenetic MRCA that has a taxonomic name assigned in the NCBI database. ***Does
+  physcraper take into account the focal clade from Open Tree in any way???***
+- The taxonomic MRCA is used to constrain the DNA sequence search within that taxonomic group on the GenBank database.
+- The DNA sequence search can be done on a local database that is easily setup by the user, or remotely.
+- The BLAST algorithm is used to identify all DNA sequences in the database within
+  the taxonomic MRCA that are similar to each sequence in the alignment ***How does the blast is setup? Is it an all-blast-all??***
+- Reverse complement sequences are identified and translated.
+- A fasta file containing all sequences resulting from the search is generated for the user.
 
 ## DNA sequence alignment
 
+- MUSCLE
+
 ## Tree reconstruction
 
-## TRee comparison
+- A gene tree is reconstructed for each alignment provided, using ***what software?***
 
+## Tree comparison
+
+- Conflict information can only be generated in the context of the whole Open Tree of
+Life. Otherwise, it is not really possible to get conflict data.
+***- One way to compare two independent phylogenetic trees is to compare them both to
+the synthetic OToL and then measure how well they do agianst each other***
 
 # Use case/ example
 
