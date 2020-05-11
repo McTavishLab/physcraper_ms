@@ -11,6 +11,9 @@ authors:
   - name: Luna L. Sanchez Reyes
     orcid: 0000-0000-0000-0000
     affiliation: 1 # (Multiple affiliations must be quoted, like this: "1, 2")
+  - name: Martha Kandziora
+    orcid: 0000-0000-0000-0000
+    affiliation: 1
   - name: Emily Jane McTavish
     orcid: 0000-0000-0000-0000
     affiliation: 1
