@@ -1,3 +1,15 @@
+---
+title: 'Physcraper: A Python package for continually updated gene trees'
+date: 'Manuscript rendered on `r format(Sys.time(), "%d %B, %Y")`'
+author:
+  - Luna L. Sanchez Reyes, University of California, Merced
+  - Martha Kandziora, University of California, Merced
+  - Emily Jane McTavish, University of California, Merced
+output:
+  redoc::redoc
+bibliography: paper.bib
+csl: apa.csl
+---
 
 # Abstract
 
@@ -29,7 +41,7 @@ trees using the conflict API of OToL.
 use are available at <https://github.com/McTavishLab/physcraper>.
 
 
-# Intro
+# Introduction
 
 Phylogenies are important.
 Generating phylogenies is not easy.
@@ -129,7 +141,8 @@ Physcraper implements node by node comparison of the the original and the update
 - A taxon name matching step is performed to verify that all taxon names on the tips
   of the tree are in the character matrix and vice versa.
 - A ".csv" file with the summary of taxon name matching is produced for the user.
-- Unmatched taxon names are dropped from the tree and alignment. ***What is the minimum amount of tips necessary for a physcraper run??***
+- Unmatched taxon names are dropped from the tree and alignment.
+  ***What is the minimum amount of tips necessary for a physcraper run??*** Just one!
 - A ".tre" and ".aln" files are generated and saved for a  `physcraper` run.
 
 ## DNA sequence search and cleaning
@@ -137,13 +150,17 @@ Physcraper implements node by node comparison of the the original and the update
 - The first step is to identify the MRCA of all taxa in the tree that is also a
   named clade in the NCBI taxonomy. This "taxonomic MRCA" can be different from
   the phylogenetic MRCA when the latter is an unnamed clade. ***Does
-  physcraper take into account the focal clade from Open Tree in any way???***
+  physcraper take into account the focal clade from Open Tree in any way???*** Not really, it is a search MRCA more than a taxonomic, the default is to get the ingroup from Otol, which is not the focal group.
 - The taxonomic MRCA is used to constrain the DNA sequence search within that taxonomic group on the GenBank database.
 - The DNA sequence search can be done on a local database that is easily setup by the user, or remotely.
 - The BLAST algorithm is used to identify all DNA sequences in the database within
   the taxonomic MRCA that are similar to each sequence in the alignment ***How does the blast is setup? Is it an all-blast-all??***
+  The rmote BLAST uses bioPython and the local BLAST uses BLASTn
 - Reverse complement sequences are identified and translated.
+- Sequences found for each
 - A fasta file containing all sequences resulting from the search is generated for the user.
+- ***Add cycles of blast searches with new sequences***
+- How many sequences per species? Was hardcoded to 5, but it will be an argument now, default to 5. ***How does pyphlawd, or phylota does it?***
 
 ## DNA sequence alignment
 
@@ -152,7 +169,8 @@ Physcraper implements node by node comparison of the the original and the update
 
 ## Tree reconstruction
 
-- A gene tree is reconstructed for each alignment provided, using ***what software?***
+- A gene tree is reconstructed for each alignment provided, using RAxML with bootstrap replicates.
+- The final result is a gene tree couples to the conlict info.
 
 ## Tree comparison
 
