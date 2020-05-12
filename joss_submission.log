@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.5.5)  11 MAY 2020 15:06
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.5.5)  12 MAY 2020 12:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1126,19 +1126,19 @@ arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 wn/templates/joss_article/resources/JOSS-logo.png>
 [3]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 527.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 540.
 File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
 arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
 [4]
-Overfull \hbox (111.41139pt too wide) in paragraph at lines 593--593
+Overfull \hbox (111.41139pt too wide) in paragraph at lines 606--606
 []\TU/lmtt/m/n/10 physcraper_run.py -s pg_238 -t tree109 -a treebase_alns/pg_23
 8tree109.aln -as "nexus" -o pg_238 
  []
 
 
-Overfull \hbox (85.16139pt too wide) in paragraph at lines 605--605
+Overfull \hbox (85.16139pt too wide) in paragraph at lines 618--618
 []\TU/lmtt/m/n/10 physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinec
 ta/local_blast_db/ -o pg_2573 
  []
@@ -1148,24 +1148,29 @@ arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
 [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 657.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 657.
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 695.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 695.
 (./joss_submission.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 657.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 657.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 695.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 695.
 Package rerunfilecheck Info: File `joss_submission.out' has not changed.
-(rerunfilecheck)             Checksum: 9FB02E82D7A6D01EC4B6B35EFB587422;925.
+(rerunfilecheck)             Checksum: D0B4ACC8FCAE71628D47434F0BBF6A35;953.
 Package logreq Info: Writing requests to 'joss_submission.run.xml'.
 \openout1 = `joss_submission.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
  35227 strings out of 479488
- 700567 string characters out of 5885585
- 1412664 words of memory out of 5000000
+ 700582 string characters out of 5885585
+ 1412708 words of memory out of 5000000
  52109 multiletter control sequences out of 15000+600000
  539218 words of font info for 73 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  60i,13n,75p,1204b,788s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on joss_submission.pdf (5 pages).
+Output written on joss_submission.pdf (6 pages).
