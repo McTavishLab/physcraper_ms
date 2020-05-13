@@ -14,6 +14,19 @@ Since then, it has been cited 122 times for different reasons.
   - an analysis identifying research priorities and data requirements for resolving
   the red algal tree of life [@verbruggen2010data]
   - a review for ecologists about phylogenetic tools [@roquet2013building]
+  - a study constructing a dated seed plant phylogeny using pyPHLAWD [@smith2018constructing]
+  - a study presenting an assembly and alignment free method for phylogenetic reconstruction
+    using genomic data, that aims to be incorporated in a tool as phylota some day [@fan2015assembly]
+  - nexml format presentation [@vos2012nexml] - cites phylota as a tool that uses
+    stored phyloinformatic data that could benefit from adopting nexml, to increase
+    interoperability
+  - a study of fruit evolution, analysing a previously published phylogeny of 8911
+    tips of the Campanulidae, constructed with PHLAWD [@beaulieu2013fruit]
+  - a study of Southeast Asia plant biodiversity inventory [@webb2010biodiversity] -
+    cites phylota as a tool that would allow rapid phylogentic placing of newly
+    discovered species, and generation of phylogenetically informed guides for field
+    identification.
+
 
 1. When the software was actually used to construct (partially or in full) a DNA
 data set to be used for phylogenetic reconstruction:
@@ -31,7 +44,11 @@ data set to be used for phylogenetic reconstruction:
   (Adoxaceae) [@weber2014defense].
   - To supplement DNA data sets of various pre-existing mammalian phylogenetic trees
   sampled at different taxonomic levels [@faurby2015species]
-  -
+  - A 900 species tree of muroid rodents, Muroidea [@steppan2017muroid], where 300
+    species were newly added by the study and the rest obtained using phylota.
+  - A 95 taxa phylogeny of Gymnosperms, focused on Ephedra, Gnetales [@ickert2009fossil]
+  - A 1061 genera phylogeny of the Oscine birds [@selvatti2015paleogene]
+  - A 268 species phylogeny of sharks, representing all orders and 32 families [@sorenson2014effect]
 
 1. When the website was used to identify sequences and markers available in
 GenBank for a particular group. In this cases, the dataset mining was either performed
@@ -45,7 +62,7 @@ with other tools, or not performed at all and just used for discussion:
   these species on GenBank
   - A review of the phylogeetic sof the Apicomplexa, a parasitic phylum on unicellular
   protists [@morrison2009apicomplexa].
-  - Three  data sets from phylota (the suborder Pleurodira of side-necked turtles;
+  - Three data sets from phylota (the suborder Pleurodira of side-necked turtles;
     the family Cactaceae of cacti; and the Amorpheae, a clade of legumes) were used
     to demonstrate and exemplify phylogenetic decisiveness [@sanderson2010phylogenomics]
 
