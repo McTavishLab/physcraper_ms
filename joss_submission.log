@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.5.5)  12 MAY 2020 14:34
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.5.12)  16 MAY 2020 12:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **joss_submission.tex
 (./joss_submission.tex
 LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-04-06> (/usr/local/texlive/2017/texmf-dist/tex/latex
+L3 programming layer <2020-05-11> (/usr/local/texlive/2017/texmf-dist/tex/latex
 /base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/size10.clo
@@ -485,9 +485,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package hyperref Info: Option `colorlinks' set `true' on input line 12.
 Package hyperref Info: Option `breaklinks' set `true' on input line 12.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2020/01/03 v3.4h Customizing captions (AR)
+Package: caption 2020/05/10 v3.4j Customizing captions (AR)
 (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
+Package: caption3 2020/05/10 v1.11 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
 \captionmargin=\dimen198
 \captionmargin@=\dimen199
@@ -853,10 +853,10 @@ r XeLaTeX)
 (/usr/local/texlive/2017/texmf-dist/tex/latex/fontspec/fontspec.sty (/usr/local
 /texlive/2017/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/local/tex
 live/2017/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2020-04-06 L3 programming layer (loader) 
+Package: expl3 2020-05-11 L3 programming layer (loader) 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/l3backend/l3backend-xdvipdfmx.def
-File: l3backend-xdvipdfmx.def 2020-03-12 L3 backend support: xdvipdfmx
+File: l3backend-xdvipdfmx.def 2020-05-05 L3 backend support: xdvipdfmx
 \g__graphics_track_int=\count423
 \l__pdf_internal_box=\box68
 \g__pdf_backend_object_int=\count424
@@ -1125,20 +1125,21 @@ arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
 [3]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 553.
 File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
 arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
 [4]
-Overfull \hbox (111.41139pt too wide) in paragraph at lines 619--619
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 586.
+
+Overfull \hbox (111.41139pt too wide) in paragraph at lines 652--652
 []\TU/lmtt/m/n/10 physcraper_run.py -s pg_238 -t tree109 -a treebase_alns/pg_23
 8tree109.aln -as "nexus" -o pg_238 
  []
 
 
-Overfull \hbox (85.16139pt too wide) in paragraph at lines 631--631
+Overfull \hbox (85.16139pt too wide) in paragraph at lines 664--664
 []\TU/lmtt/m/n/10 physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinec
 ta/local_blast_db/ -o pg_2573 
  []
@@ -1153,24 +1154,78 @@ arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 708.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 708.
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[7]
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[8]
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[9]
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[10]
+Overfull \hbox (49.04543pt too wide) in paragraph at lines 1163--1168
+\TU/lmr/m/n/10 logenies updated perpetually. \TU/lmr/m/it/10 Bioinformatics\TU/
+lmr/m/n/10 , \TU/lmr/m/it/10 30\TU/lmr/m/n/10 (10), 1476–1477. doi:[][]10.1093/
+bioinformatics/btu053[][] 
+ []
+
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[11]
+Underfull \hbox (badness 2205) in paragraph at lines 1251--1256
+[][]\TU/lmr/m/n/10 Roalson, E. H., & Roberts, W. R. (2016). Distinct processes 
+drive diversi-
+ []
+
+
+Underfull \hbox (badness 1297) in paragraph at lines 1251--1256
+\TU/lmr/m/n/10 fication in different clades of gesneriaceae. \TU/lmr/m/it/10 Sy
+stematic Biology\TU/lmr/m/n/10 , \TU/lmr/m/it/10 65\TU/lmr/m/n/10 (4), 662–684.
+
+ []
+
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[12]
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[13]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1414.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1414.
 (./joss_submission.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 708.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 708.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1414.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1414.
+
 Package rerunfilecheck Info: File `joss_submission.out' has not changed.
-(rerunfilecheck)             Checksum: 1955709D72BE28AF5A1484A02CC35E4C;960.
+(rerunfilecheck)             Checksum: 62163C2F3C251DE4F16A7A4DA2D4BCB9;1016.
 Package logreq Info: Writing requests to 'joss_submission.run.xml'.
 \openout1 = `joss_submission.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35227 strings out of 479488
- 700589 string characters out of 5885585
- 1412722 words of memory out of 5000000
- 52109 multiletter control sequences out of 15000+600000
+ 35276 strings out of 479294
+ 701878 string characters out of 5880891
+ 1415379 words of memory out of 5000000
+ 52352 multiletter control sequences out of 15000+600000
  539218 words of font info for 73 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  60i,13n,75p,1204b,788s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on joss_submission.pdf (6 pages).
+Output written on joss_submission.pdf (13 pages).
