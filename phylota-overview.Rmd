@@ -69,6 +69,35 @@ or that is useful in any way for phylogenetics:
     sequences is needed for supermatrix construction. @chesters2013resolving present
     a procedure that minimizes the problem of forming multilocus species units in
     a large phylogenetic data set using algorithms from graph theory.
+    - @chesters2014protocol present an algorithm to delineate species form GenBank
+    DNA data, and cites phylota as a tool that partitions "the contents of a database
+    according to homology", by "grouping of database sequences according to internal
+    criteria", searching "from a standardized set of references [...] patterns in
+    sequence similarity and overlap."
+    - the paper presenting phylotaR, a pipeline that recreates the phylota output
+    but uses the most updated GenBank release, and is available in R [@bennett2018phylotar],
+    cites phylota as its predecessor and inspiration. the authors mention that phylotaR
+    pipeline mimics phylota's pipeline but with improvememnts.
+    - The paper presenging PhyloBase [@jamil2016visual], cites phylota as one of
+    its resources to get phylogenies, along with TreeBASE and others.
+    - The paper presenting STBase, a database of one million precomputed species
+    trees [@mcmahon2015stbase], cites phylota as a databse of gene trees or multrees,
+    "trees having multiple sequences with the same taxon name".
+    - @drori2018onetwotree present a Web‐based, user-friendly, online tool for species-tree
+    reconstruction, based on the *supermatrix paradigm* and retrieves all available
+    sequence data from NCBI GenBank. They cite phylota in the intro as a tool that is "designed to provide
+    users with precomputed sets of clusters that were assembled through a single‐linkage
+    clustering approach and additionally provides precomputed gene trees that were
+    reconstructed for each cluster. In particular, the results obtained by PhyLoTa
+    are taxonomically constrained; that is, all sequences of the most recent common
+    ancestor are collected even if one specifies only part of a clade".
+    - A study developing a tool to link wikipedia data to NCBI taxonomy [@page2011linking]
+    cites phylota as a phylogenetic resource that uses the NCBI taxonomy.
+    - the study that present DarwinTree [@meng2015darwintree] as well as the study
+    presenting an approach to screen sequence data for The Platform
+    for Phylogenetic Analysis of Land Plants (PALPP), using the MapReduce paradigm
+    to parallelize BLAST [@yong2010screening], both cite phylota as one among other
+    "studies based on data mining large numbers of taxa or loci".
 1. When the software was actually used to construct (partially or in full) a DNA
 data set to be used for phylogenetic reconstruction:
     - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
@@ -129,6 +158,9 @@ data set to be used for phylogenetic reconstruction:
     - A phylogeny of species of freshwater fish endemic to NorthAmerica [@strecker2014fish],
     phylota found data for 54 out of 66 spp.
     - A phylogeny of 520 species of the order Ericales [@hardy2012testing]
+    - A phylgeny of 16 fish species of the family Sphyraenidae (Percomorpha), as well
+    as two outgroup species of the Centropomidae (barracudas) [@santini2015first]
+    - A phylogeny of 34 vole species, Arvicolinae, Rodentia [@garcia2016role]
 1. When the website was used to identify sequences and markers available in
 GenBank for a particular group. In this cases, the dataset mining was either performed
 with other tools, or not performed at all and just used for discussion:

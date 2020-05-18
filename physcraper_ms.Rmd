@@ -171,17 +171,20 @@ Physcraper implements node by node comparison of the the original and the update
 - The BLAST algorithm is used to identify similarity among DNA sequences in the GenBank nucleotide
   database within the search taxon and the remaining sequences on the alignment.
   <!--***How does the blast is setup? Is it an all-blast-all??***-->
-- The DNA sequence similarity search can be done on a local database that is easily setup by the user. In this case it uses the BLASTn algorithm.
-- The search can also be performed remotely, using the bioPython BLASt algorithm.
-- A BLAST run is performed for each sequence in the alignment. Results of each BLAST
-  are recorded. All matched sequences are saved with their corresponding GenBank
-  accesion numbers that will be used to download the whole sequences into a local library.
+- The DNA sequence similarity search can be done on a local database that is easily
+  setup by the user. In this case it uses the BLASTn algorithm.
+- The search can also be performed remotely, using the bioPython BLAST algorithm.
+- A pairwise all-against-all BLAST search is performed. This means that each sequence
+  in the alignment is BLASTed against DNA sequences in the database within the search
+  taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
+  along with their corresponding GenBank accesion numbers. This information will be
+  used later to download the whole sequences into a local library.
 - Matched sequences below an e-value, percentage similarity, and outside a minimum
-  and maximum length threshold are discarded. This will leave out genomic sequences.
+  and maximum length threshold are discarded. This filtering leaves out genomic sequences.
   All acepted sequences are asigned an internal identifier, and are further filtered.
-- Because we usually do not have the accession number from sequences in the original
-  alignment, a filtering process is needed. Accepted sequences that belong to the
-  same taxon in the query sequence and that are either identical or shorter than
+- Because the original alignments usually do not have the GenBank accession numbers
+  on the sequence names, a filtering process is needed. Accepted sequences that belong to the
+  same taxon of the query sequence, and that are either identical or shorter than
   the original sequence are also discarded. Only longer sequences belonging to the
   same taxon as the orignal sequence will be considered for further analyses.
 - Among the remaining filtered sequences, there are usually several exemplars per taxon.
@@ -191,7 +194,7 @@ Physcraper implements node by node comparison of the the original and the update
   5 sequences per taxon are chosen at random. This number can be controlled by the user.
   <!--***How does pyphlawd, or phylota does the exemplar per sepcies choosing?***-->
 - Reverse complement sequences are identified and translated.
-- This cycle of sequence search is performed two times. ***Is there an arhument to control the number of cycles of blast searches with new sequences***
+- This cycle of sequence search is performed two times. ***Is there an argument to control the number of cycles of blast searches with new sequences***
 - A fasta file containing all sequences resulting from the BLAST searches is generated for the user.
 
 ## DNA sequence alignment
@@ -291,25 +294,35 @@ Phylota [@sanderson2008phylota] - cited by 122 studies.
 
 PHLAWD [@smith2009mega] and pyPhlawd [@smith2019pyphlawd] - baited analyses
 
-DarwinTree [@meng2015darwintree] predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP) - takes data from GenBank, EMBL and DDBJ for land plants only.
-
-NCBIminer [@xu2015ncbiminer]
-
 A [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals),
 only available from the [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP)
 of the journal [[@peters2011taming]](https://bmcbiol.biomedcentral.com/articles/10.1186/1741-7007-9-55#Sec21)
 
+@chesters2014protocol presents an algorithm that mines GenBank data to delineate species in the insecta.
+The authors present a nice comparison with the phylota algorithm.
+
 PUmPER [@izquierdo2014pumper] - perpetual updating with newly added sequences to
 GenBank
 
+DarwinTree [@meng2015darwintree] predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP) - takes data from GenBank, EMBL and DDBJ for land plants only.
+
+NCBIminer [@xu2015ncbiminer]
+
 SUMAC [@freyman2015sumac] -  both “baited” analyses and single‐linkage clustering
 methods, as well as a novel means of determining when there are enough overlapping data in the DNA matrix
+
+STBase - @mcmahon2015stbase present a pipeline for species tree construction and
+the public database of one million precomputed species trees
 
 SUPERSMART [@antonelli2017toward] - baited analyses up to bayesian divergente time
 estimation
 
 SOPHI - [@chesters2017construction] - Searches DNA sequence data from repos other
 than GenBank, such as transcriptomic and barcoding repos.
+
+OneTwoTree [@drori2018onetwotree] present a Web‐based, user-friendly, online tool for species-tree
+reconstruction, based on the *supermatrix paradigm* and retrieves all available
+sequence data from NCBI GenBank.
 
 PhySpeTre [@fang2019physpetree] - no sequence retrieval, just phylogenetic reconstruction
 pipeline.

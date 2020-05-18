@@ -21,7 +21,7 @@ affiliations:
  - name: University of California, Merced
    index: 1
 citation_author: Sanchez-Reyes et. al.
-date: '16 May, 2020'
+date: '18 May, 2020'
 year: 2020
 bibliography: paper.bib
 output: rticles::joss_article
@@ -191,17 +191,20 @@ Physcraper implements node by node comparison of the the original and the update
 - The BLAST algorithm is used to identify similarity among DNA sequences in the GenBank nucleotide
   database within the search taxon and the remaining sequences on the alignment.
   <!--***How does the blast is setup? Is it an all-blast-all??***-->
-- The DNA sequence similarity search can be done on a local database that is easily setup by the user. In this case it uses the BLASTn algorithm.
-- The search can also be performed remotely, using the bioPython BLASt algorithm.
-- A BLAST run is performed for each sequence in the alignment. Results of each BLAST
-  are recorded. All matched sequences are saved with their corresponding GenBank
-  accesion numbers that will be used to download the whole sequences into a local library.
+- The DNA sequence similarity search can be done on a local database that is easily
+  setup by the user. In this case it uses the BLASTn algorithm.
+- The search can also be performed remotely, using the bioPython BLAST algorithm.
+- A pairwise all-against-all BLAST search is performed. This means that each sequence
+  in the alignment is BLASTed against DNA sequences in the database within the search
+  taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
+  along with their corresponding GenBank accesion numbers. This information will be
+  used later to download the whole sequences into a local library.
 - Matched sequences below an e-value, percentage similarity, and outside a minimum
-  and maximum length threshold are discarded. This will leave out genomic sequences.
+  and maximum length threshold are discarded. This filtering leaves out genomic sequences.
   All acepted sequences are asigned an internal identifier, and are further filtered.
-- Because we usually do not have the accession number from sequences in the original
-  alignment, a filtering process is needed. Accepted sequences that belong to the
-  same taxon in the query sequence and that are either identical or shorter than
+- Because the original alignments usually do not have the GenBank accession numbers
+  on the sequence names, a filtering process is needed. Accepted sequences that belong to the
+  same taxon of the query sequence, and that are either identical or shorter than
   the original sequence are also discarded. Only longer sequences belonging to the
   same taxon as the orignal sequence will be considered for further analyses.
 - Among the remaining filtered sequences, there are usually several exemplars per taxon.
@@ -211,7 +214,7 @@ Physcraper implements node by node comparison of the the original and the update
   5 sequences per taxon are chosen at random. This number can be controlled by the user.
   <!--***How does pyphlawd, or phylota does the exemplar per sepcies choosing?***-->
 - Reverse complement sequences are identified and translated.
-- This cycle of sequence search is performed two times. ***Is there an arhument to control the number of cycles of blast searches with new sequences***
+- This cycle of sequence search is performed two times. ***Is there an argument to control the number of cycles of blast searches with new sequences***
 - A fasta file containing all sequences resulting from the BLAST searches is generated for the user.
 
 ## DNA sequence alignment
@@ -320,25 +323,35 @@ Phylota [@sanderson2008phylota] - cited by 122 studies.
 
 PHLAWD [@smith2009mega] and pyPhlawd [@smith2019pyphlawd] - baited analyses
 
-DarwinTree [@meng2015darwintree] predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP) - takes data from GenBank, EMBL and DDBJ for land plants only.
-
-NCBIminer [@xu2015ncbiminer]
-
 A [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals),
 only available from the [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP)
 of the journal [[@peters2011taming]](https://bmcbiol.biomedcentral.com/articles/10.1186/1741-7007-9-55#Sec21)
 
+@chesters2014protocol presents an algorithm that mines GenBank data to delineate species in the insecta.
+The authors present a nice comparison with the phylota algorithm.
+
 PUmPER [@izquierdo2014pumper] - perpetual updating with newly added sequences to
 GenBank
 
+DarwinTree [@meng2015darwintree] predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP) - takes data from GenBank, EMBL and DDBJ for land plants only.
+
+NCBIminer [@xu2015ncbiminer]
+
 SUMAC [@freyman2015sumac] -  both “baited” analyses and single‐linkage clustering
 methods, as well as a novel means of determining when there are enough overlapping data in the DNA matrix
+
+STBase - @mcmahon2015stbase present a pipeline for species tree construction and
+the public database of one million precomputed species trees
 
 SUPERSMART [@antonelli2017toward] - baited analyses up to bayesian divergente time
 estimation
 
 SOPHI - [@chesters2017construction] - Searches DNA sequence data from repos other
 than GenBank, such as transcriptomic and barcoding repos.
+
+OneTwoTree [@drori2018onetwotree] present a Web‐based, user-friendly, online tool for species-tree
+reconstruction, based on the *supermatrix paradigm* and retrieves all available
+sequence data from NCBI GenBank.
 
 PhySpeTre [@fang2019physpetree] - no sequence retrieval, just phylogenetic reconstruction
 pipeline.
@@ -404,7 +417,43 @@ or that is useful in any way for phylogenetics:
     - @freyman2015sumac cites phylota as a tool that "provides a web interface to view
     all GenBank sequences within ta xonomic groups clustered into homologs" but that
     does not mine for targeted sequences, as opposed to NCBIminer or PHLAWD. They
-    compare the performance of SUMAC to Phylota
+    compare the performance of SUMAC to Phylota.
+    - @chesters2013resolving cites phylota as a data mining tool that compiles metadata
+    from mining of public DNA databases "for construction of large phylogenetic trees
+    and multiple gene sets" and that the authors have recognised that gene annotations
+    in public databases are insufficient and that careful partitioning of orthologous
+    sequences is needed for supermatrix construction. @chesters2013resolving present
+    a procedure that minimizes the problem of forming multilocus species units in
+    a large phylogenetic data set using algorithms from graph theory.
+    - @chesters2014protocol present an algorithm to delineate species form GenBank
+    DNA data, and cites phylota as a tool that partitions "the contents of a database
+    according to homology", by "grouping of database sequences according to internal
+    criteria", searching "from a standardized set of references [...] patterns in
+    sequence similarity and overlap."
+    - the paper presenting phylotaR, a pipeline that recreates the phylota output
+    but uses the most updated GenBank release, and is available in R [@bennett2018phylotar],
+    cites phylota as its predecessor and inspiration. the authors mention that phylotaR
+    pipeline mimics phylota's pipeline but with improvememnts.
+    - The paper presenging PhyloBase [@jamil2016visual], cites phylota as one of
+    its resources to get phylogenies, along with TreeBASE and others.
+    - The paper presenting STBase, a database of one million precomputed species
+    trees [@mcmahon2015stbase], cites phylota as a databse of gene trees or multrees,
+    "trees having multiple sequences with the same taxon name".
+    - @drori2018onetwotree present a Web‐based, user-friendly, online tool for species-tree
+    reconstruction, based on the *supermatrix paradigm* and retrieves all available
+    sequence data from NCBI GenBank. They cite phylota in the intro as a tool that is "designed to provide
+    users with precomputed sets of clusters that were assembled through a single‐linkage
+    clustering approach and additionally provides precomputed gene trees that were
+    reconstructed for each cluster. In particular, the results obtained by PhyLoTa
+    are taxonomically constrained; that is, all sequences of the most recent common
+    ancestor are collected even if one specifies only part of a clade".
+    - A study developing a tool to link wikipedia data to NCBI taxonomy [@page2011linking]
+    cites phylota as a phylogenetic resource that uses the NCBI taxonomy.
+    - the study that present DarwinTree [@meng2015darwintree] as well as the study
+    presenting an approach to screen sequence data for The Platform
+    for Phylogenetic Analysis of Land Plants (PALPP), using the MapReduce paradigm
+    to parallelize BLAST [@yong2010screening], both cite phylota as one among other
+    "studies based on data mining large numbers of taxa or loci".
 1. When the software was actually used to construct (partially or in full) a DNA
 data set to be used for phylogenetic reconstruction:
     - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
@@ -459,6 +508,15 @@ data set to be used for phylogenetic reconstruction:
     reduced their data set because of low sampling of markers for some taxa.
     - A phylogeny of 144 neobatrachian genera, assuming the monophyletic status of
     genera to increase matrix-filling levels [@frazao2015gondwana].
+    - A 179 species phylogeny of the bird family Picidae (woodpeckers, piculets,
+    and wrynecks) [@dufort2016augmented], augmented with data from an updated GenBank
+    release and newly sequenced data.
+    - A phylogeny of species of freshwater fish endemic to NorthAmerica [@strecker2014fish],
+    phylota found data for 54 out of 66 spp.
+    - A phylogeny of 520 species of the order Ericales [@hardy2012testing]
+    - A phylgeny of 16 fish species of the family Sphyraenidae (Percomorpha), as well
+    as two outgroup species of the Centropomidae (barracudas) [@santini2015first]
+    - A phylogeny of 34 vole species, Arvicolinae, Rodentia [@garcia2016role]
 1. When the website was used to identify sequences and markers available in
 GenBank for a particular group. In this cases, the dataset mining was either performed
 with other tools, or not performed at all and just used for discussion:
@@ -478,7 +536,12 @@ with other tools, or not performed at all and just used for discussion:
     - In this 630 tip phylogeny of the Caryophyllaceae study [@greenberg2011caryophyllaceae] it might have been originally
     cited as an example of large phylogenies that reflect well supported relationships
     from previous smaller phylogenies. However, it was removed from the text but
-    not from the final list of references. The DNA data set was constructed by hand most probably.
+    not from the final list of references. The DNA data set was constructed by hand
+    most probably.
+    - a study reconstructing the insect tree of life with 49,358 species, 13,865
+    genera, and 760 families within the order Insecta [@chesters2017construction],
+    uses its own algorithm (SOPHI) to mine public DNA databases [@chesters2014protocol].
+    It does not cite phylota as it should, but includes it in their references.
 1. Other miscellaneous uses of phylota:
     - @page2013bionames uses it to generate phylogenies for the [bionames website](http://bionames.org),
     a "database linking taxonomic names to their original descriptions, to taxa, and
