@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.5.12)  18 MAY 2020 16:45
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.5.12)  19 MAY 2020 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1100,6 +1100,11 @@ Package hyperref Warning: Suppressing link with empty target on input line 258.
 Package hyperref Warning: Suppressing link with empty target on input line 258.
 
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--318
+
+ []
+
 File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
 arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
@@ -1111,7 +1116,7 @@ We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 320.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 326.
 [1
 
 ]
@@ -1131,17 +1136,11 @@ arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 wn/templates/joss_article/resources/JOSS-logo.png>
 [4]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 589.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 601.
 
-Overfull \hbox (111.41139pt too wide) in paragraph at lines 655--655
+Overfull \hbox (111.41139pt too wide) in paragraph at lines 667--667
 []\TU/lmtt/m/n/10 physcraper_run.py -s pg_238 -t tree109 -a treebase_alns/pg_23
 8tree109.aln -as "nexus" -o pg_238 
- []
-
-
-Overfull \hbox (85.16139pt too wide) in paragraph at lines 667--667
-[]\TU/lmtt/m/n/10 physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinec
-ta/local_blast_db/ -o pg_2573 
  []
 
 File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
@@ -1149,6 +1148,11 @@ arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
 [5]
+Overfull \hbox (85.16139pt too wide) in paragraph at lines 679--679
+[]\TU/lmtt/m/n/10 physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinec
+ta/local_blast_db/ -o pg_2573 
+ []
+
 File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
 arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
@@ -1174,7 +1178,12 @@ arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
 [10]
-Underfull \hbox (badness 1533) in paragraph at lines 1148--1153
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[11]
+Underfull \hbox (badness 1533) in paragraph at lines 1231--1236
 \TU/lmr/m/n/10 lic dna databases, applied to the insecta. \TU/lmr/m/it/10 Syste
 matic biology\TU/lmr/m/n/10 , \TU/lmr/m/it/10 63\TU/lmr/m/n/10 (5), 712–725.
  []
@@ -1183,8 +1192,13 @@ File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
 arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
-[11]
-Overfull \hbox (49.04543pt too wide) in paragraph at lines 1301--1306
+[12]
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[13]
+Overfull \hbox (49.04543pt too wide) in paragraph at lines 1396--1401
 \TU/lmr/m/n/10 logenies updated perpetually. \TU/lmr/m/it/10 Bioinformatics\TU/
 lmr/m/n/10 , \TU/lmr/m/it/10 30\TU/lmr/m/n/10 (10), 1476–1477. doi:[][]10.1093/
 bioinformatics/btu053[][] 
@@ -1194,14 +1208,14 @@ File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
 arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
-[12]
-Underfull \hbox (badness 2205) in paragraph at lines 1406--1411
+[14]
+Underfull \hbox (badness 2205) in paragraph at lines 1521--1526
 [][]\TU/lmr/m/n/10 Roalson, E. H., & Roberts, W. R. (2016). Distinct processes 
 drive diversi-
  []
 
 
-Underfull \hbox (badness 1297) in paragraph at lines 1406--1411
+Underfull \hbox (badness 1297) in paragraph at lines 1521--1526
 \TU/lmr/m/n/10 fication in different clades of gesneriaceae. \TU/lmr/m/it/10 Sy
 stematic Biology\TU/lmr/m/n/10 , \TU/lmr/m/it/10 65\TU/lmr/m/n/10 (4), 662–684.
 
@@ -1211,36 +1225,36 @@ File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
 arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
 wn/templates/joss_article/resources/JOSS-logo.png>
-[13]
-File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
-arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
-</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
-wn/templates/joss_article/resources/JOSS-logo.png>
-[14]
-File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
-arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
-</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
-wn/templates/joss_article/resources/JOSS-logo.png>
 [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1590.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1590.
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[16]
+File: /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rm
+arkdown/templates/joss_article/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/3.6/Resources/library/rticles/rmarkdo
+wn/templates/joss_article/resources/JOSS-logo.png>
+[17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1705.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1705.
 (./joss_submission.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1590.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1590.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1705.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1705.
 
 Package rerunfilecheck Info: File `joss_submission.out' has not changed.
-(rerunfilecheck)             Checksum: 62163C2F3C251DE4F16A7A4DA2D4BCB9;1016.
+(rerunfilecheck)             Checksum: 0E852453DFFCBF092777CF60B2A9F5BF;1111.
 Package logreq Info: Writing requests to 'joss_submission.run.xml'.
 \openout1 = `joss_submission.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35276 strings out of 479294
- 701878 string characters out of 5880891
- 1415381 words of memory out of 5000000
- 52352 multiletter control sequences out of 15000+600000
+ 35278 strings out of 479294
+ 701927 string characters out of 5880891
+ 1415549 words of memory out of 5000000
+ 52354 multiletter control sequences out of 15000+600000
  539218 words of font info for 73 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  60i,13n,75p,1204b,788s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on joss_submission.pdf (15 pages).
+Output written on joss_submission.pdf (17 pages).

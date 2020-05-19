@@ -21,7 +21,7 @@ affiliations:
  - name: University of California, Merced
    index: 1
 citation_author: Sanchez-Reyes et. al.
-date: '18 May, 2020'
+date: '19 May, 2020'
 year: 2020
 bibliography: paper.bib
 output: rticles::joss_article
@@ -67,10 +67,16 @@ use are available at <https://github.com/McTavishLab/physcraper>.
 Phylogenies are important.
 Generating phylogenies is not easy.
 The process of phylogenetic reconstruction implies many steps that can be generalized to the following:
-1. Obtention of molecular or morphological character data -- get DNA from some organisms and sequence it, or get it from an online repository, such as GenBank.
-1. Assemble a hypothesis of homology -- Create a matrix of your character data, by aligning the sequences, in the case of molecular data.
-1. Analyse this hypothesis of homology to infer phylogenetic relationships among the organisms you are studying -- Use different available programs to infer molecular evolution, trees and times of divergence.
-1. Discuss the inferred relationships in the context of previous hypothesis, the biology and biogeography of the organisms, etc. -- Answer the question, *is this phylogenetic solution fair/reasonable?*
+
+1. Obtention of molecular or morphological character data -- get DNA from some organisms
+and sequence it, or get it from an online repository, such as GenBank.   
+1. Assemble a hypothesis of homology -- Create a matrix of your character data, by
+aligning the sequences, in the case of molecular data.
+1. Analyse this hypothesis of homology to infer phylogenetic relationships among
+the organisms you are studying -- Use different available programs to infer molecular
+evolution, trees and times of divergence.
+1. Discuss the inferred relationships in the context of previous hypothesis, the
+biology and biogeography of the organisms, etc. -- Answer the question, *is this phylogenetic solution fair/reasonable?*
 
 Each of these steps require different types of specialized training: in the field,
 in the lab, in front of a computer, discussions with experts in the methods, and/or in the biological group of study.
@@ -313,15 +319,24 @@ There is just one alignment on [treebase](https://treebase.org/treebase-web/sear
 ```
 physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ -o pg_2573
 ```
+# Discussion
 
+Mention statistics provided by PhyloExplorer [@ranwez2009phyloexplorer]
 
-# Tools on a similar track
+## Tools that do similar things at different levels
 
-Tools that do similar things at different levels:
+PhyloFinder [@chen2008phylofinder] - a search engine for phylogenetic databases using
+trees from TreeBASE - MEH
 
 Phylota [@sanderson2008phylota] - cited by 122 studies.
 
 PHLAWD [@smith2009mega] and pyPhlawd [@smith2019pyphlawd] - baited analyses
+
+PhyloExplorer [@ranwez2009phyloexplorer] - a python and MySQL based website to facilitate
+assessment and management of phylogenetic tree collections.
+It provides "statistics describing the collection,
+correcting invalid taxon names, extracting taxonomically relevant parts of the collection
+using a dedicated query language, and identifying related trees in the TreeBASE database".
 
 A [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals),
 only available from the [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP)
@@ -454,6 +469,25 @@ or that is useful in any way for phylogenetics:
     for Phylogenetic Analysis of Land Plants (PALPP), using the MapReduce paradigm
     to parallelize BLAST [@yong2010screening], both cite phylota as one among other
     "studies based on data mining large numbers of taxa or loci".
+    - A review on online plant databases aiming to "provide recommendations for current
+    information managers and developers concerning the user interface and experience;
+    and to provide a picture about the possible directions to take for those in charge
+    of the creation of information at all levels". They cite phylota as a tool allowing
+    researchers "to acces equally and globally, without travel, a [phylogenetic?] model
+    of plants at the kingdom level".
+    - A study presenting a tool to asses gene sequence quality for automatic
+    construction of databases [@meng2012gsqct], as well as their parallelized version using MapReduce
+    [@meng2012cloud], cite phylota (along with @yong2010screening) as a tool that relies on sequence
+    similarity (BLAST) and not taxon name annotations in the database, for mining
+    large numbers of taxa or loci, without making any control on the quality of the
+    sequencing. On the same line
+    - a paper aiming to establish an online information system for the legumes and
+    to outline "best practices for development of a legume portal to enable data
+    sharing and a better understanding of what data are available, missing, or erroneous,
+    and ultimately facilitate cross-analyses and collaboration within the legume-systematics
+    community and with other stakeholders" [@bruneau2019towards], cites phylota (along with supersmart and pyphlawd) as a
+    "pipeline for large-scale retrieval of GenBank data of particular taxa or clades".
+    In their Table 1, they also list phylota as a potential data source for developing a legume portal.
 1. When the software was actually used to construct (partially or in full) a DNA
 data set to be used for phylogenetic reconstruction:
     - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
@@ -517,6 +551,11 @@ data set to be used for phylogenetic reconstruction:
     - A phylgeny of 16 fish species of the family Sphyraenidae (Percomorpha), as well
     as two outgroup species of the Centropomidae (barracudas) [@santini2015first]
     - A phylogeny of 34 vole species, Arvicolinae, Rodentia [@garcia2016role]
+    - @kolmann2017dna uses phylota to download all 1691 co1 sequences belonging to
+    the order Carchariniformes, to place phylogenetically DNA samples obtained from
+    fish markets.
+    - A phylogeny of 329 bird species in the Tyrannidae (77% of the species in the
+      family) [@gomez2020speciation]
 1. When the website was used to identify sequences and markers available in
 GenBank for a particular group. In this cases, the dataset mining was either performed
 with other tools, or not performed at all and just used for discussion:
@@ -542,10 +581,14 @@ with other tools, or not performed at all and just used for discussion:
     genera, and 760 families within the order Insecta [@chesters2017construction],
     uses its own algorithm (SOPHI) to mine public DNA databases [@chesters2014protocol].
     It does not cite phylota as it should, but includes it in their references.
-1. Other miscellaneous uses of phylota:
+1. When phylota was used to extract full trees (not only DNA data sets or markers):
     - @page2013bionames uses it to generate phylogenies for the [bionames website](http://bionames.org),
     a "database linking taxonomic names to their original descriptions, to taxa, and
     to phylogenies" generated with phylota.
+    - @deepak2013extracting uses a sample of phylota trees to test their method to
+    remove conflict from MUL-trees (short for multi-labeled trees), that is, phylogenetic
+    trees with two or more leaves sharing a label, e.g., a species name, which can
+    imply multiple conflicting phylogenetic relationships for the same set of taxa.
 
 # Acknowledgements
 

@@ -47,10 +47,16 @@ use are available at <https://github.com/McTavishLab/physcraper>.
 Phylogenies are important.
 Generating phylogenies is not easy.
 The process of phylogenetic reconstruction implies many steps that can be generalized to the following:
-1. Obtention of molecular or morphological character data -- get DNA from some organisms and sequence it, or get it from an online repository, such as GenBank.
-1. Assemble a hypothesis of homology -- Create a matrix of your character data, by aligning the sequences, in the case of molecular data.
-1. Analyse this hypothesis of homology to infer phylogenetic relationships among the organisms you are studying -- Use different available programs to infer molecular evolution, trees and times of divergence.
-1. Discuss the inferred relationships in the context of previous hypothesis, the biology and biogeography of the organisms, etc. -- Answer the question, *is this phylogenetic solution fair/reasonable?*
+
+1. Obtention of molecular or morphological character data -- get DNA from some organisms
+and sequence it, or get it from an online repository, such as GenBank.   
+1. Assemble a hypothesis of homology -- Create a matrix of your character data, by
+aligning the sequences, in the case of molecular data.
+1. Analyse this hypothesis of homology to infer phylogenetic relationships among
+the organisms you are studying -- Use different available programs to infer molecular
+evolution, trees and times of divergence.
+1. Discuss the inferred relationships in the context of previous hypothesis, the
+biology and biogeography of the organisms, etc. -- Answer the question, *is this phylogenetic solution fair/reasonable?*
 
 Each of these steps require different types of specialized training: in the field,
 in the lab, in front of a computer, discussions with experts in the methods, and/or in the biological group of study.
@@ -284,15 +290,24 @@ There is just one alignment on [treebase](https://treebase.org/treebase-web/sear
 ```
 physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ -o pg_2573
 ```
+# Discussion
 
+Mention statistics provided by PhyloExplorer [@ranwez2009phyloexplorer]
 
-# Tools on a similar track
+## Tools that do similar things at different levels
 
-Tools that do similar things at different levels:
+PhyloFinder [@chen2008phylofinder] - a search engine for phylogenetic databases using
+trees from TreeBASE - MEH
 
 Phylota [@sanderson2008phylota] - cited by 122 studies.
 
 PHLAWD [@smith2009mega] and pyPhlawd [@smith2019pyphlawd] - baited analyses
+
+PhyloExplorer [@ranwez2009phyloexplorer] - a python and MySQL based website to facilitate
+assessment and management of phylogenetic tree collections.
+It provides "statistics describing the collection,
+correcting invalid taxon names, extracting taxonomically relevant parts of the collection
+using a dedicated query language, and identifying related trees in the TreeBASE database".
 
 A [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals),
 only available from the [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP)
