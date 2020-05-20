@@ -21,7 +21,7 @@ affiliations:
  - name: University of California, Merced
    index: 1
 citation_author: Sanchez-Reyes et. al.
-date: '19 May, 2020'
+date: '20 May, 2020'
 year: 2020
 bibliography: paper.bib
 output: rticles::joss_article
@@ -69,7 +69,7 @@ Generating phylogenies is not easy.
 The process of phylogenetic reconstruction implies many steps that can be generalized to the following:
 
 1. Obtention of molecular or morphological character data -- get DNA from some organisms
-and sequence it, or get it from an online repository, such as GenBank.   
+and sequence it, or get it from an online repository, such as GenBank.
 1. Assemble a hypothesis of homology -- Create a matrix of your character data, by
 aligning the sequences, in the case of molecular data.
 1. Analyse this hypothesis of homology to infer phylogenetic relationships among
@@ -332,9 +332,10 @@ Phylota [@sanderson2008phylota] - cited by 122 studies.
 
 PHLAWD [@smith2009mega] and pyPhlawd [@smith2019pyphlawd] - baited analyses
 
+in @ceron2019phylotol: "pipelines such as AMPHORA (Wu and Eisen 2008) and Mega-phylogeny (Smith et al. 2009) focus on the construction and refinement of robust alignments rather than the collection of homologs"
+
 PhyloExplorer [@ranwez2009phyloexplorer] - a python and MySQL based website to facilitate
-assessment and management of phylogenetic tree collections.
-It provides "statistics describing the collection,
+assessment and management of phylogenetic tree collections. It provides "statistics describing the collection,
 correcting invalid taxon names, extracting taxonomically relevant parts of the collection
 using a dedicated query language, and identifying related trees in the TreeBASE database".
 
@@ -358,7 +359,9 @@ methods, as well as a novel means of determining when there are enough overlappi
 STBase - @mcmahon2015stbase present a pipeline for species tree construction and
 the public database of one million precomputed species trees
 
-SUPERSMART [@antonelli2017toward] - baited analyses up to bayesian divergente time
+@papadopoulou2015automated - Automated DNA-based plant identification for large-scale biodiversity assessment
+
+SUPERSMART [@antonelli2017toward] - baited analyses up to bayesian divergence time
 estimation
 
 SOPHI - [@chesters2017construction] - Searches DNA sequence data from repos other
@@ -370,6 +373,12 @@ sequence data from NCBI GenBank.
 
 PhySpeTre [@fang2019physpetree] - no sequence retrieval, just phylogenetic reconstruction
 pipeline.
+
+Phylotol [@ceron2019phylotol] - "phylogenomic pipeline to allow easy incorporation
+of data from  high-throughput sequencing studies, to automate production of both
+multiple sequence alignments and gene trees, and to identify and remove contaminants.
+PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree
+of life", i.e., bacteria and unicellular eukaryotes.
 
 
 
@@ -452,7 +461,7 @@ or that is useful in any way for phylogenetics:
     - The paper presenging PhyloBase [@jamil2016visual], cites phylota as one of
     its resources to get phylogenies, along with TreeBASE and others.
     - The paper presenting STBase, a database of one million precomputed species
-    trees [@mcmahon2015stbase], cites phylota as a databse of gene trees or multrees,
+    trees [@mcmahon2015stbase], cites phylota as a databse of gene trees or mul-trees,
     "trees having multiple sequences with the same taxon name".
     - @drori2018onetwotree present a Web‐based, user-friendly, online tool for species-tree
     reconstruction, based on the *supermatrix paradigm* and retrieves all available
@@ -464,23 +473,23 @@ or that is useful in any way for phylogenetics:
     ancestor are collected even if one specifies only part of a clade".
     - A study developing a tool to link wikipedia data to NCBI taxonomy [@page2011linking]
     cites phylota as a phylogenetic resource that uses the NCBI taxonomy.
-    - the study that present DarwinTree [@meng2015darwintree] as well as the study
+    - the study that present DarwinTree [@meng2015darwintree], the study
     presenting an approach to screen sequence data for The Platform
     for Phylogenetic Analysis of Land Plants (PALPP), using the MapReduce paradigm
-    to parallelize BLAST [@yong2010screening], both cite phylota as one among other
-    "studies based on data mining large numbers of taxa or loci".
-    - A review on online plant databases aiming to "provide recommendations for current
-    information managers and developers concerning the user interface and experience;
-    and to provide a picture about the possible directions to take for those in charge
-    of the creation of information at all levels". They cite phylota as a tool allowing
-    researchers "to acces equally and globally, without travel, a [phylogenetic?] model
-    of plants at the kingdom level".
+    to parallelize BLAST [@yong2010screening], as well as [@meng2014rapidtree] all
+    cite phylota as one among other "studies based on data mining large numbers of taxa or loci".
     - A study presenting a tool to asses gene sequence quality for automatic
     construction of databases [@meng2012gsqct], as well as their parallelized version using MapReduce
     [@meng2012cloud], cite phylota (along with @yong2010screening) as a tool that relies on sequence
     similarity (BLAST) and not taxon name annotations in the database, for mining
     large numbers of taxa or loci, without making any control on the quality of the
-    sequencing. On the same line
+    sequencing.
+    - A review on online plant databases aiming to "provide recommendations for current
+    information managers and developers concerning the user interface and experience;
+    and to provide a picture about the possible directions to take for those in charge
+    of the creation of information at all levels". They cite phylota as a tool allowing
+    researchers "to acces equally and globally, without travel, a [phylogenetic?] model
+    of plants at the kingdom level" [@jones2014trends].
     - a paper aiming to establish an online information system for the legumes and
     to outline "best practices for development of a legume portal to enable data
     sharing and a better understanding of what data are available, missing, or erroneous,
@@ -488,6 +497,26 @@ or that is useful in any way for phylogenetics:
     community and with other stakeholders" [@bruneau2019towards], cites phylota (along with supersmart and pyphlawd) as a
     "pipeline for large-scale retrieval of GenBank data of particular taxa or clades".
     In their Table 1, they also list phylota as a potential data source for developing a legume portal.
+    - A study on morphological evolution of electric fish skull, that uses phylotaR
+    to retrieve sequences of the family Apteronotidae, order Gymnotiformes [@evans2019bony],
+    cites phylota as the inspiration and fundament of phylotaR.
+    - A master thesis on SearchTree, a "software tool that allows users to query
+    efficiently on an arbitrary user taxon list and returns high scoring matches
+    from approximately one billion phylogenetic trees being constructed from molecular
+    sequence data in GenBank" [@deepak2010searchtree], that seems to be the preliminary
+    work for STBase [@mcmahon2015stbase], cites phylota as "a standard strategy, to assemble sets of homologous sequences
+    (clusters) from a database of all-against-all BLAST searches, [in which] clusters
+    are constructed in the context of the NCBI taxonomy tree for convenience of display,
+    thus child clusters are contained within parent clusters, following the NCBI hierarchy".
+    In opposition, SearchTree uses true agglomerative hierarchical clustering
+    (AHC: @day1984efficient) based on the BLAST estimates of sequence dissimilarity
+    rather than the NCBI tree".
+    - a recent review on the state of large phylogeny (namely insects) generation
+    using tools of the data-driven era [@chesters2019phylogeny] cites phylota as
+    a tool for homology inference and retrieval.
+    - the study presenting phylotol [@ceron2019phylotol], cites phylota as a tool
+    that "focus on the identification and collection of homologous genes from public
+    databases".
 1. When the software was actually used to construct (partially or in full) a DNA
 data set to be used for phylogenetic reconstruction:
     - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
@@ -555,7 +584,16 @@ data set to be used for phylogenetic reconstruction:
     the order Carchariniformes, to place phylogenetically DNA samples obtained from
     fish markets.
     - A phylogeny of 329 bird species in the Tyrannidae (77% of the species in the
-      family) [@gomez2020speciation]
+    family) [@gomez2020speciation; @gomez2015behavioral]
+    - Retrive 145 sequences registered as *Holothuria* species, but kept 84 as ingroup,
+    plus 4 outgroup sequences from *Stichopus ocellatus*, all belonging to the order
+    Apodida of sea cucumbers [@kamarudin2016phylogenetic]
+    - On a master thesis, to get the sequences of the outgroups of Melinidinae, family Poaceae, namely several spp of the
+    subfamily Panicoideae, plus *Gynerium sagittatum*, *Chasmanthium latifolium*,
+    and *Zea mays*, [@salariato2010filogenia]. Interestingly, phylota was not used
+    in the published study of the thesis [@salariato2010molecular]. Ingroup sequences were generated *de novo*.
+    - On a PhD thesis, to construct a phylogeny of Platyrrhini (internal group),
+    Catarrhini (outgroup), and Tarsiiformes @pereira2013padroes. Have not found a published study.
 1. When the website was used to identify sequences and markers available in
 GenBank for a particular group. In this cases, the dataset mining was either performed
 with other tools, or not performed at all and just used for discussion:
@@ -589,6 +627,9 @@ with other tools, or not performed at all and just used for discussion:
     remove conflict from MUL-trees (short for multi-labeled trees), that is, phylogenetic
     trees with two or more leaves sharing a label, e.g., a species name, which can
     imply multiple conflicting phylogenetic relationships for the same set of taxa.
+    - A review by @sanderson2016perspective, takes 134 595 gene trees from phylota
+    GenBank rel. 176 and estimates its degree of resolutin, calculating that less
+    than half of clades are supported with minilam statistical support (0.53 ± 0.32).
 
 # Acknowledgements
 

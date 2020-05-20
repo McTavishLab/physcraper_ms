@@ -49,7 +49,7 @@ Generating phylogenies is not easy.
 The process of phylogenetic reconstruction implies many steps that can be generalized to the following:
 
 1. Obtention of molecular or morphological character data -- get DNA from some organisms
-and sequence it, or get it from an online repository, such as GenBank.   
+and sequence it, or get it from an online repository, such as GenBank.
 1. Assemble a hypothesis of homology -- Create a matrix of your character data, by
 aligning the sequences, in the case of molecular data.
 1. Analyse this hypothesis of homology to infer phylogenetic relationships among
@@ -303,9 +303,10 @@ Phylota [@sanderson2008phylota] - cited by 122 studies.
 
 PHLAWD [@smith2009mega] and pyPhlawd [@smith2019pyphlawd] - baited analyses
 
+in @ceron2019phylotol: "pipelines such as AMPHORA (Wu and Eisen 2008) and Mega-phylogeny (Smith et al. 2009) focus on the construction and refinement of robust alignments rather than the collection of homologs"
+
 PhyloExplorer [@ranwez2009phyloexplorer] - a python and MySQL based website to facilitate
-assessment and management of phylogenetic tree collections.
-It provides "statistics describing the collection,
+assessment and management of phylogenetic tree collections. It provides "statistics describing the collection,
 correcting invalid taxon names, extracting taxonomically relevant parts of the collection
 using a dedicated query language, and identifying related trees in the TreeBASE database".
 
@@ -329,7 +330,9 @@ methods, as well as a novel means of determining when there are enough overlappi
 STBase - @mcmahon2015stbase present a pipeline for species tree construction and
 the public database of one million precomputed species trees
 
-SUPERSMART [@antonelli2017toward] - baited analyses up to bayesian divergente time
+@papadopoulou2015automated - Automated DNA-based plant identification for large-scale biodiversity assessment
+
+SUPERSMART [@antonelli2017toward] - baited analyses up to bayesian divergence time
 estimation
 
 SOPHI - [@chesters2017construction] - Searches DNA sequence data from repos other
@@ -341,6 +344,12 @@ sequence data from NCBI GenBank.
 
 PhySpeTre [@fang2019physpetree] - no sequence retrieval, just phylogenetic reconstruction
 pipeline.
+
+Phylotol [@ceron2019phylotol] - "phylogenomic pipeline to allow easy incorporation
+of data from  high-throughput sequencing studies, to automate production of both
+multiple sequence alignments and gene trees, and to identify and remove contaminants.
+PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree
+of life", i.e., bacteria and unicellular eukaryotes.
 
 
 ```{r phylota, child="phylota-overview.Rmd"}
