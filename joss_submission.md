@@ -21,7 +21,7 @@ affiliations:
  - name: University of California, Merced
    index: 1
 citation_author: Sanchez-Reyes et. al.
-date: '20 May, 2020'
+date: '22 May, 2020'
 year: 2020
 bibliography: paper.bib
 output: rticles::joss_article
@@ -43,7 +43,7 @@ to one that is not a specialist either on phylogenetic methods or on a particula
 
 1. Physcraper is an open‐source, command-line Python program that automatizes the update of published
 phylogenies by making use of public DNA sequence data and taxonomic information,
-providing a framework for comparison of phylogenies.
+providing a framework for comparison of published phylogenies with their updated versions.
 
 1. Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
 hypothesis based on already available expert phylogenetic knowledge.
@@ -154,22 +154,23 @@ Physcraper implements node by node comparison of the the original and the update
 
 ## The input: a study tree and an alignment
 
-- The phylogenetic tree has to be in the Open Tree of Life store [@mctavish2015phylesystem].
-  You can choose from a variety of published trees supporting any node of the Tree of Life. If the tree you are
+- The phylogenetic tree should be already in the Open Tree of Life store, or submitted
+  via the curator system [@mctavish2015phylesystem].
+  A user can choose from a variety of published trees supporting any node of the Tree of Life. If the tree you are
   interested in is not in Open Tree of Life, you can easily upload it via the curator
-  tool.
+  tool (ADD URL).
 - The alignment should be a gene alignment that was used to generate the tree. The
   alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
-  DRYAD (<http://datadryad.org/>), or th ejournal were the tree was originally published.
+  DRYAD (<http://datadryad.org/>), or the journal were the tree was originally published.
   If the alignment is stored in TreeBase, `physcraper` can download it directly
   either from the TreeBASE website (<https://treebase.org/>)
   or through TreeBASE GitHub repository, SuperTreeBASE (<https://github.com/TreeBASE/supertreebase>).
   If the alignment is on another repository, a copy of it has to be
   downloaded by the user, and it's local path has to be provided as an argument.
 - A taxon name matching step is performed to verify that all taxon names on the tips
-  of the tree are in the character matrix and vice versa.
+  of the tree are in the DNA character matrix and vice versa.
 - A ".csv" file with the summary of taxon name matching is produced for the user.
-- Unmatched taxon names are dropped from the tree and alignment.
+- Unmatched taxon names are dropped from both the tree and alignment.
   <!--***What is the minimum amount of tips necessary for a physcraper run??*** Just one!-->
   Technically, just one matching name is needed to perform the searches. See below.
 - A ".tre" and ".aln" files are generated and saved for a `physcraper` run.
@@ -177,7 +178,7 @@ Physcraper implements node by node comparison of the the original and the update
 
 ## DNA sequence search and cleaning
 
-- The next step is to identify the search taxon. This must be a taxon (a named clade)
+- The next step is to identify and validate the search taxon. This must be a taxon (a named clade)
   from the NCBI taxonomy. It will be used to constraint the DNA sequence search on
   the GenBank database within that taxonomic group.
   By default, the search taxon is the most recent common ancestor (MRCA) of the
@@ -186,25 +187,25 @@ Physcraper implements node by node comparison of the the original and the update
   It can be different from the phylogenetic MRCA when the latter is an unnamed clade.
   This is done using the Open Tree API [taxonomy/mrca](https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca).
   <!-- ***Does physcraper takes into account the focal clade from Open Tree in any way???***
-  Not really, it is a search MRCA more than a taxonomic, the default is to get the ingroup from Otol, which is not the focal group.-->
+  Not really, the focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.-->
+  In the case that only one taxon is matched in both the tree and alignment, the MRCAT
+  for that single taxon would be determined as HOW?,
   A search taxon can also be given by the user. It can be a more inclusive
   clade, if the user wants to perform a wider search, outside the MRCAT of the matched taxa, e.g., including all taxa within
   the family or the order. It can also be a less inclusive clade, if the user only
   wants to focus on enriching a particular clade/region within the tree.
-  When only one taxon is matched in both the tree and alignment, an MRCAT can be
-  found for that single taxon, and thus a DNA sequence search can be performed even
-  with only one sequence in the alignment.
-- The BLAST algorithm is used to identify similarity among DNA sequences in the GenBank nucleotide
-  database within the search taxon and the remaining sequences on the alignment.
+- The BLAST algorithm is used to identify similarity between DNA sequences in a GenBank nucleotide
+  database within the search taxon, and the remaining sequences on the alignment.
   <!--***How does the blast is setup? Is it an all-blast-all??***-->
-- The DNA sequence similarity search can be done on a local database that is easily
-  setup by the user. In this case it uses the BLASTn algorithm.
-- The search can also be performed remotely, using the bioPython BLAST algorithm.
 - A pairwise all-against-all BLAST search is performed. This means that each sequence
-  in the alignment is BLASTed against DNA sequences in the database within the search
+  in the alignment is BLASTed against DNA sequences in a GenBank database constrained to the search
   taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
   along with their corresponding GenBank accesion numbers. This information will be
-  used later to download the whole sequences into a local library.
+  used later to store the whole sequences into a new library.
+- The DNA sequence similarity search can be done on a local database that is easily
+  setup by the user. In this case, the BLASTn algorithm is used to performs the similarity search.
+- The search can also be performed remotely, on the NCBI database. In this case, the
+  bioPython BLAST algorithm is used to perform the similarity search.
 - Matched sequences below an e-value, percentage similarity, and outside a minimum
   and maximum length threshold are discarded. This filtering leaves out genomic sequences.
   All acepted sequences are asigned an internal identifier, and are further filtered.
@@ -225,8 +226,13 @@ Physcraper implements node by node comparison of the the original and the update
 
 ## DNA sequence alignment
 
-- The software MUSCLE [@edgar2004muscle] is implemented for profile alignment, in
-  which the original alignment is used as a template to align all new sequences.
+- The software MUSCLE [@edgar2004muscle] is implemented to perform alignments.
+- First, all new seweunces are aligned using default MUSCLE options.
+- Then, a MUSCLE profile alignment is performed, in which the alignment of new sequences
+  is aligned against the original alignment, working as a template. This ensures that
+  the final alignment follows the homology criteria established by the original alignment.
+- The final alignment is not further processed automatically. We encourage users
+  to check it by eye and eliminate columns with no information.
 
 ## Tree reconstruction
 
@@ -321,12 +327,36 @@ physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ 
 ```
 # Discussion
 
-Mention statistics provided by PhyloExplorer [@ranwez2009phyloexplorer]
+There are many tools that are making use of DNA data repositories in different ways.
+Most of them focus on efficient ways to mine the data -- getting the most homologs.
+Some focus on accurate ways of mining the data - getting real and clean homologs.
+Others focus on refinement of the alignment.
+Most focus on generating full trees *de novo*, mainly for regions of the Tree of
+Life that have no phylogenetic assessment yet in published studies, but also for
+regions that have been already studied and that have phylogenetic data already.
+
+All these tools are great efforts for advancing towards reproducibility in phylogenetics,
+a field that has been largely recognised as somewhat artisanal.
+We propose adding focus to other sources of information available from data repositories.
+DNA data bases have been the focus for long time, but phylogenetic knowledge is
+also accumulating fast in open repositories.
+Certainly, parts of other tools that might work faster in some ways could be incorporated into the physcraper pipeline.
+
+We emphasize that physcraper takes advantage of the knowledge and intuition of the expert
+community to build upon this phylogenetic knowledge, using not only data accumulated in DNA repositories, but phylogenetic knowledge accumulated in tree repositories.
+This might help generate new phylogenetic data. But physcraper does not seek to generate full phylogenies *de novo*
+
+Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
+Mention statistics provided by other tools: PhyloExplorer [@ranwez2009phyloexplorer].
+Compare and discuss.
+
+
 
 ## Tools that do similar things at different levels
 
+
 PhyloFinder [@chen2008phylofinder] - a search engine for phylogenetic databases using
-trees from TreeBASE - MEH
+trees from TreeBASE - more related to phylotastic's goal than to updating phylogenies
 
 Phylota [@sanderson2008phylota] - cited by 122 studies.
 
@@ -461,7 +491,7 @@ or that is useful in any way for phylogenetics:
     - The paper presenging PhyloBase [@jamil2016visual], cites phylota as one of
     its resources to get phylogenies, along with TreeBASE and others.
     - The paper presenting STBase, a database of one million precomputed species
-    trees [@mcmahon2015stbase], cites phylota as a databse of gene trees or mul-trees,
+    trees [@mcmahon2015stbase; @deepak2013managing], cites phylota as a databse of gene trees or mul-trees,
     "trees having multiple sequences with the same taxon name".
     - @drori2018onetwotree present a Web‐based, user-friendly, online tool for species-tree
     reconstruction, based on the *supermatrix paradigm* and retrieves all available
@@ -476,8 +506,8 @@ or that is useful in any way for phylogenetics:
     - the study that present DarwinTree [@meng2015darwintree], the study
     presenting an approach to screen sequence data for The Platform
     for Phylogenetic Analysis of Land Plants (PALPP), using the MapReduce paradigm
-    to parallelize BLAST [@yong2010screening], as well as [@meng2014rapidtree] all
-    cite phylota as one among other "studies based on data mining large numbers of taxa or loci".
+    to parallelize BLAST [@yong2010screening], as well as @gao2011solution, @li2013partfasttree, and @meng2014rapidtree, all
+    cite phylota using the exact same phrase, as one among other "studies based on data mining large numbers of taxa or loci".
     - A study presenting a tool to asses gene sequence quality for automatic
     construction of databases [@meng2012gsqct], as well as their parallelized version using MapReduce
     [@meng2012cloud], cite phylota (along with @yong2010screening) as a tool that relies on sequence
@@ -517,6 +547,8 @@ or that is useful in any way for phylogenetics:
     - the study presenting phylotol [@ceron2019phylotol], cites phylota as a tool
     that "focus on the identification and collection of homologous genes from public
     databases".
+    - The [iPTOL project](https://www.researchgate.net/profile/Douglas_Soltis/publication/228815637_Assembling_the_Tree_of_Life_for_the_Plant_Sciences_iPTOL/links/56a7c6bc08aeded22e3700dc.pdf)
+    cites phylota as a resource of phylogenetic trees.
 1. When the software was actually used to construct (partially or in full) a DNA
 data set to be used for phylogenetic reconstruction:
     - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
@@ -537,7 +569,7 @@ data set to be used for phylogenetic reconstruction:
     species were newly added by the study and the rest obtained using phylota.
     - A 95 taxa phylogeny of Gymnosperms, focused on Ephedra, Gnetales [@ickert2009fossil]
     - A 1061 genera phylogeny of the Oscine birds [@selvatti2015paleogene]
-    - A 268 species phylogeny of sharks, representing all orders and 32 families [@sorenson2014effect]
+    - A 268 species phylogeny of sharks, representing all 8 orders and 32 families [@sorenson2014effect; @sorenson2014evolution]
     - A 466 species phylogeny of the Proteaceae, focusing on the species found in the Cape Floristic Region [@tucker2012incorporating].
     - A series of small phylogenies of unreported exact size, of sister groups of gall-forming insects [@hardy2010gall].
     - A 196 species phylogeny of the family Boraginaceae [@nazaire2012broad]. The authors
@@ -594,6 +626,11 @@ data set to be used for phylogenetic reconstruction:
     in the published study of the thesis [@salariato2010molecular]. Ingroup sequences were generated *de novo*.
     - On a PhD thesis, to construct a phylogeny of Platyrrhini (internal group),
     Catarrhini (outgroup), and Tarsiiformes @pereira2013padroes. Have not found a published study.
+    - The 10k trees project [@arnold201010ktrees] uses phylota to construct a tree of 301 primate species
+    and the outgroup species *Galeopterus variegates*, a tree of 17 extant odd-toed
+    ungulates species and the outgroup species *Bos taurus*, and a tree of 70 different
+    species of carnivorans and *Equus caballus* as outgroup. However, the do not
+    cite it on the paper, but only on their documentation <http://www.academia.edu/download/49690788/10kTrees_Documentation.pdf>.
 1. When the website was used to identify sequences and markers available in
 GenBank for a particular group. In this cases, the dataset mining was either performed
 with other tools, or not performed at all and just used for discussion:
@@ -609,6 +646,8 @@ with other tools, or not performed at all and just used for discussion:
     - Three data sets from phylota (the suborder Pleurodira of side-necked turtles;
       the family Cactaceae of cacti; and the Amorpheae, a clade of legumes) were used
       to demonstrate and exemplify phylogenetic decisiveness [@sanderson2010phylogenomics]
+    - Mentioned in a PHD thesis [@gagnon2016systematique], but not on the final publication [@gagnon2016new],
+    phylota was used to state that there are very few sequences available for the Legumes (7,482 out of 19,500 spp) on GenBank's release 194 (Feb2013).
 1. Sometimes, it was cited by mistake:
     - In this 630 tip phylogeny of the Caryophyllaceae study [@greenberg2011caryophyllaceae] it might have been originally
     cited as an example of large phylogenies that reflect well supported relationships
