@@ -212,7 +212,7 @@ Physcraper implements node by node comparison of the the original and the update
   is aligned against the original alignment, working as a template. This ensures that
   the final alignment follows the homology criteria established by the original alignment.
 - The final alignment is not further processed automatically. We encourage users
-  to check it by eye and eliminate columns with no information. 
+  to check it by eye and eliminate columns with no information.
 
 ## Tree reconstruction
 
@@ -298,12 +298,36 @@ physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ 
 ```
 # Discussion
 
-Mention statistics provided by PhyloExplorer [@ranwez2009phyloexplorer]
+There are many tools that are making use of DNA data repositories in different ways.
+Most of them focus on efficient ways to mine the data -- getting the most homologs.
+Some focus on accurate ways of mining the data - getting real and clean homologs.
+Others focus on refinement of the alignment.
+Most focus on generating full trees *de novo*, mainly for regions of the Tree of
+Life that have no phylogenetic assessment yet in published studies, but also for
+regions that have been already studied and that have phylogenetic data already.
+
+All these tools are great efforts for advancing towards reproducibility in phylogenetics,
+a field that has been largely recognised as somewhat artisanal.
+We propose adding focus to other sources of information available from data repositories.
+DNA data bases have been the focus for long time, but phylogenetic knowledge is
+also accumulating fast in open repositories.
+Certainly, parts of other tools that might work faster in some ways could be incorporated into the physcraper pipeline.
+
+We emphasize that physcraper takes advantage of the knowledge and intuition of the expert
+community to build upon this phylogenetic knowledge, using not only data accumulated in DNA repositories, but phylogenetic knowledge accumulated in tree repositories.
+This might help generate new phylogenetic data. But physcraper does not seek to generate full phylogenies *de novo*
+
+Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
+Mention statistics provided by other tools: PhyloExplorer [@ranwez2009phyloexplorer].
+Compare and discuss.
+
+
 
 ## Tools that do similar things at different levels
 
+
 PhyloFinder [@chen2008phylofinder] - a search engine for phylogenetic databases using
-trees from TreeBASE - MEH
+trees from TreeBASE - more related to phylotastic's goal than to updating phylogenies
 
 Phylota [@sanderson2008phylota] - cited by 122 studies.
 
