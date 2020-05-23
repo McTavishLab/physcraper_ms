@@ -61,7 +61,7 @@ or that is useful in any way for phylogenetics:
     - @freyman2015sumac cites phylota as a tool that "provides a web interface to view
     all GenBank sequences within ta xonomic groups clustered into homologs" but that
     does not mine for targeted sequences, as opposed to NCBIminer or PHLAWD. They
-    compare the performance of SUMAC to Phylota.
+    compare the performance of SUMAC to Phylota. This is also presented in their PhD dissertation [@freyman2017phylogenetic].
     - @chesters2013resolving cites phylota as a data mining tool that compiles metadata
     from mining of public DNA databases "for construction of large phylogenetic trees
     and multiple gene sets" and that the authors have recognised that gene annotations
@@ -96,8 +96,9 @@ or that is useful in any way for phylogenetics:
     - the study that present DarwinTree [@meng2015darwintree], the study
     presenting an approach to screen sequence data for The Platform
     for Phylogenetic Analysis of Land Plants (PALPP), using the MapReduce paradigm
-    to parallelize BLAST [@yong2010screening], as well as @gao2011solution, @li2013partfasttree, and @meng2014rapidtree, all
-    cite phylota using the exact same phrase, as one among other "studies based on data mining large numbers of taxa or loci".
+    to parallelize BLAST [@yong2010screening], as well as @gao2011solution, @li2013partfasttree,
+    @meng2015sotree, and @meng2014rapidtree, all cite phylota using the exact same
+    introduction and sentence: as one among other "studies based on data mining large numbers of taxa or loci".
     - A study presenting a tool to asses gene sequence quality for automatic
     construction of databases [@meng2012gsqct], as well as their parallelized version using MapReduce
     [@meng2012cloud], cite phylota (along with @yong2010screening) as a tool that relies on sequence
@@ -139,7 +140,11 @@ or that is useful in any way for phylogenetics:
     databases".
     - The [iPTOL project](https://www.researchgate.net/profile/Douglas_Soltis/publication/228815637_Assembling_the_Tree_of_Life_for_the_Plant_Sciences_iPTOL/links/56a7c6bc08aeded22e3700dc.pdf)
     cites phylota as a resource of phylogenetic trees.
-1. When the software was actually used to construct (partially or in full) a DNA
+    - @mahmood2015avian PhD dissertation presents a database of avian Raptor sequences
+    (raptorbase), based on the phylota pipeline.
+    - @ruiz2019datataxa develops datataxa and cite phylota as "software that has
+    been developed to mine the massive amount of information stored in GenBank", along with its R version [phylotaR; @bennett2018phylotar] and restez <https://www.rdocumen-tation.org/packages/restez/versions/1.0.0>.
+2. When the software was actually used to construct (partially or in full) a DNA
 data set to be used for phylogenetic reconstruction:
     - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
     - A 56 tip phylogeny of crustacean zooplancton [@helmus2010communities] -- ecological study
@@ -194,7 +199,7 @@ data set to be used for phylogenetic reconstruction:
     - A phylogeny of 144 neobatrachian genera, assuming the monophyletic status of
     genera to increase matrix-filling levels [@frazao2015gondwana].
     - A 179 species phylogeny of the bird family Picidae (woodpeckers, piculets,
-    and wrynecks) [@dufort2016augmented], augmented with data from an updated GenBank
+    and wrynecks) [@dufort2016augmented; @dufort2015coexistence], augmented with data from an updated GenBank
     release and newly sequenced data.
     - A phylogeny of species of freshwater fish endemic to NorthAmerica [@strecker2014fish],
     phylota found data for 54 out of 66 spp.
@@ -221,7 +226,16 @@ data set to be used for phylogenetic reconstruction:
     ungulates species and the outgroup species *Bos taurus*, and a tree of 70 different
     species of carnivorans and *Equus caballus* as outgroup. However, the do not
     cite it on the paper, but only on their documentation <http://www.academia.edu/download/49690788/10kTrees_Documentation.pdf>.
-1. When the website was used to identify sequences and markers available in
+    - @freyman2015sumac [also in @freyman2017phylogenetic], use phylota to construct
+    a phylogeny (or maybe only mine genbank???) of the Onagraceae and Lythracea,
+    and compare it to the tool they propose, SUMAC.
+    - @blackmon2017synthesis PhD study applies phylota to reconstruct a 822 mite
+    species tree.
+    - A study of the effect of poliploidy on niche evolution [@baniaga2018polyploid],
+    uses phylota to get a DNA data set for 132 unique taxa of vascular plants from
+    16 families and 25 genera,and a tree of 33 genera from 20 different families
+    comprising 1706 taxa.
+3. When the website was used to identify sequences and markers available in
 GenBank for a particular group. In this cases, the dataset mining was either performed
 with other tools, or not performed at all and just used for discussion:
     - A 812 tips phylogeny of the Order Chiroptera [@shi2015speciation] -- dataset
@@ -238,7 +252,7 @@ with other tools, or not performed at all and just used for discussion:
       to demonstrate and exemplify phylogenetic decisiveness [@sanderson2010phylogenomics]
     - Mentioned in a PHD thesis [@gagnon2016systematique], but not on the final publication [@gagnon2016new],
     phylota was used to state that there are very few sequences available for the Legumes (7,482 out of 19,500 spp) on GenBank's release 194 (Feb2013).
-1. Sometimes, it was cited by mistake:
+4. Sometimes, it was cited by mistake:
     - In this 630 tip phylogeny of the Caryophyllaceae study [@greenberg2011caryophyllaceae] it might have been originally
     cited as an example of large phylogenies that reflect well supported relationships
     from previous smaller phylogenies. However, it was removed from the text but
@@ -248,7 +262,7 @@ with other tools, or not performed at all and just used for discussion:
     genera, and 760 families within the order Insecta [@chesters2017construction],
     uses its own algorithm (SOPHI) to mine public DNA databases [@chesters2014protocol].
     It does not cite phylota as it should, but includes it in their references.
-1. When phylota was used to extract full trees (not only DNA data sets or markers):
+5. When phylota was used to extract full trees (not only DNA data sets or markers):
     - @page2013bionames uses it to generate phylogenies for the [bionames website](http://bionames.org),
     a "database linking taxonomic names to their original descriptions, to taxa, and
     to phylogenies" generated with phylota.

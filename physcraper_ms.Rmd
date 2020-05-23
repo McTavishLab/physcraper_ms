@@ -381,6 +381,8 @@ multiple sequence alignments and gene trees, and to identify and remove contamin
 PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree
 of life", i.e., bacteria and unicellular eukaryotes.
 
+Datataxa @ruiz2019datataxa focus on extracting metadata from GenBank seqeunce information.
+
 
 ```{r phylota, child="phylota-overview.Rmd"}
 ```
