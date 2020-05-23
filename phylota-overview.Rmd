@@ -76,8 +76,8 @@ or that is useful in any way for phylogenetics:
     sequence similarity and overlap."
     - the paper presenting phylotaR, a pipeline that recreates the phylota output
     but uses the most updated GenBank release, and is available in R [@bennett2018phylotar],
-    cites phylota as its predecessor and inspiration. the authors mention that phylotaR
-    pipeline mimics phylota's pipeline but with improvememnts.
+    cites phylota as its predecessor and inspiration. The authors mention that phylotaR
+    pipeline mimics phylota's pipeline but with improvements.
     - The paper presenging PhyloBase [@jamil2016visual], cites phylota as one of
     its resources to get phylogenies, along with TreeBASE and others.
     - The paper presenting STBase, a database of one million precomputed species
@@ -93,11 +93,11 @@ or that is useful in any way for phylogenetics:
     ancestor are collected even if one specifies only part of a clade".
     - A study developing a tool to link wikipedia data to NCBI taxonomy [@page2011linking]
     cites phylota as a phylogenetic resource that uses the NCBI taxonomy.
-    - the study that present DarwinTree [@meng2015darwintree], the study
+    - the study that present DarwinTree [@meng2015darwintree], and all derived studies: the study
     presenting an approach to screen sequence data for The Platform
     for Phylogenetic Analysis of Land Plants (PALPP), using the MapReduce paradigm
     to parallelize BLAST [@yong2010screening], as well as @gao2011solution, @li2013partfasttree,
-    @meng2015sotree, and @meng2014rapidtree, all cite phylota using the exact same
+    @meng2014rapidtree, @meng2015sotree, and @meng2015solution, all cite phylota using the exact same
     introduction and sentence: as one among other "studies based on data mining large numbers of taxa or loci".
     - A study presenting a tool to asses gene sequence quality for automatic
     construction of databases [@meng2012gsqct], as well as their parallelized version using MapReduce
@@ -121,6 +121,12 @@ or that is useful in any way for phylogenetics:
     - A study on morphological evolution of electric fish skull, that uses phylotaR
     to retrieve sequences of the family Apteronotidae, order Gymnotiformes [@evans2019bony],
     cites phylota as the inspiration and fundament of phylotaR.
+    - A phylogenetic revision of the Gymnotidae fish (Teleostei: Gymnotiformes),
+    uses phylotaR to retrieve seqeunces, but cites phylota as "a pipeline that implements
+    BLAST searches to both identify and download sequence clusters for listed taxonomic
+    groups to assemble a robust collection of sequences in a reproducible way based
+    on publicly-available gene sequences while avoiding selection bias on the part
+    of the assembler".
     - A master thesis on SearchTree, a "software tool that allows users to query
     efficiently on an arbitrary user taxon list and returns high scoring matches
     from approximately one billion phylogenetic trees being constructed from molecular
@@ -143,7 +149,9 @@ or that is useful in any way for phylogenetics:
     - @mahmood2015avian PhD dissertation presents a database of avian Raptor sequences
     (raptorbase), based on the phylota pipeline.
     - @ruiz2019datataxa develops datataxa and cite phylota as "software that has
-    been developed to mine the massive amount of information stored in GenBank", along with its R version [phylotaR; @bennett2018phylotar] and restez <https://www.rdocumen-tation.org/packages/restez/versions/1.0.0>.
+    been developed to mine the massive amount of information stored in GenBank",
+    along with its R version [phylotaR; @bennett2018phylotar] and restez <https://www.rdocumen-tation.org/packages/restez/versions/1.0.0>.
+    - The phylotastic project [@stoltzfus2013phylotastic] cites phylota as a "phylogeny-related resource providing ways to generate custom species trees *de novo* for downstream use" along with CIPRES.
 2. When the software was actually used to construct (partially or in full) a DNA
 data set to be used for phylogenetic reconstruction:
     - A 1000 tip phylogeny of the family of the nightshades [@sarkinen2013solanaceae]
