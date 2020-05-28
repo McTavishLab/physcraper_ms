@@ -21,7 +21,7 @@ affiliations:
  - name: University of California, Merced
    index: 1
 citation_author: Sanchez-Reyes et. al.
-date: '22 May, 2020'
+date: '26 May, 2020'
 year: 2020
 bibliography: paper.bib
 output: rticles::joss_article
@@ -338,13 +338,15 @@ regions that have been already studied and that have phylogenetic data already.
 All these tools are great efforts for advancing towards reproducibility in phylogenetics,
 a field that has been largely recognised as somewhat artisanal.
 We propose adding focus to other sources of information available from data repositories.
-DNA data bases have been the focus for long time, but phylogenetic knowledge is
-also accumulating fast in open repositories.
-Certainly, parts of other tools that might work faster in some ways could be incorporated into the physcraper pipeline.
+Taking advantage of public DNA data bases have been the main focus. However, phylogenetic knowledge is
+also accumulating fast in public and open repositories.
+In this way, the physcraper pipeline can be complemented with other tools that have
+been developed for other purposes.
 
 We emphasize that physcraper takes advantage of the knowledge and intuition of the expert
-community to build upon this phylogenetic knowledge, using not only data accumulated in DNA repositories, but phylogenetic knowledge accumulated in tree repositories.
-This might help generate new phylogenetic data. But physcraper does not seek to generate full phylogenies *de novo*
+community to build upon phylogenetic knowledge, using not only data accumulated in
+DNA repositories, but phylogenetic knowledge accumulated in tree repositories.
+This might help generate new phylogenetic data. But physcraper does not seek to generate full phylogenies *de novo*.
 
 Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
 Mention statistics provided by other tools: PhyloExplorer [@ranwez2009phyloexplorer].
@@ -354,24 +356,45 @@ Compare and discuss.
 
 ## Tools that do similar things at different levels
 
+### 1. Mining DNA databases for phylogenetic reconstruction
 
-PhyloFinder [@chen2008phylofinder] - a search engine for phylogenetic databases using
-trees from TreeBASE - more related to phylotastic's goal than to updating phylogenies
+| Tool | Citation | Cited by | Descriptio | Supermatrix/gene tree/species tree |
+|-----|------|:------:|:------:|:------:|
+| Phylota | @sanderson2008phylota | cited by 122 studies | finding homologs on GenBank database | Supermatrix |
 
-Phylota [@sanderson2008phylota] - cited by 122 studies.
+- PHLAWD [@smith2009mega] - cited by 234, and pyPhlawd [@smith2019pyphlawd] - cited by 6: baited analyses
 
-PHLAWD [@smith2009mega] and pyPhlawd [@smith2019pyphlawd] - baited analyses
-
-in @ceron2019phylotol: "pipelines such as AMPHORA (Wu and Eisen 2008) and Mega-phylogeny (Smith et al. 2009) focus on the construction and refinement of robust alignments rather than the collection of homologs"
-
-PhyloExplorer [@ranwez2009phyloexplorer] - a python and MySQL based website to facilitate
-assessment and management of phylogenetic tree collections. It provides "statistics describing the collection,
-correcting invalid taxon names, extracting taxonomically relevant parts of the collection
-using a dedicated query language, and identifying related trees in the TreeBASE database".
+- AMPHORA [@wu2008simple] - cited by 458: a tool for mining public whole genomes and constructing phylogenies
+using whole genomic data. According to @ceron2019phylotol, both AMPHORA and PHLAWD
+"focus on the construction and refinement of robust alignments rather than the collection of homologs."
 
 A [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals),
 only available from the [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP)
 of the journal [[@peters2011taming]](https://bmcbiol.biomedcentral.com/articles/10.1186/1741-7007-9-55#Sec21)
+- cited by 64:  mining public DNA databases, focuses on filtering massive amounts
+of mined sequences by using established "criteria of compositional homogeneity and
+defined levels of density and overlap".
+
+### 2. Searching phylogenetic tree databases
+
+- PhyloFinder [@chen2008phylofinder] - cited by 18: a search engine for phylogenetic databases using
+trees from TreeBASE - more related to phylotastic's goal than to updating phylogenies
+
+### 3. Mining phylogenetic tree databases
+
+- PhyloExplorer [@ranwez2009phyloexplorer] - cited by 21: a python and MySQL based website to facilitate
+assessment and management of phylogenetic tree collections. It provides "statistics describing the collection,
+correcting invalid taxon names, extracting taxonomically relevant parts of the collection
+using a dedicated query language, and identifying related trees in the TreeBASE database".
+
+### 4. Synthesizing info from mined trees
+
+
+
+
+
+
+
 
 @chesters2014protocol presents an algorithm that mines GenBank data to delineate species in the insecta.
 The authors present a nice comparison with the phylota algorithm.

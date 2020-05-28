@@ -212,11 +212,12 @@ Physcraper implements node by node comparison of the the original and the update
   is aligned against the original alignment, working as a template. This ensures that
   the final alignment follows the homology criteria established by the original alignment.
 - The final alignment is not further processed automatically. We encourage users
-  to check it by eye and eliminate columns with no information.
+  to check it using any of the many tools for alignment processing, and eliminate
+  columns with no information.
 
 ## Tree reconstruction
 
-- A gene tree is reconstructed for each alignment provided, using RAxML with bootstrap replicates.
+- A gene tree is reconstructed for each alignment provided, using RAxML [@stamatakis2014raxml] with bootstrap replicates.
 - The final result is a gene tree coupled to the conlict info.
 
 ## Tree comparison
@@ -298,6 +299,13 @@ physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ 
 ```
 # Discussion
 
+Data repositories hold more information than meets the eye.
+Besides the actual data, they have other types of information that can be used for the advantage of science.
+
+Usually, initial ideas about the data are changed by analyses.
+We expect that this new ideas on the data can be registered on data bases,
+exposing new comers to expert understanding about the data.
+
 There are many tools that are making use of DNA data repositories in different ways.
 Most of them focus on efficient ways to mine the data -- getting the most homologs.
 Some focus on accurate ways of mining the data - getting real and clean homologs.
@@ -309,80 +317,86 @@ regions that have been already studied and that have phylogenetic data already.
 All these tools are great efforts for advancing towards reproducibility in phylogenetics,
 a field that has been largely recognised as somewhat artisanal.
 We propose adding focus to other sources of information available from data repositories.
-DNA data bases have been the focus for long time, but phylogenetic knowledge is
-also accumulating fast in open repositories.
-Certainly, parts of other tools that might work faster in some ways could be incorporated into the physcraper pipeline.
+Taking advantage of public DNA data bases have been the main focus. However, phylogenetic knowledge is
+also accumulating fast in public and open repositories.
+In this way, the physcraper pipeline can be complemented with other tools that have
+been developed for other purposes.
 
 We emphasize that physcraper takes advantage of the knowledge and intuition of the expert
-community to build upon this phylogenetic knowledge, using not only data accumulated in DNA repositories, but phylogenetic knowledge accumulated in tree repositories.
-This might help generate new phylogenetic data. But physcraper does not seek to generate full phylogenies *de novo*
+community to build upon phylogenetic knowledge, using not only data accumulated in
+DNA repositories, but phylogenetic knowledge accumulated in tree repositories.
+This might help generate new phylogenetic data. But physcraper does not seek to generate full phylogenies *de novo*.
 
 Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
 Mention statistics provided by other tools: PhyloExplorer [@ranwez2009phyloexplorer].
 Compare and discuss.
 
+How is physcraper already useful:
+- mine targeted sequences, in this way it is similar to baited analyses from PHLAWD and pyPHLAWD. Phylota does not do baited analyses, I think.
+-
 
+How can it be used for the advantage of the field:
+- rapid phylogenetic placing of newly discovered species, as mentioned in @webb2010biodiversity
+- obtain trees for ecophylogenetic studies, as mentioned in @helmus2012phylogenetic
+- one day could be used to sistematize GenBank data, as mentioned in @san2010molecular, i.e., curate ncbi taxonomic assignations.
+- allows to generate custom species trees for downstream analyses, as mentioned in @stoltzfus2013phylotastic
+
+
+Things that physcraper does not do:
+- analyse the whole GenBank database to find homolog regions suitable to reconstruct phylogenies, as mentioned in @antonelli2017toward. There are already some very good tools that do that.
+- provide basic statistics on data availability to assemble molecular datasets, as mentioned by @ranwez2009phyloexplorer. Phyloexplorer does this?
+- it is not a tree repo, as phylota is, mentioned in @deepak2014evominer
 
 ## Tools that do similar things at different levels
 
+### 1. Mining DNA databases to generate datasets suitable for phylogenetic reconstruction
 
-PhyloFinder [@chen2008phylofinder] - a search engine for phylogenetic databases using
+| Tool | Citation | Cited by | Description | Supermatrix/gene tree/species tree |
+|-----|------|:------:|:------:|:------:|
+| Phylota | @sanderson2008phylota | 122 studies | finding homologs on GenBank database | Supermatrix |
+| AMPHORA | @wu2008simple | 458 studies | mines public genomic data and constructs phylogenies using whole genomic data | Supermatrix?? |
+| PHLAWD | @smith2009mega | 234 studies | Baited search | Supermatrix |
+| Unnamed [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals), only available from [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP) of the journal | @peters2011taming | 64 studies | mining public DNA databases, focuses on filtering massive amounts of mined sequences by using established "criteria of compositional homogeneity and defined levels of density and overlap" | Supermatrix |
+| Unnamed | @chesters2014protocol | 10 studies | algorithm that mines GenBank data to delineate species in the insecta. The authors present a nice comparison with the phylota algorithm | Species trees?? |
+| PUmPER | @izquierdo2014pumper | 14 studies | perpetual updating with newly added sequences to GenBank | not sure yet |
+| DarwinTree | @meng2015darwintree | 6 studies | predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP), takes data from GenBank, EMBL and DDBJ for land plants only| not sure |
+| NCBIminer | @xu2015ncbiminer | 4 studies | part of darwintree | not sure |
+|SUMAC | @freyman2015sumac | 19 studies | both “baited” analyses and single‐linkage clustering methods, as well as a novel means of determining when there are enough overlapping data in the DNA matrix | not sure |
+|STBase | @mcmahon2015stbase | 7 studies | pipeline for species tree construction and the public database of one million precomputed species trees | species trees |
+| Unnamed | @papadopoulou2015automated | 17 studies | Automated DNA-based plant identification for large-scale biodiversity assessment | not sure |
+| SUPERSMART | @antonelli2017toward | 35 studies | baited analyses up to bayesian divergence time estimation | supermatrix |
+| SOPHI | [@chesters2017construction | 17 studies | Searches DNA sequence data from repos other than GenBank, such as transcriptomic and barcoding repos | not sure |
+| OneTwoTree | @drori2018onetwotree | 7 studies | Web‐based, user-friendly, online tool for species-tree reconstruction, based on the *supermatrix paradigm* and retrieves all available sequence data from NCBI GenBank| supermatrix |
+| pyPhlawd | @smith2019pyphlawd | 6 studies | baited analyses | Supermatrix or gene tree |
+| Phylotol | @ceron2019phylotol | 5 studies | "phylogenomic pipeline to allow easy incorporation of data from  high-throughput sequencing studies, to automate production of both multiple sequence alignments and gene trees, and to identify and remove contaminants. PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree of life", i.e., bacteria and unicellular eukaryotes | supermatrix and gene trees |
+
+
+According to @ceron2019phylotol, both AMPHORA and PHLAWD
+"focus on the construction and refinement of robust alignments rather than the collection of homologs."
+
+### 2. Searching phylogenetic tree databases
+
+PhyloFinder [@chen2008phylofinder] - cited by 18: a search engine for phylogenetic databases, using
 trees from TreeBASE - more related to phylotastic's goal than to updating phylogenies
 
-Phylota [@sanderson2008phylota] - cited by 122 studies.
+### 3. Mining phylogenetic tree databases
 
-PHLAWD [@smith2009mega] and pyPhlawd [@smith2019pyphlawd] - baited analyses
-
-in @ceron2019phylotol: "pipelines such as AMPHORA (Wu and Eisen 2008) and Mega-phylogeny (Smith et al. 2009) focus on the construction and refinement of robust alignments rather than the collection of homologs"
-
-PhyloExplorer [@ranwez2009phyloexplorer] - a python and MySQL based website to facilitate
+PhyloExplorer [@ranwez2009phyloexplorer] - cited by 21: a python and MySQL based website to facilitate
 assessment and management of phylogenetic tree collections. It provides "statistics describing the collection,
 correcting invalid taxon names, extracting taxonomically relevant parts of the collection
 using a dedicated query language, and identifying related trees in the TreeBASE database".
 
-A [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals),
-only available from the [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP)
-of the journal [[@peters2011taming]](https://bmcbiol.biomedcentral.com/articles/10.1186/1741-7007-9-55#Sec21)
+### 4. Pipeline for phylogenetic reconstruction
 
-@chesters2014protocol presents an algorithm that mines GenBank data to delineate species in the insecta.
-The authors present a nice comparison with the phylota algorithm.
-
-PUmPER [@izquierdo2014pumper] - perpetual updating with newly added sequences to
-GenBank
-
-DarwinTree [@meng2015darwintree] predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP) - takes data from GenBank, EMBL and DDBJ for land plants only.
-
-NCBIminer [@xu2015ncbiminer]
-
-SUMAC [@freyman2015sumac] -  both “baited” analyses and single‐linkage clustering
-methods, as well as a novel means of determining when there are enough overlapping data in the DNA matrix
-
-STBase - @mcmahon2015stbase present a pipeline for species tree construction and
-the public database of one million precomputed species trees
-
-@papadopoulou2015automated - Automated DNA-based plant identification for large-scale biodiversity assessment
-
-SUPERSMART [@antonelli2017toward] - baited analyses up to bayesian divergence time
-estimation
-
-SOPHI - [@chesters2017construction] - Searches DNA sequence data from repos other
-than GenBank, such as transcriptomic and barcoding repos.
-
-OneTwoTree [@drori2018onetwotree] present a Web‐based, user-friendly, online tool for species-tree
-reconstruction, based on the *supermatrix paradigm* and retrieves all available
-sequence data from NCBI GenBank.
-
-PhySpeTre [@fang2019physpetree] - no sequence retrieval, just phylogenetic reconstruction
+PhySpeTre [@fang2019physpetree] - no citations yet - no sequence retrieval, just phylogenetic reconstruction
 pipeline.
 
-Phylotol [@ceron2019phylotol] - "phylogenomic pipeline to allow easy incorporation
-of data from  high-throughput sequencing studies, to automate production of both
-multiple sequence alignments and gene trees, and to identify and remove contaminants.
-PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree
-of life", i.e., bacteria and unicellular eukaryotes.
+### 5. getting metadata and not sequences from GenBank.
 
-Datataxa @ruiz2019datataxa focus on extracting metadata from GenBank seqeunce information.
+Datataxa @ruiz2019datataxa - no citations yet - focus on extracting metadata from GenBank seqeunce information.
 
+
+## Phylota overview
 
 ```{r phylota, child="phylota-overview.Rmd"}
 ```

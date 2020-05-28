@@ -17,6 +17,5 @@ Trying output_yaml worked. You just have to use the yaml params that are common 
 rmarkdown::render(input = "physcraper_ms.Rmd", output_yaml= "joss.yaml")
 rmarkdown::draft("ams_submission", template = "ams_article", package = "rticles")
 
-rmarkdown::render(input = "physcraper_ms.Rmd", output_file= paste("ams_submission.pdf"), output_yaml= "joss.yaml")
+rmarkdown::render(input = "physcraper_ms.Rmd", output_file= paste("ams_submission.pdf"), output_yaml= "ams.yaml")
 ```
-

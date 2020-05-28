@@ -3,8 +3,6 @@ output:
   redoc::redoc
 ---
 
-# Phylota overview
-
 Phylota was published as a website to summarize and browse the phylogenetic potential of the GenBank
 database [@sanderson2008phylota].
 
@@ -16,20 +14,20 @@ or that is useful in any way for phylogenetics:
     - original publication of PHLAWD [@smith2009mega]
     - an analysis identifying research priorities and data requirements for resolving
     the red algal tree of life [@verbruggen2010data]
-    - @beaulieu2012modeling cites phylota As an example study of very large and comprehensive
+    - @beaulieu2012modeling cites phylota as an example study of very large and comprehensive
     phylogeny from mined DNA sequence data, (even if no phylogeny was really published
     there, only the method to do so)
     - a review for ecologists about phylogenetic tools [@roquet2013building]
     - a study constructing a dated seed plant phylogeny using pyPHLAWD [@smith2018constructing]
-    - a study presenting an assembly and alignment free method for phylogenetic reconstruction
-    using genomic data, that aims to be incorporated in a tool as phylota some day [@fan2015assembly].
+    - a study presenting an "assembly and alignment free" method for phylogenetic reconstruction
+    using genomic data. It aims to be incorporated into a pipeline such as phylota some day [@fan2015assembly].
     - nexml format presentation [@vos2012nexml] - cites phylota as a tool that uses
     stored phyloinformatic data that could benefit from adopting nexml, to increase
     interoperability.
     - a study of fruit evolution, analysing a previously published phylogeny of 8911
     tips of the Campanulidae, constructed with PHLAWD [@beaulieu2013fruit]
     - a study of Southeast Asia plant biodiversity inventory [@webb2010biodiversity] -
-    cites phylota as a tool that would allow rapid phylogentic placing of newly
+    cites phylota as a tool that would allow rapid phylogenetic placing of newly
     discovered species, and generation of phylogenetically informed guides for field
     identification.
     - a study of wood density for carbon stock assessments [@flores2011estimating],
@@ -48,7 +46,7 @@ or that is useful in any way for phylogenetics:
     related resource that provides ways to generate custom species trees for downstream use".
     - @antonelli2017toward cites phylota as a "pipeline that pre-processes entire GenBank
     releases in pursuit of sufficiently overlapping reciprocal BLAST hits, which are
-    then clustered into candidate data sets". I also uses the PHYLOTA database in its
+    then clustered into candidate data sets". They also use the PHYLOTA database in its
     own pipeline.
     - @deepak2014evominer present an algorithm for mining of frequent subtrees (common patterns)
     in collections of phylogenetic trees, as a way to extract meaningful phylogenetic
@@ -59,7 +57,7 @@ or that is useful in any way for phylogenetics:
     on data availability for molecular datasets". They propose a tool to upload and
     explore user phylogenies to obtain detailed summary statistics on user tree collections.
     - @freyman2015sumac cites phylota as a tool that "provides a web interface to view
-    all GenBank sequences within ta xonomic groups clustered into homologs" but that
+    all GenBank sequences within taxonomic groups clustered into homologs" but that
     does not mine for targeted sequences, as opposed to NCBIminer or PHLAWD. They
     compare the performance of SUMAC to Phylota. This is also presented in their PhD dissertation [@freyman2017phylogenetic].
     - @chesters2013resolving cites phylota as a data mining tool that compiles metadata
