@@ -230,7 +230,19 @@ Life. Otherwise, it is not really possible to get conflict data.
 ***- One way to compare two independent phylogenetic trees is to compare them both to
 the synthetic OToL and then measure how well they do against each other***
 
-# Use case/ example
+# Examples
+
+## The hollies
+
+The genus *Ilex* is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
+It encompasses between 400-600 living species. A review of litterature shows that there are three published phylogenetic trees, showing relationships within the hollies.
+The first one has been made available both on OToL phylesystem and synth tree, and on treeBASE, it samples 48 species.
+The second has not been made available anywhere, not even in supplementary data of the journal.
+***Contact authors? They seem old school, probably do not wanna share their data.***
+The most recent one has been made available in the OToL Phylesystem and DRYAD. It is the best sampled yet, with 200 species. However,
+it has not been added to the syntehtic tree yet.
+This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on GenBank. Updating the oldest tree, we should get something very similar to the newest tree.
+
 
 Imagine you are starting to work on a new biological group X. You have not much of an idea about
 its phylogenetic relationships, you are a newly established researcher, and the group
@@ -239,13 +251,15 @@ A good idea is to start an intensive literature review on the phylogenetics of t
 Rapidly, you find out there are 5 different phylogenies, that used different markers, and that
 the papers, published at different times, do not discuss which phylogeny is
 the one accepted by the expert community on X. You might need
-to go to the annual conference of X, and even then, you might only find
-different and contrasting opinions.
-Somewhere along these months or even years doing this task, you looked into the
-the OToL database. You found in there some or all the published trees of X, along
-with a tree that has been deemed the best tree by curators and ideally experts on X?
+to go to the annual conference of X, and probably you will only find
+different and contrasting opinions in there, too.
+Somewhere along the months or even years you've been on this task, you landed into the
+the OToL website. You found in there some or all the published trees of X, along
+with a tree that has been labeled as the best tree by volunteered curators (and ideally experts on X). What do you do?
 
-## Ascomycota Example
+## The Ascomycota
+
+
 
 Let's be more specific now about our X group and say it is the Ascomycota.
 The best tree currently available in OToL was published by @schoch2009ascomycota.
