@@ -46,7 +46,24 @@ use are available at <https://github.com/McTavishLab/physcraper>.
 
 Phylogenies are important.
 
-Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, iautomatizatio of phylogeentic reconstruction is still not a widespread practice and it would be important for reproducibility. ***paragraph better to end discussion??? ***
+Various efforts to automatize parts of the process in order to be able to take advantage of data in public databases.
+
+Most of this tools were envisioned for phylogenomics, were the analyses and processing of huge amounts of genetic data is naturally needed. Without automatization, curation of a phylogenomics database is a task that could not be finished in human time.
+Some pipelines sacrificed precision and accuracy for quantity. But many tools to check
+Examples of pipelines for phylogenomics:
+BIR [Blast, Identify, Realign; @kumar2015bir] takes curated alignments as seed to find more data on genomic databases and create new phylogenomic hypotheses
+
+Among other things, one of the major benefits stemming from these efforts are pipelines that make it easier to implement a reproducibile workflow in phylogenetic studies.
+
+
+A widespread practice is a thorough visual inspection and manual curation of alignments, that are checked for "errors" that can usually result from similarity algorithms ***(give examples)***.
+Commonly, alignment curators also take into account how the nature of the genetic marker, the taxon sampling and the organisms themselves, might affect the alignments. This hypotheses of homology are charged with expert knowledge, and hours of study, making them a scientifically reliable source if biological information.
+As such, they represent an ideal platform to build up new phylogenetic knowledge.
+Not many studies report its use.
+Which might be an indication that the amount of manual effort that is required to curate gene alignments is still a bottleneck.
+
+
+Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, automatization of phylogenetic reconstruction is still not a widespread practice and it would be key for adoption of bettr reproducibility practices in the scientific community. ***paragraph better to end discussion??? ***
 
 The process of phylogenetic reconstruction implies many steps (that I generalize to the following):
 
@@ -82,7 +99,7 @@ In this sense, the non-specialists (and also the specialist) face a new problem:
 
 Public phylogenies can be updated with the ever increasing amount of genetic data that is available on GenBank.
 
-A way to automatize and standardize the comparison of phylogenetic hypotheses and to allow reproducibility of this last step of the research process.
+We present a way to automatize and standardize the comparison of phylogenetic hypotheses and to allow reproducibility of this last step of the research process.
 
 A key aspect of the standard phylogenetic workflow is comparison with already existing
 phylogenetic hypotheses and with phylogenies that are considered "best" by experts
@@ -243,19 +260,6 @@ The most recent one has been made available in the OToL Phylesystem and DRYAD. I
 it has not been added to the syntehtic tree yet.
 This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on GenBank. Updating the oldest tree, we should get something very similar to the newest tree.
 
-
-Imagine you are starting to work on a new biological group X. You have not much of an idea about
-its phylogenetic relationships, you are a newly established researcher, and the group
-is not anything any of your collaborators have worked on before.
-A good idea is to start an intensive literature review on the phylogenetics of the group.
-Rapidly, you find out there are 5 different phylogenies, that used different markers, and that
-the papers, published at different times, do not discuss which phylogeny is
-the one accepted by the expert community on X. You might need
-to go to the annual conference of X, and probably you will only find
-different and contrasting opinions in there, too.
-Somewhere along the months or even years you've been on this task, you landed into the
-the OToL website. You found in there some or all the published trees of X, along
-with a tree that has been labeled as the best tree by volunteered curators (and ideally experts on X). What do you do?
 
 ## The Ascomycota
 
