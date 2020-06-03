@@ -62,6 +62,7 @@ As such, they represent an ideal platform to build up new phylogenetic knowledge
 Not many studies report its use.
 Which might be an indication that the amount of manual effort that is required to curate gene alignments is still a bottleneck.
 
+*** Introduce the Open Tree of Life***
 
 Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, automatization of phylogenetic reconstruction is still not a widespread practice and it would be key for adoption of bettr reproducibility practices in the scientific community. ***paragraph better to end discussion??? ***
 
@@ -152,42 +153,42 @@ Physcraper implements node by node comparison of the the original and the update
 
 ## The input: a study tree and an alignment
 
-- The phylogenetic tree should be already in the Open Tree of Life store, or submitted
-  via the curator system [@mctavish2015phylesystem].
-  A user can choose from a variety of published trees supporting any node of the Tree of Life. If the tree you are
-  interested in is not in Open Tree of Life, you can easily upload it via the curator
-  tool (ADD URL).
+- The study tree should be in the OToL store [phylesystem; @mctavish2015phylesystem]. The main
+  reason for this is that trees in OToL have a set of user defined characteristics
+  that are essential for automatizing the phylogeny update process. The most relevant of these being the definition of ingroup and outgroup.
+  A user can choose from a variety of published trees supporting any node of the synthetic OToL. If the tree you are
+  interested in is not in there, you should upload it via OToL's curator tool (<https://tree.opentreeoflife.org/curator).
 - The alignment should be a gene alignment that was used to generate the tree. The
   alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD (<http://datadryad.org/>), or the journal were the tree was originally published.
-  If the alignment is stored in TreeBase, `physcraper` can download it directly
+  If the alignment is stored in TreeBase, `physcraper` can download it directly,
   either from the TreeBASE website (<https://treebase.org/>)
-  or through TreeBASE GitHub repository, SuperTreeBASE (<https://github.com/TreeBASE/supertreebase>).
-  If the alignment is on another repository, a copy of it has to be
+  or through the TreeBASE GitHub repository (SuperTreeBASE; <https://github.com/TreeBASE/supertreebase>).
+  If the alignment is on another repository, or provided personally by the owner, a copy of it has to be
   downloaded by the user, and it's local path has to be provided as an argument.
 - A taxon name matching step is performed to verify that all taxon names on the tips
   of the tree are in the DNA character matrix and vice versa.
 - A ".csv" file with the summary of taxon name matching is produced for the user.
 - Unmatched taxon names are dropped from both the tree and alignment.
-  <!--***What is the minimum amount of tips necessary for a physcraper run??*** Just one!-->
-  Technically, just one matching name is needed to perform the searches. See below.
-- A ".tre" and ".aln" files are generated and saved for a `physcraper` run.
+  <!--The minimum amount of tips necessary for a physcraper run is just one!!!-->
+  Technically, just one matching name is needed to perform the searches. Please, see next section.
+- A ".tre" and ".aln" files are generated and saved as input for a `physcraper` run.
 
 
 ## DNA sequence search and cleaning
 
 - The next step is to identify and validate the search taxon. This must be a taxon (a named clade)
-  from the NCBI taxonomy. It will be used to constraint the DNA sequence search on
+  on the NCBI taxonomy. It will be used to constraint the DNA sequence search on
   the GenBank database within that taxonomic group.
-  By default, the search taxon is the most recent common ancestor (MRCA) of the
-  matched taxa that is also a named clade in the NCBI taxonomy. This is refered to as the most recent common
-  ancestral taxon (MRCAT) or the least inclusive common ancestral taxon (LICA).
-  It can be different from the phylogenetic MRCA when the latter is an unnamed clade.
-  This is done using the Open Tree API [taxonomy/mrca](https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca).
-  <!-- ***Does physcraper takes into account the focal clade from Open Tree in any way???***
-  Not really, the focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.-->
-  In the case that only one taxon is matched in both the tree and alignment, the MRCAT
-  for that single taxon would be determined as HOW?,
+  By default, the search taxon is the Most Recent Common Ancestor (MRCA) of the
+  matched taxa belonging to the ingroup, that is also a named clade in the NCBI taxonomy. This is refered to as the Most Recent Common
+  Ancestral Taxon (MRCAT; also reffered the Least Inclusive Common Ancestral Taxon - LICA).
+  The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade.
+  To automatically identify the MRCAT of a group of taxon names, we make use of the OToL taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>).
+  In the case that only one taxon from the ingroup is matched in both the tree and alignment, the MRCAT
+  for that single taxon would be determined as ***HOW?***
+  By default, the set of taxon names that are searched for their MRCAT to be used as search taxon belong to the ingroup defined by the curator in the OToL phylesystem.
+  <!-- ***Physcraper does not take into account the focal clade from Open Tree. Because that is arbitrarily assigned or not by a curator. The focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.-->
   A search taxon can also be given by the user. It can be a more inclusive
   clade, if the user wants to perform a wider search, outside the MRCAT of the matched taxa, e.g., including all taxa within
   the family or the order. It can also be a less inclusive clade, if the user only
@@ -217,12 +218,11 @@ Physcraper implements node by node comparison of the the original and the update
   within species, there can be hundreds of exemplar sequences per taxon for some markers.
   To control the number of sequences per taxon in downstream analyses,
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
-  <!--***How does pyphlawd, or phylota does the exemplar per sepcies choosing?***-->
+  <!--***How does pyphlawd, or phylota does the exemplar per species choosing?***-->
 - Reverse complement sequences are identified and translated.
-- This cycle of sequence search is performed once. Users can BLAST newly found sequences. ***Is there an argument to control the number of cycles of blast searches with new sequences?***
-- A local database of full sequences is downloaded to the software directory, and
- a fasta file containing filtered and processed sequences resulting from the BLAST
- search is generated for the user.
+- Users can choose to perform a more "cycles" of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the alignment are blasted. ***Is there an argument to control the number of cycles of blast searches with new sequences?***
+- Accepted sequences are downloaded in full, and stored as a local database in a directory that is globally accesible (physcraper/taxonomy), so they are accesible for further runs.
+- A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user.
 
 ## DNA sequence alignment
 
@@ -262,7 +262,6 @@ This makes it a perfect case to test the basic functionalities of physcraper: we
 
 
 ## The Ascomycota
-
 
 
 Let's be more specific now about our X group and say it is the Ascomycota.
