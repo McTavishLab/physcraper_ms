@@ -69,7 +69,7 @@ Generating phylogenies is not easy and it is largely artisanal. Although many ef
 The process of phylogenetic reconstruction implies many steps (that I generalize to the following):
 
 1. Obtention of molecular or morphological character data -- get DNA from some organisms
-and sequence it, or get it from an online repository, such as GenBank.
+and sequence it, or get it from an online nucleotide data repository, such as GenBank [@benson2000genbank; @wheeler2000database].
 1. Assemble a hypothesis of homology -- Create a matrix of your character data, by
 aligning the sequences, in the case of molecular data. Make sure thay are paralogs!
 1. Analyse this hypothesis of homology to infer phylogenetic relationships among
@@ -83,7 +83,7 @@ in the lab, in front of a computer, discussions with experts in the methods, and
 All of these steps also require considerable amounts of time for training and implementation.
 
 In the past decade, various studies have developed solutions to automatize the first and second steps, by creating
-pipelines that mine already available molecular data from the GenBank repository,
+pipelines that mine already available molecular data from the GenBank repository [@benson2000genbank; @wheeler2000database],
 to obtain homologous characters that can be used for phylogenetic reconstruction.
 These tools have been presented as aid for the nonspecialist to decrease some of
 the difficulties in the generation of phylogenetic knowledge. However, they are
@@ -98,7 +98,7 @@ Issues such as food security, global warming, global health are crucial to solve
 There is a lot of phylogenetic knowledge already available in published peer-reviewed studies.
 In this sense, the non-specialists (and also the specialist) face a new problem: how do I choose the best phylogeny.
 
-Public phylogenies can be updated with the ever increasing amount of genetic data that is available on GenBank.
+Public phylogenies can be updated with the ever increasing amount of genetic data that is available on GenBank [@benson2000genbank; @wheeler2000database].
 
 We present a way to automatize and standardize the comparison of phylogenetic hypotheses and to allow reproducibility of this last step of the research process.
 
@@ -106,7 +106,7 @@ A key aspect of the standard phylogenetic workflow is comparison with already ex
 phylogenetic hypotheses and with phylogenies that are considered "best" by experts
 not only in phylogenetics, but also experts on the focal group of study.
 
-It is well known that GenBank holds enormous amounts of genetic data, and it continues to grow.
+It is well known that GenBank [@benson2000genbank; @wheeler2000database] holds enormous amounts of genetic data, and it continues to grow.
 A lot of this genetic data has the potential to be used to reconstruct the phylogenetic
 history of various organisms [@sanderson2008phylota].
 Pipelines that harness this potential have been available for over a decade now, such
@@ -130,8 +130,8 @@ better because it used more data.
 All these pipelines start tree construction from zero? Yes.
 
 The goal of Physcraper is to build upon previous phylogenetic knowledge,
-allowing a direct comparison of existing phylogenies to phylogenies that are constructed
-using new genetic data from GenBank
+allowing a direct comparison between existing phylogenies and phylogenies that are constructed
+using new genetic data retrieved from a public nucleotide database (i.e., GenBank [@benson2000genbank; @wheeler2000database]).
 
 To achieve this, Physcraper uses the Open Tree of Life phylesystem and connects it
 to the TreeBase database, to (1) get the original DNA data set matrices (alignments) that produced
@@ -179,7 +179,7 @@ Physcraper implements node by node comparison of the the original and the update
 
 - The next step is to identify and validate the search taxon. This must be a taxon (a named clade)
   on the NCBI taxonomy. It will be used to constraint the DNA sequence search on
-  the GenBank database within that taxonomic group.
+  the nucleotide database within that taxonomic group.
   By default, the search taxon is the Most Recent Common Ancestor (MRCA) of the
   matched taxa belonging to the ingroup, that is also a named clade in the NCBI taxonomy. This is refered to as the Most Recent Common
   Ancestral Taxon (MRCAT; also reffered the Least Inclusive Common Ancestral Taxon - LICA).
@@ -193,13 +193,14 @@ Physcraper implements node by node comparison of the the original and the update
   clade, if the user wants to perform a wider search, outside the MRCAT of the matched taxa, e.g., including all taxa within
   the family or the order. It can also be a less inclusive clade, if the user only
   wants to focus on enriching a particular clade/region within the tree.
-- The BLAST algorithm is used to identify similarity between DNA sequences in a GenBank nucleotide
-  database within the search taxon, and the remaining sequences on the alignment.
+- The Basic local alignment search tool, BLAST [@altschul1990basic; altschul1997gapped] is used to identify
+  similarity between DNA sequences within the search taxon in a nucleotide
+  database, and the remaining sequences on the alignment.
   <!--***How does the blast is setup? Is it an all-blast-all??***-->
 - A pairwise all-against-all BLAST search is performed. This means that each sequence
-  in the alignment is BLASTed against DNA sequences in a GenBank database constrained to the search
+  in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
   taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
-  along with their corresponding GenBank accesion numbers. This information will be
+  along with their corresponding ide numbers (accesion numbers in the case of the GenBank database). This information will be
   used later to store the whole sequences into a new library.
 - The DNA sequence similarity search can be done on a local database that is easily
   setup by the user. In this case, the BLASTn algorithm is used to performs the similarity search.
@@ -208,7 +209,7 @@ Physcraper implements node by node comparison of the the original and the update
 - Matched sequences below an e-value, percentage similarity, and outside a minimum
   and maximum length threshold are discarded. This filtering leaves out genomic sequences.
   All acepted sequences are asigned an internal identifier, and are further filtered.
-- Because the original alignments usually lack GenBank accession numbers, a filtering
+- Because the original alignments usually lack database id numbers, a filtering
   step is needed. Accepted sequences that belong to the
   same taxon of the query sequence, and that are either identical or shorter than
   the original sequence are discarded. Only longer sequences belonging to the
@@ -258,7 +259,7 @@ The second has not been made available anywhere, not even in supplementary data 
 ***Contact authors? They seem old school, probably do not wanna share their data.***
 The most recent one has been made available in the OToL Phylesystem and DRYAD. It is the best sampled yet, with 200 species. However,
 it has not been added to the syntehtic tree yet.
-This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on GenBank. Updating the oldest tree, we should get something very similar to the newest tree.
+This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database [@benson2000genbank; @wheeler2000database]. Updating the oldest tree, we should get something very similar to the newest tree.
 
 
 ## The Ascomycota
@@ -358,12 +359,12 @@ How is physcraper already useful:
 How can it be used for the advantage of the field:
 - rapid phylogenetic placing of newly discovered species, as mentioned in @webb2010biodiversity
 - obtain trees for ecophylogenetic studies, as mentioned in @helmus2012phylogenetic
-- one day could be used to sistematize GenBank data, as mentioned in @san2010molecular, i.e., curate ncbi taxonomic assignations.
+- one day could be used to sistematize nucleotide databases, such as Genbank [@benson2000genbank; @wheeler2000database], as mentioned in @san2010molecular, i.e., curate ncbi taxonomic assignations.
 - allows to generate custom species trees for downstream analyses, as mentioned in @stoltzfus2013phylotastic
 
 
 Things that physcraper does not do:
-- analyse the whole GenBank database to find homolog regions suitable to reconstruct phylogenies, as mentioned in @antonelli2017toward. There are already some very good tools that do that.
+- analyse the whole GenBank database [@benson2000genbank; @wheeler2000database] to find homolog regions suitable to reconstruct phylogenies, as mentioned in @antonelli2017toward. There are already some very good tools that do that.
 - provide basic statistics on data availability to assemble molecular datasets, as mentioned by @ranwez2009phyloexplorer. Phyloexplorer does this?
 - it is not a tree repo, as phylota is, mentioned in @deepak2014evominer
 
@@ -400,7 +401,7 @@ of homologous and paralog genes from public databases such as GenBank", while bo
 ### 2. Searching phylogenetic tree databases
 
 PhyloFinder [@chen2008phylofinder] - cited by 18: a search engine for phylogenetic databases, using
-trees from TreeBASE - more related to phylotastic's goal than to updating phylogenies
+trees from TreeBASE - more related to phylotastic's goal than to updating/creating phylogenies
 
 ### 3. Mining phylogenetic tree databases
 
@@ -416,7 +417,7 @@ pipeline.
 
 ### 5. getting metadata and not sequences from GenBank.
 
-Datataxa @ruiz2019datataxa - no citations yet - focus on extracting metadata from GenBank seqeunce information.
+Datataxa @ruiz2019datataxa - no citations yet - focus on extracting metadata from GenBank sequence information.
 
 
 ## Phylota overview
@@ -427,5 +428,7 @@ Datataxa @ruiz2019datataxa - no citations yet - focus on extracting metadata fro
 # Acknowledgements
 
 We acknowledge contributions from
+
+The University of California, Merced cluster, MERCED (Multi-Environment Research Computer for Exploration and Discovery) supported by the National Science Foundation (Grant No. ACI-1429783).
 
 # References
