@@ -1,0 +1,29 @@
+
+It is well known that GenBank [@benson2000genbank; @wheeler2000database] holds enormous amounts of genetic data, and it continues to grow. **Too cliché**
+
+A lot of this genetic data has the potential to be used to reconstruct the phylogenetic
+history of various organisms [@sanderson2008phylota].
+Pipelines that harness this potential have been available for over a decade now, such
+as the Phylota browser, and PHLAWD. New ones keep on being developed, such as SUPERSMART
+and the upgraded version of PHLAWD, PyPHLAWD.
+Notably large phylogenies have been constructed using some of these tools,
+Some others have not been used that much. So, how well accepted is this approach in the community?
+
+Various efforts to automatize parts of the process in order to be able to take advantage of data in public databases.
+
+Most of this tools were envisioned for phylogenomics, were the analyses and processing of huge amounts of genetic data is naturally needed. Without automatization, curation of a phylogenomics database is a task that could not be finished in human time.
+Some pipelines sacrificed precision and accuracy for quantity. But many tools to check
+Examples of pipelines for phylogenomics:
+BIR [Blast, Identify, Realign; @kumar2015bir] takes curated alignments as seed to find more data on genomic databases and create new phylogenomic hypotheses
+
+Among other things, one of the major benefits stemming from these efforts are pipelines that make it easier to implement a reproducibile workflow in phylogenetic studies.
+
+
+A widespread practice is a thorough visual inspection and manual curation of alignments, that are checked for "errors" that can usually result from similarity algorithms ***(give examples)***.
+Commonly, alignment curators also take into account how the nature of the genetic marker, the taxon sampling and the organisms themselves, might affect the alignments. This hypotheses of homology are charged with expert knowledge, and hours of study, making them a scientifically reliable source if biological information.
+As such, they represent an ideal platform to build up new phylogenetic knowledge.
+Not many studies report its use.
+Which might be an indication that the amount of manual effort that is required to curate gene alignments is still a bottleneck.
+
+
+*** Introduce the Open Tree of Life***

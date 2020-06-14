@@ -46,25 +46,7 @@ use are available at <https://github.com/McTavishLab/physcraper>.
 
 Phylogenies are important.
 
-Various efforts to automatize parts of the process in order to be able to take advantage of data in public databases.
-
-Most of this tools were envisioned for phylogenomics, were the analyses and processing of huge amounts of genetic data is naturally needed. Without automatization, curation of a phylogenomics database is a task that could not be finished in human time.
-Some pipelines sacrificed precision and accuracy for quantity. But many tools to check
-Examples of pipelines for phylogenomics:
-BIR [Blast, Identify, Realign; @kumar2015bir] takes curated alignments as seed to find more data on genomic databases and create new phylogenomic hypotheses
-
-Among other things, one of the major benefits stemming from these efforts are pipelines that make it easier to implement a reproducibile workflow in phylogenetic studies.
-
-
-A widespread practice is a thorough visual inspection and manual curation of alignments, that are checked for "errors" that can usually result from similarity algorithms ***(give examples)***.
-Commonly, alignment curators also take into account how the nature of the genetic marker, the taxon sampling and the organisms themselves, might affect the alignments. This hypotheses of homology are charged with expert knowledge, and hours of study, making them a scientifically reliable source if biological information.
-As such, they represent an ideal platform to build up new phylogenetic knowledge.
-Not many studies report its use.
-Which might be an indication that the amount of manual effort that is required to curate gene alignments is still a bottleneck.
-
-*** Introduce the Open Tree of Life***
-
-Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, automatization of phylogenetic reconstruction is still not a widespread practice and it would be key for adoption of bettr reproducibility practices in the scientific community. ***paragraph better to end discussion??? ***
+Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, automatization of phylogenetic reconstruction is still not a widespread practice and among other benefits, it might be key for adoption of better reproducibility practices in the phylogenetics community. ***paragraph better to end discussion??? ***
 
 The process of phylogenetic reconstruction implies many steps (that I generalize to the following):
 
@@ -106,14 +88,6 @@ A key aspect of the standard phylogenetic workflow is comparison with already ex
 phylogenetic hypotheses and with phylogenies that are considered "best" by experts
 not only in phylogenetics, but also experts on the focal group of study.
 
-It is well known that GenBank [@benson2000genbank; @wheeler2000database] holds enormous amounts of genetic data, and it continues to grow.
-A lot of this genetic data has the potential to be used to reconstruct the phylogenetic
-history of various organisms [@sanderson2008phylota].
-Pipelines that harness this potential have been available for over a decade now, such
-as the Phylota browser, and PHLAWD. New ones keep on being developed, such as SUPERSMART
-and the upgraded version of PHLAWD, PyPHLAWD.
-Notably large phylogenies have been constructed using some of these tools,
-Some others have not been used that much. So, how well accepted is this approach in the community?
 
 Concerns I think people have about these tools:
 - Errors in identification of sequences
@@ -153,12 +127,11 @@ Physcraper implements node by node comparison of the the original and the update
 
 ## The input: a study tree and an alignment
 
-- The study tree should be in the OToL store [phylesystem; @mctavish2015phylesystem]. The main
-  reason for this is that trees in OToL have a set of user defined characteristics
-  that are essential for automatizing the phylogeny update process. The most relevant of these being the definition of ingroup and outgroup.
-  A user can choose from a variety of published trees supporting any node of the synthetic OToL. If the tree you are
-  interested in is not in there, you should upload it via OToL's curator tool (<https://tree.opentreeoflife.org/curator).
-- The alignment should be a gene alignment that was used to generate the tree. The
+- The study tree is a published phylogenetic tree stored in the OToL database, phylesystem [@mctavish2015phylesystem]. The main
+  reason for this is that trees in phylesystem have a set of user defined characteristics
+  that are essential for automatizing the phylogeny update process. The most relevant of these being the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the next steps of the pipeline.
+  A user can choose from the 'r rotl::tol_about()$num_source_trees' published trees supporting the resolved node of the synthetic tree in the OToL website (<>). If the tree you are interested in updating is not in there, you can upload it via OToL's curator tool (<https://tree.opentreeoflife.org/curator).
+- The alignment should be a gene alignment that was used to generate the tree. The original
   alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD (<http://datadryad.org/>), or the journal were the tree was originally published.
   If the alignment is stored in TreeBase, `physcraper` can download it directly,
@@ -172,27 +145,23 @@ Physcraper implements node by node comparison of the the original and the update
 - Unmatched taxon names are dropped from both the tree and alignment.
   <!--The minimum amount of tips necessary for a physcraper run is just one!!!-->
   Technically, just one matching name is needed to perform the searches. Please, see next section.
-- A ".tre" and ".aln" files are generated and saved as input for a `physcraper` run.
-
+- A ".tre" file and a ".fas" file containing only the matched taxa are generated and saved in the `inputs` folder to be used in the following steps.
 
 ## DNA sequence search and cleaning
 
-- The next step is to identify and validate the search taxon. This must be a taxon (a named clade)
-  on the NCBI taxonomy. It will be used to constraint the DNA sequence search on
-  the nucleotide database within that taxonomic group.
-  By default, the search taxon is the Most Recent Common Ancestor (MRCA) of the
-  matched taxa belonging to the ingroup, that is also a named clade in the NCBI taxonomy. This is refered to as the Most Recent Common
-  Ancestral Taxon (MRCAT; also reffered the Least Inclusive Common Ancestral Taxon - LICA).
-  The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade.
+- The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be provided by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
+  matched taxa belonging to the ingroup in the tree, that is also a named clade in the reference taxonomy. This is known as the Most Recent Common
+  Ancestral Taxon (MRCAT; also referred to as the Least Inclusive Common Ancestral Taxon - LICA).
+  The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
   To automatically identify the MRCAT of a group of taxon names, we make use of the OToL taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>).
+
   In the case that only one taxon from the ingroup is matched in both the tree and alignment, the MRCAT
   for that single taxon would be determined as ***HOW?***
-  By default, the set of taxon names that are searched for their MRCAT to be used as search taxon belong to the ingroup defined by the curator in the OToL phylesystem.
   <!-- ***Physcraper does not take into account the focal clade from Open Tree. Because that is arbitrarily assigned or not by a curator. The focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.-->
-  A search taxon can also be given by the user. It can be a more inclusive
+  If the search taxon is provided by the user, it can be a more inclusive
   clade, if the user wants to perform a wider search, outside the MRCAT of the matched taxa, e.g., including all taxa within
-  the family or the order. It can also be a less inclusive clade, if the user only
-  wants to focus on enriching a particular clade/region within the tree.
+  the family or the order of the ingroup. It can also be a less inclusive clade, if the user only
+  wants to focus on enriching a particular clade/region within the ingroup.
 - The Basic local alignment search tool, BLAST [@altschul1990basic; altschul1997gapped] is used to identify
   similarity between DNA sequences within the search taxon in a nucleotide
   database, and the remaining sequences on the alignment.
@@ -238,11 +207,13 @@ Physcraper implements node by node comparison of the the original and the update
 
 ## Tree reconstruction
 
-- A gene tree is reconstructed for each alignment provided, using RAxML [@stamatakis2014raxml] with bootstrap replicates.
-- The final result is a gene tree coupled to the conlict info.
+- A gene tree is reconstructed for each alignment provided, using RAxML [@stamatakis2014raxml] with 100 bootstrap replicates.
+- The root of the tree is determined by finding the parent node of the sequences that do not belong to the ingroup. This ensures a correct rooting of the tree even when the search taxon is more inclusive than the ingroup.
+- The final result is a tree for eac of the genes provided in the alignment.
 
 ## Tree comparison
 
+- Gene trees are then coupled to conlict info.
 - Conflict information can only be generated in the context of the whole Open Tree of
 Life. Otherwise, it is not really possible to get conflict data.
 ***- One way to compare two independent phylogenetic trees is to compare them both to
