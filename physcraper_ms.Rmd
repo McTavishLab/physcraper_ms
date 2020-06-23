@@ -197,21 +197,21 @@ Physcraper implements node by node comparison of the the original and the update
 
 - The software MUSCLE [@edgar2004muscle] is implemented to perform alignments.
 - First, all new sequences are aligned using default MUSCLE options.
-- Then, a MUSCLE profile alignment is performed, in which the alignment of new sequences
-  is aligned against the original alignment, working as a template. This ensures that
-  the final alignment follows the homology criteria established by the original alignment.
+- Then, a MUSCLE profile alignment is performed, in which the original alignment
+  is used as a template to align new sequences. This ensures that the final alignment
+  follows the homology criteria established by the original alignment.
 - The final alignment is not further processed automatically. We encourage users
   to check it using any of the many tools for alignment processing, and eliminate
   columns with no information.
 
-## Tree reconstruction
+## Tree reconstruction and comparison
 
-- A gene tree is reconstructed for each alignment provided, using RAxML [@stamatakis2014raxml] with 100 bootstrap replicates.
+- A gene tree is reconstructed for each alignment provided, using the software RAxML [@stamatakis2014raxml]
+  with 100 classic bootstrap [@felsenstein1985confidence] replicates by default. The number of bootsrap replicates can be modified by the user.
+  Other bootstrap types are transfer bootstrap expectation (TBE) recently proposed in @lemoine2018renewing.
+- The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
+- A conflict analysis is then run
 - The root of the tree is determined by finding the parent node of the sequences that do not belong to the ingroup. This ensures a correct rooting of the tree even when the search taxon is more inclusive than the ingroup.
-- The final result is a tree for eac of the genes provided in the alignment.
-
-## Tree comparison
-
 - Gene trees are then coupled to conlict info.
 - Conflict information can only be generated in the context of the whole Open Tree of
 Life. Otherwise, it is not really possible to get conflict data.
