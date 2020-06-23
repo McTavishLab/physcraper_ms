@@ -151,26 +151,25 @@ Physcraper implements node by node comparison of the the original and the update
 
 - The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be provided by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
   matched taxa belonging to the ingroup in the tree, that is also a named clade in the reference taxonomy. This is known as the Most Recent Common
-  Ancestral Taxon (MRCAT; also referred to as the Least Inclusive Common Ancestral Taxon - LICA).
+  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA).
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
   To automatically identify the MRCAT of a group of taxon names, we make use of the OToL taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>).
 
   In the case that only one taxon from the ingroup is matched in both the tree and alignment, the MRCAT
   for that single taxon would be determined as ***HOW?***
   <!-- ***Physcraper does not take into account the focal clade from Open Tree. Because that is arbitrarily assigned or not by a curator. The focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.-->
-  If the search taxon is provided by the user, it can be a more inclusive
-  clade, if the user wants to perform a wider search, outside the MRCAT of the matched taxa, e.g., including all taxa within
-  the family or the order of the ingroup. It can also be a less inclusive clade, if the user only
-  wants to focus on enriching a particular clade/region within the ingroup.
-- The Basic local alignment search tool, BLAST [@altschul1990basic; altschul1997gapped] is used to identify
+  Users can provide a search taxon that is either a more or a less inclusive
+  clade relative to the ingroup of the original phylogeny. If the search taxon is more inclusive, the sequence search will be performed outside the MRCAT of the matched taxa, e.g., including all taxa within
+  the family or the order that the ingroup belongs to. If the search taxon is a less inclusive clade, the users can focus on enriching a particular clade/region within the ingroup of the phylogeny.
+- The Basic Local Alignment Search Tool, BLAST [@altschul1990basic; altschul1997gapped] is used to identify
   similarity between DNA sequences within the search taxon in a nucleotide
   database, and the remaining sequences on the alignment.
+  The BLAST command line tools [@camacho2009blast] are used for both web-based and local-database searches.
   <!--***How does the blast is setup? Is it an all-blast-all??***-->
-- A pairwise all-against-all BLAST search is performed. This means that each sequence
+- A pairwise alignment-against-all BLAST search is performed. This means that each sequence
   in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
   taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
-  along with their corresponding ide numbers (accesion numbers in the case of the GenBank database). This information will be
-  used later to store the whole sequences into a new library.
+  along with their corresponding identification numbers (accesion numbers in the case of the GenBank database). This information will be used later to store the whole sequences in a dedicated library within the physcraper folder, allowing for secondary analyses to run significantly faster.
 - The DNA sequence similarity search can be done on a local database that is easily
   setup by the user. In this case, the BLASTn algorithm is used to performs the similarity search.
 - The search can also be performed remotely, on the NCBI database. In this case, the
