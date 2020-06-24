@@ -4,13 +4,16 @@ output:
   html_document: default
 ---
 
-# Physcraper: A Python package for continually updated gene trees
+# Physcraper: a python package for continually updated gene trees
 
 **Authors**: Luna L. Sánchez-Reyes^1^, Martha Kandziora, Emily Jane McTavish^1^
 
 **Correspondence address**:
 
-1. *Department of Ecology and Evolutionary Biology, University of Tennessee, Knoxville, 425 Hesler Biology Building, Knoxville, TN 37996, USA*
+1. *School of Natural Sciences, University of California, Merced, 5200 N. Lake Rd, Merced CA 95343*
 
-**Corresponding authors**: sanchez.reyes.luna@gmail.com, ejmctavish@gmail.com
-<!-- \end{nolinenumbers} -->
+**Corresponding authors**:
+
+sanchez.reyes.luna@gmail.com, ejmctavish@gmail.com
+
+**Running title**: Continually updated gene trees

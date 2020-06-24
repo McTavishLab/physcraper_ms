@@ -3,41 +3,39 @@ output:
   bookdown::pdf_document2:
     keep_tex: yes
     toc: false
-    includes:
-      # in_header: preamble.tex
-      # after_body: [biorxiv_2019.09.28figcaps.tex]
-    # fig_caption: no
 geometry: margin = 1in
 bibliography: paper.bib
 csl: submission-mee/methods-in-ecology-and-evolution.csl
 link-citations: yes
-# indent: true # this works
-# header-includes:
-#    - \setlength\parindent{24pt}  # this works too, but I'm gonna indent manually with 4 spaces
-# nope, 4 spaces indents are not recognized, they do something else
 linestretch: 2
 header-includes:
     - \usepackage{caption}
     - \usepackage{blindtext}
     - \usepackage[left]{lineno}
     - \linenumbers
-  # - \usepackage{xr}
-    # - \usepackage[utf8]{inputenc}
-    # - \usepackage[english]{babel}
-    # - \usepackage[document]{ragged2e}
-# nocite: |
-#   @barker2012going, @barker2015new, @burns2014phylogenetics, # @claramunt2015new, @gibb2015new, @Hedges2015, # @hooper2017chromosomal, @Jetz2012, @price2014niche
+params:
+  author1: Luna L. Sanchez Reyes
+  affiliation: School of Natural Sciences, University of California, Merced
 ---
 
-<!-- ``` {r child = '0-header.Rmd'} -->
-<!-- ``` -->
+`r params$affiliations`
+Manuscript prepared for submission to Methods in Ecology and Evolution
+Article type: Application
+
+
 \newpage
+# Summary
+
 ``` {r child = '1-abstract.Rmd'}
 ```
+
+**Keywords**: phylogeny,
+
 \newpage
 
 ``` {r child = '2-body.Rmd'}
 ```
+
 \newpage
 \begin{center}
 \textsc{References}

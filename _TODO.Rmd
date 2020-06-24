@@ -18,6 +18,12 @@ knitr::opts_knit$set(
 
 # next:
 
+- [ ] Do not cite Felsenstein 1985 for bootstrap, just the call that we use for RAxML:
+rax_ex, "-T", "{}".format(self.config.num_threads),
+                                 "-m", "GTRCAT",
+                                 "-s", alignment,
+                                 "-p", "1", "-b", "1", "-#", str(num_reps),
+                                 "-n", "BOOT{}".format(self.date)
 - [ ] Finding a tree to update
   - [ ]  Using the curator website. Mention that there is a differnce between focal clade and ingroup. Physcraper does not take into account the focal clade from Open Tree. Because that is arbitrarily assigned by a curator. The focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.
   - [ ] The link between the ingroup and the search taxon.
@@ -32,7 +38,7 @@ knitr::opts_knit$set(
 
 - [ ] bootsrap: is it classic [@felsenstein1985confidence] or transfer bootstrap expectation [@lemoine2018renewing]
 
-- [ ] check the all-vs-all blast method, whre does it come from?
+- [ ] check the all-vs-all blast method, where does it come from?
 
 - [ ] add phylotaR to the table of pipelines for mining
 - [ ] check paper: A System for Phylogenetic Analyses over Alignments of Next Generation Sequence Data
@@ -61,9 +67,10 @@ knitr::opts_knit$set(
 
 - [ ] pruning trees
 
-
-
 - [ ]  In the case that only one taxon from the ingroup is matched in both the tree and alignment, the MRCAT for that single taxon would be determined as ***HOW?***
+  - [ ] automatically, it will return the same taxon, even if its a species.
+  - [ ] all tips in original tree are mapped to ott ids
+  - [ ] sequences in alignment that are not mapped to ott ids will be kept in the alignment but not blast. Would only happen if somebody decides not to map a tip bc it is no longer the taxon they tought based on the new phylogenetic relationships.
 
 # Done!
 

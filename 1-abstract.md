@@ -8,12 +8,10 @@ author:
 date: '24 June, 2020'
 csl: apa.csl
 output:
-  
+
   redoc::redoc
 keep_tex: true
 ---
-
-# Abstract
 
 1. Phylogenies are a key part of research in all areas of biology. Tools that automatize
 some parts of the process of phylogenetic reconstruction (mainly character matrix construction)
@@ -41,4 +39,3 @@ trees using the conflict API of OToL, and summarizes differences.
 
 1. Physcraper can be used with any OS. Detailed instructions for installation and
 use are available at <https://github.com/McTavishLab/physcraper>.
-
