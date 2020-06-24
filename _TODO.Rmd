@@ -1,0 +1,85 @@
+---
+title: Daily goals
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ilex}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+knitr::opts_knit$set(
+  global.par = TRUE
+  )
+```
+
+# next:
+
+- [ ] Finding a tree to update
+  - [ ]  Using the curator website. Mention that there is a differnce between focal clade and ingroup. Physcraper does not take into account the focal clade from Open Tree. Because that is arbitrarily assigned by a curator. The focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.
+  - [ ] The link between the ingroup and the search taxon.
+
+- [ ] How does the blast cycles results compare to other tools?
+
+- [ ] Intro: why python? Introduce the taxon name space and the possibility of cross conectivity between platforms.
+
+- [ ] How to create taxon name spaces for new trees so we can perform a comparison?
+
+- [ ] How does pyphlawd, or phylota do the exemplar per species choosing for the baited analyses?
+
+- [ ] bootsrap: is it classic [@felsenstein1985confidence] or transfer bootstrap expectation [@lemoine2018renewing]
+
+- [ ] check the all-vs-all blast method, whre does it come from?
+
+- [ ] add phylotaR to the table of pipelines for mining
+- [ ] check paper: A System for Phylogenetic Analyses over Alignments of Next Generation Sequence Data
+
+- [ ] order of trees for synthesis https://files.opentreeoflife.org/synthesis/opentree12.3/opentree12.3/phylo_input/study_tree_pairs.txt
+
+- [ ] comment on things needed for automatization of tree comparison
+  - [ ] validating taxon names with a reference taxonomy
+  - [ ] taxon sampling statistics
+  - [ ] finding trees in a collection
+  - [ ] pruning source trees to contain only taxa of interest
+
+- [ ] the case for taxon name standardization
+  - [ ] cite studies that have pointed out before that it is a necessary step for effective automated tree comparison @page2005taxonomic; @ranwez2009phyloexplorer; @stoltzfus2013phylotastic; treebase
+
+- [ ] statistics on taxon coverage
+  - [ ] dataset sparseness
+  - [ ] taxonomic coverage of the datasets
+  - [ ] taxonomic sampling among groups
+  - [ ] detect under-represented taxa
+
+- [ ] finding trees to update:
+  - [ ] from a collection? NOT NOW
+  - [ ] containing taxa from a specific taxon
+  - [ ] trees from a study
+
+- [ ] pruning trees
+
+- [ ] the root
+  - [ ] write something about the need to set the root to be able to do comparisons
+
+- [ ]  In the case that only one taxon from the ingroup is matched in both the tree and alignment, the MRCAT for that single taxon would be determined as ***HOW?***
+
+# Done!
+
+- [x] add bootsrap to methods
+
+- [x] add BLAST command line tools to methods [@camacho2009blast]
+
+- [X] explain how we root the updated trees
+
+- [X] add blast citation!
+
+- [x] add merced cluster nsf grant to acknowledgments
+- [X] add genbank citations
+  - [x] refer to it as a nucleotode database when decsribing the methods, bc it could be any molecular database, not just GenBank.
+
+- [x] the ingroup
+  - [x] how is it determined
+  - [x] how is it relevant for blast results
