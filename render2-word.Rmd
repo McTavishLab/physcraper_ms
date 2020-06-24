@@ -1,0 +1,23 @@
+---
+title: 'Physcraper: A Python package for continually updated gene trees'
+author:
+  - Luna L. Sanchez Reyes
+  - Martha Kandziora
+  - Emily Jane McTavish
+  - University of California, Merced
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+bibliography: paper.bib
+csl: apa.csl
+output:
+  redoc::redoc
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r body, child="1-abstract.Rmd"}
+```
+
+```{r body, child="2-body.Rmd"}
+```

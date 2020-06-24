@@ -1,0 +1,30 @@
+---
+journal: jhm
+layout: draft
+title: Title here
+author1: Andrew N. Other
+author2: Fred T. Secondauthor
+currentaddress: "Current address: Some other place, Germany"
+affiliation: "American Meteorological Society,Boston, Massachusetts"
+exauthors: 
+  - name: Ping Lu
+    exaffiliation: Princeton University
+    correspondingauthor: "American Meteorological Society, 45 Beacon St., Boston, MA 02108."
+    email: \email{groupleader@unknown.uu}
+  - name: Miao Yu
+    exaffiliation: University of Waterloo
+    currentaddress: "Current address: Some other place, Canada"
+abstract: |
+  some abstract
+bibliography: ../paper.bib
+csl: american-meteorological-society.csl
+output: rticles::ams_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r body, child="../2-body.Rmd"}
+```

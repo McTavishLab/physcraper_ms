@@ -1,0 +1,36 @@
+---
+title: "Systematic Biology regular submission"
+subtitle: "Submission and Formatting Instructions"
+author:
+  - name: First Author
+    affiliation:
+    - Affiliation 1
+    - Affiliation 2
+    email:  email@domain
+  - name: Second Author
+    affiliation:
+    - Affiliation 1
+    - Affiliation 2
+    email:  email@domain
+  - name: Third Author
+    affiliation:
+    - Affiliation 1
+    - Affiliation 2
+    email:  email@domain
+abstract: |
+  This document provides a basic template for the 2-page extended abstract and some submission guidelines. Including an abstract is optional, as the document itself is an extended abstract. If included, an abstract should be a single paragraph.
+keywords: "Optional, Yet Potentially, Helpful"
+output:
+  bookdown::pdf_document2:
+    template: sysbio-regular-template.tex
+    keep_tex: yes
+bibliography: paper.bib # Replace with your .bib file
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r body, child="2-body.Rmd"}
+```

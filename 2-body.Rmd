@@ -12,35 +12,6 @@ output:
   redoc::redoc
 ---
 
-# Abstract
-
-1. Phylogenies are a key part of research in all areas of biology. Tools that automatize
-some parts of the process of phylogenetic reconstruction (mainly character matrix construction)
-have been developed for the advantage of both specialists in the field of phylogenetics and nonspecialists.
-However, interpretation of results, comparison with previously available phylogenetic
-hypotheses, and choosing of one phylogeny for downstream analyses and discussion still impose difficulties
-to one that is not a specialist either on phylogenetic methods or on a particular group of study.
-
-1. Physcraper is an open‐source, command-line Python program that automatizes the update of published
-phylogenies by making use of public DNA sequence data and taxonomic information,
-providing a framework for comparison of published phylogenies with their updated versions.
-
-1. Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
-hypothesis based on already available expert phylogenetic knowledge.
-Phylogeneticists and group specialists will find it useful as a tool to facilitate comparison
-of alternative phylogenetic hypotheses (topologies).
-***Is physcraper intended for the nonspecialist?? We have two types of nonspecialists:
-the ones that do not know about phylogenetic methods and the ones that might know
-about phylogenetic methods but do not know much about a certain biological group.***
-
-1. Physcraper implements node by node/topology comparison of the the original and the updated
-trees using the conflict API of OToL, and summarizes differences.
-
-1. We hope the physcraper workflow demonstrates the benefits of opening results in phylogenetics and encourages researchers to strive for better data sharing practices.
-
-1. Physcraper can be used with any OS. Detailed instructions for installation and
-use are available at <https://github.com/McTavishLab/physcraper>.
-
 
 # Introduction
 
@@ -254,7 +225,7 @@ rotl::get_tree_ids(rotl::get_study_meta("pg_238"))
 rotl::candidate_for_synth(rotl::get_study_meta("pg_238"))
 my_trees <- rotl::get_study("pg_238")
 ```
-Both trees from this study have `r ape::Ntip(my_trees[[1]])` tips.
+Both trees from this study have `r tryCatch(ape::Ntip(my_trees[[1]]), error = function(e){return(NA)})` tips.
 
 Let's check what one of the trees looks like:
 
@@ -322,7 +293,7 @@ Compare and discuss.
 
 How is physcraper already useful:
 - to mine targeted sequences, in this way it is similar to baited analyses from PHLAWD and pyPHLAWD. Phylota does not do baited analyses, I think, only clustered analyses.
--
+- Finding
 
 How can it be used for the advantage of the field:
 - rapid phylogenetic placing of newly discovered species, as mentioned in @webb2010biodiversity
@@ -361,6 +332,7 @@ Things that physcraper does not do:
 | OneTwoTree | @drori2018onetwotree | 7 studies | Web‐based, user-friendly, online tool for species-tree reconstruction, based on the *supermatrix paradigm* and retrieves all available sequence data from NCBI GenBank| supermatrix |
 | pyPhlawd | @smith2019pyphlawd | 6 studies | baited and clustering analyses | Supermatrix or gene tree |
 | Phylotol | @ceron2019phylotol | 5 studies | "phylogenomic pipeline to allow easy incorporation of data from  high-throughput sequencing studies, to automate production of both multiple sequence alignments and gene trees, and to identify and remove contaminants. PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree of life", i.e., bacteria and unicellular eukaryotes | supermatrix and gene trees |
+| phylotaR | @bennett2018phylotar | studies |  |  |
 
 According to @ceron2019phylotol, PhyLoTA and BIR "focus on the identification and collection
 of homologous and paralog genes from public databases such as GenBank", while both AMPHORA and PHLAWD
@@ -390,7 +362,7 @@ Datataxa @ruiz2019datataxa - no citations yet - focus on extracting metadata fro
 
 ## Phylota overview
 
-```{r phylota, child="phylota-overview.Rmd"}
+```{r phylota, child="100-phylota-overview.Rmd"}
 ```
 
 # Acknowledgements

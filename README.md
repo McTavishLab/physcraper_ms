@@ -5,7 +5,14 @@
 ```
 rmarkdown::render(input = "physcraper_ms.Rmd", output_file = paste("physcraper_ms-", Sys.Date(), ".pdf"))
 ```
-The following will render the ms on various outputs specified in the yaml. However, it will not work with different outputs from the `rticles` package.
+
+```
+rmarkdown::render(input = "render2-word.Rmd", output_file = paste0("docs/word-", Sys.Date(), ".docx"))
+rmarkdown::render(input = "render2-submission-sysbio.Rmd", output_file = paste0("docs/submission-sysbio-", Sys.Date(), ".pdf"))
+
+```
+
+The following will render the ms on various outputs specified in the yaml. This does not work with different outputs from the `rticles` package.
 
 ```
 rmarkdown::render(input = "physcraper_ms.Rmd", output_format= "all")

@@ -61,12 +61,15 @@ knitr::opts_knit$set(
 
 - [ ] pruning trees
 
-- [ ] the root
-  - [ ] write something about the need to set the root to be able to do comparisons
+
 
 - [ ]  In the case that only one taxon from the ingroup is matched in both the tree and alignment, the MRCAT for that single taxon would be determined as ***HOW?***
 
 # Done!
+
+- [ ] determining the root
+  - [ ] write something about the need to set the root to be able to do comparisons
+  - [ ] say that utis hard to set it up automatically and that solutions are being sought
 
 - [x] add bootsrap to methods
 
