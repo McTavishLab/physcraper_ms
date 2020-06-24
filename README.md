@@ -9,6 +9,7 @@ rmarkdown::render(input = "physcraper_ms.Rmd", output_file = paste("physcraper_m
 ```
 rmarkdown::render(input = "render2-word.Rmd", output_file = paste0("docs/word-", Sys.Date(), ".docx"))
 rmarkdown::render(input = "render2-submission-sysbio.Rmd", output_file = paste0("docs/submission-sysbio-", Sys.Date(), ".pdf"))
+rmarkdown::render(input = "render2-submission-mee.Rmd", output_file = paste0("docs/submission-mee-", Sys.Date(), ".pdf"))
 
 ```
 

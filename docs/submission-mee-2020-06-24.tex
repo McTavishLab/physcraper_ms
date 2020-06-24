@@ -1,0 +1,1631 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{setspace}
+\setstretch{2}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin = 1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{caption}
+\usepackage{blindtext}
+\usepackage[left]{lineno}
+\linenumbers
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\newpage
+
+\hypertarget{abstract}{%
+\section{Abstract}\label{abstract}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Phylogenies are a key part of research in all areas of biology. Tools that automatize
+  some parts of the process of phylogenetic reconstruction (mainly character matrix construction)
+  have been developed for the advantage of both specialists in the field of phylogenetics and nonspecialists.
+  However, interpretation of results, comparison with previously available phylogenetic
+  hypotheses, and choosing of one phylogeny for downstream analyses and discussion still impose difficulties
+  to one that is not a specialist either on phylogenetic methods or on a particular group of study.
+\item
+  Physcraper is an open‐source, command-line Python program that automatizes the update of published
+  phylogenies by making use of public DNA sequence data and taxonomic information,
+  providing a framework for comparison of published phylogenies with their updated versions.
+\item
+  Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
+  hypothesis based on already available expert phylogenetic knowledge.
+  Phylogeneticists and group specialists will find it useful as a tool to facilitate comparison
+  of alternative phylogenetic hypotheses (topologies).
+  \textbf{\emph{Is physcraper intended for the nonspecialist?? We have two types of nonspecialists:
+  the ones that do not know about phylogenetic methods and the ones that might know
+  about phylogenetic methods but do not know much about a certain biological group.}}
+\item
+  Physcraper implements node by node/topology comparison of the the original and the updated
+  trees using the conflict API of OToL, and summarizes differences.
+\item
+  We hope the physcraper workflow demonstrates the benefits of opening results in phylogenetics and encourages researchers to strive for better data sharing practices.
+\item
+  Physcraper can be used with any OS. Detailed instructions for installation and
+  use are available at \url{https://github.com/McTavishLab/physcraper}.
+\end{enumerate}
+
+\newpage
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Phylogenies are important.
+
+Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, automatization of phylogenetic reconstruction is still not a widespread practice and among other benefits, it might be key for adoption of better reproducibility practices in the phylogenetics community. \textbf{\emph{paragraph better to end discussion??? }}
+
+The process of phylogenetic reconstruction implies many steps (that I generalize to the following):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Obtention of molecular or morphological character data -- get DNA from some organisms
+  and sequence it, or get it from an online nucleotide data repository, such as GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}).
+\item
+  Assemble a hypothesis of homology -- Create a matrix of your character data, by
+  aligning the sequences, in the case of molecular data. Make sure thay are paralogs!
+\item
+  Analyse this hypothesis of homology to infer phylogenetic relationships among
+  the organisms you are studying -- Use different available programs to infer molecular
+  evolution, trees and times of divergence.
+\item
+  Discuss the inferred relationships in the context of previous hypothesis, the
+  biology and biogeography of the organisms, etc. -- Answer the question, \emph{is this phylogenetic solution fair/reasonable?}
+\end{enumerate}
+
+Each of these steps require different types of specialized training: in the field,
+in the lab, in front of a computer, discussions with experts in the methods, and/or in the biological group of study.
+All of these steps also require considerable amounts of time for training and implementation.
+
+In the past decade, various studies have developed solutions to automatize the first and second steps, by creating
+pipelines that mine already available molecular data from the GenBank repository (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}),
+to obtain homologous characters that can be used for phylogenetic reconstruction.
+These tools have been presented as aid for the nonspecialist to decrease some of
+the difficulties in the generation of phylogenetic knowledge. However, they are
+not that often used as so, suggesting that there are still difficulties for the nonspecialist.
+The phylogenetic community has some reserves towards these tools, too. Mainly because they sometimes act as a black box.
+However, automatizing the assembly of the character data set is a crucial step towards
+reproducibility for a task that was otherwise primarily artisanal and hence largely
+non-reproducible.
+
+Even if it is hard to obtain phylogenies, we invest copious amounts of time and energy in generating them.
+Issues such as food security, global warming, global health are crucial to solve and phylogenies might help.
+There is a lot of phylogenetic knowledge already available in published peer-reviewed studies.
+In this sense, the non-specialists (and also the specialist) face a new problem: how do I choose the best phylogeny.
+
+Public phylogenies can be updated with the ever increasing amount of genetic data that is available on GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}).
+
+We present a way to automatize and standardize the comparison of phylogenetic hypotheses and to allow reproducibility of this last step of the research process.
+
+A key aspect of the standard phylogenetic workflow is comparison with already existing
+phylogenetic hypotheses and with phylogenies that are considered ``best'' by experts
+not only in phylogenetics, but also experts on the focal group of study.
+
+Concerns I think people have about these tools:
+- Errors in identification of sequences
+- Little control along the process
+- Too much of a black box?
+
+Most of these phylogenies are being constructed by people learning about the methods,
+so they want to know what is going on.
+
+The pipelines are so powerful and they will give you an answer, but there
+is no way to assess if it is better than previous answers, it just assumes it is
+better because it used more data.
+
+All these pipelines start tree construction from zero? Yes.
+
+The goal of Physcraper is to build upon previous phylogenetic knowledge,
+allowing a direct comparison between existing phylogenies and phylogenies that are constructed
+using new genetic data retrieved from a public nucleotide database (i.e., GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000})).
+
+To achieve this, Physcraper uses the Open Tree of Life phylesystem and connects it
+to the TreeBase database, to (1) get the original DNA data set matrices (alignments) that produced
+a phylogeny that was published and then made available in the OToL database, (2)
+use this DNA alignments as a starting point to get new genetic data belonging
+to the focal group of study, to (3) finally update the phylogenetic relationships in the group.
+
+A less automated workflow is one in which the alignments that generated the published
+phylogeny are stored in other public database (such as DRYAD) or elsewhere (the users computer), and
+are provided by the users.
+
+The original tree is by default used as starting tree for the phylogenetic searches, but it
+can also be set as a full topological constraint or not used at all, depending on
+the goals of the user.
+
+Physcraper implements node by node comparison of the the original and the updated trees, using the conflict API of OToL.
+
+\hypertarget{how-does-physcraper-work}{%
+\section{How does Physcraper work?}\label{how-does-physcraper-work}}
+
+\hypertarget{the-input-a-study-tree-and-an-alignment}{%
+\subsection{The input: a study tree and an alignment}\label{the-input-a-study-tree-and-an-alignment}}
+
+\begin{itemize}
+\tightlist
+\item
+  The study tree is a published phylogenetic tree stored in the OToL database, phylesystem (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}). The main
+  reason for this is that trees in phylesystem have a set of user defined characteristics
+  that are essential for automatizing the phylogeny update process. The most relevant of these being the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the next steps of the pipeline.
+  A user can choose from the `r rotl::tol\_about()\$num\_source\_trees' published trees supporting the resolved node of the synthetic tree in the OToL website (\textless{}\textgreater{}). If the tree you are interested in updating is not in there, you can upload it via OToL's curator tool (\textless{}\url{https://tree.opentreeoflife.org/curator}).
+\item
+  The alignment should be a gene alignment that was used to generate the tree. The original
+  alignments are usually stored in a public repository such as TreeBase (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Vos \emph{et al.} \protect\hyperlink{ref-vos2012nexml}{2012}),
+  DRYAD (\url{http://datadryad.org/}), or the journal were the tree was originally published.
+  If the alignment is stored in TreeBase, \texttt{physcraper} can download it directly,
+  either from the TreeBASE website (\url{https://treebase.org/})
+  or through the TreeBASE GitHub repository (SuperTreeBASE; \url{https://github.com/TreeBASE/supertreebase}).
+  If the alignment is on another repository, or provided personally by the owner, a copy of it has to be
+  downloaded by the user, and it's local path has to be provided as an argument.
+\item
+  A taxon name matching step is performed to verify that all taxon names on the tips
+  of the tree are in the DNA character matrix and vice versa.
+\item
+  A ``.csv'' file with the summary of taxon name matching is produced for the user.
+\item
+  Unmatched taxon names are dropped from both the tree and alignment.
+  Technically, just one matching name is needed to perform the searches. Please, see next section.
+\item
+  A ``.tre'' file and a ``.fas'' file containing only the matched taxa are generated and saved in the \texttt{inputs} folder to be used in the following steps.
+\end{itemize}
+
+\hypertarget{dna-sequence-search-and-cleaning}{%
+\subsection{DNA sequence search and cleaning}\label{dna-sequence-search-and-cleaning}}
+
+\begin{itemize}
+\item
+  The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be provided by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
+  matched taxa belonging to the ingroup in the tree, that is also a named clade in the reference taxonomy. This is known as the Most Recent Common
+  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA).
+  The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
+  To automatically identify the MRCAT of a group of taxon names, we make use of the OToL taxonomy tool (\url{https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3\#mrca}).
+
+  Users can provide a search taxon that is either a more or a less inclusive
+  clade relative to the ingroup of the original phylogeny. If the search taxon is more inclusive, the sequence search will be performed outside the MRCAT of the matched taxa, e.g., including all taxa within
+  the family or the order that the ingroup belongs to. If the search taxon is a less inclusive clade, the users can focus on enriching a particular clade/region within the ingroup of the phylogeny.
+\item
+  The Basic Local Alignment Search Tool, BLAST {[}Altschul \emph{et al.} (\protect\hyperlink{ref-altschul1990basic}{1990}); altschul1997gapped{]} is used to identify
+  similarity between DNA sequences within the search taxon in a nucleotide
+  database, and the remaining sequences on the alignment.
+  The BLAST command line tools (Camacho \emph{et al.} \protect\hyperlink{ref-camacho2009blast}{2009}) are used for both web-based and local-database searches.
+\item
+  A pairwise alignment-against-all BLAST search is performed. This means that each sequence
+  in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
+  taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
+  along with their corresponding identification numbers (accesion numbers in the case of the GenBank database). This information will be used later to store the whole sequences in a dedicated library within the physcraper folder, allowing for secondary analyses to run significantly faster.
+\item
+  The DNA sequence similarity search can be done on a local database that is easily
+  setup by the user. In this case, the BLASTn algorithm is used to performs the similarity search.
+\item
+  The search can also be performed remotely, on the NCBI database. In this case, the
+  bioPython BLAST algorithm is used to perform the similarity search.
+\item
+  Matched sequences below an e-value, percentage similarity, and outside a minimum
+  and maximum length threshold are discarded. This filtering leaves out genomic sequences.
+  All acepted sequences are asigned an internal identifier, and are further filtered.
+\item
+  Because the original alignments usually lack database id numbers, a filtering
+  step is needed. Accepted sequences that belong to the
+  same taxon of the query sequence, and that are either identical or shorter than
+  the original sequence are discarded. Only longer sequences belonging to the
+  same taxon as the orignal sequence will be considered further for analysis.
+\item
+  Among the remaining filtered sequences, there are usually several exemplars per taxon.
+  Although it can be useful to keep some of them to, for example, investigate monophyly
+  within species, there can be hundreds of exemplar sequences per taxon for some markers.
+  To control the number of sequences per taxon in downstream analyses,
+  5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
+\item
+  Reverse complement sequences are identified and translated.
+\item
+  Users can choose to perform a more ``cycles'' of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the alignment are blasted. \textbf{\emph{Is there an argument to control the number of cycles of blast searches with new sequences?}}
+\item
+  Accepted sequences are downloaded in full, and stored as a local database in a directory that is globally accesible (physcraper/taxonomy), so they are accesible for further runs.
+\item
+  A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user.
+\end{itemize}
+
+\hypertarget{dna-sequence-alignment}{%
+\subsection{DNA sequence alignment}\label{dna-sequence-alignment}}
+
+\begin{itemize}
+\tightlist
+\item
+  The software MUSCLE (Edgar \protect\hyperlink{ref-edgar2004muscle}{2004}) is implemented to perform alignments.
+\item
+  First, all new sequences are aligned using default MUSCLE options.
+\item
+  Then, a MUSCLE profile alignment is performed, in which the original alignment
+  is used as a template to align new sequences. This ensures that the final alignment
+  follows the homology criteria established by the original alignment.
+\item
+  The final alignment is not further processed automatically. We encourage users
+  to check it either by eye and perform manual refinement or using any of the many
+  tools for alignment processing, to eliminate columns with no information.
+\end{itemize}
+
+\hypertarget{tree-reconstruction-and-comparison}{%
+\subsection{Tree reconstruction and comparison}\label{tree-reconstruction-and-comparison}}
+
+\begin{itemize}
+\tightlist
+\item
+  A gene tree is reconstructed for each alignment provided, using the software RAxML (Stamatakis \protect\hyperlink{ref-stamatakis2014raxml}{2014})
+  with 100 classic bootstrap (Felsenstein \protect\hyperlink{ref-felsenstein1985confidence}{1985}) replicates by default. The number of bootsrap replicates can be modified by the user.
+  Other type of bootstrap that I think is not yet incorporated into physcraper is the Transfer Bootstrap Expectation (TBE) recently proposed in Lemoine \emph{et al.} (\protect\hyperlink{ref-lemoine2018renewing}{2018}).
+\item
+  The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
+\item
+  Tips on all trees generated by physcraper are defined by a taxon name space, allowing to perform comparisons and conflict analyses.
+\item
+  Robinson Foulds metrics
+\item
+  Describe what a conflict analysis is: Node by node comparison of the resulting clades compared to
+\item
+  For the conflict analysis to be meaningful, the root of the tree ineeds to be accurately defined.
+\item
+  Currently, the root is determined by finding the parent node of the sequences that do not belong to the ingroup/ search taxon. This ensures a correct rooting of the tree even when the search taxon is more inclusive than the ingroup.
+\item
+  Conflict information can only be generated in the context of the whole Open Tree of
+  Life. Otherwise, it is not really possible to get conflict data.
+  \textbf{\emph{- One way to compare two independent phylogenetic trees is to compare them both to
+  the synthetic OToL and then measure how well they do against each other}}
+\end{itemize}
+
+\hypertarget{examples}{%
+\section{Examples}\label{examples}}
+
+\hypertarget{the-hollies}{%
+\subsection{The hollies}\label{the-hollies}}
+
+The genus \emph{Ilex} is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
+It encompasses between 400-600 living species. A review of litterature shows that there are three published phylogenetic trees, showing relationships within the hollies.
+The first one has been made available both on OToL phylesystem and synth tree, and on treeBASE, it samples 48 species.
+The second has not been made available anywhere, not even in supplementary data of the journal.
+\textbf{\emph{Contact authors? They seem old school, probably do not wanna share their data.}}
+The most recent one has been made available in the OToL Phylesystem and DRYAD. It is the best sampled yet, with 200 species. However,
+it has not been added to the syntehtic tree yet.
+This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}). Updating the oldest tree, we should get something very similar to the newest tree.
+
+\hypertarget{the-ascomycota}{%
+\subsection{The Ascomycota}\label{the-ascomycota}}
+
+Let's be more specific now about our X group and say it is the Ascomycota.
+The best tree currently available in OToL was published by Schoch \emph{et al.} (\protect\hyperlink{ref-schoch2009ascomycota}{2009}).
+The first step, is to get the Open Tree of Life study id. There are some options to do this:
+- You can go to the Open Tree of Life website and browse until you find it, or
+- you can get the study id using R tools:
+- By using the TreeBase ID of the study (which is not fully exposed on the
+TreeBase website home page of the study, so you have to really look it up manually):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rotl}\OperatorTok{::}\KeywordTok{studies_find_studies}\NormalTok{(}\DataTypeTok{property =} \StringTok{"treebaseId"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"S2137"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   study_ids n_trees tree_ids candidate study_year title
+## 1    pg_238       1  tree109                 2009      
+##                                 study_doi
+## 1 http://dx.doi.org/10.1093/sysbio/syp020
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  By using the name of the focal clade of study (but this behaved very differently):
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rotl}\OperatorTok{::}\KeywordTok{studies_find_studies}\NormalTok{(}\DataTypeTok{property=}\StringTok{"ot:focalCladeOTTTaxonName"}\NormalTok{, }\DataTypeTok{value=}\StringTok{"Ascomycota"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Once we have the study id, we can gather the trees published on that study:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rotl}\OperatorTok{::}\KeywordTok{get_tree_ids}\NormalTok{(rotl}\OperatorTok{::}\KeywordTok{get_study_meta}\NormalTok{(}\StringTok{"pg_238"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "tree109"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rotl}\OperatorTok{::}\KeywordTok{candidate_for_synth}\NormalTok{(rotl}\OperatorTok{::}\KeywordTok{get_study_meta}\NormalTok{(}\StringTok{"pg_238"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_trees <-}\StringTok{ }\NormalTok{rotl}\OperatorTok{::}\KeywordTok{get_study}\NormalTok{(}\StringTok{"pg_238"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Both trees from this study have NA tips.
+
+Let's check what one of the trees looks like:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Download the alignment from TreeBase
+  If you are on the TreeBase home page of the study, you can navigate to the matrix tab, and manually download the alignments that were used to reconstruct the trees reported on the study that were also uploaded to TreeBase and to the Open Tree of Life repository.
+  To make this task easier, you can use a command to download everything into your working folder:
+\end{enumerate}
+
+\begin{verbatim}
+physcraper_run.py -s pg_238 -t tree109 -o ../physcraper_example/pg_238
+\end{verbatim}
+
+In this example, all alignments posted on TreeBase were used to reconstruct both trees.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  With the study id and the alignment files saved locally, we can do a physcraper run with the command:
+\end{enumerate}
+
+\begin{verbatim}
+physcraper_run.py -s pg_238 -t tree109 -a treebase_alns/pg_238tree109.aln -as "nexus" -o pg_238
+\end{verbatim}
+
+\hypertarget{testudines-example}{%
+\subsection{Testudines example}\label{testudines-example}}
+
+Phylogeny of the Testudines 6 tips from Crawford \emph{et al.} (\protect\hyperlink{ref-crawford2012more}{2012})
+There is just one tree in OToL.
+There is just one alignment on \href{https://treebase.org/treebase-web/search/study/matrices.html?id=12742}{treebase} with all the 1 145 loci.
+
+\begin{verbatim}
+physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ -o pg_2573
+\end{verbatim}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+Data repositories hold more information than meets the eye.
+Besides the actual data, they have other types of information that can be used for the advantage of science.
+
+Usually, initial ideas about the data are changed by analyses.
+We expect that this new ideas on the data can be registered on data bases,
+exposing new comers to expert understanding about the data.
+
+There are many tools that are making use of DNA data repositories in different ways.
+Most of them focus on efficient ways to mine the data -- getting the most homologs.
+Some focus on accurate ways of mining the data - getting real and clean homologs.
+Others focus on refinement of the alignment.
+Most focus on generating full trees \emph{de novo}, mainly for regions of the Tree of
+Life that have no phylogenetic assessment yet in published studies, but also for
+regions that have been already studied and that have phylogenetic data already.
+
+All these tools are great efforts for advancing towards reproducibility in phylogenetics,
+a field that has been largely recognised as somewhat artisanal.
+We propose adding focus to other sources of information available from data repositories.
+Taking advantage of public DNA data bases have been the main focus. However, phylogenetic knowledge is
+also accumulating fast in public and open repositories.
+In this way, the physcraper pipeline can be complemented with other tools that have
+been developed for other purposes.
+
+We emphasize that physcraper takes advantage of the knowledge and intuition of the expert
+community to build upon phylogenetic knowledge, using not only data accumulated in
+DNA repositories, but phylogenetic knowledge accumulated in tree repositories.
+This might help generate new phylogenetic data. But physcraper does not seek to generate full phylogenies \emph{de novo}.
+
+Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
+Mention statistics provided by other tools: PhyloExplorer (Ranwez \emph{et al.} \protect\hyperlink{ref-ranwez2009phyloexplorer}{2009}).
+Compare and discuss.
+
+How is physcraper already useful:
+- to mine targeted sequences, in this way it is similar to baited analyses from PHLAWD and pyPHLAWD. Phylota does not do baited analyses, I think, only clustered analyses.
+- Finding
+
+How can it be used for the advantage of the field:
+- rapid phylogenetic placing of newly discovered species, as mentioned in Webb \emph{et al.} (\protect\hyperlink{ref-webb2010biodiversity}{2010})
+- obtain trees for ecophylogenetic studies, as mentioned in Helmus \& Ives (\protect\hyperlink{ref-helmus2012phylogenetic}{2012})
+- one day could be used to sistematize nucleotide databases, such as Genbank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), as mentioned in San Mauro \& Agorreta (\protect\hyperlink{ref-san2010molecular}{2010}), i.e., curate ncbi taxonomic assignations.
+- allows to generate custom species trees for downstream analyses, as mentioned in Stoltzfus \emph{et al.} (\protect\hyperlink{ref-stoltzfus2013phylotastic}{2013})
+
+Things that physcraper does not do:
+- analyse the whole GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}) to find homolog regions suitable to reconstruct phylogenies, as mentioned in Antonelli \emph{et al.} (\protect\hyperlink{ref-antonelli2017toward}{2017}). There are already some very good tools that do that.
+- provide basic statistics on data availability to assemble molecular datasets, as mentioned by Ranwez \emph{et al.} (\protect\hyperlink{ref-ranwez2009phyloexplorer}{2009}). Phyloexplorer does this?
+- it is not a tree repo, as phylota is, mentioned in Deepak \emph{et al.} (\protect\hyperlink{ref-deepak2014evominer}{2014})
+
+\hypertarget{tools-that-automatize-any-part-of-the-process-of-phylogenetic-reconstruction}{%
+\subsection{Tools that automatize any part of the process of phylogenetic reconstruction:}\label{tools-that-automatize-any-part-of-the-process-of-phylogenetic-reconstruction}}
+
+\hypertarget{mining-dna-databases-to-generate-datasets-suitable-for-phylogenetic-reconstruction}{%
+\subsubsection{1. Mining DNA databases to generate datasets suitable for phylogenetic reconstruction}\label{mining-dna-databases-to-generate-datasets-suitable-for-phylogenetic-reconstruction}}
+
+\begin{longtable}[]{@{}llccc@{}}
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\raggedright
+Tool\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright
+Citation\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\centering
+Cited by\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\centering
+Description\strut
+\end{minipage} & \begin{minipage}[b]{0.20\columnwidth}\centering
+Supermatrix/gene tree/species tree\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+Phylota\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Sanderson \emph{et al.} (\protect\hyperlink{ref-sanderson2008phylota}{2008})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+122 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+finds sets of DNA homologs on the GenBank database; phylogenetic reconstruction\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+AMPHORA\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Wu \& Eisen (\protect\hyperlink{ref-wu2008simple}{2008})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+458 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+baited search; protein markers on phylogenomic data; personal database of genomes or metagenomic data, manually downloaded either from a public database or from private data; phylogenetic reconstruction\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+PHLAWD\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Smith \emph{et al.} (\protect\hyperlink{ref-smith2009mega}{2009})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+234 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Baited search of DNA markers on the GenBank database; phylogenetic reconstruction\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+Unnamed \href{https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals}{ruby pipeline}, only available from \href{https://static-content.springer.com/esm/art\%3A10.1186\%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP}{supplementary data} of the journal\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Peters \emph{et al.} (\protect\hyperlink{ref-peters2011taming}{2011})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+64 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+mining public DNA databases, focuses on filtering massive amounts of mined sequences by using established ``criteria of compositional homogeneity and defined levels of density and overlap''\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+Unnamed\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Grant \& Katz (\protect\hyperlink{ref-grant2014building}{2014})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+38 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+predecessor of phylotol; homolog clustering; public and/or personal DNA database; phylogenetic reconstruction; broad taxon analyses; remove contaminant sequences, based on similarity and on phylogenetic position\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+Unnamed\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Chesters \& Zhu (\protect\hyperlink{ref-chesters2014protocol}{2014})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+10 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+algorithm that mines GenBank data to delineate species in the insecta. The authors present a nice comparison with the phylota algorithm\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Species trees??\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+PUmPER\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Izquierdo-Carrasco \emph{et al.} (\protect\hyperlink{ref-izquierdo2014pumper}{2014})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+14 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+perpetual updating with newly added sequences to GenBank\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+not sure yet\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+DarwinTree\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Meng \emph{et al.} (\protect\hyperlink{ref-meng2015darwintree}{2015}\protect\hyperlink{ref-meng2015darwintree}{a})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+6 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP), takes data from GenBank, EMBL and DDBJ for land plants only\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+not sure\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+NCBIminer\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Xu \emph{et al.} (\protect\hyperlink{ref-xu2015ncbiminer}{2015})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+4 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+part of darwintree\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+not sure\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+SUMAC\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Freyman (\protect\hyperlink{ref-freyman2015sumac}{2015})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+19 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+both ``baited'' analyses and single‐linkage clustering methods, as well as a novel means of determining when there are enough overlapping data in the DNA matrix\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+not sure\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+STBase\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+McMahon \emph{et al.} (\protect\hyperlink{ref-mcmahon2015stbase}{2015})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+7 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+pipeline for species tree construction and the public database of one million precomputed species trees\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+species trees\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+Unnamed\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Papadopoulou \emph{et al.} (\protect\hyperlink{ref-papadopoulou2015automated}{2015})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+17 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Automated DNA-based plant identification for large-scale biodiversity assessment\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+not sure\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+BIR\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Kumar \emph{et al.} (\protect\hyperlink{ref-kumar2015bir}{2015})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+6 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+blast, align, identify homologs via constructed trees, curate and realign\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+SUPERSMART\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Antonelli \emph{et al.} (\protect\hyperlink{ref-antonelli2017toward}{2017})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+35 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+baited analyses up to bayesian divergence time estimation\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+SOPHI\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+{[}Chesters (\protect\hyperlink{ref-chesters2017construction}{2017})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+17 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Searches DNA sequence data from repos other than GenBank, such as transcriptomic and barcoding repos\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+not sure\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+phyloSkeleton\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Guy (\protect\hyperlink{ref-guy2017phyloskeleton}{2017})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+5 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+focuses on taxon sampling; baited genomic sequences; public database (NCBI and JGI); marker identification\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+OneTwoTree\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Drori \emph{et al.} (\protect\hyperlink{ref-drori2018onetwotree}{2018})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+7 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Web‐based, user-friendly, online tool for species-tree reconstruction, based on the \emph{supermatrix paradigm} and retrieves all available sequence data from NCBI GenBank\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+supermatrix\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+pyPhlawd\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Smith \& Walker (\protect\hyperlink{ref-smith2019pyphlawd}{2019})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+6 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+baited and clustering analyses\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+Supermatrix or gene tree\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+Phylotol\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Cerón-Romero \emph{et al.} (\protect\hyperlink{ref-ceron2019phylotol}{2019})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+5 studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+``phylogenomic pipeline to allow easy incorporation of data from high-throughput sequencing studies, to automate production of both multiple sequence alignments and gene trees, and to identify and remove contaminants. PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree of life'', i.e., bacteria and unicellular eukaryotes\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+supermatrix and gene trees\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\raggedright
+phylotaR\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright
+Bennett \emph{et al.} (\protect\hyperlink{ref-bennett2018phylotar}{2018})\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+studies\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+\strut
+\end{minipage} & \begin{minipage}[t]{0.20\columnwidth}\centering
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+According to Cerón-Romero \emph{et al.} (\protect\hyperlink{ref-ceron2019phylotol}{2019}), PhyLoTA and BIR ``focus on the identification and collection
+of homologous and paralog genes from public databases such as GenBank'', while both AMPHORA and PHLAWD
+``focus on the construction and refinement of robust alignments rather than the collection of homologs.''
+
+\hypertarget{searching-phylogenetic-tree-databases}{%
+\subsubsection{2. Searching phylogenetic tree databases}\label{searching-phylogenetic-tree-databases}}
+
+PhyloFinder (Chen \emph{et al.} \protect\hyperlink{ref-chen2008phylofinder}{2008}) - cited by 18: a search engine for phylogenetic databases, using
+trees from TreeBASE - more related to phylotastic's goal than to updating/creating phylogenies
+
+\hypertarget{mining-phylogenetic-tree-databases}{%
+\subsubsection{3. Mining phylogenetic tree databases}\label{mining-phylogenetic-tree-databases}}
+
+PhyloExplorer (Ranwez \emph{et al.} \protect\hyperlink{ref-ranwez2009phyloexplorer}{2009}) - cited by 21: a python and MySQL based website to facilitate
+assessment and management of phylogenetic tree collections. It provides ``statistics describing the collection,
+correcting invalid taxon names, extracting taxonomically relevant parts of the collection
+using a dedicated query language, and identifying related trees in the TreeBASE database''.
+
+\hypertarget{pipeline-for-phylogenetic-reconstruction}{%
+\subsubsection{4. Pipeline for phylogenetic reconstruction}\label{pipeline-for-phylogenetic-reconstruction}}
+
+PhySpeTre (Fang \emph{et al.} \protect\hyperlink{ref-fang2019physpetree}{2019}) - no citations yet - no sequence retrieval, just phylogenetic reconstruction
+pipeline.
+
+\hypertarget{getting-metadata-and-not-sequences-from-genbank.}{%
+\subsubsection{5. getting metadata and not sequences from GenBank.}\label{getting-metadata-and-not-sequences-from-genbank.}}
+
+Datataxa Ruiz-Sanchez \emph{et al.} (\protect\hyperlink{ref-ruiz2019datataxa}{2019}) - no citations yet - focus on extracting metadata from GenBank sequence information.
+
+\hypertarget{phylota-overview}{%
+\subsection{Phylota overview}\label{phylota-overview}}
+
+Phylota was published as a website to summarize and browse the phylogenetic potential of the GenBank
+database (Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}).
+
+Since then, it has been cited 122 times for different reasons.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  As an example of a tool that mines GenBank data for phylogenetic reconstruction,
+  or that is useful in any way for phylogenetics:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    original publication of PHLAWD (Smith \emph{et al.} \protect\hyperlink{ref-smith2009mega}{2009})
+  \item
+    an analysis identifying research priorities and data requirements for resolving
+    the red algal tree of life (Verbruggen \emph{et al.} \protect\hyperlink{ref-verbruggen2010data}{2010})
+  \item
+    Beaulieu \emph{et al.} (\protect\hyperlink{ref-beaulieu2012modeling}{2012}\protect\hyperlink{ref-beaulieu2012modeling}{a}) cites phylota as an example study of very large and comprehensive
+    phylogeny from mined DNA sequence data, (even if no phylogeny was really published
+    there, only the method to do so)
+  \item
+    a review for ecologists about phylogenetic tools (Roquet \emph{et al.} \protect\hyperlink{ref-roquet2013building}{2013})
+  \item
+    a study constructing a dated seed plant phylogeny using pyPHLAWD (Smith \& Brown \protect\hyperlink{ref-smith2018constructing}{2018})
+  \item
+    a study presenting an ``assembly and alignment free'' method for phylogenetic reconstruction
+    using genomic data. It aims to be incorporated into a pipeline such as phylota some day (Fan \emph{et al.} \protect\hyperlink{ref-fan2015assembly}{2015}).
+  \item
+    nexml format presentation (Vos \emph{et al.} \protect\hyperlink{ref-vos2012nexml}{2012}) - cites phylota as a tool that uses
+    stored phyloinformatic data that could benefit from adopting nexml, to increase
+    interoperability.
+  \item
+    a study of fruit evolution, analysing a previously published phylogeny of 8911
+    tips of the Campanulidae, constructed with PHLAWD (Beaulieu \& Donoghue \protect\hyperlink{ref-beaulieu2013fruit}{2013})
+  \item
+    a study of Southeast Asia plant biodiversity inventory (Webb \emph{et al.} \protect\hyperlink{ref-webb2010biodiversity}{2010}) -
+    cites phylota as a tool that would allow rapid phylogenetic placing of newly
+    discovered species, and generation of phylogenetically informed guides for field
+    identification.
+  \item
+    a study of wood density for carbon stock assessments (Flores \& Coomes \protect\hyperlink{ref-flores2011estimating}{2011}),
+    cites phylota as an initiative to ``get supertrees resolved up to species level''.
+  \item
+    a study proposing something similar to Open tree but applied only to land plants (Beaulieu \emph{et al.} \protect\hyperlink{ref-beaulieu2012synthesizing}{2012}\protect\hyperlink{ref-beaulieu2012synthesizing}{b})
+  \item
+    an analysis of the phylogenetic diversity-area curve (Helmus \& Ives \protect\hyperlink{ref-helmus2012phylogenetic}{2012}),
+    cited phylota as a method alternative to phylomatic to ``obtain plant phylogenetic
+    trees for ecophylogenetic studies''.
+  \item
+    a study generating a phylogeny of 6,098 species of vascular plants from China
+    (Chen \emph{et al.} \protect\hyperlink{ref-chen2016tree}{2016}) - uses DarwinTree (Meng \emph{et al.} \protect\hyperlink{ref-meng2015darwintree}{2015}\protect\hyperlink{ref-meng2015darwintree}{a}) and generates sequence
+    data \emph{de novo} for 781 genera.
+  \item
+    a review of the state of methods and knowledge generated by molecular systematics
+    (San Mauro \& Agorreta \protect\hyperlink{ref-san2010molecular}{2010}) cites phylota as a tool ``intended to systematize GenBank information
+    for large-scale molecular phylogenetics analysis''.
+  \item
+    the first phylotastic paper (Stoltzfus \emph{et al.} \protect\hyperlink{ref-stoltzfus2013phylotastic}{2013}) cites phylota as a ``phylogeny
+    related resource that provides ways to generate custom species trees for downstream use''.
+  \item
+    Antonelli \emph{et al.} (\protect\hyperlink{ref-antonelli2017toward}{2017}) cites phylota as a ``pipeline that pre-processes entire GenBank
+    releases in pursuit of sufficiently overlapping reciprocal BLAST hits, which are
+    then clustered into candidate data sets''. They also use the PHYLOTA database in its
+    own pipeline.
+  \item
+    Deepak \emph{et al.} (\protect\hyperlink{ref-deepak2014evominer}{2014}) present an algorithm for mining of frequent subtrees (common patterns)
+    in collections of phylogenetic trees, as a way to extract meaningful phylogenetic
+    information from collections of trees when compared to maximum agreement subtrees
+    and majority-rule trees. They cite phylota as one of such tree collections available
+    along with TreeBASE (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}).
+  \item
+    Ranwez \emph{et al.} (\protect\hyperlink{ref-ranwez2009phyloexplorer}{2009}) cites phylota as a ``program providing basic statistics
+    on data availability for molecular datasets''. They propose a tool to upload and
+    explore user phylogenies to obtain detailed summary statistics on user tree collections.
+  \item
+    Freyman (\protect\hyperlink{ref-freyman2015sumac}{2015}) cites phylota as a tool that ``provides a web interface to view
+    all GenBank sequences within taxonomic groups clustered into homologs'' but that
+    does not mine for targeted sequences, as opposed to NCBIminer or PHLAWD. They
+    compare the performance of SUMAC to Phylota. This is also presented in their PhD dissertation (Freyman \protect\hyperlink{ref-freyman2017phylogenetic}{2017}).
+  \item
+    Chesters \& Vogler (\protect\hyperlink{ref-chesters2013resolving}{2013}) cites phylota as a data mining tool that compiles metadata
+    from mining of public DNA databases ``for construction of large phylogenetic trees
+    and multiple gene sets'' and that the authors have recognised that gene annotations
+    in public databases are insufficient and that careful partitioning of orthologous
+    sequences is needed for supermatrix construction. Chesters \& Vogler (\protect\hyperlink{ref-chesters2013resolving}{2013}) present
+    a procedure that minimizes the problem of forming multilocus species units in
+    a large phylogenetic data set using algorithms from graph theory.
+  \item
+    Chesters \& Zhu (\protect\hyperlink{ref-chesters2014protocol}{2014}) present an algorithm to delineate species form GenBank
+    DNA data, and cites phylota as a tool that partitions ``the contents of a database
+    according to homology'', by ``grouping of database sequences according to internal
+    criteria'', searching ``from a standardized set of references {[}\ldots{}{]} patterns in
+    sequence similarity and overlap.''
+  \item
+    the paper presenting phylotaR, a pipeline that recreates the phylota output
+    but uses the most updated GenBank release, and is available in R (Bennett \emph{et al.} \protect\hyperlink{ref-bennett2018phylotar}{2018}),
+    cites phylota as its predecessor and inspiration. The authors mention that phylotaR
+    pipeline mimics phylota's pipeline but with improvements.
+  \item
+    The paper presenging PhyloBase (Jamil \protect\hyperlink{ref-jamil2016visual}{2016}), cites phylota as one of
+    its resources to get phylogenies, along with TreeBASE and others.
+  \item
+    The paper presenting STBase, a database of one million precomputed species
+    trees (Deepak \protect\hyperlink{ref-deepak2013managing}{2013}; McMahon \emph{et al.} \protect\hyperlink{ref-mcmahon2015stbase}{2015}), cites phylota as a databse of gene trees or mul-trees,
+    ``trees having multiple sequences with the same taxon name''.
+  \item
+    Drori \emph{et al.} (\protect\hyperlink{ref-drori2018onetwotree}{2018}) present a Web‐based, user-friendly, online tool for species-tree
+    reconstruction, based on the \emph{supermatrix paradigm} and retrieves all available
+    sequence data from NCBI GenBank. They cite phylota in the intro as a tool that is ``designed to provide
+    users with precomputed sets of clusters that were assembled through a single‐linkage
+    clustering approach and additionally provides precomputed gene trees that were
+    reconstructed for each cluster. In particular, the results obtained by PhyLoTa
+    are taxonomically constrained; that is, all sequences of the most recent common
+    ancestor are collected even if one specifies only part of a clade''.
+  \item
+    A study developing a tool to link wikipedia data to NCBI taxonomy (Page \protect\hyperlink{ref-page2011linking}{2011})
+    cites phylota as a phylogenetic resource that uses the NCBI taxonomy.
+  \item
+    the study that present DarwinTree (Meng \emph{et al.} \protect\hyperlink{ref-meng2015darwintree}{2015}\protect\hyperlink{ref-meng2015darwintree}{a}), and all derived studies: the study
+    presenting an approach to screen sequence data for The Platform
+    for Phylogenetic Analysis of Land Plants (PALPP), using the MapReduce paradigm
+    to parallelize BLAST (Yong \emph{et al.} \protect\hyperlink{ref-yong2010screening}{2010}), as well as Gao \emph{et al.} (\protect\hyperlink{ref-gao2011solution}{2011}), Li \emph{et al.} (\protect\hyperlink{ref-li2013partfasttree}{2013}),
+    Meng \emph{et al.} (\protect\hyperlink{ref-meng2014rapidtree}{2014}), Meng \emph{et al.} (\protect\hyperlink{ref-meng2015sotree}{2015}\protect\hyperlink{ref-meng2015sotree}{c}), and Meng \emph{et al.} (\protect\hyperlink{ref-meng2015solution}{2015}\protect\hyperlink{ref-meng2015solution}{b}), all cite phylota using the exact same
+    introduction and sentence: as one among other ``studies based on data mining large numbers of taxa or loci''.
+  \item
+    A study presenting a tool to asses gene sequence quality for automatic
+    construction of databases (Meng \emph{et al.} \protect\hyperlink{ref-meng2012gsqct}{2012}\protect\hyperlink{ref-meng2012gsqct}{a}), as well as their parallelized version using MapReduce
+    (Meng \emph{et al.} \protect\hyperlink{ref-meng2012cloud}{2012}\protect\hyperlink{ref-meng2012cloud}{b}), cite phylota (along with Yong \emph{et al.} (\protect\hyperlink{ref-yong2010screening}{2010})) as a tool that relies on sequence
+    similarity (BLAST) and not taxon name annotations in the database, for mining
+    large numbers of taxa or loci, without making any control on the quality of the
+    sequencing.
+  \item
+    A review on online plant databases aiming to ``provide recommendations for current
+    information managers and developers concerning the user interface and experience;
+    and to provide a picture about the possible directions to take for those in charge
+    of the creation of information at all levels''. They cite phylota as a tool allowing
+    researchers ``to acces equally and globally, without travel, a {[}phylogenetic?{]} model
+    of plants at the kingdom level'' (Jones \emph{et al.} \protect\hyperlink{ref-jones2014trends}{2014}).
+  \item
+    a paper aiming to establish an online information system for the legumes and
+    to outline ``best practices for development of a legume portal to enable data
+    sharing and a better understanding of what data are available, missing, or erroneous,
+    and ultimately facilitate cross-analyses and collaboration within the legume-systematics
+    community and with other stakeholders'' (Bruneau \emph{et al.} \protect\hyperlink{ref-bruneau2019towards}{2019}), cites phylota (along with supersmart and pyphlawd) as a
+    ``pipeline for large-scale retrieval of GenBank data of particular taxa or clades''.
+    In their Table 1, they also list phylota as a potential data source for developing a legume portal.
+  \item
+    A study on morphological evolution of electric fish skull, that uses phylotaR
+    to retrieve sequences of the family Apteronotidae, order Gymnotiformes (Evans \emph{et al.} \protect\hyperlink{ref-evans2019bony}{2019}),
+    cites phylota as the inspiration and fundament of phylotaR.
+  \item
+    A phylogenetic revision of the Gymnotidae fish (Teleostei: Gymnotiformes),
+    uses phylotaR to retrieve seqeunces, but cites phylota as ``a pipeline that implements
+    BLAST searches to both identify and download sequence clusters for listed taxonomic
+    groups to assemble a robust collection of sequences in a reproducible way based
+    on publicly-available gene sequences while avoiding selection bias on the part
+    of the assembler''.
+  \item
+    A master thesis on SearchTree, a ``software tool that allows users to query
+    efficiently on an arbitrary user taxon list and returns high scoring matches
+    from approximately one billion phylogenetic trees being constructed from molecular
+    sequence data in GenBank'' (Deepak \protect\hyperlink{ref-deepak2010searchtree}{2010}), that seems to be the preliminary
+    work for STBase (McMahon \emph{et al.} \protect\hyperlink{ref-mcmahon2015stbase}{2015}), cites phylota as ``a standard strategy, to assemble sets of homologous sequences
+    (clusters) from a database of all-against-all BLAST searches, {[}in which{]} clusters
+    are constructed in the context of the NCBI taxonomy tree for convenience of display,
+    thus child clusters are contained within parent clusters, following the NCBI hierarchy''.
+    In opposition, SearchTree uses true agglomerative hierarchical clustering
+    (AHC: Day \& Edelsbrunner (\protect\hyperlink{ref-day1984efficient}{1984})) based on the BLAST estimates of sequence dissimilarity
+    rather than the NCBI tree".
+  \item
+    a recent review on the state of large phylogeny (namely insects) generation
+    using tools of the data-driven era (Chesters \protect\hyperlink{ref-chesters2019phylogeny}{2019}) cites phylota as
+    a tool for homology inference and retrieval.
+  \item
+    the study presenting phylotol (Cerón-Romero \emph{et al.} \protect\hyperlink{ref-ceron2019phylotol}{2019}), cites phylota as a tool
+    that ``focus on the identification and collection of homologous genes from public
+    databases''.
+  \item
+    The \href{https://www.researchgate.net/profile/Douglas_Soltis/publication/228815637_Assembling_the_Tree_of_Life_for_the_Plant_Sciences_iPTOL/links/56a7c6bc08aeded22e3700dc.pdf}{iPTOL project}
+    cites phylota as a resource of phylogenetic trees.
+  \item
+    Mahmood (\protect\hyperlink{ref-mahmood2015avian}{2015}) PhD dissertation presents a database of avian Raptor sequences
+    (raptorbase), based on the phylota pipeline.
+  \item
+    Ruiz-Sanchez \emph{et al.} (\protect\hyperlink{ref-ruiz2019datataxa}{2019}) develops datataxa and cite phylota as ``software that has
+    been developed to mine the massive amount of information stored in GenBank'',
+    along with its R version (phylotaR; Bennett \emph{et al.} \protect\hyperlink{ref-bennett2018phylotar}{2018}) and restez \url{https://www.rdocumen-tation.org/packages/restez/versions/1.0.0}.
+  \item
+    The phylotastic project (Stoltzfus \emph{et al.} \protect\hyperlink{ref-stoltzfus2013phylotastic}{2013}) cites phylota as a ``phylogeny-related resource providing ways to generate custom species trees \emph{de novo} for downstream use'' along with CIPRES.
+  \end{itemize}
+\item
+  When the software was actually used to construct (partially or in full) a DNA
+  data set to be used for phylogenetic reconstruction:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A 1000 tip phylogeny of the family of the nightshades (Särkinen \emph{et al.} \protect\hyperlink{ref-sarkinen2013solanaceae}{2013})
+  \item
+    A 56 tip phylogeny of crustacean zooplancton (Helmus \emph{et al.} \protect\hyperlink{ref-helmus2010communities}{2010}) -- ecological study
+  \item
+    A 63 tip phylogeny of the Salmonidae family (Crête-Lafrenière \emph{et al.} \protect\hyperlink{ref-crete2012salmonidae}{2012})
+  \item
+    A 321 tip phylogeny of Testudines (Thomson \& Shaffer \protect\hyperlink{ref-thomson2010sparse}{2010})
+  \item
+    A 69 taxa phylogeny of the family Cyprinodontidae of the pupfish (Martin \& Wainwright \protect\hyperlink{ref-martin2011trophic}{2011})
+  \item
+    A 2,957 taxa phylogeny of the class Moniloformopses of living ferns (Lehtonen \protect\hyperlink{ref-lehtonen2011towards}{2011})
+  \item
+    A 2,573 species phylogeny of the Papilionoidea (Hardy \& Otto \protect\hyperlink{ref-hardy2014specialization}{2014})
+  \item
+    A 23 taxa phylogeny of the California flora (Anacker \emph{et al.} \protect\hyperlink{ref-anacker2011origins}{2011})
+  \item
+    Phylogenies of 6 different clades of flowering plants representing an independent
+    evolutionary origin of extrafloral nectaries: \emph{Byttneria} (Malvaceae), \emph{Pleopeltis} (Polypodiaceae),
+    \emph{Polygoneae} (Polygoneaceae), \emph{Senna} (Fabaceae), \emph{Turnera} (Passifloraceae), and \emph{Viburnum}
+    (Adoxaceae) (Weber \& Agrawal \protect\hyperlink{ref-weber2014defense}{2014}).
+  \item
+    To supplement DNA data sets of various pre-existing mammalian phylogenetic trees
+    sampled at different taxonomic levels (Faurby \& Svenning \protect\hyperlink{ref-faurby2015species}{2015})
+  \item
+    A 900 species tree of muroid rodents, Muroidea (Steppan \& Schenk \protect\hyperlink{ref-steppan2017muroid}{2017}), where 300
+    species were newly added by the study and the rest obtained using phylota.
+  \item
+    A 95 taxa phylogeny of Gymnosperms, focused on Ephedra, Gnetales (Ickert-Bond \emph{et al.} \protect\hyperlink{ref-ickert2009fossil}{2009})
+  \item
+    A 1061 genera phylogeny of the Oscine birds (Selvatti \emph{et al.} \protect\hyperlink{ref-selvatti2015paleogene}{2015})
+  \item
+    A 268 species phylogeny of sharks, representing all 8 orders and 32 families (Sorenson \protect\hyperlink{ref-sorenson2014evolution}{2014}; Sorenson \emph{et al.} \protect\hyperlink{ref-sorenson2014effect}{2014})
+  \item
+    A 466 species phylogeny of the Proteaceae, focusing on the species found in the Cape Floristic Region (Tucker \emph{et al.} \protect\hyperlink{ref-tucker2012incorporating}{2012}).
+  \item
+    A series of small phylogenies of unreported exact size, of sister groups of gall-forming insects (Hardy \& Cook \protect\hyperlink{ref-hardy2010gall}{2010}).
+  \item
+    A 196 species phylogeny of the family Boraginaceae (Nazaire \& Hufford \protect\hyperlink{ref-nazaire2012broad}{2012}). The authors
+    actually found data for 318 Boraginaceae spp using phylota, but decided to reduce
+    their data set to focus on the monophyly of genus \emph{Mertensia}.
+  \item
+    A phylogeny of 401 species of scale insects Coccoidea, Hemiptera (Ross \emph{et al.} \protect\hyperlink{ref-ross2013large}{2013}),
+    with some sequences generated \emph{de novo}.
+  \item
+    Two phylogenies sampling all species of two different clades of insectivorous
+    lizards, agamids and diplodactyline geckos, groups considered to be radiating
+    in the Australia's Great Victoria Desert (Rabosky \emph{et al.} \protect\hyperlink{ref-rabosky2011species}{2011})
+  \item
+    A phylogeny of 91 species of sparid and centracanthid fishes, Sparidae, Percomorpha,
+    plus 2 outgroups, a lethrinid and a nemipterid exemplar (Santini \emph{et al.} \protect\hyperlink{ref-santini2014first}{2014}).
+  \item
+    Updating a phylogeny of Arecaceae, constructing relationships in 6 cldes within
+    the group: subfamilies Calamoideae and Coryphoideae, the tribe Ceroxyleae within
+    subfamily Ceroxyloideae and three groups within subfamily Arecoideae: (1) Iriarteeae,
+  \end{itemize}
+
+  \begin{enumerate}
+  \def\labelenumii{(\arabic{enumii})}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+    Cocoseae: Attaleinae except Beccariophoenix and (3) a group containing six
+    tribes; Euterpeae, Leopoldinieae, Pelagodoxeae, Manicarieae, Geonomateae and Areceae
+    (Faurby \emph{et al.} \protect\hyperlink{ref-faurby2016all}{2016}).
+  \end{enumerate}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A phylogeny of 768 Gesneriaceae species and 58 outgroups for a total species
+    sampling of 826 taxa (Roalson \& Roberts \protect\hyperlink{ref-roalson2016distinct}{2016}) some sequence were generated \emph{de novo}.
+  \item
+    A phylogeny of 47 species of scombrid fishes, with 2 outgroups, a gempylid and
+    a trichiurid (Santini \& Sorenson \protect\hyperlink{ref-santini2013first}{2013}).
+  \item
+    to update a dataset underlying a large-scale fern phylogeny (Lehtonen \emph{et al.} \protect\hyperlink{ref-lehtonen2017environmentally}{2017}),
+    data set in \url{https://zenodo.org/record/345670\#.Xr9QFRPYqqg}, also in TreeBASE,
+    but it is one of those studies that is broken.
+  \item
+    A phylogeny of 13 species of billfishes, order Istiophoriformes: Acanthomorpha,
+    and four outgroups (Santini \& Sorenson \protect\hyperlink{ref-santini2013first}{2013})
+  \item
+    A phylogeny of 765 aphid species, family Aphididae (Hardy \emph{et al.} \protect\hyperlink{ref-hardy2015evolution}{2015})
+  \item
+    A phylogeny of less than 100 taxa of the family Ranunculaceae (Lehtonen \emph{et al.} \protect\hyperlink{ref-lehtonen2016sensitive}{2016}),
+    even though they retrieved info from phylota for 194 taxa within the family, they
+    reduced their data set because of low sampling of markers for some taxa.
+  \item
+    A phylogeny of 144 neobatrachian genera, assuming the monophyletic status of
+    genera to increase matrix-filling levels (Frazao \emph{et al.} \protect\hyperlink{ref-frazao2015gondwana}{2015}).
+  \item
+    A 179 species phylogeny of the bird family Picidae (woodpeckers, piculets,
+    and wrynecks) (Dufort \protect\hyperlink{ref-dufort2015coexistence}{2015}, \protect\hyperlink{ref-dufort2016augmented}{2016}), augmented with data from an updated GenBank
+    release and newly sequenced data.
+  \item
+    A phylogeny of species of freshwater fish endemic to NorthAmerica (Strecker \& Olden \protect\hyperlink{ref-strecker2014fish}{2014}),
+    phylota found data for 54 out of 66 spp.
+  \item
+    A phylogeny of 520 species of the order Ericales (Hardy \& Cook \protect\hyperlink{ref-hardy2012testing}{2012})
+  \item
+    A phylgeny of 16 fish species of the family Sphyraenidae (Percomorpha), as well
+    as two outgroup species of the Centropomidae (barracudas) (Santini \emph{et al.} \protect\hyperlink{ref-santini2015first}{2015})
+  \item
+    A phylogeny of 34 vole species, Arvicolinae, Rodentia (García-Navas \emph{et al.} \protect\hyperlink{ref-garcia2016role}{2016})
+  \item
+    Kolmann \emph{et al.} (\protect\hyperlink{ref-kolmann2017dna}{2017}) uses phylota to download all 1691 co1 sequences belonging to
+    the order Carchariniformes, to place phylogenetically DNA samples obtained from
+    fish markets.
+  \item
+    A phylogeny of 329 bird species in the Tyrannidae (77\% of the species in the
+    family) (Gómez Bahamón \& others \protect\hyperlink{ref-gomez2015behavioral}{2015}; Gómez-Bahamón \emph{et al.} \protect\hyperlink{ref-gomez2020speciation}{2020})
+  \item
+    Retrive 145 sequences registered as \emph{Holothuria} species, but kept 84 as ingroup,
+    plus 4 outgroup sequences from \emph{Stichopus ocellatus}, all belonging to the order
+    Apodida of sea cucumbers (Kamarudin \emph{et al.} \protect\hyperlink{ref-kamarudin2016phylogenetic}{2016})
+  \item
+    On a master thesis, to get the sequences of the outgroups of Melinidinae, family Poaceae, namely several spp of the
+    subfamily Panicoideae, plus \emph{Gynerium sagittatum}, \emph{Chasmanthium latifolium},
+    and \emph{Zea mays}, (Salariato \protect\hyperlink{ref-salariato2010filogenia}{2010}). Interestingly, phylota was not used
+    in the published study of the thesis (Salariato \emph{et al.} \protect\hyperlink{ref-salariato2010molecular}{2010}). Ingroup sequences were generated \emph{de novo}.
+  \item
+    On a PhD thesis, to construct a phylogeny of Platyrrhini (internal group),
+    Catarrhini (outgroup), and Tarsiiformes Pereira (\protect\hyperlink{ref-pereira2013padroes}{2013}). Have not found a published study.
+  \item
+    The 10k trees project (Arnold \emph{et al.} \protect\hyperlink{ref-arnold201010ktrees}{2010}) uses phylota to construct a tree of 301 primate species
+    and the outgroup species \emph{Galeopterus variegates}, a tree of 17 extant odd-toed
+    ungulates species and the outgroup species \emph{Bos taurus}, and a tree of 70 different
+    species of carnivorans and \emph{Equus caballus} as outgroup. However, the do not
+    cite it on the paper, but only on their documentation \url{http://www.academia.edu/download/49690788/10kTrees_Documentation.pdf}.
+  \item
+    Freyman (\protect\hyperlink{ref-freyman2015sumac}{2015}, also in \protect\hyperlink{ref-freyman2017phylogenetic}{2017}), use phylota to construct
+    a phylogeny (or maybe only mine genbank???) of the Onagraceae and Lythracea,
+    and compare it to the tool they propose, SUMAC.
+  \item
+    Blackmon (\protect\hyperlink{ref-blackmon2017synthesis}{2017}) PhD study applies phylota to reconstruct a 822 mite
+    species tree.
+  \item
+    A study of the effect of poliploidy on niche evolution (Baniaga \emph{et al.} \protect\hyperlink{ref-baniaga2018polyploid}{2018}),
+    uses phylota to get a DNA data set for 132 unique taxa of vascular plants from
+    16 families and 25 genera,and a tree of 33 genera from 20 different families
+    comprising 1706 taxa.
+  \end{itemize}
+\item
+  When the website was used to identify sequences and markers available in
+  GenBank for a particular group. In this cases, the dataset mining was either performed
+  with other tools, or not performed at all and just used for discussion:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A 812 tips phylogeny of the Order Chiroptera (Shi \& Rabosky \protect\hyperlink{ref-shi2015speciation}{2015}) -- dataset
+    constructed with PHLAWD
+  \item
+    A 1276 tips phylogeny of the Fabaceae (Group \emph{et al.} \protect\hyperlink{ref-legume2013legume}{2013}) -- dataset constructed
+    by hand (I think??)
+  \item
+    A review of dated phylogenies of fire-prone tropical savanna species from Brazil
+    (Simon \& Pennington \protect\hyperlink{ref-simon2012cerrado}{2012}) -- just for discussion of the lack of markers available for
+    these species on GenBank
+  \item
+    A review of the phylogeetic sof the Apicomplexa, a parasitic phylum on unicellular
+    protists (Morrison \protect\hyperlink{ref-morrison2009apicomplexa}{2009}).
+  \item
+    Three data sets from phylota (the suborder Pleurodira of side-necked turtles;
+    the family Cactaceae of cacti; and the Amorpheae, a clade of legumes) were used
+    to demonstrate and exemplify phylogenetic decisiveness (Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2010phylogenomics}{2010})
+  \item
+    Mentioned in a PHD thesis (Gagnon \& others \protect\hyperlink{ref-gagnon2016systematique}{2016}), but not on the final publication (Gagnon \emph{et al.} \protect\hyperlink{ref-gagnon2016new}{2016}),
+    phylota was used to state that there are very few sequences available for the Legumes (7,482 out of 19,500 spp) on GenBank's release 194 (Feb2013).
+  \end{itemize}
+\item
+  Sometimes, it was cited by mistake:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In this 630 tip phylogeny of the Caryophyllaceae study (Greenberg \& Donoghue \protect\hyperlink{ref-greenberg2011caryophyllaceae}{2011}) it might have been originally
+    cited as an example of large phylogenies that reflect well supported relationships
+    from previous smaller phylogenies. However, it was removed from the text but
+    not from the final list of references. The DNA data set was constructed by hand
+    most probably.
+  \item
+    a study reconstructing the insect tree of life with 49,358 species, 13,865
+    genera, and 760 families within the order Insecta (Chesters \protect\hyperlink{ref-chesters2017construction}{2017}),
+    uses its own algorithm (SOPHI) to mine public DNA databases (Chesters \& Zhu \protect\hyperlink{ref-chesters2014protocol}{2014}).
+    It does not cite phylota as it should, but includes it in their references.
+  \end{itemize}
+\item
+  When phylota was used to extract full trees (not only DNA data sets or markers):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Page (\protect\hyperlink{ref-page2013bionames}{2013}) uses it to generate phylogenies for the \href{http://bionames.org}{bionames website},
+    a ``database linking taxonomic names to their original descriptions, to taxa, and
+    to phylogenies'' generated with phylota.
+  \item
+    Deepak \emph{et al.} (\protect\hyperlink{ref-deepak2013extracting}{2013}) uses a sample of phylota trees to test their method to
+    remove conflict from MUL-trees (short for multi-labeled trees), that is, phylogenetic
+    trees with two or more leaves sharing a label, e.g., a species name, which can
+    imply multiple conflicting phylogenetic relationships for the same set of taxa.
+  \item
+    A review by Sanderson \emph{et al.} (\protect\hyperlink{ref-sanderson2016perspective}{2016}), takes 134 595 gene trees from phylota
+    GenBank rel. 176 and estimates its degree of resolutin, calculating that less
+    than half of clades are supported with minilam statistical support (0.53 ± 0.32).
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{acknowledgements}{%
+\section{Acknowledgements}\label{acknowledgements}}
+
+We acknowledge contributions from
+
+The University of California, Merced cluster, MERCED (Multi-Environment Research Computer for Exploration and Discovery) supported by the National Science Foundation (Grant No.~ACI-1429783).
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\newpage
+\begin{center}
+\textsc{References}
+\end{center}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-altschul1990basic}{}%
+Altschul, S.F., Gish, W., Miller, W., Myers, E.W. \& Lipman, D.J. (1990). Basic local alignment search tool. \emph{Journal of molecular biology}, \textbf{215}, 403--410.
+
+\leavevmode\hypertarget{ref-anacker2011origins}{}%
+Anacker, B.L., Whittall, J.B., Goldberg, E.E. \& Harrison, S.P. (2011). Origins and consequences of serpentine endemism in the california flora. \emph{Evolution: International Journal of Organic Evolution}, \textbf{65}, 365--376.
+
+\leavevmode\hypertarget{ref-antonelli2017toward}{}%
+Antonelli, A., Hettling, H., Condamine, F.L., Vos, K., Nilsson, R.H., Sanderson, M.J., Sauquet, H., Scharn, R., Silvestro, D., Töpel, M. \& others. (2017). Toward a self-updating platform for estimating rates of speciation and migration, ages, and relationships of taxa. \emph{Systematic Biology}, \textbf{66}, 152--166.
+
+\leavevmode\hypertarget{ref-arnold201010ktrees}{}%
+Arnold, C., Matthews, L.J. \& Nunn, C.L. (2010). The 10kTrees website: A new online resource for primate phylogeny. \emph{Evolutionary Anthropology: Issues, News, and Reviews}, \textbf{19}, 114--118.
+
+\leavevmode\hypertarget{ref-baniaga2018polyploid}{}%
+Baniaga, A.E., Marx, H.E., Arrigo, N. \& Barker, M.S. (2018). Polyploid plants have faster rates of multivariate climatic niche evolution than their diploid relatives. \emph{BioRxiv}, 406314.
+
+\leavevmode\hypertarget{ref-beaulieu2013fruit}{}%
+Beaulieu, J.M. \& Donoghue, M.J. (2013). Fruit evolution and diversification in campanulid angiosperms. \emph{Evolution}, \textbf{67}, 3132--3144.
+
+\leavevmode\hypertarget{ref-beaulieu2012modeling}{}%
+Beaulieu, J.M., Jhwueng, D.-C., Boettiger, C. \& O'Meara, B.C. (2012a). Modeling stabilizing selection: Expanding the ornstein--uhlenbeck model of adaptive evolution. \emph{Evolution: International Journal of Organic Evolution}, \textbf{66}, 2369--2383.
+
+\leavevmode\hypertarget{ref-beaulieu2012synthesizing}{}%
+Beaulieu, J.M., Ree, R.H., Cavender-Bares, J., Weiblen, G.D. \& Donoghue, M.J. (2012b). Synthesizing phylogenetic knowledge for ecological research. \emph{Ecology}, \textbf{93}, S4--S13.
+
+\leavevmode\hypertarget{ref-bennett2018phylotar}{}%
+Bennett, D.J., Hettling, H., Silvestro, D., Zizka, A., Bacon, C.D., Faurby, S., Vos, R.A. \& Antonelli, A. (2018). PhylotaR: An automated pipeline for retrieving orthologous dna sequences from genbank in r. \emph{Life}, \textbf{8}, 20.
+
+\leavevmode\hypertarget{ref-benson2000genbank}{}%
+Benson, D.A., Karsch-Mizrachi, I., Lipman, D.J., Ostell, J., Rapp, B.A. \& Wheeler, D.L. (2000). GenBank. \emph{Nucleic acids research}, \textbf{28}, 15--18.
+
+\leavevmode\hypertarget{ref-blackmon2017synthesis}{}%
+Blackmon, H. (2017). \emph{Synthesis and phylogenetic comparative analyses of the causes and consequences of karyotype evolution in arthropods}. PhD thesis thesis, University of Texas, Arlington. Retrieved from \url{http://hdl.handle.net/10106/26711}
+
+\leavevmode\hypertarget{ref-bruneau2019towards}{}%
+Bruneau, A., Borges, L.M., Allkin, R., Egan, A.N., De La Estrella, M., Javadi, F., Klitgaard, B., Miller, J.T., Murphy, D.J., Sinou, C. \& others. (2019). Towards a new online species-information system for legumes. \emph{Australian Systematic Botany}, \textbf{32}, 495--518.
+
+\leavevmode\hypertarget{ref-camacho2009blast}{}%
+Camacho, C., George, C., Vahram, A., Ning, M., Jason, P., Kevin, B. \& Thomas, L. (2009). BLAST+: Architecture and applications. \emph{BMC bioinformatics}, \textbf{10}, 421.
+
+\leavevmode\hypertarget{ref-ceron2019phylotol}{}%
+Cerón-Romero, M.A., Maurer-Alcalá, X.X., Grattepanche, J.-D., Yan, Y., Fonseca, M.M. \& Katz, L. (2019). PhyloToL: A taxon/gene-rich phylogenomic pipeline to explore genome evolution of diverse eukaryotes. \emph{Molecular biology and evolution}, \textbf{36}, 1831--1842.
+
+\leavevmode\hypertarget{ref-chen2008phylofinder}{}%
+Chen, D., Burleigh, J.G., Bansal, M.S. \& Fernández-Baca, D. (2008). PhyloFinder: An intelligent search engine for phylogenetic tree databases. \emph{BMC Evolutionary Biology}, \textbf{8}, 90.
+
+\leavevmode\hypertarget{ref-chen2016tree}{}%
+Chen, Z.-D., Yang, T., Lin, L., Lu, L.-M., Li, H.-L., Sun, M., Liu, B., Chen, M., Niu, Y.-T., Ye, J.-F. \& others. (2016). Tree of life for the genera of chinese vascular plants. \emph{Journal of Systematics and Evolution}, \textbf{54}, 277--306.
+
+\leavevmode\hypertarget{ref-chesters2017construction}{}%
+Chesters, D. (2017). Construction of a species-level tree of life for the insects and utility in taxonomic profiling. \emph{Systematic biology}, \textbf{66}, 426--439.
+
+\leavevmode\hypertarget{ref-chesters2019phylogeny}{}%
+Chesters, D. (2019). The phylogeny of insects in the data-driven era. \emph{Systematic Entomology}.
+
+\leavevmode\hypertarget{ref-chesters2013resolving}{}%
+Chesters, D. \& Vogler, A.P. (2013). Resolving ambiguity of species limits and concatenation in multilocus sequence data for the construction of phylogenetic supermatrices. \emph{Systematic Biology}, \textbf{62}, 456--466.
+
+\leavevmode\hypertarget{ref-chesters2014protocol}{}%
+Chesters, D. \& Zhu, C.-D. (2014). A protocol for species delineation of public dna databases, applied to the insecta. \emph{Systematic biology}, \textbf{63}, 712--725.
+
+\leavevmode\hypertarget{ref-crawford2012more}{}%
+Crawford, N.G., Faircloth, B.C., McCormack, J.E., Brumfield, R.T., Winker, K. \& Glenn, T.C. (2012). More than 1000 ultraconserved elements provide evidence that turtles are the sister group of archosaurs. \emph{Biology letters}, \textbf{8}, 783--786.
+
+\leavevmode\hypertarget{ref-crete2012salmonidae}{}%
+Crête-Lafrenière, A., Weir, L.K. \& Bernatchez, L. (2012). Framing the salmonidae family phylogenetic portrait: A more complete picture from increased taxon sampling. \emph{PloS one}, \textbf{7}.
+
+\leavevmode\hypertarget{ref-day1984efficient}{}%
+Day, W.H. \& Edelsbrunner, H. (1984). Efficient algorithms for agglomerative hierarchical clustering methods. \emph{Journal of classification}, \textbf{1}, 7--24.
+
+\leavevmode\hypertarget{ref-deepak2013managing}{}%
+Deepak, A. (2013). \emph{Managing and analyzing phylogenetic databases}. PhD thesis thesis, Retrieved from \url{https://lib.dr.iastate.edu/etd/12995}
+
+\leavevmode\hypertarget{ref-deepak2010searchtree}{}%
+Deepak, A. (2010). SearchTree: Mining robust phylogenetic trees.
+
+\leavevmode\hypertarget{ref-deepak2013extracting}{}%
+Deepak, A., Fernández-Baca, D. \& McMahon, M.M. (2013). Extracting conflict-free information from multi-labeled trees. \emph{Algorithms for Molecular Biology}, \textbf{8}, 18.
+
+\leavevmode\hypertarget{ref-deepak2014evominer}{}%
+Deepak, A., Fernández-Baca, D., Tirthapura, S., Sanderson, M.J. \& McMahon, M.M. (2014). EvoMiner: Frequent subtree mining in phylogenetic databases. \emph{Knowledge and Information Systems}, \textbf{41}, 559--590.
+
+\leavevmode\hypertarget{ref-drori2018onetwotree}{}%
+Drori, M., Rice, A., Einhorn, M., Chay, O., Glick, L. \& Mayrose, I. (2018). OneTwoTree: An online tool for phylogeny reconstruction. \emph{Molecular ecology resources}, \textbf{18}, 1492--1499.
+
+\leavevmode\hypertarget{ref-dufort2016augmented}{}%
+Dufort, M.J. (2016). An augmented supermatrix phylogeny of the avian family picidae reveals uncertainty deep in the family tree. \emph{Molecular phylogenetics and evolution}, \textbf{94}, 313--326.
+
+\leavevmode\hypertarget{ref-dufort2015coexistence}{}%
+Dufort, M. (2015). \emph{Coexistence, ecomorphology, and diversification in the avian family picidae (woodpeckers and allies)}. PhD thesis thesis, University of Minnesota. Retrieved from \url{http://hdl.handle.net/11299/175702}
+
+\leavevmode\hypertarget{ref-edgar2004muscle}{}%
+Edgar, R.C. (2004). MUSCLE: Multiple sequence alignment with high accuracy and high throughput. \emph{Nucleic acids research}, \textbf{32}, 1792--1797.
+
+\leavevmode\hypertarget{ref-evans2019bony}{}%
+Evans, K.M., Vidal-García, M., Tagliacollo, V.A., Taylor, S.J. \& Fenolio, D.B. (2019). Bony patchwork: Mosaic patterns of evolution in the skull of electric fishes (apteronotidae: Gymnotiformes). \emph{Integrative and comparative biology}, \textbf{59}, 420--431.
+
+\leavevmode\hypertarget{ref-fang2019physpetree}{}%
+Fang, Y., Liu, C., Lin, J., Li, X., Alavian, K.N., Yang, Y. \& Niu, Y. (2019). PhySpeTree: An automated pipeline for reconstructing phylogenetic species trees. \emph{BMC evolutionary biology}, \textbf{19}, 1--8.
+
+\leavevmode\hypertarget{ref-fan2015assembly}{}%
+Fan, H., Ives, A.R., Surget-Groba, Y. \& Cannon, C.H. (2015). An assembly and alignment-free method of phylogeny reconstruction from next-generation sequencing data. \emph{BMC genomics}, \textbf{16}, 522.
+
+\leavevmode\hypertarget{ref-faurby2016all}{}%
+Faurby, S., Eiserhardt, W.L., Baker, W.J. \& Svenning, J.-C. (2016). An all-evidence species-level supertree for the palms (arecaceae). \emph{Molecular Phylogenetics and Evolution}, \textbf{100}, 57--69.
+
+\leavevmode\hypertarget{ref-faurby2015species}{}%
+Faurby, S. \& Svenning, J.-C. (2015). A species-level phylogeny of all extant and late quaternary extinct mammals using a novel heuristic-hierarchical bayesian approach. \emph{Molecular phylogenetics and evolution}, \textbf{84}, 14--26.
+
+\leavevmode\hypertarget{ref-felsenstein1985confidence}{}%
+Felsenstein, J. (1985). Confidence intervals on phylogenetics: An approach using bootstrap. \emph{Evolution}, \textbf{39}, 783--791.
+
+\leavevmode\hypertarget{ref-flores2011estimating}{}%
+Flores, O. \& Coomes, D.A. (2011). Estimating the wood density of species for carbon stock assessments. \emph{Methods in Ecology and Evolution}, \textbf{2}, 214--220.
+
+\leavevmode\hypertarget{ref-frazao2015gondwana}{}%
+Frazao, A., Silva, H.R. da \& Moraes Russo, C.A. de. (2015). The gondwana breakup and the history of the atlantic and indian oceans unveils two new clades for early neobatrachian diversification. \emph{PloS one}, \textbf{10}.
+
+\leavevmode\hypertarget{ref-freyman2017phylogenetic}{}%
+Freyman, W.A. (2017). \emph{Phylogenetic models linking speciation and extinction to chromosome and mating system evolution}. PhD thesis thesis, UC Berkeley. Retrieved from \url{https://escholarship.org/uc/item/29n8r0nm}
+
+\leavevmode\hypertarget{ref-freyman2015sumac}{}%
+Freyman, W.A. (2015). SUMAC: Constructing phylogenetic supermatrices and assessing partially decisive taxon coverage. \emph{Evolutionary Bioinformatics}, \textbf{11}, EBO--S35384.
+
+\leavevmode\hypertarget{ref-gagnon2016new}{}%
+Gagnon, E., Bruneau, A., Hughes, C.E., Queiroz, L.P. de \& Lewis, G.P. (2016). A new generic system for the pantropical caesalpinia group (leguminosae). \emph{PhytoKeys}, 1.
+
+\leavevmode\hypertarget{ref-gagnon2016systematique}{}%
+Gagnon, E. \& others. (2016). Systématique et biogéographie du groupe caesalpinia (famille leguminosae). Retrieved from \url{http://hdl.handle.net/1866/13587}
+
+\leavevmode\hypertarget{ref-gao2011solution}{}%
+Gao, Y., Meng, Z., He, X., Liu, Y., Zhou, Y. \& Li, J. (2011). A solution to integrate data for phylogenetic research. \emph{2011 5th international conference on bioinformatics and biomedical engineering} pp. 1--4. IEEE.
+
+\leavevmode\hypertarget{ref-garcia2016role}{}%
+García-Navas, V., Bonnet, T., Bonal, R. \& Postma, E. (2016). The role of fecundity and sexual selection in the evolution of size and sexual size dimorphism in new world and old world voles (rodentia: Arvicolinae). \emph{Oikos}, \textbf{125}, 1250--1260.
+
+\leavevmode\hypertarget{ref-gomez2020speciation}{}%
+Gómez-Bahamón, V., Márquez, R., Jahn, A.E., Miyaki, C.Y., Tuero, D.T., Laverde-R, O., Restrepo, S. \& Cadena, C.D. (2020). Speciation associated with shifts in migratory behavior in an avian radiation. \emph{Current Biology}.
+
+\leavevmode\hypertarget{ref-gomez2015behavioral}{}%
+Gómez Bahamón, V. \& others. (2015). \emph{A behavioral polymorphism as an intermediate stage in the evolution of divergent forms-partial migration in new world flycatchers (aves, tyrannidae)}. Master's thesis thesis, Bogotá-Uniandes. Retrieved from \url{https://repositorio.uniandes.edu.co/bitstream/handle/1992/12859/u703694.pdf?sequence=1}
+
+\leavevmode\hypertarget{ref-grant2014building}{}%
+Grant, J.R. \& Katz, L.A. (2014). Building a phylogenomic pipeline for the eukaryotic tree of life-addressing deep phylogenies with genome-scale data. \emph{PLoS currents}, \textbf{6}.
+
+\leavevmode\hypertarget{ref-greenberg2011caryophyllaceae}{}%
+Greenberg, A.K. \& Donoghue, M.J. (2011). Molecular systematics and character evolution in caryophyllaceae. \emph{Taxon}, \textbf{60}, 1637--1652.
+
+\leavevmode\hypertarget{ref-legume2013legume}{}%
+Group, L.P.W., Bruneau, A., Doyle, J.J., Herendeen, P., Hughes, C., Kenicer, G., Lewis, G., Mackinder, B., Pennington, R.T., Sanderson, M.J. \& others. (2013). Legume phylogeny and classification in the 21st century: Progress, prospects and lessons for other species--rich clades. \emph{Taxon}, \textbf{62}, 217--248.
+
+\leavevmode\hypertarget{ref-guy2017phyloskeleton}{}%
+Guy, L. (2017). PhyloSkeleton: Taxon selection, data retrieval and marker identification for phylogenomics. \emph{Bioinformatics}, \textbf{33}, 1230--1232.
+
+\leavevmode\hypertarget{ref-hardy2010gall}{}%
+Hardy, N.B. \& Cook, L.G. (2010). Gall-induction in insects: Evolutionary dead-end or speciation driver? \emph{BMC evolutionary biology}, \textbf{10}, 257.
+
+\leavevmode\hypertarget{ref-hardy2012testing}{}%
+Hardy, N.B. \& Cook, L.G. (2012). Testing for ecological limitation of diversification: A case study using parasitic plants. \emph{The American Naturalist}, \textbf{180}, 438--449.
+
+\leavevmode\hypertarget{ref-hardy2014specialization}{}%
+Hardy, N.B. \& Otto, S.P. (2014). Specialization and generalization in the diversification of phytophagous insects: Tests of the musical chairs and oscillation hypotheses. \emph{Proceedings of the Royal Society B: Biological Sciences}, \textbf{281}, 20132960.
+
+\leavevmode\hypertarget{ref-hardy2015evolution}{}%
+Hardy, N.B., Peterson, D.A. \& Dohlen, C.D. von. (2015). The evolution of life cycle complexity in aphids: Ecological optimization or historical constraint? \emph{Evolution}, \textbf{69}, 1423--1432.
+
+\leavevmode\hypertarget{ref-helmus2012phylogenetic}{}%
+Helmus, M.R. \& Ives, A.R. (2012). Phylogenetic diversity--area curves. \emph{Ecology}, \textbf{93}, S31--S43.
+
+\leavevmode\hypertarget{ref-helmus2010communities}{}%
+Helmus, M.R., Keller, W., Paterson, M.J., Yan, N.D., Cannon, C.H. \& Rusak, J.A. (2010). Communities contain closely related species during ecosystem disturbance. \emph{Ecology letters}, \textbf{13}, 162--174.
+
+\leavevmode\hypertarget{ref-ickert2009fossil}{}%
+Ickert-Bond, S.M., Rydin, C. \& Renner, S.S. (2009). A fossil-calibrated relaxed clock for ephedra indicates an oligocene age for the divergence of asian and new world clades and miocene dispersal into south america. \emph{Journal of Systematics and Evolution}, \textbf{47}, 444--456.
+
+\leavevmode\hypertarget{ref-izquierdo2014pumper}{}%
+Izquierdo-Carrasco, F., Cazes, J., Smith, S.A. \& Stamatakis, A. (2014). PUmPER: Phylogenies updated perpetually. \emph{Bioinformatics}, \textbf{30}, 1476--1477.
+
+\leavevmode\hypertarget{ref-jamil2016visual}{}%
+Jamil, H.M. (2016). A visual interface for querying heterogeneous phylogenetic databases. \emph{IEEE/ACM transactions on computational biology and bioinformatics}, \textbf{14}, 131--144.
+
+\leavevmode\hypertarget{ref-jones2014trends}{}%
+Jones, T.M., Baxter, D.G., Hagedorn, G., Legler, B., Gilbert, E., Thiele, K., Vargas-Rodriguez, Y. \& Urbatsch, L.E. (2014). Trends in access of plant biodiversity data revealed by google analytics. \emph{Biodiversity data journal}.
+
+\leavevmode\hypertarget{ref-kamarudin2016phylogenetic}{}%
+Kamarudin, K.R., Rehan, A.M., Hashim, R., Usup, G. \& Rehan, M.M. (2016). Phylogenetic relationships within the genus holothuria inferred from 16S mitochondiral rRNA gene sequences. \emph{Sains Malaysiana}, \textbf{45}, 1079--1087. Retrieved from \url{http://journalarticle.ukm.my/9982/1/10\%20Kamarul\%20Rahim\%20Kamarudin.pdf}
+
+\leavevmode\hypertarget{ref-kolmann2017dna}{}%
+Kolmann, M.A., Elbassiouny, A.A., Liverpool, E.A. \& Lovejoy, N.R. (2017). DNA barcoding reveals the diversity of sharks in guyana coastal markets. \emph{Neotropical Ichthyology}, \textbf{15}.
+
+\leavevmode\hypertarget{ref-kumar2015bir}{}%
+Kumar, S., Krabberød, A.K., Neumann, R.S., Michalickova, K., Zhao, S., Zhang, X. \& Shalchian-Tabrizi, K. (2015). BIR pipeline for preparation of phylogenomic data. \emph{Evolutionary Bioinformatics}, \textbf{11}, EBO--S10189.
+
+\leavevmode\hypertarget{ref-lehtonen2011towards}{}%
+Lehtonen, S. (2011). Towards resolving the complete fern tree of life. \emph{PLoS One}, \textbf{6}.
+
+\leavevmode\hypertarget{ref-lehtonen2016sensitive}{}%
+Lehtonen, S., Christenhusz, M.J. \& Falck, D. (2016). Sensitive phylogenetics of clematis and its position in ranunculaceae. \emph{Botanical Journal of the Linnean Society}, \textbf{182}, 825--867.
+
+\leavevmode\hypertarget{ref-lehtonen2017environmentally}{}%
+Lehtonen, S., Silvestro, D., Karger, D.N., Scotese, C., Tuomisto, H., Kessler, M., Peña, C., Wahlberg, N. \& Antonelli, A. (2017). Environmentally driven extinction and opportunistic origination explain fern diversification patterns. \emph{Scientific Reports}, \textbf{7}, 1--12.
+
+\leavevmode\hypertarget{ref-lemoine2018renewing}{}%
+Lemoine, F., Entfellner, J.-B.D., Wilkinson, E., Correia, D., Felipe, M.D., De Oliveira, T. \& Gascuel, O. (2018). Renewing felsenstein's phylogenetic bootstrap in the era of big data. \emph{Nature}, \textbf{556}, 452--456.
+
+\leavevmode\hypertarget{ref-li2013partfasttree}{}%
+Li, J., Meng, Z., Hou, Y., Zhou, Y. \& Gao, Y. (2013). PartFastTree: Constructing large phylogenetic trees and estimating their reliability. \emph{2013 ninth international conference on natural computation (icnc)} pp. 1052--1056. IEEE.
+
+\leavevmode\hypertarget{ref-mahmood2015avian}{}%
+Mahmood, M.T. (2015). \emph{Avian raptor evolution}. PhD thesis thesis, Institute of Fundamental Sciences, Massey University, New Zealand. Retrieved from \url{https://mro.massey.ac.nz/bitstream/handle/10179/7198/02_whole.pdf}
+
+\leavevmode\hypertarget{ref-martin2011trophic}{}%
+Martin, C.H. \& Wainwright, P.C. (2011). Trophic novelty is linked to exceptional rates of morphological diversification in two adaptive radiations of cyprinodon pupfish. \emph{Evolution: International Journal of Organic Evolution}, \textbf{65}, 2197--2212.
+
+\leavevmode\hypertarget{ref-mcmahon2015stbase}{}%
+McMahon, M.M., Deepak, A., Fernández-Baca, D., Boss, D. \& Sanderson, M.J. (2015). STBase: One million species trees for comparative biology. \emph{PloS one}, \textbf{10}.
+
+\leavevmode\hypertarget{ref-mctavish2015phylesystem}{}%
+McTavish, E.J., Hinchliff, C.E., Allman, J.F., Brown, J.W., Cranston, K.A., Holder, M.T., Rees, J.A. \& Smith, S.A. (2015). Phylesystem: A git-based data store for community-curated phylogenetic estimates. \emph{Bioinformatics}, \textbf{31}, 2794--2800.
+
+\leavevmode\hypertarget{ref-meng2015darwintree}{}%
+Meng, Z., Dong, H., Li, J., Chen, Z., Zhou, Y., Wang, X. \& Zhang, S. (2015a). Darwintree: A molecular data analysis and application environment for phylogenetic study. \emph{Data Science Journal}, \textbf{14}.
+
+\leavevmode\hypertarget{ref-meng2015solution}{}%
+Meng, Z., Li, J. \& Chen, Z. (2015b). A solution to phylogeny assembly for ecologists. \emph{2015 12th international conference on fuzzy systems and knowledge discovery (fskd)} pp. 1103--1107. IEEE.
+
+\leavevmode\hypertarget{ref-meng2015sotree}{}%
+Meng, Z., Li, J., Yang, T., Lin, L. \& Chen, Z. (2015c). SoTree: An automated phylogeny assembly tool for ecologists from big tree. \emph{2015 ieee international conference on smart city/socialcom/sustaincom (smartcity)} pp. 792--797. IEEE.
+
+\leavevmode\hypertarget{ref-meng2012gsqct}{}%
+Meng, Z., Li, J., Zhou, Y., Cao, W., Xiao, X., Zhao, J., Dong, H. \& Zhang, S. (2012a). GSQCT: A solution to screening gene sequences for phylogenetics analysis. \emph{2012 9th international conference on fuzzy systems and knowledge discovery} pp. 2929--2933. IEEE.
+
+\leavevmode\hypertarget{ref-meng2014rapidtree}{}%
+Meng, Z., Shao, J., Cao, W., Li, J., Zhou, Y. \& Wang, X. (2014). RapidTree: A solution to rapid reconstruction phylogenetic tree. \emph{2014 11th international conference on fuzzy systems and knowledge discovery (fskd)} pp. 513--517. IEEE.
+
+\leavevmode\hypertarget{ref-meng2012cloud}{}%
+Meng, Z., Xiao, X., Li, J., Zhou, Y., Cao, W. \& Shen, G. (2012b). Cloud-gsqct: A parallel approach to screen gene sequences for phylogenetics analysis. \emph{2012 international conference on computer science and information processing (csip)} pp. 660--663. IEEE.
+
+\leavevmode\hypertarget{ref-morrison2009apicomplexa}{}%
+Morrison, D.A. (2009). Evolution of the apicomplexa: Where are we now? \emph{Trends in parasitology}, \textbf{25}, 375--382.
+
+\leavevmode\hypertarget{ref-nazaire2012broad}{}%
+Nazaire, M. \& Hufford, L. (2012). A broad phylogenetic analysis of boraginaceae: Implications for the relationships of mertensia. \emph{Systematic Botany}, \textbf{37}, 758--783.
+
+\leavevmode\hypertarget{ref-page2013bionames}{}%
+Page, R.D. (2013). BioNames: Linking taxonomy, texts, and trees. \emph{PeerJ}, \textbf{1}, e190.
+
+\leavevmode\hypertarget{ref-page2011linking}{}%
+Page, R.D. (2011). Linking ncbi to wikipedia: A wiki-based approach. \emph{PLoS currents}, \textbf{3}.
+
+\leavevmode\hypertarget{ref-papadopoulou2015automated}{}%
+Papadopoulou, A., Chesters, D., Coronado, I., De la Cadena, G., Cardoso, A., Reyes, J.C., Maes, J.-M., Rueda, R.M. \& Gómez-Zurita, J. (2015). Automated dna-based plant identification for large-scale biodiversity assessment. \emph{Molecular ecology resources}, \textbf{15}, 136--152.
+
+\leavevmode\hypertarget{ref-pereira2013padroes}{}%
+Pereira, J.E.S. (2013). \emph{Padrões e processos na evolução de primatas neotropicais (platyrrhini, primates)}. PhD thesis thesis, Tese de doutorado. Setor de Ciências Biológicas, Universidade Federal do~\ldots{}. Retrieved from \url{https://www.acervodigital.ufpr.br/handle/1884/33775}
+
+\leavevmode\hypertarget{ref-peters2011taming}{}%
+Peters, R.S., Meyer, B., Krogmann, L., Borner, J., Meusemann, K., Schütte, K., Niehuis, O. \& Misof, B. (2011). The taming of an impossible child: A standardized all-in approach to the phylogeny of hymenoptera using public database sequences. \emph{BMC biology}, \textbf{9}, 55. Retrieved from \url{https://bmcbiol.biomedcentral.com/articles/10.1186/1741-7007-9-55\#Sec21}
+
+\leavevmode\hypertarget{ref-piel2009treebase}{}%
+Piel, W., Chan, L., Dominus, M., Ruan, J., Vos, R. \& Tannen, V. (2009). Treebase v. 2: A database of phylogenetic knowledge. E-biosphere.
+
+\leavevmode\hypertarget{ref-rabosky2011species}{}%
+Rabosky, D.L., Cowan, M.A., Talaba, A.L. \& Lovette, I.J. (2011). Species interactions mediate phylogenetic community structure in a hyperdiverse lizard assemblage from arid australia. \emph{The American Naturalist}, \textbf{178}, 579--595.
+
+\leavevmode\hypertarget{ref-ranwez2009phyloexplorer}{}%
+Ranwez, V., Clairon, N., Delsuc, F., Pourali, S., Auberval, N., Diser, S. \& Berry, V. (2009). PhyloExplorer: A web server to validate, explore and query phylogenetic trees. \emph{BMC evolutionary biology}, \textbf{9}, 108.
+
+\leavevmode\hypertarget{ref-roalson2016distinct}{}%
+Roalson, E.H. \& Roberts, W.R. (2016). Distinct processes drive diversification in different clades of gesneriaceae. \emph{Systematic Biology}, \textbf{65}, 662--684.
+
+\leavevmode\hypertarget{ref-roquet2013building}{}%
+Roquet, C., Thuiller, W. \& Lavergne, S. (2013). Building megaphylogenies for macroecology: Taking up the challenge. \emph{Ecography}, \textbf{36}, 13--26.
+
+\leavevmode\hypertarget{ref-ross2013large}{}%
+Ross, L., Hardy, N.B., Okusu, A. \& Normark, B.B. (2013). Large population size predicts the distribution of asexuality in scale insects. \emph{Evolution: International Journal of Organic Evolution}, \textbf{67}, 196--206.
+
+\leavevmode\hypertarget{ref-ruiz2019datataxa}{}%
+Ruiz-Sanchez, E., Maya-Lastra, C.A., Steinmann, V.W., Zamudio, S., Carranza, E., Murillo, R.M. \& Rzedowski, J. (2019). Datataxa: A new script to extract metadata sequence information from genbank, the flora of bajío as a case study. \emph{Botanical Sciences}, \textbf{97}, 754--760.
+
+\leavevmode\hypertarget{ref-salariato2010filogenia}{}%
+Salariato, D.L. (2010). \emph{Filogenia y evolución de la subtribu melinidinae (paniceae: Panicoideae: Poaceae)}. PhD thesis thesis, Universidad de Buenos Aires. Facultad de Ciencias Exactas y Naturales. Retrieved from \url{http://hdl.handle.net/20.500.12110/tesis_n4771_Salariato}
+
+\leavevmode\hypertarget{ref-salariato2010molecular}{}%
+Salariato, D.L., Zuloaga, F.O., Giussani, L.M. \& Morrone, O. (2010). Molecular phylogeny of the subtribe melinidinae (poaceae: Panicoideae: Paniceae) and evolutionary trends in the homogenization of inflorescences. \emph{Molecular Phylogenetics and Evolution}, \textbf{56}, 355--369.
+
+\leavevmode\hypertarget{ref-sanderson2008phylota}{}%
+Sanderson, M.J., Boss, D., Chen, D., Cranston, K.A. \& Wehe, A. (2008). The PhyLoTA Browser: Processing GenBank for Molecular Phylogenetics Research. \emph{Systematic Biology}, \textbf{57}, 335--346. Retrieved from \url{https://doi.org/10.1080/10635150802158688}
+
+\leavevmode\hypertarget{ref-sanderson2010phylogenomics}{}%
+Sanderson, M.J., McMahon, M.M. \& Steel, M. (2010). Phylogenomics with incomplete taxon coverage: The limits to inference. \emph{BMC Evolutionary Biology}, \textbf{10}, 155.
+
+\leavevmode\hypertarget{ref-sanderson2016perspective}{}%
+Sanderson, M.J., Olson, P., Hughes, J. \& Cotton, J. (2016). Perspective: Challenges in assembling the `next generation'Tree of life. \emph{Olson PD, Hughes J and Cotton JA}, 13--27. Retrieved from \url{https://books.google.com/books?hl=es\&lr=\&id=hFU2DAAAQBAJ\&oi=fnd\&pg=PA13\&ots=2Oa_TVGCic\&sig=fdxyYmSQASm2XFoU7jv4JKLFaTQ\#v=onepage\&q\&f=false}
+
+\leavevmode\hypertarget{ref-san2010molecular}{}%
+San Mauro, D. \& Agorreta, A. (2010). Molecular systematics: A synthesis of the common methods and the state of knowledge. \emph{Cellular \& Molecular Biology Letters}, \textbf{15}, 311.
+
+\leavevmode\hypertarget{ref-santini2014first}{}%
+Santini, F., Carnevale, G. \& Sorenson, L. (2014). First multi-locus timetree of seabreams and porgies (percomorpha: Sparidae). \emph{Italian Journal of Zoology}, \textbf{81}, 55--71.
+
+\leavevmode\hypertarget{ref-santini2015first}{}%
+Santini, F., Carnevale, G. \& Sorenson, L. (2015). First timetree of sphyraenidae (percomorpha) reveals a middle eocene crown age and an oligo--miocene radiation of barracudas. \emph{Italian Journal of Zoology}, \textbf{82}, 133--142.
+
+\leavevmode\hypertarget{ref-santini2013first}{}%
+Santini, F. \& Sorenson, L. (2013). First molecular timetree of billfishes (istiophoriformes: Acanthomorpha) shows a late miocene radiation of marlins and allies. \emph{Italian journal of zoology}, \textbf{80}, 481--489.
+
+\leavevmode\hypertarget{ref-sarkinen2013solanaceae}{}%
+Särkinen, T., Bohs, L., Olmstead, R.G. \& Knapp, S. (2013). A phylogenetic framework for evolutionary study of the nightshades (solanaceae): A dated 1000-tip tree. \emph{BMC evolutionary biology}, \textbf{13}, 214.
+
+\leavevmode\hypertarget{ref-schoch2009ascomycota}{}%
+Schoch, C.L., Sung, G.-H., López-Giráldez, F., Townsend, J.P., Miadlikowska, J., Hofstetter, V., Robbertse, B., Matheny, P.B., Kauff, F., Wang, Z. \& others. (2009). The ascomycota tree of life: A phylum-wide phylogeny clarifies the origin and evolution of fundamental reproductive and ecological traits. \emph{Systematic biology}, \textbf{58}, 224--239.
+
+\leavevmode\hypertarget{ref-selvatti2015paleogene}{}%
+Selvatti, A.P., Gonzaga, L.P. \& Moraes Russo, C.A. de. (2015). A paleogene origin for crown passerines and the diversification of the oscines in the new world. \emph{Molecular phylogenetics and evolution}, \textbf{88}, 1--15.
+
+\leavevmode\hypertarget{ref-shi2015speciation}{}%
+Shi, J.J. \& Rabosky, D.L. (2015). Speciation dynamics during the global radiation of extant bats. \emph{Evolution}, \textbf{69}, 1528--1545.
+
+\leavevmode\hypertarget{ref-simon2012cerrado}{}%
+Simon, M.F. \& Pennington, T. (2012). Evidence for adaptation to fire regimes in the tropical savannas of the brazilian cerrado. \emph{International Journal of Plant Sciences}, \textbf{173}, 711--723.
+
+\leavevmode\hypertarget{ref-smith2009mega}{}%
+Smith, S.A., Beaulieu, J.M. \& Donoghue, M.J. (2009). Mega-phylogeny approach for comparative biology: An alternative to supertree and supermatrix approaches. \emph{BMC evolutionary biology}, \textbf{9}, 37.
+
+\leavevmode\hypertarget{ref-smith2018constructing}{}%
+Smith, S.A. \& Brown, J.W. (2018). Constructing a broadly inclusive seed plant phylogeny. \emph{American Journal of Botany}, \textbf{105}, 302--314.
+
+\leavevmode\hypertarget{ref-smith2019pyphlawd}{}%
+Smith, S.A. \& Walker, J.F. (2019). PyPHLAWD: A python tool for phylogenetic dataset construction. \emph{Methods in Ecology and Evolution}, \textbf{10}, 104--108.
+
+\leavevmode\hypertarget{ref-sorenson2014evolution}{}%
+Sorenson, L. (2014). \emph{Evolution of marine fish biodiversity: Phylogenomics and ecological processes shaping diversification}. PhD thesis thesis, UCLA. Retrieved from \url{https://escholarship.org/uc/item/31n0c9km}
+
+\leavevmode\hypertarget{ref-sorenson2014effect}{}%
+Sorenson, L., Santini, F. \& Alfaro, M. (2014). The effect of habitat on modern shark diversification. \emph{Journal of Evolutionary Biology}, \textbf{27}, 1536--1548.
+
+\leavevmode\hypertarget{ref-stamatakis2014raxml}{}%
+Stamatakis, A. (2014). RAxML version 8: A tool for phylogenetic analysis and post-analysis of large phylogenies. \emph{Bioinformatics}, \textbf{30}, 1312--1313.
+
+\leavevmode\hypertarget{ref-steppan2017muroid}{}%
+Steppan, S.J. \& Schenk, J.J. (2017). Muroid rodent phylogenetics: 900-species tree reveals increasing diversification rates. \emph{PLoS One}, \textbf{12}.
+
+\leavevmode\hypertarget{ref-stoltzfus2013phylotastic}{}%
+Stoltzfus, A., Lapp, H., Matasci, N., Deus, H., Sidlauskas, B., Zmasek, C.M., Vaidya, G., Pontelli, E., Cranston, K., Vos, R. \& others. (2013). Phylotastic! Making tree-of-life knowledge accessible, reusable and convenient. \emph{BMC bioinformatics}, \textbf{14}, 158.
+
+\leavevmode\hypertarget{ref-strecker2014fish}{}%
+Strecker, A.L. \& Olden, J.D. (2014). Fish species introductions provide novel insights into the patterns and drivers of phylogenetic structure in freshwaters. \emph{Proceedings of the Royal Society B: Biological Sciences}, \textbf{281}, 20133003.
+
+\leavevmode\hypertarget{ref-thomson2010sparse}{}%
+Thomson, R.C. \& Shaffer, H.B. (2010). Sparse supermatrices for phylogenetic inference: Taxonomy, alignment, rogue taxa, and the phylogeny of living turtles. \emph{Systematic biology}, \textbf{59}, 42--58.
+
+\leavevmode\hypertarget{ref-tucker2012incorporating}{}%
+Tucker, C.M., Cadotte, M.W., Davies, T.J. \& Rebelo, T.G. (2012). Incorporating geographical and evolutionary rarity into conservation prioritization. \emph{Conservation Biology}, \textbf{26}, 593--601.
+
+\leavevmode\hypertarget{ref-verbruggen2010data}{}%
+Verbruggen, H., Maggs, C.A., Saunders, G.W., Le Gall, L., Yoon, H.S. \& De Clerck, O. (2010). Data mining approach identifies research priorities and data requirements for resolving the red algal tree of life. \emph{BMC evolutionary biology}, \textbf{10}, 16.
+
+\leavevmode\hypertarget{ref-vos2012nexml}{}%
+Vos, R.A., Balhoff, J.P., Caravas, J.A., Holder, M.T., Lapp, H., Maddison, W.P., Midford, P.E., Priyam, A., Sukumaran, J., Xia, X. \& others. (2012). NeXML: Rich, extensible, and verifiable representation of comparative data and metadata. \emph{Systematic biology}, \textbf{61}, 675--689.
+
+\leavevmode\hypertarget{ref-webb2010biodiversity}{}%
+Webb, C.O., Slik, J.F. \& Triono, T. (2010). Biodiversity inventory and informatics in southeast asia. \emph{Biodiversity and Conservation}, \textbf{19}, 955--972.
+
+\leavevmode\hypertarget{ref-weber2014defense}{}%
+Weber, M.G. \& Agrawal, A.A. (2014). Defense mutualisms enhance plant diversification. \emph{Proceedings of the National Academy of Sciences}, \textbf{111}, 16442--16447.
+
+\leavevmode\hypertarget{ref-wheeler2000database}{}%
+Wheeler, D.L., Chappey, C., Lash, A.E., Leipe, D.D., Madden, T.L., Schuler, G.D., Tatusova, T.A. \& Rapp, B.A. (2000). Database resources of the national center for biotechnology information. \emph{Nucleic acids research}, \textbf{28}, 10--14.
+
+\leavevmode\hypertarget{ref-wu2008simple}{}%
+Wu, M. \& Eisen, J.A. (2008). A simple, fast, and accurate method of phylogenomic inference. \emph{Genome biology}, \textbf{9}, R151.
+
+\leavevmode\hypertarget{ref-xu2015ncbiminer}{}%
+Xu, X., Dimitrov, D., Rahbek, C. \& Wang, Z. (2015). NCBIminer: Sequences harvest from genbank. \emph{Ecography}, \textbf{38}, 426--430.
+
+\leavevmode\hypertarget{ref-yong2010screening}{}%
+Yong, L., Zhen, M., Qi, L., Yanping, G., Yuanchun, Z. \& Jianhui, L. (2010). Screening data for phylogenetic analysis of land plants: A parallel approach. \emph{2010 first international conference on networking and distributed computing} pp. 305--308. IEEE.
+
+\end{document}
