@@ -192,74 +192,22 @@ the synthetic OToL and then measure how well they do against each other***
 
 # Examples
 
+We will address two use-case scenarios. One in which the user is interested in a particular group. Anothr one in which the user is interested in a particular phylogeny.
+
 ## The hollies
 
-The genus *Ilex* is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
-It encompasses between 400-600 living species. A review of litterature shows that there are three published phylogenetic trees, showing relationships within the hollies.
-The first one has been made available both on OToL phylesystem and synth tree, and on treeBASE, it samples 48 species.
-The second has not been made available anywhere, not even in supplementary data of the journal.
-***Contact authors? They seem old school, probably do not wanna share their data.***
-The most recent one has been made available in the OToL Phylesystem and DRYAD. It is the best sampled yet, with 200 species. However,
-it has not been added to the syntehtic tree yet.
-This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database [@benson2000genbank; @wheeler2000database]. Updating the oldest tree, we should get something very similar to the newest tree.
+A student is interested in the genus *Ilex*, the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
+It encompasses between 400-600 living species. A review of literature shows them that there are three published phylogenetic trees, showing relationships within the hollies.
+The first one has been made available both in the OToL phylesystem and is part of the synthetic tree, and on treeBASE. It samples 48 species.
+The second tree has not been made available anywhere, not even in the supplementary data of the original publication.
+<!-- ***Contact authors? They seem old school, probably do not wanna share their data.*** -->
+The most recent one has been made available in the OToL Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
+This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database [@benson2000genbank; @wheeler2000database]. We would expect that updating the oldest tree, we would get something very similar to the newest tree.
+
+## The Malvaceae
 
 
-## The Ascomycota
 
-
-Let's be more specific now about our X group and say it is the Ascomycota.
-The best tree currently available in OToL was published by @schoch2009ascomycota.
-The first step, is to get the Open Tree of Life study id. There are some options to do this:
-- You can go to the Open Tree of Life website and browse until you find it, or
-- you can get the study id using R tools:
-  - By using the TreeBase ID of the study (which is not fully exposed on the
-    TreeBase website home page of the study, so you have to really look it up manually):
-```{r, treebase, eval = TRUE}
-rotl::studies_find_studies(property = "treebaseId", value = "S2137")
-```
-  - By using the name of the focal clade of study (but this behaved very differently):
-```{r, focal, eval = FALSE}
-rotl::studies_find_studies(property="ot:focalCladeOTTTaxonName", value="Ascomycota")
-```
-
-Once we have the study id, we can gather the trees published on that study:
-```{r, treeids, eval = TRUE}
-rotl::get_tree_ids(rotl::get_study_meta("pg_238"))
-rotl::candidate_for_synth(rotl::get_study_meta("pg_238"))
-my_trees <- rotl::get_study("pg_238")
-```
-Both trees from this study have `r tryCatch(ape::Ntip(my_trees[[1]]), error = function(e){return(NA)})` tips.
-
-Let's check what one of the trees looks like:
-
-<!-- ```{r fungi-phylo, eval = TRUE, fig.retina = 2, fig.width = 2} -->
-<!-- ape::plot.phylo(ape::ladderize(my_trees[[1]]), type = "phylogram", cex = 0.1) -->
-<!-- ``` -->
-
-1. Download the alignment from TreeBase
-If you are on the TreeBase home page of the study, you can navigate to the matrix tab, and manually download the alignments that were used to reconstruct the trees reported on the study that were also uploaded to TreeBase and to the Open Tree of Life repository.
-To make this task easier, you can use a command to download everything into your working folder:
-```
-physcraper_run.py -s pg_238 -t tree109 -o ../physcraper_example/pg_238
-```
-In this example, all alignments posted on TreeBase were used to reconstruct both trees.
-
-1. With the study id and the alignment files saved locally, we can do a physcraper run with the command:
-
-```
-physcraper_run.py -s pg_238 -t tree109 -a treebase_alns/pg_238tree109.aln -as "nexus" -o pg_238
-```
-
-## Testudines example
-
-Phylogeny of the Testudines 6 tips from @crawford2012more
-There is just one tree in OToL.
-There is just one alignment on [treebase](https://treebase.org/treebase-web/search/study/matrices.html?id=12742) with all the 1 145 loci.
-
-
-```
-physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ -o pg_2573
-```
 # Discussion
 
 Data repositories hold more information than meets the eye.
@@ -310,63 +258,6 @@ Things that physcraper does not do:
 - provide basic statistics on data availability to assemble molecular datasets, as mentioned by @ranwez2009phyloexplorer. Phyloexplorer does this?
 - it is not a tree repo, as phylota is, mentioned in @deepak2014evominer
 
-## Tools that automatize any part of the process of phylogenetic reconstruction:
-
-### 1. Mining DNA databases to generate datasets suitable for phylogenetic reconstruction
-
-| Tool | Citation | Cited by | Description | Supermatrix/gene tree/species tree |
-|-----|------|:------:|:------:|:------:|
-| Phylota | @sanderson2008phylota | 122 studies | finds sets of DNA homologs on the GenBank database; phylogenetic reconstruction | Supermatrix |
-| AMPHORA | @wu2008simple | 458 studies | baited search; protein markers on phylogenomic data; personal database of genomes or metagenomic data, manually downloaded either from a public database or from private data; phylogenetic reconstruction | Supermatrix |
-| PHLAWD | @smith2009mega | 234 studies | Baited search of DNA markers on the GenBank database; phylogenetic reconstruction | Supermatrix |
-| Unnamed [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals), only available from [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP) of the journal | @peters2011taming | 64 studies | mining public DNA databases, focuses on filtering massive amounts of mined sequences by using established "criteria of compositional homogeneity and defined levels of density and overlap" | Supermatrix |
-| Unnamed | @grant2014building | 38 studies | predecessor of phylotol; homolog clustering; public and/or personal DNA database; phylogenetic reconstruction; broad taxon analyses; remove contaminant sequences, based on similarity and on phylogenetic position | supermatrix |
-| Unnamed | @chesters2014protocol | 10 studies | algorithm that mines GenBank data to delineate species in the insecta. The authors present a nice comparison with the phylota algorithm | Species trees?? |
-| PUmPER | @izquierdo2014pumper | 14 studies | perpetual updating with newly added sequences to GenBank | not sure yet |
-| DarwinTree | @meng2015darwintree | 6 studies | predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP), takes data from GenBank, EMBL and DDBJ for land plants only| not sure |
-| NCBIminer | @xu2015ncbiminer | 4 studies | part of darwintree | not sure |
-|SUMAC | @freyman2015sumac | 19 studies | both “baited” analyses and single‐linkage clustering methods, as well as a novel means of determining when there are enough overlapping data in the DNA matrix | not sure |
-|STBase | @mcmahon2015stbase | 7 studies | pipeline for species tree construction and the public database of one million precomputed species trees | species trees |
-| Unnamed | @papadopoulou2015automated | 17 studies | Automated DNA-based plant identification for large-scale biodiversity assessment | not sure |
-| BIR | @kumar2015bir | 6 studies | blast, align, identify homologs via constructed trees, curate and realign | supermatrix |
-| SUPERSMART | @antonelli2017toward | 35 studies | baited analyses up to bayesian divergence time estimation | supermatrix |
-| SOPHI | [@chesters2017construction | 17 studies | Searches DNA sequence data from repos other than GenBank, such as transcriptomic and barcoding repos | not sure |
-| phyloSkeleton | @guy2017phyloskeleton | 5 studies | focuses on taxon sampling; baited genomic sequences; public database (NCBI and JGI); marker identification| supermatrix |
-| OneTwoTree | @drori2018onetwotree | 7 studies | Web‐based, user-friendly, online tool for species-tree reconstruction, based on the *supermatrix paradigm* and retrieves all available sequence data from NCBI GenBank| supermatrix |
-| pyPhlawd | @smith2019pyphlawd | 6 studies | baited and clustering analyses | Supermatrix or gene tree |
-| Phylotol | @ceron2019phylotol | 5 studies | "phylogenomic pipeline to allow easy incorporation of data from  high-throughput sequencing studies, to automate production of both multiple sequence alignments and gene trees, and to identify and remove contaminants. PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree of life", i.e., bacteria and unicellular eukaryotes | supermatrix and gene trees |
-| phylotaR | @bennett2018phylotar | studies |  |  |
-
-According to @ceron2019phylotol, PhyLoTA and BIR "focus on the identification and collection
-of homologous and paralog genes from public databases such as GenBank", while both AMPHORA and PHLAWD
-"focus on the construction and refinement of robust alignments rather than the collection of homologs."
-
-### 2. Searching phylogenetic tree databases
-
-PhyloFinder [@chen2008phylofinder] - cited by 18: a search engine for phylogenetic databases, using
-trees from TreeBASE - more related to phylotastic's goal than to updating/creating phylogenies
-
-### 3. Mining phylogenetic tree databases
-
-PhyloExplorer [@ranwez2009phyloexplorer] - cited by 21: a python and MySQL based website to facilitate
-assessment and management of phylogenetic tree collections. It provides "statistics describing the collection,
-correcting invalid taxon names, extracting taxonomically relevant parts of the collection
-using a dedicated query language, and identifying related trees in the TreeBASE database".
-
-### 4. Pipeline for phylogenetic reconstruction
-
-PhySpeTre [@fang2019physpetree] - no citations yet - no sequence retrieval, just phylogenetic reconstruction
-pipeline.
-
-### 5. getting metadata and not sequences from GenBank.
-
-Datataxa @ruiz2019datataxa - no citations yet - focus on extracting metadata from GenBank sequence information.
-
-
-## Phylota overview
-
-```{r phylota, child="100-phylota-overview.Rmd"}
-```
 
 # Acknowledgements
 

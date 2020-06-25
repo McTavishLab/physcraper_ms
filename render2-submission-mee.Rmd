@@ -38,39 +38,35 @@ knitr::opts_chunk$set(
 library(wordcountaddin)
 word_count_body <- wordcountaddin::word_count(filename="2-body.Rmd")
 ```
-
-1. `r params$author1`
+**1. `r params$author1`**
 
 `r params$affiliation`
 
 email: <`r params$email1`>
 
-2. `r params$author2`
+**2. `r params$author2`**
 
 `r params$affiliation`
 
 email: <`r params$email2`>
 
-3. `r params$author3`
+**3. `r params$author3`**
 
 `r params$affiliation`
 
 email: <`r params$email3`>
 
-Correspondence:
+**Correspondence address**: `r params$correspondence_address`
 
-`r params$correspondence_address`
+**Correspondence email**: <`r params$email1`>, <`r params$email3`>
 
-email: <`r params$email1`>, <`r params$email3`>
+**Running title**: `r params$running_title`
 
+**Word count**: `r word_count_body`
 
-Running title: `r params$running_title`
+**Manuscript prepared for submission to Methods in Ecology and Evolution**
 
-Word count: `r word_count_body`
-
-Manuscript prepared for submission to Methods in Ecology and Evolution
-
-Article type: Application
+**Article type**: Application
 
 
 \newpage
@@ -78,7 +74,7 @@ Article type: Application
 ``` {r child = '1-abstract.Rmd'}
 ```
 
-**Keywords**: cross-connectivity, gene tree, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, update alignment
+**Keywords**: cross-connectivity, gene tree, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, updated alignment
 
 \newpage
 

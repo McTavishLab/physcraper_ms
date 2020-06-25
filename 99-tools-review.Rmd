@@ -1,0 +1,62 @@
+---
+output:
+  redoc::redoc
+---
+
+## Tools that automatize any part of the process of phylogenetic reconstruction:
+
+### 1. Mining DNA databases to generate datasets suitable for phylogenetic reconstruction
+
+| Tool | Citation | Cited by | Description | Supermatrix/gene tree/species tree |
+|-----|------|:------:|:------:|:------:|
+| Phylota | @sanderson2008phylota | 122 studies | finds sets of DNA homologs on the GenBank database; phylogenetic reconstruction | Supermatrix |
+| AMPHORA | @wu2008simple | 458 studies | baited search; protein markers on phylogenomic data; personal database of genomes or metagenomic data, manually downloaded either from a public database or from private data; phylogenetic reconstruction | Supermatrix |
+| PHLAWD | @smith2009mega | 234 studies | Baited search of DNA markers on the GenBank database; phylogenetic reconstruction | Supermatrix |
+| Unnamed [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals), only available from [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP) of the journal | @peters2011taming | 64 studies | mining public DNA databases, focuses on filtering massive amounts of mined sequences by using established "criteria of compositional homogeneity and defined levels of density and overlap" | Supermatrix |
+| Unnamed | @grant2014building | 38 studies | predecessor of phylotol; homolog clustering; public and/or personal DNA database; phylogenetic reconstruction; broad taxon analyses; remove contaminant sequences, based on similarity and on phylogenetic position | supermatrix |
+| Unnamed | @chesters2014protocol | 10 studies | algorithm that mines GenBank data to delineate species in the insecta. The authors present a nice comparison with the phylota algorithm | Species trees?? |
+| PUmPER | @izquierdo2014pumper | 14 studies | perpetual updating with newly added sequences to GenBank | not sure yet |
+| DarwinTree | @meng2015darwintree | 6 studies | predecessor is Phylogenetic Analysis of Land Plants Platform (PALPP), takes data from GenBank, EMBL and DDBJ for land plants only| not sure |
+| NCBIminer | @xu2015ncbiminer | 4 studies | part of darwintree | not sure |
+|SUMAC | @freyman2015sumac | 19 studies | both “baited” analyses and single‐linkage clustering methods, as well as a novel means of determining when there are enough overlapping data in the DNA matrix | not sure |
+|STBase | @mcmahon2015stbase | 7 studies | pipeline for species tree construction and the public database of one million precomputed species trees | species trees |
+| Unnamed | @papadopoulou2015automated | 17 studies | Automated DNA-based plant identification for large-scale biodiversity assessment | not sure |
+| BIR | @kumar2015bir | 6 studies | blast, align, identify homologs via constructed trees, curate and realign | supermatrix |
+| SUPERSMART | @antonelli2017toward | 35 studies | baited analyses up to bayesian divergence time estimation | supermatrix |
+| SOPHI | [@chesters2017construction | 17 studies | Searches DNA sequence data from repos other than GenBank, such as transcriptomic and barcoding repos | not sure |
+| phyloSkeleton | @guy2017phyloskeleton | 5 studies | focuses on taxon sampling; baited genomic sequences; public database (NCBI and JGI); marker identification| supermatrix |
+| OneTwoTree | @drori2018onetwotree | 7 studies | Web‐based, user-friendly, online tool for species-tree reconstruction, based on the *supermatrix paradigm* and retrieves all available sequence data from NCBI GenBank| supermatrix |
+| pyPhlawd | @smith2019pyphlawd | 6 studies | baited and clustering analyses | Supermatrix or gene tree |
+| Phylotol | @ceron2019phylotol | 5 studies | "phylogenomic pipeline to allow easy incorporation of data from  high-throughput sequencing studies, to automate production of both multiple sequence alignments and gene trees, and to identify and remove contaminants. PhyloToL is designed for phylogenomic analyses of diverse lineages across the tree of life", i.e., bacteria and unicellular eukaryotes | supermatrix and gene trees |
+| phylotaR | @bennett2018phylotar | studies |  |  |
+
+According to @ceron2019phylotol, PhyLoTA and BIR "focus on the identification and collection
+of homologous and paralog genes from public databases such as GenBank", while both AMPHORA and PHLAWD
+"focus on the construction and refinement of robust alignments rather than the collection of homologs."
+
+### 2. Searching phylogenetic tree databases
+
+PhyloFinder [@chen2008phylofinder] - cited by 18: a search engine for phylogenetic databases, using
+trees from TreeBASE - more related to phylotastic's goal than to updating/creating phylogenies
+
+### 3. Mining phylogenetic tree databases
+
+PhyloExplorer [@ranwez2009phyloexplorer] - cited by 21: a python and MySQL based website to facilitate
+assessment and management of phylogenetic tree collections. It provides "statistics describing the collection,
+correcting invalid taxon names, extracting taxonomically relevant parts of the collection
+using a dedicated query language, and identifying related trees in the TreeBASE database".
+
+### 4. Pipeline for phylogenetic reconstruction
+
+PhySpeTre [@fang2019physpetree] - no citations yet - no sequence retrieval, just phylogenetic reconstruction
+pipeline.
+
+### 5. getting metadata and not sequences from GenBank.
+
+Datataxa @ruiz2019datataxa - no citations yet - focus on extracting metadata from GenBank sequence information.
+
+
+## Phylota overview
+
+```{r phylota, child="100-phylota-overview.Rmd"}
+```

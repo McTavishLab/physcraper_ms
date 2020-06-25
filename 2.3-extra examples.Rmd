@@ -1,0 +1,56 @@
+## The Ascomycota
+
+
+Let's be more specific now about our X group and say it is the Ascomycota.
+The best tree currently available in OToL was published by @schoch2009ascomycota.
+The first step, is to get the Open Tree of Life study id. There are some options to do this:
+- You can go to the Open Tree of Life website and browse until you find it, or
+- you can get the study id using R tools:
+  - By using the TreeBase ID of the study (which is not fully exposed on the
+    TreeBase website home page of the study, so you have to really look it up manually):
+```{r, treebase, eval = TRUE}
+rotl::studies_find_studies(property = "treebaseId", value = "S2137")
+```
+  - By using the name of the focal clade of study (but this behaved very differently):
+```{r, focal, eval = FALSE}
+rotl::studies_find_studies(property="ot:focalCladeOTTTaxonName", value="Ascomycota")
+```
+
+Once we have the study id, we can gather the trees published on that study:
+```{r, treeids, eval = TRUE}
+rotl::get_tree_ids(rotl::get_study_meta("pg_238"))
+rotl::candidate_for_synth(rotl::get_study_meta("pg_238"))
+my_trees <- rotl::get_study("pg_238")
+```
+Both trees from this study have `r tryCatch(ape::Ntip(my_trees[[1]]), error = function(e){return(NA)})` tips.
+
+Let's check what one of the trees looks like:
+
+<!-- ```{r fungi-phylo, eval = TRUE, fig.retina = 2, fig.width = 2} -->
+<!-- ape::plot.phylo(ape::ladderize(my_trees[[1]]), type = "phylogram", cex = 0.1) -->
+<!-- ``` -->
+
+1. Download the alignment from TreeBase
+If you are on the TreeBase home page of the study, you can navigate to the matrix tab, and manually download the alignments that were used to reconstruct the trees reported on the study that were also uploaded to TreeBase and to the Open Tree of Life repository.
+To make this task easier, you can use a command to download everything into your working folder:
+```
+physcraper_run.py -s pg_238 -t tree109 -o ../physcraper_example/pg_238
+```
+In this example, all alignments posted on TreeBase were used to reconstruct both trees.
+
+1. With the study id and the alignment files saved locally, we can do a physcraper run with the command:
+
+```
+physcraper_run.py -s pg_238 -t tree109 -a treebase_alns/pg_238tree109.aln -as "nexus" -o pg_238
+```
+
+## Testudines example
+
+Phylogeny of the Testudines 6 tips from @crawford2012more
+There is just one tree in OToL.
+There is just one alignment on [treebase](https://treebase.org/treebase-web/search/study/matrices.html?id=12742) with all the 1 145 loci.
+
+
+```
+physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ -o pg_2573
+```
