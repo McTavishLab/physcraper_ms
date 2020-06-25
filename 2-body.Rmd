@@ -1,5 +1,5 @@
 ---
-title: 'Physcraper: A Python package for continually updated gene trees'
+title: 'Physcraper: Body'
 author:
   - Luna L. Sanchez Reyes
   - Martha Kandziora
@@ -15,43 +15,26 @@ output:
 
 # Introduction
 
-Phylogenies are important.
+From molecular data to alignments and phylogenies, public databases such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life data deposition system, the phylesystem [@mctavish2015phylesystem] are still accumulating data.
 
-Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, automatization of phylogenetic reconstruction is still not a widespread practice and among other benefits, it might be key for adoption of better reproducibility practices in the phylogenetics community. ***paragraph better to end discussion??? ***
+More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of about `r round(236023/240708, digits=4)*100`% of taxa included in the NCBI taxonomy [@sanderson2008phylota; @federhen2003taxonomy] which represents about 10% of described diversity [@scott2011ncbi], taking a conservative estimate of extant diversity.
+In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences <https://ftp.ncbi.nih.gov/genbank/gbrel.txt>.
 
-The process of phylogenetic reconstruction implies many steps (that I generalize to the following):
+Many useful tools have been developed in the past decades in an effort to make sense of the large amount of DNA data in public and private databases. Most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses to reconstruct phylogenetic relationships.
+Tools that automatize the assembly of homology hypotheses for phylogenetics such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward] have been widely used to assemble genetic datasets to reconstruct phylogenetic relationships among different organisms.
 
-1. Obtention of molecular or morphological character data -- get DNA from some organisms
-and sequence it, or get it from an online nucleotide data repository, such as GenBank [@benson2000genbank; @wheeler2000database].
-1. Assemble a hypothesis of homology -- Create a matrix of your character data, by
-aligning the sequences, in the case of molecular data. Make sure thay are paralogs!
-1. Analyse this hypothesis of homology to infer phylogenetic relationships among
-the organisms you are studying -- Use different available programs to infer molecular
-evolution, trees and times of divergence.
-1. Discuss the inferred relationships in the context of previous hypothesis, the
-biology and biogeography of the organisms, etc. -- Answer the question, *is this phylogenetic solution fair/reasonable?*
+Considering that 400 phylogenies are published each year, most published phylogenies have been infered from a homology hypothesis that has been constructed "by hand".
 
-Each of these steps require different types of specialized training: in the field,
-in the lab, in front of a computer, discussions with experts in the methods, and/or in the biological group of study.
-All of these steps also require considerable amounts of time for training and implementation.
+On one hand, there are concerns about the use of automated tools.
+It is suggested that manual curation of genetic datasets always produces better results in phylogenetic analyses.
 
-In the past decade, various studies have developed solutions to automatize the first and second steps, by creating
-pipelines that mine already available molecular data from the GenBank repository [@benson2000genbank; @wheeler2000database],
-to obtain homologous characters that can be used for phylogenetic reconstruction.
-These tools have been presented as aid for the nonspecialist to decrease some of
-the difficulties in the generation of phylogenetic knowledge. However, they are
-not that often used as so, suggesting that there are still difficulties for the nonspecialist.
-The phylogenetic community has some reserves towards these tools, too. Mainly because they sometimes act as a black box.
-However, automatizing the assembly of the character data set is a crucial step towards
-reproducibility for a task that was otherwise primarily artisanal and hence largely
-non-reproducible.
+Indeed, public manually curated homology hypotheses have the potential to be enriched by incorporating newly released data from public molecular databases as an alternative to automatic identification and clustering of DNA homologs for assembly of homology hypotheses to reconstruct phylogenetic relationships.
 
-Even if it is hard to obtain phylogenies, we invest copious amounts of time and energy in generating them.
-Issues such as food security, global warming, global health are crucial to solve and phylogenies might help.
-There is a lot of phylogenetic knowledge already available in published peer-reviewed studies.
-In this sense, the non-specialists (and also the specialist) face a new problem: how do I choose the best phylogeny.
+There are THIS MANY curated alignments publicly available on TreeBASE
 
-Public phylogenies can be updated with the ever increasing amount of genetic data that is available on GenBank [@benson2000genbank; @wheeler2000database].
+This suggests a lot of potential for phylogenetic update of different regions of th eopen tree of life.
+
+
 
 We present a way to automatize and standardize the comparison of phylogenetic hypotheses and to allow reproducibility of this last step of the research process.
 
@@ -206,7 +189,11 @@ This makes it a perfect case to test the basic functionalities of physcraper: we
 
 ## The Malvaceae
 
+A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species.
+A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the group wants to use a particular marker they beilieve to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology they have been curating.
 
+
+![]("https://github.com/McTavishLab/physcraperex/raw/master/vignettes/malvaceae-images/cotree-plot2-1.png")
 
 # Discussion
 

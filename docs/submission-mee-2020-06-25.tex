@@ -36,46 +36,6 @@
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage[margin = 1in]{geometry}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 % Fix footnotes in tables (requires footnote package)
 \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
@@ -146,11 +106,11 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3246
+\textbf{Word count}: 3056
 
-Manuscript prepared for submission to Methods in Ecology and Evolution
+\textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
-Article type: Application
+\textbf{Article type}: Application
 
 \newpage
 
@@ -188,7 +148,7 @@ Article type: Application
   use are available at \url{https://github.com/McTavishLab/physcraper}.
 \end{enumerate}
 
-\textbf{Keywords}: cross-connectivity, gene tree, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, update alignment
+\textbf{Keywords}: cross-connectivity, gene tree, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, updated alignment
 
 \newpage
 
@@ -426,103 +386,25 @@ Physcraper implements node by node comparison of the the original and the update
 \hypertarget{examples}{%
 \section{Examples}\label{examples}}
 
+We will address two use-case scenarios. One in which the user is interested in a particular group. Anothr one in which the user is interested in a particular phylogeny.
+
 \hypertarget{the-hollies}{%
 \subsection{The hollies}\label{the-hollies}}
 
-The genus \emph{Ilex} is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
-It encompasses between 400-600 living species. A review of litterature shows that there are three published phylogenetic trees, showing relationships within the hollies.
-The first one has been made available both on OToL phylesystem and synth tree, and on treeBASE, it samples 48 species.
-The second has not been made available anywhere, not even in supplementary data of the journal.
-\textbf{\emph{Contact authors? They seem old school, probably do not wanna share their data.}}
-The most recent one has been made available in the OToL Phylesystem and DRYAD. It is the best sampled yet, with 200 species. However,
-it has not been added to the syntehtic tree yet.
-This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}). Updating the oldest tree, we should get something very similar to the newest tree.
+A student is interested in the genus \emph{Ilex}, the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
+It encompasses between 400-600 living species. A review of literature shows them that there are three published phylogenetic trees, showing relationships within the hollies.
+The first one has been made available both in the OToL phylesystem and is part of the synthetic tree, and on treeBASE. It samples 48 species.
+The second tree has not been made available anywhere, not even in the supplementary data of the original publication.
+The most recent one has been made available in the OToL Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
+This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}). We would expect that updating the oldest tree, we would get something very similar to the newest tree.
 
-\hypertarget{the-ascomycota}{%
-\subsection{The Ascomycota}\label{the-ascomycota}}
+\hypertarget{the-malvaceae}{%
+\subsection{The Malvaceae}\label{the-malvaceae}}
 
-Let's be more specific now about our X group and say it is the Ascomycota.
-The best tree currently available in OToL was published by Schoch \emph{et al.} (\protect\hyperlink{ref-schoch2009ascomycota}{2009}).
-The first step, is to get the Open Tree of Life study id. There are some options to do this:
-- You can go to the Open Tree of Life website and browse until you find it, or
-- you can get the study id using R tools:
-- By using the TreeBase ID of the study (which is not fully exposed on the
-TreeBase website home page of the study, so you have to really look it up manually):
+A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species.
+A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the group wants to use a particular marker they beilieve to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology they have been curating.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{rotl}\OperatorTok{::}\KeywordTok{studies_find_studies}\NormalTok{(}\DataTypeTok{property =} \StringTok{"treebaseId"}\NormalTok{, }\DataTypeTok{value =} \StringTok{"S2137"}\NormalTok{)}
-\CommentTok{##   study_ids n_trees tree_ids candidate study_year title}
-\CommentTok{## 1    pg_238       1  tree109                 2009      }
-\CommentTok{##                                 study_doi}
-\CommentTok{## 1 http://dx.doi.org/10.1093/sysbio/syp020}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{itemize}
-\tightlist
-\item
-  By using the name of the focal clade of study (but this behaved very differently):
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{rotl}\OperatorTok{::}\KeywordTok{studies_find_studies}\NormalTok{(}\DataTypeTok{property=}\StringTok{"ot:focalCladeOTTTaxonName"}\NormalTok{, }\DataTypeTok{value=}\StringTok{"Ascomycota"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Once we have the study id, we can gather the trees published on that study:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{rotl}\OperatorTok{::}\KeywordTok{get_tree_ids}\NormalTok{(rotl}\OperatorTok{::}\KeywordTok{get_study_meta}\NormalTok{(}\StringTok{"pg_238"}\NormalTok{))}
-\CommentTok{## [1] "tree109"}
-\NormalTok{rotl}\OperatorTok{::}\KeywordTok{candidate_for_synth}\NormalTok{(rotl}\OperatorTok{::}\KeywordTok{get_study_meta}\NormalTok{(}\StringTok{"pg_238"}\NormalTok{))}
-\CommentTok{## NULL}
-\NormalTok{my_trees <-}\StringTok{ }\NormalTok{rotl}\OperatorTok{::}\KeywordTok{get_study}\NormalTok{(}\StringTok{"pg_238"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Both trees from this study have NA tips.
-
-Let's check what one of the trees looks like:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Download the alignment from TreeBase
-  If you are on the TreeBase home page of the study, you can navigate to the matrix tab, and manually download the alignments that were used to reconstruct the trees reported on the study that were also uploaded to TreeBase and to the Open Tree of Life repository.
-  To make this task easier, you can use a command to download everything into your working folder:
-\end{enumerate}
-
-\begin{verbatim}
-physcraper_run.py -s pg_238 -t tree109 -o ../physcraper_example/pg_238
-\end{verbatim}
-
-In this example, all alignments posted on TreeBase were used to reconstruct both trees.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  With the study id and the alignment files saved locally, we can do a physcraper run with the command:
-\end{enumerate}
-
-\begin{verbatim}
-physcraper_run.py -s pg_238 -t tree109 -a treebase_alns/pg_238tree109.aln -as "nexus" -o pg_238
-\end{verbatim}
-
-\hypertarget{testudines-example}{%
-\subsection{Testudines example}\label{testudines-example}}
-
-Phylogeny of the Testudines 6 tips from Crawford \emph{et al.} (\protect\hyperlink{ref-crawford2012more}{2012})
-There is just one tree in OToL.
-There is just one alignment on \href{https://treebase.org/treebase-web/search/study/matrices.html?id=12742}{treebase} with all the 1 145 loci.
-
-\begin{verbatim}
-physcraper_run.py -s pg_2573 -t tree5959 -tb -db ~/branchinecta/local_blast_db/ -o pg_2573
-\end{verbatim}
+\includegraphics{"https://github.com/McTavishLab/physcraperex/raw/master/vignettes/malvaceae-images/cotree-plot2-1.png"}
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -608,9 +490,6 @@ Benson, D.A., Karsch-Mizrachi, I., Lipman, D.J., Ostell, J., Rapp, B.A. \& Wheel
 \leavevmode\hypertarget{ref-camacho2009blast}{}%
 Camacho, C., George, C., Vahram, A., Ning, M., Jason, P., Kevin, B. \& Thomas, L. (2009). BLAST+: Architecture and applications. \emph{BMC bioinformatics}, \textbf{10}, 421.
 
-\leavevmode\hypertarget{ref-crawford2012more}{}%
-Crawford, N.G., Faircloth, B.C., McCormack, J.E., Brumfield, R.T., Winker, K. \& Glenn, T.C. (2012). More than 1000 ultraconserved elements provide evidence that turtles are the sister group of archosaurs. \emph{Biology letters}, \textbf{8}, 783--786.
-
 \leavevmode\hypertarget{ref-deepak2014evominer}{}%
 Deepak, A., Fernández-Baca, D., Tirthapura, S., Sanderson, M.J. \& McMahon, M.M. (2014). EvoMiner: Frequent subtree mining in phylogenetic databases. \emph{Knowledge and Information Systems}, \textbf{41}, 559--590.
 
@@ -637,9 +516,6 @@ Ranwez, V., Clairon, N., Delsuc, F., Pourali, S., Auberval, N., Diser, S. \& Ber
 
 \leavevmode\hypertarget{ref-san2010molecular}{}%
 San Mauro, D. \& Agorreta, A. (2010). Molecular systematics: A synthesis of the common methods and the state of knowledge. \emph{Cellular \& Molecular Biology Letters}, \textbf{15}, 311.
-
-\leavevmode\hypertarget{ref-schoch2009ascomycota}{}%
-Schoch, C.L., Sung, G.-H., López-Giráldez, F., Townsend, J.P., Miadlikowska, J., Hofstetter, V., Robbertse, B., Matheny, P.B., Kauff, F., Wang, Z. \& others. (2009). The ascomycota tree of life: A phylum-wide phylogeny clarifies the origin and evolution of fundamental reproductive and ecological traits. \emph{Systematic biology}, \textbf{58}, 224--239.
 
 \leavevmode\hypertarget{ref-stamatakis2014raxml}{}%
 Stamatakis, A. (2014). RAxML version 8: A tool for phylogenetic analysis and post-analysis of large phylogenies. \emph{Bioinformatics}, \textbf{30}, 1312--1313.

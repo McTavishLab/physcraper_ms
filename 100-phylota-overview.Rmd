@@ -267,7 +267,7 @@ with other tools, or not performed at all and just used for discussion:
     - a study reconstructing the insect tree of life with 49,358 species, 13,865
     genera, and 760 families within the order Insecta [@chesters2017construction],
     uses its own algorithm (SOPHI) to mine public DNA databases [@chesters2014protocol].
-    It does not cite phylota as it should, but includes it in their references.
+    It does not reference to phylota in the main text (they should bc they used it), but includes it in their references.
 5. When phylota was used to extract full trees (not only DNA data sets or markers):
     - @page2013bionames uses it to generate phylogenies for the [bionames website](http://bionames.org),
     a "database linking taxonomic names to their original descriptions, to taxa, and

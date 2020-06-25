@@ -1,3 +1,6 @@
+The PHYLOTA [@sanderson2008phylota] tool has been used to construct homolog DNA datasets for about 42 studies reconstructing phylogenetic trees from various organisms.
+
+In face of the science reproducibility crisis, more and more researchers are contributing to making data available, contributing to a continual growth in information available from different databases.
 
 It is well known that GenBank [@benson2000genbank; @wheeler2000database] holds enormous amounts of genetic data, and it continues to grow. **Too cliché**
 
@@ -27,3 +30,45 @@ Which might be an indication that the amount of manual effort that is required t
 
 
 *** Introduce the Open Tree of Life***
+
+
+In the past decade, various studies have developed solutions to automatize the first and second steps, by creating
+pipelines that mine already available molecular data from the GenBank repository [@benson2000genbank; @wheeler2000database],
+to obtain homologous characters that can be used for phylogenetic reconstruction.
+These tools have been presented as aid for the nonspecialist to decrease some of
+the difficulties in the generation of phylogenetic knowledge. However, they are
+not that often used as so, suggesting that there are still difficulties for the nonspecialist.
+
+The phylogenetic community has some reserves towards these tools, too. Mainly because they sometimes act as a black box.
+However, automatizing the assembly of the character data set is a crucial step towards
+reproducibility for a task that was otherwise primarily artisanal and hence largely
+non-reproducible.
+
+Phylogenies are important.
+
+Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, automatization of phylogenetic reconstruction is still not a widespread practice and among other benefits, it might be key for adoption of better reproducibility practices in the phylogenetics community. ***paragraph better to end discussion??? ***
+
+
+
+The process of phylogenetic reconstruction implies many steps (that I generalize to the following):
+
+1. Obtention of molecular or morphological character data -- get DNA from some organisms
+and sequence it, or get it from an online nucleotide data repository, such as GenBank [@benson2000genbank; @wheeler2000database].
+1. Assemble a hypothesis of homology -- Create a matrix of your character data, by
+aligning the sequences, in the case of molecular data. Make sure thay are paralogs!
+1. Analyse this hypothesis of homology to infer phylogenetic relationships among
+the organisms you are studying -- Use different available programs to infer molecular
+evolution, trees and times of divergence.
+1. Discuss the inferred relationships in the context of previous hypothesis, the
+biology and biogeography of the organisms, etc. -- Answer the question, *is this phylogenetic solution fair/reasonable?*
+
+Each of these steps require different types of specialized training: in the field,
+in the lab, in front of a computer, discussions with experts in the methods, and/or in the biological group of study.
+All of these steps also require considerable amounts of time for training and implementation.
+
+Even if it is hard to obtain phylogenies, we invest copious amounts of time and energy in generating them.
+Phylogenies acan be used to solve issues such as food security, global warming, global health, all crucial for our well-being.
+There is a lot of phylogenetic knowledge already available in published peer-reviewed studies.
+In this sense, the non-specialists (and also the specialist) face a new problem: how do I choose the best phylogeny.
+
+Public phylogenies can be updated with the ever increasing amount of genetic data that is available on GenBank [@benson2000genbank; @wheeler2000database].

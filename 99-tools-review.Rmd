@@ -5,12 +5,11 @@ output:
 
 ## Tools that automatize any part of the process of phylogenetic reconstruction:
 
-### 1. Mining DNA databases to generate datasets suitable for phylogenetic reconstruction
+### 1. Mining databases to generate DNA datasets suitable for phylogenetic reconstruction
 
 | Tool | Citation | Cited by | Description | Supermatrix/gene tree/species tree |
 |-----|------|:------:|:------:|:------:|
 | Phylota | @sanderson2008phylota | 122 studies | finds sets of DNA homologs on the GenBank database; phylogenetic reconstruction | Supermatrix |
-| AMPHORA | @wu2008simple | 458 studies | baited search; protein markers on phylogenomic data; personal database of genomes or metagenomic data, manually downloaded either from a public database or from private data; phylogenetic reconstruction | Supermatrix |
 | PHLAWD | @smith2009mega | 234 studies | Baited search of DNA markers on the GenBank database; phylogenetic reconstruction | Supermatrix |
 | Unnamed [ruby pipeline](https://www.zfmk.de/en/research/research-centres-and-groups/taming-of-an-impossible-child-pipeline-tools-and-manuals), only available from [supplementary data](https://static-content.springer.com/esm/art%3A10.1186%2F1741-7007-9-55/MediaObjects/12915_2011_480_MOESM1_ESM.ZIP) of the journal | @peters2011taming | 64 studies | mining public DNA databases, focuses on filtering massive amounts of mined sequences by using established "criteria of compositional homogeneity and defined levels of density and overlap" | Supermatrix |
 | Unnamed | @grant2014building | 38 studies | predecessor of phylotol; homolog clustering; public and/or personal DNA database; phylogenetic reconstruction; broad taxon analyses; remove contaminant sequences, based on similarity and on phylogenetic position | supermatrix |
@@ -34,19 +33,22 @@ According to @ceron2019phylotol, PhyLoTA and BIR "focus on the identification an
 of homologous and paralog genes from public databases such as GenBank", while both AMPHORA and PHLAWD
 "focus on the construction and refinement of robust alignments rather than the collection of homologs."
 
-### 2. Searching phylogenetic tree databases
+### 2. Mining databases to generate protein/aminoacid (AA) datasets suitable for phylogenetic reconstruction
+| AMPHORA | @wu2008simple | 458 studies | baited search; protein markers on phylogenomic data; personal database of genomes or metagenomic data, manually downloaded either from a public database or from private data; phylogenetic reconstruction | Supermatrix |
+
+### 3. Searching phylogenetic tree databases
 
 PhyloFinder [@chen2008phylofinder] - cited by 18: a search engine for phylogenetic databases, using
 trees from TreeBASE - more related to phylotastic's goal than to updating/creating phylogenies
 
-### 3. Mining phylogenetic tree databases
+### 4. Mining phylogenetic tree databases
 
 PhyloExplorer [@ranwez2009phyloexplorer] - cited by 21: a python and MySQL based website to facilitate
 assessment and management of phylogenetic tree collections. It provides "statistics describing the collection,
 correcting invalid taxon names, extracting taxonomically relevant parts of the collection
 using a dedicated query language, and identifying related trees in the TreeBASE database".
 
-### 4. Pipeline for phylogenetic reconstruction
+### 5. Pipeline for phylogenetic reconstruction
 
 PhySpeTre [@fang2019physpetree] - no citations yet - no sequence retrieval, just phylogenetic reconstruction
 pipeline.
