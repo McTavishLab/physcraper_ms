@@ -1,14 +1,11 @@
 ---
-title: 'Physcraper: Abstract'
 author:
   - Luna L. Sanchez Reyes
   - Martha Kandziora
   - Emily Jane McTavish
   - University of California, Merced
-date: '24 June, 2020'
 csl: apa.csl
 output:
-
   redoc::redoc
 keep_tex: true
 ---

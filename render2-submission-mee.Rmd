@@ -6,30 +6,79 @@ output:
 geometry: margin = 1in
 bibliography: paper.bib
 csl: submission-mee/methods-in-ecology-and-evolution.csl
+# csl: submission_sysbio/systematic-biology.csl
 link-citations: yes
 linestretch: 2
 header-includes:
+    - \usepackage{color}
+    - \usepackage{hyperref}
     - \usepackage{caption}
     - \usepackage{blindtext}
+    - \usepackage{url}
     - \usepackage[left]{lineno}
     - \linenumbers
+title: 'Physcraper: a python package for continual update of evolutionary estimates using the Open Tree of Life'
 params:
+  running_title: Continually updated gene trees with Physcraper
   author1: Luna L. Sanchez Reyes
+  email1: sanchez.reyes.luna@gmail.com
+  author2: Martha Kandziora
+  email2: martha.kandziora@mailbox.org
+  author3: Emily Jane McTavish
+  email3: ejmctavish@gmail.com
   affiliation: School of Natural Sciences, University of California, Merced
+  correspondence_address: Science and Engineering Building 1, University of California, Merced, 5200 N. Lake Rd, Merced CA 95343
 ---
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "##",
+  eval = TRUE
+)
+library(wordcountaddin)
+word_count_body <- wordcountaddin::word_count(filename="2-body.Rmd")
+```
 
-`r params$affiliations`
+1. `r params$author1`
+
+`r params$affiliation`
+
+email: <`r params$email1`>
+
+2. `r params$author2`
+
+`r params$affiliation`
+
+email: <`r params$email2`>
+
+3. `r params$author3`
+
+`r params$affiliation`
+
+email: <`r params$email3`>
+
+Correspondence:
+
+`r params$correspondence_address`
+
+email: <`r params$email1`>, <`r params$email3`>
+
+
+Running title: `r params$running_title`
+
+Word count: `r word_count_body`
+
 Manuscript prepared for submission to Methods in Ecology and Evolution
+
 Article type: Application
 
 
 \newpage
-# Summary
 
 ``` {r child = '1-abstract.Rmd'}
 ```
 
-**Keywords**: phylogeny,
+**Keywords**: cross-connectivity, gene tree, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, update alignment
 
 \newpage
 
