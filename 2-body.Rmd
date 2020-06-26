@@ -174,22 +174,23 @@ the synthetic OToL and then measure how well they do against each other***
 
 # Examples
 
-We will address two use-case scenarios. One in which the user is interested in a particular group. Anothr one in which the user is interested in a particular phylogeny.
+To exemplify the utility of physcraper we will address two use-case scenarios. One in which the user is interested in a particular group. Another one in which the user is interested in a particular phylogeny.
+A tutrial as well as illustrated examples of steps needed to perform a physcraper analyses are available elsewhere.
 
 ## The hollies
 
 A student is interested in the genus *Ilex*, the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
-It encompasses between 400-600 living species. A review of literature shows them that there are three published phylogenetic trees, showing relationships within the hollies.
-The first one has been made available both in the OToL phylesystem and is part of the synthetic tree, and on treeBASE. It samples 48 species.
+The genus encompasses between 400-600 living species. A review of literature reveals that there are three phylogenetic trees showing relationships within the hollies published.
+The first one has been made available in TreeBASE as well as in the OToL phylesystem and is part of the synthetic tree. It samples 48 species.
 The second tree has not been made available anywhere, not even in the supplementary data of the original publication.
 <!-- ***Contact authors? They seem old school, probably do not wanna share their data.*** -->
 The most recent one has been made available in the OToL Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
-This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database [@benson2000genbank; @wheeler2000database]. We would expect that updating the oldest tree, we would get something very similar to the newest tree.
+This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree will produce something very similar to the newest tree.
 
 ## The Malvaceae
 
 A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species.
-A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the group wants to use a particular marker they beilieve to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology they have been curating.
+A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the group wants to use a particular marker they beilieve to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology they have been curating and that they trust.
 
 ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
 wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/vignettes/malvaceae-images/cotree-plot2-1.png"
