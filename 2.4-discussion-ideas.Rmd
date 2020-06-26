@@ -1,0 +1,25 @@
+Usually, initial ideas about the data are changed by analyses.
+We expect that this new ideas on the data can be registered on databases,
+exposing newcomers to expert understanding about the data.
+
+Taking advantage of public DNA data bases have been the main focus.
+
+Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
+Mention statistics provided by other tools: PhyloExplorer [@ranwez2009phyloexplorer].
+Compare and discuss.
+
+How is physcraper already useful:
+- to mine targeted sequences, in this way it is similar to baited analyses from PHLAWD and pyPHLAWD. Phylota does not do baited analyses, I think, only clustered analyses.
+- Finding
+
+Physcraper potential:
+- rapid phylogenetic placing of newly discovered species, as mentioned in @webb2010biodiversity
+- obtain trees for ecophylogenetic studies, as mentioned in @helmus2012phylogenetic
+- one day could be used to sistematize nucleotide databases, such as Genbank [@benson2000genbank; @wheeler2000database], as mentioned in @san2010molecular, i.e., curate ncbi taxonomic assignations.
+- allows to generate custom species trees for downstream analyses, as mentioned in @stoltzfus2013phylotastic
+
+
+Things that physcraper does not do:
+- analyse the whole GenBank database [@benson2000genbank; @wheeler2000database] to find homolog regions suitable to reconstruct phylogenies, as mentioned in @antonelli2017toward. There are already some very good tools that do that.
+- provide basic statistics on data availability to assemble molecular datasets, as mentioned by @ranwez2009phyloexplorer. Phyloexplorer does this?
+- it is not a tree repo, as phylota is, mentioned in @deepak2014evominer

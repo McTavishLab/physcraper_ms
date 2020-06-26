@@ -111,7 +111,7 @@ And an effort to more effectively make big data connections for the advantage of
   To control the number of sequences per taxon in downstream analyses,
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
 - Reverse complement sequences are identified and translated.
-- Users can choose to perform a more "cycles" of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the checked alignment are blasted. ***Is there an argument to control the number of cycles of blast searches with new sequences?***
+- Users can choose to perform a more "cycles" of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the checked alignment are blasted. I ALSO FORGOT TO ASK: ***Is there an argument to control the number of cycles of blast searches with new sequences?***
 - Accepted sequences are downloaded in full, and stored as a local database in a directory that is globally accesible (default to physcraper/taxonomy), so they are accesible for further runs.
 - A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user.
 
@@ -143,21 +143,29 @@ And an effort to more effectively make big data connections for the advantage of
 # Examples
 
 We will illustrate the utility of physcraper in here with two use-case scenarios. One in which the user is interested in a particular group. Another one in which the user is interested in a particular phylogeny.
-A tutorial as well as illustrated examples of steps needed to perform a physcraper analysis are available elsewhere.
+A tutorial as well as illustrated examples of commands for every step needed to perform a physcraper analysis are available elsewhere.
 
 ## The hollies
 
 A student is interested in the genus *Ilex*, the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
-The genus encompasses between 400-600 living species. A review of literature reveals that there are three phylogenetic trees showing relationships within the hollies published.
+The genus encompasses between 400-600 living species. A review of literature reveals that there are three published phylogenetic trees showing relationships within the hollies.
 The first one has been made available in TreeBASE as well as in the OToL phylesystem and is part of the synthetic tree. It samples 48 species.
 The second tree has not been made available anywhere, not even in the supplementary data of the original publication.
 The most recent one has been made available in the OToL Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
-This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree will produce something very similar to the newest tree.
+This also makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree will produce something very similar to the newest tree.
+
+DESCRIBE RESULTS: SUMMARY OF NEW TAXA FOUND RELATIVE TO ORIGINAL TREE AND RELATIVE TO OTOL
+RF DISTANCE INTERPRETATION
+HOW MUCH TIME THE BLAST RUN TOOK
+ML ESTIMATES OF UPDATED TREE VS ORIGINAL TREE
+
+FIGURE: FACE TO FACE ORIGINAL VS UPDATED PHYLOGENY, IN RED NEW TAXA NOT IN OTOL.
+
 
 ## The Malvaceae
 
-A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species.
-A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the group wants to use a particular marker they beilieve to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology they have been curating and that they trust.
+A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species, containing the relatives of cacao, cotton, durian and okra.
+A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the research group wants to use a particular marker they believe to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology that they have been curating and that they trust.
 
 ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
 wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/vignettes/malvaceae-images/cotree-plot2-1.png"
@@ -171,59 +179,40 @@ knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 # Discussion
 
 Data repositories hold more information than meets the eye.
-Besides the actual data, they have other types of information that can be used for the advantage of science.
+Besides the actual data, they are rich sources of information that can be used for the advantage of biology and science in general.
 
-Usually, initial ideas about the data are changed by analyses.
-We expect that this new ideas on the data can be registered on data bases,
-exposing new comers to expert understanding about the data.
-
-There are many tools that are making use of DNA data repositories in different ways.
+Many pipelines are making use of DNA data repositories in different ways.
 Most of them focus on efficient ways to mine the data -- getting the most homologs.
-Some focus on accurate ways of mining the data - getting real and clean homologs.
-Others focus on refinement of the alignment.
+Some focus on accurate ways of mining the data -- getting real and clean homologs.
+Others focus on refining the alignment.
 Most focus on generating full trees *de novo*, mainly for regions of the Tree of
 Life that have no phylogenetic assessment yet in published studies, but also for
 regions that have been already studied and that have phylogenetic data already.
+However, expert phylogenetic knowledge is also an important source of data in public
+and open repositories that is potentiallly being diregarded.
 
-All these tools are great efforts for advancing towards reproducibility in phylogenetics,
+All these tools are key efforts for advancing towards reproducibility in phylogenetics,
 a field that has been largely recognised as somewhat artisanal.
-We propose adding focus to other sources of information available from data repositories.
-Taking advantage of public DNA data bases have been the main focus. However, phylogenetic knowledge is
-also accumulating fast in public and open repositories.
-In this way, the physcraper pipeline can be complemented with other tools that have
-been developed for other purposes.
+In here, we highlight the potential of other sources of information available from data repositories and present a method to link data from different repositories, while leveraging on the knowledge and intuition of the expert
+community to build up our phylogenetic knowledge, using not only data accumulated in
+molecular data repositories, but phylogenetic knowledge accumulated in phylogenetic tree repositories.
+While not generating full phylogenies *de novo*, pyscraper is still capable of generating new phylogenetic knowledge.
+In this way, the physcraper workflow can be complemented with other pipelines, to potentially increase speed (IS THIS TRUE??).
+It can also be combined with data from repositories other than molecular data. For example geographic locations (GBIF), fossils (PBDB), etc.
 
-We emphasize that physcraper takes advantage of the knowledge and intuition of the expert
-community to build upon phylogenetic knowledge, using not only data accumulated in
-DNA repositories, but phylogenetic knowledge accumulated in tree repositories.
-This might help generate new phylogenetic data. But physcraper does not seek to generate full phylogenies *de novo*.
-
-Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
-Mention statistics provided by other tools: PhyloExplorer [@ranwez2009phyloexplorer].
-Compare and discuss.
-
-How is physcraper already useful:
-- to mine targeted sequences, in this way it is similar to baited analyses from PHLAWD and pyPHLAWD. Phylota does not do baited analyses, I think, only clustered analyses.
-- Finding
-
-How can it be used for the advantage of the field:
-- rapid phylogenetic placing of newly discovered species, as mentioned in @webb2010biodiversity
-- obtain trees for ecophylogenetic studies, as mentioned in @helmus2012phylogenetic
-- one day could be used to sistematize nucleotide databases, such as Genbank [@benson2000genbank; @wheeler2000database], as mentioned in @san2010molecular, i.e., curate ncbi taxonomic assignations.
-- allows to generate custom species trees for downstream analyses, as mentioned in @stoltzfus2013phylotastic
-
-
-Things that physcraper does not do:
-- analyse the whole GenBank database [@benson2000genbank; @wheeler2000database] to find homolog regions suitable to reconstruct phylogenies, as mentioned in @antonelli2017toward. There are already some very good tools that do that.
-- provide basic statistics on data availability to assemble molecular datasets, as mentioned by @ranwez2009phyloexplorer. Phyloexplorer does this?
-- it is not a tree repo, as phylota is, mentioned in @deepak2014evominer
+Physcraper has the potential to be applied for the advantage of the field to rapidly
+place newly discovered species phylogenetically [@webb2010biodiversity],
+obtain trees for ecophylogenetic studies [@helmus2012phylogenetic],
+help to sistematize molecular databases, i.e., curate taxonomic assignations [@san2010molecular],
+and rapidly generate custom species trees for downstream analyses [@stoltzfus2013phylotastic].
 
 
 # Acknowledgements
 
-We acknowledge contributions from
-
 The University of California, Merced cluster, MERCED (Multi-Environment Research Computer for Exploration and Discovery) supported by the National Science Foundation (Grant No. ACI-1429783).
+
+We acknowledge contributions from ...
+
 
 # Authors' Contributions
 
