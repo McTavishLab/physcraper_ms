@@ -15,32 +15,37 @@ output:
 
 # Introduction
 
-From molecular data to alignments and phylogenies, public biological data resources such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life curating system [@mctavish2015phylesystem], are still accumulating data, and there is currently no straightforward way to automatically connect their data.
+Public biological databases provide an amazing resource for evolutionary estimation. By linking molecular data, available from database such as the GenBank [@benson2000genbank; @wheeler2000database], to alignments and phylogenies, available in
+the TreeBASE repository [@piel2009treebase] and the Open Tree of Life datastore [@mctavish2015phylesystem], we can place new biological data in evolutionary context.
+However, it has been challenging to connect new sequence data with existing estimates of evolutionary relationships. 
 
-More than a decade ago, the National Center for Biodiversity Information (NCBI) molecular database, GenBank, released its version number 159 (April 15, 2007). With 72 million DNA sequences, it was estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa represented in it [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota], which in turns coveres about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
-In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences [(See GenBank's release website)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt). Yet, publicly avilable phylogenetic relationships still cover about 90 000 taxa [@hinchliff2015synthesis; CURRENT SYNTH TREE CITATION], covering less than one third of the taxonomic diversity with data avilable a decade ago. While it is true that many phylogenies are not publicly shared [@drew2013lost; @magee2014dawn], most recently published large trees have been made available in recent years, indicating a lag between the amount of new DNA data generated and its analysis in a phylogenetic context.
+More than a decade ago, the National Center for Biodiversity Information (NCBI) molecular database, GenBank, released its version number 159 (April 15, 2007). With 72 million DNA sequences, it was estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa represented in it [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota], which in turns covers about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
+In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences [(See GenBank's release website)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt). Yet, publicly available estimates of phylogenetic relationships still cover only about 90 000 taxa [@hinchliff2015synthesis; CURRENT SYNTH TREE CITATION], covering less than one third of the taxonomic diversity with data available a decade ago. Some of this discrepance is because that many phylogenies are not publicly shared [@drew2013lost; @magee2014dawn, @mctavish2018bioessay]. However, most recently published large trees have been made available in recent years, indicating there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context.
 
-Many useful computational tools have been developed in an effort to make sense of the large amount of data in public molecular databases, as well as private ones. Generally refered to as "pipelines", most of these tools were motivated by the genomics revolution, to help researchers to deal with the massive amount of data, and automatically identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses (i.e., molecular alignments) to reconstruct phylogenetic relationships.
+Many useful computational tools have been developed in an effort to make sense of the large amount of data in public molecular databases, as well as private ones. Generally referred to as "pipelines", most of these tools were motivated by the genomics revolution, to help researchers to deal with the massive amount of data, and automatically identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses (i.e., molecular alignments) to reconstruct phylogenetic relationships.
 Pipelines that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction ("phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward], have been widely applied to study the evolutionary relationships among different organisms (TABLE?? maybe supplementary data), from a phylogeny of no more than 20 species of the family of barracuda fish [Sphyraenidae; @santini2013first], to a mega-phylogeny of almost 3 000 species of living ferns [Moniloformopses; @lehtonen2011towards].
 
-Pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been infered using alignments that have been assembled and curated "by hand" [@morrison2009would].
-There seems to be a preference in the field of the classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
-It has also been suggested that manual curation of classic alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments [@fragoso2017pilot].
+Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated "by hand" [@morrison2009would].
+Automated approaches often to suffer from errors in homology inference that are rapidly caught by human oversight. ()
+Many systemacists support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation). 
+Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships.  \comment(Citations... I think there are some Scott Edwards papers...https://www.pnas.org/content/109/37/14942, maybe Roajs et al...)
+It has also been suggested that manual curation of locus alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments [@fragoso2017pilot].
 
-A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine curation from human experts) would be to rely on published manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
+
+A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine-grained curation from human experts) is be to rely on published manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
 
 As of April 2014, the TreeBASE repository hosted about 8 200 curated alignments, providing information on evolutionary relationships of almost 105 000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.).
 This database provides an untapped source of valuable expert knowledge with the potential to update phylogenetic relationships in several different regions of the tree of life.
 
-The OToL tree repository [phylesystem; @mctavish2015phylesystem] automatically incorporates phylogenies uploaded into TreeBASE, and stores metadata linking the tree to its corresponding alignment repository in TreeBASE. However, if there are multiple alignments, TreeBASE does not indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
+The OpenTree tree repository [phylesystem; @mctavish2015phylesystem] automatically incorporates phylogenies uploaded into TreeBASE, and stores metadata linking the tree to its corresponding alignment repository in TreeBASE. However, if there are multiple alignments, TreeBASE does not indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
 
-Ultimately, linkage of original alignment with its corresponding phylogeny has to be done by a human curator.
+Often linking data in an original alignment with its corresponding phylogeny has to be done by a human curator.
 Moreover, different data repositories follow different systems for taxon and study identification, posing a real challenge to automatically link data from across databases that belong to the same taxon and study.
-OToL's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., providing a way to automatically link data from different databases.
+OpenTree's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., providing a way to automatically link data from different databases.
 
-Physcraper is a python pipeline that relies on the OToL metadata system to connect databases through taxon identification numbers.
-It's main functionality is to connect phylogenies stored in the OToL phylesystem, with alignments from TreeBASE and newly released DNA data from GenBank, in order to update previously known phylogenetic relationships in a continuous manner.
-Because of its design, it allows taking advantage of the many resources provided by the OToL.
+Physcraper is a python pipeline that relies on the OpenTree metadata system to connect databases through taxon identification numbers.
+It's main functionality is to connect phylogenies stored in the OpenTree phylesystem, with alignments from TreeBASE and newly released DNA data from GenBank, in order to update previously known phylogenetic relationships in a continuous manner.
+Because of its design, it allows taking advantage of the many resources provided by the OpenTree.
 For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships.
 
 This is an effort to keep on directing ourselves towards a fully reproducible workflow in phylogenetics.
@@ -51,14 +56,14 @@ And an effort to more effectively make big data connections for the advantage of
 
 ## The input: a tree and an alignment
 
-- In order to take advantage of the OToL tools, the input tree needs to be stored in the
-  OToL phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem).
+- In order to take advantage of the OpenTree tools, the input tree needs to be stored in the
+  OpenTree phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem).
   Currently, only trees connected to
   a published study can be stored in the phylesystem (although there are plans to
   allow storage of non published trees). The main
   reason for this is that trees in phylesystem have a set of user defined characteristics
   that are essential for automatizing the phylogeny update process. The most relevant of these being the standardization of taxonomic names and the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the final steps of the pipeline.
-  A user can choose from among the `r rotl::tol_about()$num_source_trees` published trees supporting the resolved nodes of the synthetic tree in the OToL website ([See OToL's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OToL's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
+  A user can choose from among the `r rotl::tol_about()$num_source_trees` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website ([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OpenTree's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
 - The alignment should be a gene alignment that was used to generate the tree. The original
   alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD ([www.datadryad.org](http://datadryad.org/)), or the journal were the tree was originally published.
@@ -82,7 +87,7 @@ And an effort to more effectively make big data connections for the advantage of
   matched taxa belonging to the ingroup in the tree, that is also a named clade in the reference taxonomy. This is known as the Most Recent Common
   Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA).
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
-  To automatically identify the MRCAT of a group of taxon names, we make use of the OToL taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>). I FORGOT TO ASK YOU ABOUT THIS CITATION!
+  To automatically identify the MRCAT of a group of taxon names, we make use of the OpenTree taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>). I FORGOT TO ASK YOU ABOUT THIS CITATION!
 
   Users can provide a search taxon that is either a more or a less inclusive
   clade relative to the ingroup of the original phylogeny. If the search taxon is more inclusive, the sequence search will be performed outside the MRCAT of the matched taxa, e.g., including all taxa within
@@ -134,9 +139,9 @@ And an effort to more effectively make big data connections for the advantage of
 - The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
 - Tips on all trees generated by physcraper are defined by a taxon name space, allowing to perform comparisons and conflict analyses.
 - Robinson Foulds weighted and unweighted metrics are calculated with Dendropy functions.
-- Finally a conflict analysis is performed. This is basically a node by node comparison between the the synthetic OToL and the original and updated tree individually. This is performed with OToL's conflict Application Programming Interface [@redelings2017supertree].
+- Finally a conflict analysis is performed. This is basically a node by node comparison between the the synthetic OpenTree and the original and updated tree individually. This is performed with OpenTree's conflict Application Programming Interface [@redelings2017supertree].
 - For the conflict analysis to be meaningful, the root of the tree ineeds to be accurately defined.
-- A suggested default rooting based on OToL's taxonomy is implemented for now. It takes one descendant from the corresponding induced subtree in OToL's synthetic tree and then finds the MRCA of those in th eupdated trees. However, if the updated tree changes expectations from taxonomy, the root will no longer be accurate. Automatic identification of a phylogenetic tree root is indeed a difficult problem that has not been solved yet. The best way right now is for users to define outgroups so trees are accurately rooted.
+- A suggested default rooting based on OpenTree's taxonomy is implemented for now. It takes one descendant from the corresponding induced subtree in OpenTree's synthetic tree and then finds the MRCA of those in th eupdated trees. However, if the updated tree changes expectations from taxonomy, the root will no longer be accurate. Automatic identification of a phylogenetic tree root is indeed a difficult problem that has not been solved yet. The best way right now is for users to define outgroups so trees are accurately rooted.
 
 
 
@@ -149,17 +154,17 @@ A tutorial as well as illustrated examples of commands for every step needed to 
 
 A student is interested in the genus *Ilex*, the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
 The genus encompasses between 400-600 living species. A review of literature reveals that there are three published phylogenetic trees showing relationships within the hollies.
-The first one has been made available in TreeBASE as well as in the OToL phylesystem and is part of the synthetic tree. It samples 48 species.
+The first one has been made available in TreeBASE as well as in the OpenTree phylesystem and is part of the synthetic tree. It samples 48 species.
 The second tree has not been made available anywhere, not even in the supplementary data of the original publication.
-The most recent one has been made available in the OToL Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
+The most recent one has been made available in the OpenTree Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
 This also makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree will produce something very similar to the newest tree.
 
-DESCRIBE RESULTS: SUMMARY OF NEW TAXA FOUND RELATIVE TO ORIGINAL TREE AND RELATIVE TO OTOL
+DESCRIBE RESULTS: SUMMARY OF NEW TAXA FOUND RELATIVE TO ORIGINAL TREE AND RELATIVE TO OpenTree
 RF DISTANCE INTERPRETATION
 HOW MUCH TIME THE BLAST RUN TOOK
 ML ESTIMATES OF UPDATED TREE VS ORIGINAL TREE
 
-FIGURE: FACE TO FACE ORIGINAL VS UPDATED PHYLOGENY, IN RED NEW TAXA NOT IN OTOL.
+FIGURE: FACE TO FACE ORIGINAL VS UPDATED PHYLOGENY, IN RED NEW TAXA NOT IN OpenTree.
 
 
 ## The Malvaceae
