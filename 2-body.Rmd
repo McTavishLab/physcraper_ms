@@ -171,7 +171,7 @@ A review of the literature shows them that there are many phylogenetic trees enc
 wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/vignettes/malvaceae-images/cotree-plot2-1.png"
 mv cotree-plot2-1.png docs/figs/cotree-plot2-1.png
 ```
-```{r fig-2, echo=FALSE, fig.cap="Comparison of original tree and update tree of the Malvaceae.", out.width = '85%', fig.retina= 2, fig.align = "center"}
+```{r fig-2, echo=FALSE, fig.cap="Comparison of original tree and tree updated with Physcraper, family Malvaceae.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 ```
 \newpage
@@ -218,4 +218,5 @@ We acknowledge contributions from ...
 
 # Data Avilability
 
+\newpage
 # References
