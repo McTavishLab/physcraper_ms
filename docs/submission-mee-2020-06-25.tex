@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3056
+\textbf{Word count}: 2969
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -155,51 +155,33 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Phylogenies are important.
+From molecular data to alignments and phylogenies, public databases such as the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the TreeBASE repository (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}) and the Open Tree of Life data deposition system, the phylesystem (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}) are still accumulating data.
 
-Generating phylogenies is not easy and it is largely artisanal. Although many efforts to automatize the process have been done, and the community is using those more and more, automatization of phylogenetic reconstruction is still not a widespread practice and among other benefits, it might be key for adoption of better reproducibility practices in the phylogenetics community. \textbf{\emph{paragraph better to end discussion??? }}
+More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of about 98.05\% of taxa included in the NCBI taxonomy (Federhen \protect\hyperlink{ref-federhen2003taxonomy}{2003}; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}) which represents about 10\% of described diversity (Scott \protect\hyperlink{ref-scott2011ncbi}{2011}), taking a conservative estimate of extant diversity.
+In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences \url{https://ftp.ncbi.nih.gov/genbank/gbrel.txt}.
 
-The process of phylogenetic reconstruction implies many steps (that I generalize to the following):
+Many useful tools have been developed in the past decades in an effort to make sense of the large amount of DNA data in public and private databases. Most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses to reconstruct phylogenetic relationships.
+Tools that automatize the assembly of homology hypotheses for phylogenetics such as PHYLOTA (Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}), PHLAWD (Smith \emph{et al.} \protect\hyperlink{ref-smith2009mega}{2009}), and SUPERSMART (Antonelli \emph{et al.} \protect\hyperlink{ref-antonelli2017toward}{2017}) have been widely used to assemble genetic datasets to reconstruct phylogenetic relationships among different organisms.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Obtention of molecular or morphological character data -- get DNA from some organisms
-  and sequence it, or get it from an online nucleotide data repository, such as GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}).
-\item
-  Assemble a hypothesis of homology -- Create a matrix of your character data, by
-  aligning the sequences, in the case of molecular data. Make sure thay are paralogs!
-\item
-  Analyse this hypothesis of homology to infer phylogenetic relationships among
-  the organisms you are studying -- Use different available programs to infer molecular
-  evolution, trees and times of divergence.
-\item
-  Discuss the inferred relationships in the context of previous hypothesis, the
-  biology and biogeography of the organisms, etc. -- Answer the question, \emph{is this phylogenetic solution fair/reasonable?}
-\end{enumerate}
+Considering that 400 phylogenies are published each year, most published phylogenies have been infered from a homology hypothesis that has been constructed ``by hand''.
 
-Each of these steps require different types of specialized training: in the field,
-in the lab, in front of a computer, discussions with experts in the methods, and/or in the biological group of study.
-All of these steps also require considerable amounts of time for training and implementation.
+On one hand, there are concerns about the use of automated tools.
+Concerns I think people have about these tools:
+- Errors in identification of sequences
+- Little control along the process
+- Too much of a black box? Most of these phylogenies are being constructed by people learning about the methods (aka students), so they want to know what is going on at each step and end up doing it manually.
+-
+It has also been suggested that manual curation of genetic datasets always produces better results in phylogenetic analyses.
 
-In the past decade, various studies have developed solutions to automatize the first and second steps, by creating
-pipelines that mine already available molecular data from the GenBank repository (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}),
-to obtain homologous characters that can be used for phylogenetic reconstruction.
-These tools have been presented as aid for the nonspecialist to decrease some of
-the difficulties in the generation of phylogenetic knowledge. However, they are
-not that often used as so, suggesting that there are still difficulties for the nonspecialist.
-The phylogenetic community has some reserves towards these tools, too. Mainly because they sometimes act as a black box.
-However, automatizing the assembly of the character data set is a crucial step towards
-reproducibility for a task that was otherwise primarily artisanal and hence largely
-non-reproducible.
+Fortunately, public manually curated homology hypotheses have the potential to be enriched and updated by incorporating newly released data from public molecular databases as an alternative to automatic identification and clustering of DNA homologs for assembly of homology hypotheses to reconstruct phylogenetic relationships.
 
-Even if it is hard to obtain phylogenies, we invest copious amounts of time and energy in generating them.
-Issues such as food security, global warming, global health are crucial to solve and phylogenies might help.
-There is a lot of phylogenetic knowledge already available in published peer-reviewed studies.
-In this sense, the non-specialists (and also the specialist) face a new problem: how do I choose the best phylogeny.
+There are THIS MANY curated alignments publicly available on TreeBASE
 
-Public phylogenies can be updated with the ever increasing amount of genetic data that is available on GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}).
+This suggests a lot of potential for update of phylogenetic relationships in different regions of the tree of life.
+
+OToL has integrated the phylogenies fro TreeBASe, and linked to the alignment repo but not the exact alignment that generated the phylogeny.
+
+Linkage of original alignment with corresponding phylogeny has t be done by a human curator.
 
 We present a way to automatize and standardize the comparison of phylogenetic hypotheses and to allow reproducibility of this last step of the research process.
 
@@ -207,19 +189,9 @@ A key aspect of the standard phylogenetic workflow is comparison with already ex
 phylogenetic hypotheses and with phylogenies that are considered ``best'' by experts
 not only in phylogenetics, but also experts on the focal group of study.
 
-Concerns I think people have about these tools:
-- Errors in identification of sequences
-- Little control along the process
-- Too much of a black box?
-
-Most of these phylogenies are being constructed by people learning about the methods,
-so they want to know what is going on.
-
 The pipelines are so powerful and they will give you an answer, but there
 is no way to assess if it is better than previous answers, it just assumes it is
 better because it used more data.
-
-All these pipelines start tree construction from zero? Yes.
 
 The goal of Physcraper is to build upon previous phylogenetic knowledge,
 allowing a direct comparison between existing phylogenies and phylogenies that are constructed
@@ -234,10 +206,6 @@ to the focal group of study, to (3) finally update the phylogenetic relationship
 A less automated workflow is one in which the alignments that generated the published
 phylogeny are stored in other public database (such as DRYAD) or elsewhere (the users computer), and
 are provided by the users.
-
-The original tree is by default used as starting tree for the phylogenetic searches, but it
-can also be set as a full topological constraint or not used at all, depending on
-the goals of the user.
 
 Physcraper implements node by node comparison of the the original and the updated trees, using the conflict API of OToL.
 
@@ -361,6 +329,8 @@ Physcraper implements node by node comparison of the the original and the update
   with 100 classic rapid bootstrap (Felsenstein \protect\hyperlink{ref-felsenstein1985confidence}{1985}) replicates by default. The number of bootsrap replicates can be modified by the user.
   Other type of bootstrap that I think is not yet incorporated into physcraper is the Transfer Bootstrap Expectation (TBE) recently proposed in Lemoine \emph{et al.} (\protect\hyperlink{ref-lemoine2018renewing}{2018}).
 \item
+  The original tree is used as starting tree for the ML searches. It can also be set as a full topological constraint or not used at all, depending on the goals of the user.
+\item
   Bootstrap results are summarized with Dendropy ADD CITATION
 \item
   The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
@@ -404,7 +374,9 @@ This makes it a perfect case to test the basic functionalities of physcraper: we
 A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species.
 A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the group wants to use a particular marker they beilieve to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology they have been curating.
 
-\includegraphics{"https://github.com/McTavishLab/physcraperex/raw/master/vignettes/malvaceae-images/cotree-plot2-1.png"}
+\begin{figure}
+\includegraphics[width=0.75\linewidth]{docs/figs/cotree-plot2-1} \caption{Comparison of original tree and update tree of the Malvaceae.}\label{fig:fig-2}
+\end{figure}
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -496,6 +468,9 @@ Deepak, A., Fernández-Baca, D., Tirthapura, S., Sanderson, M.J. \& McMahon, M.M
 \leavevmode\hypertarget{ref-edgar2004muscle}{}%
 Edgar, R.C. (2004). MUSCLE: Multiple sequence alignment with high accuracy and high throughput. \emph{Nucleic acids research}, \textbf{32}, 1792--1797.
 
+\leavevmode\hypertarget{ref-federhen2003taxonomy}{}%
+Federhen, S. (2003). The taxonomy project. \emph{The NCBI Handbook}.
+
 \leavevmode\hypertarget{ref-felsenstein1985confidence}{}%
 Felsenstein, J. (1985). Confidence intervals on phylogenetics: An approach using bootstrap. \emph{Evolution}, \textbf{39}, 783--791.
 
@@ -514,8 +489,17 @@ Piel, W., Chan, L., Dominus, M., Ruan, J., Vos, R. \& Tannen, V. (2009). Treebas
 \leavevmode\hypertarget{ref-ranwez2009phyloexplorer}{}%
 Ranwez, V., Clairon, N., Delsuc, F., Pourali, S., Auberval, N., Diser, S. \& Berry, V. (2009). PhyloExplorer: A web server to validate, explore and query phylogenetic trees. \emph{BMC evolutionary biology}, \textbf{9}, 108.
 
+\leavevmode\hypertarget{ref-sanderson2008phylota}{}%
+Sanderson, M.J., Boss, D., Chen, D., Cranston, K.A. \& Wehe, A. (2008). The PhyLoTA Browser: Processing GenBank for Molecular Phylogenetics Research. \emph{Systematic Biology}, \textbf{57}, 335--346. Retrieved from \url{https://doi.org/10.1080/10635150802158688}
+
 \leavevmode\hypertarget{ref-san2010molecular}{}%
 San Mauro, D. \& Agorreta, A. (2010). Molecular systematics: A synthesis of the common methods and the state of knowledge. \emph{Cellular \& Molecular Biology Letters}, \textbf{15}, 311.
+
+\leavevmode\hypertarget{ref-scott2011ncbi}{}%
+Scott, F. (2011). The ncbi taxonomy database. \emph{Nucleic Acids Research}, \textbf{40}, D136--D14.
+
+\leavevmode\hypertarget{ref-smith2009mega}{}%
+Smith, S.A., Beaulieu, J.M. \& Donoghue, M.J. (2009). Mega-phylogeny approach for comparative biology: An alternative to supertree and supermatrix approaches. \emph{BMC evolutionary biology}, \textbf{9}, 37.
 
 \leavevmode\hypertarget{ref-stamatakis2014raxml}{}%
 Stamatakis, A. (2014). RAxML version 8: A tool for phylogenetic analysis and post-analysis of large phylogenies. \emph{Bioinformatics}, \textbf{30}, 1312--1313.
