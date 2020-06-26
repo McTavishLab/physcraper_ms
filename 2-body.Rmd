@@ -58,11 +58,12 @@ And an effort to more effectively make big data connections for the advantage of
 
 - In order to take advantage of the OpenTree tools, the input tree needs to be stored in the
   OpenTree phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem).
-  Currently, only trees connected to
-  a published study can be stored in the phylesystem (although there are plans to
-  allow storage of non published trees). The main
+  The main
   reason for this is that trees in phylesystem have a set of user defined characteristics
   that are essential for automatizing the phylogeny update process. The most relevant of these being the standardization of taxonomic names and the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the final steps of the pipeline.
+  Currently, only trees connected to
+  a published study can be stored in the phylesystem (although there are plans to
+  allow storage of unpublished trees). 
   A user can choose from among the `r rotl::tol_about()$num_source_trees` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website ([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OpenTree's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
 - The alignment should be a gene alignment that was used to generate the tree. The original
   alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
@@ -78,16 +79,16 @@ And an effort to more effectively make big data connections for the advantage of
   Technically, just one matching name is needed to perform the searches. Please, see next section.
 - A ".tre" file and a ".fas" file containing only the matched taxa are generated and saved in the `inputs` folder to be used in the following steps.
 
-## DNA sequence search and cleaning
+## DNA sequence search and filtering
 
 - Technically, any DNA molecular database can be used to search for new sequences.
-  However, we rely on the GenBank database.
+  By default we rely on the GenBank database.
   The new sequence search can be performed on the remote database or in a local database.
 - The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be determined by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
-  matched taxa belonging to the ingroup in the tree, that is also a named clade in the reference taxonomy. This is known as the Most Recent Common
-  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA).
+  matched taxa belonging to the ingroup in the OPenTree synthetic tree, that is also a named clade in the reference taxonomy. \comment(hmm, a figure might be good for this. I can work on one!) This is known as the Most Recent Common
+  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA) \comment(prob need a cite here).
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
-  To automatically identify the MRCAT of a group of taxon names, we make use of the OpenTree taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>). I FORGOT TO ASK YOU ABOUT THIS CITATION!
+  To automatically identify the MRCAT of a group of taxon names, we make use of the OpenTree taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>). I FORGOT TO ASK YOU ABOUT THIS CITATION! \comment( it's here! https://bdj.pensoft.net/article/12581/instance/3545675/)
 
   Users can provide a search taxon that is either a more or a less inclusive
   clade relative to the ingroup of the original phylogeny. If the search taxon is more inclusive, the sequence search will be performed outside the MRCAT of the matched taxa, e.g., including all taxa within
@@ -101,10 +102,11 @@ And an effort to more effectively make big data connections for the advantage of
 - A pairwise BLAST search is performed. This means that each sequence
   in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
   taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
-  along with their corresponding identification numbers (accesion numbers in the case of the GenBank database). This information will be used later to store the whole sequences in a dedicated library within the physcraper folder, allowing for secondary analyses to run significantly faster.
-- Matched sequences will be discarded if the fall below a default e-value of 0.00001, and outside a default minimum and maximum length of 80% and 120%, respectively, of the average length of sequences in the checked alignment (gaps dropped).
-  This filtering guarantees that genomic sequences are not included.
-  All acepted sequences are assigned an internal identifier, and are further filtered.
+  along with their corresponding identification numbers (accession numbers in the case of the GenBank database). This information will be used later to store the whole sequences in a dedicated library within the physcraper folder, allowing for secondary analyses to run significantly faster.
+- Matched sequences will be discarded if the fall below a default e-value of 0.00001, and outside a default minimum and maximum length of 80% and 120%, respectively, of the average length of sequences in the checked alignment (gaps dropped). 
+These parameters can be configured for each run.
+  This filtering guarantees that whole genome sequences are not included, as they 
+  All accepted sequences are assigned an internal identifier, and are further filtered.
 - Because the original alignments usually lack taxonomic identification numbers, an extra filtering
   step is needed. Accepted sequences that belong to the
   same taxon of the query sequence, and that are either identical or shorter than
@@ -116,8 +118,8 @@ And an effort to more effectively make big data connections for the advantage of
   To control the number of sequences per taxon in downstream analyses,
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
 - Reverse complement sequences are identified and translated.
-- Users can choose to perform a more "cycles" of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the checked alignment are blasted. I ALSO FORGOT TO ASK: ***Is there an argument to control the number of cycles of blast searches with new sequences?***
-- Accepted sequences are downloaded in full, and stored as a local database in a directory that is globally accesible (default to physcraper/taxonomy), so they are accesible for further runs.
+- Users can choose to perform a more "cycles" of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the checked alignment are blasted. I ALSO FORGOT TO ASK: ***Is there an argument to control the number of cycles of blast searches with new sequences?*** \comment(there's only two options - one cycle or, -r where it runs until it doesn't find anything new)
+- Accepted sequences are downloaded in full, and stored as a local database in a directory that is globally accessible (default to physcraper/taxonomy), so they are accessible for further runs.
 - A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user.
 
 ## DNA sequence alignment
