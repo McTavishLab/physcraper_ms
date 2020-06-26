@@ -65,7 +65,7 @@ And an effort to more effectively make big data connections for the advantage of
   If the alignment is stored in TreeBase, `physcraper` can download it directly,
   either from the TreeBASE website ([www.treebase.org](https://treebase.org/))
   or through the TreeBASE GitHub repository (SuperTreeBASE; [github.com/TreeBASE/supertreebase](https://github.com/TreeBASE/supertreebase)).
-  If the alignment is on another repository, or provided personally by the owner, a path to a local copy of the alignment has to be provided.
+  If the alignment is on another repository, or constitutes personal data, a path to a local copy of the alignment has to be provided.
 - A taxon name matching step is performed to verify that all taxon names on the tips
   of the tree are in the DNA character matrix and vice versa.
 - A ".csv" file with the summary of taxon name matching is produced for the user.
