@@ -30,19 +30,18 @@ It has also been suggested that manual curation of classic alignments produces b
 A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine curation from human experts) would be to rely on published manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
 
 As of April 2014, the TreeBASE repository hosted about 8 200 curated alignments, providing information on evolutionary relationships of almost 105 000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.).
-This database provides an untapped source of valuable knowledge with the potential to update phylogenetic relationships in several different regions of the tree of life.
+This database provides an untapped source of valuable expert knowledge with the potential to update phylogenetic relationships in several different regions of the tree of life.
 
 The OToL tree repository [phylesystem; @mctavish2015phylesystem] automatically incorporates phylogenies uploaded into TreeBASE, and stores metadata linking the tree to its corresponding alignment repository in TreeBASE. However, if there are multiple alignments, TreeBASE does not indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
 
 Ultimately, linkage of original alignment with its corresponding phylogeny has to be done by a human curator.
-Moreover, each one of these data repositories follow their own system for taxon identification, posing a real challenge to automatically link data from across databases that belong to the same taxon.
-OToL's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc.
+Moreover, different data repositories follow different systems for taxon and study identification, posing a real challenge to automatically link data from across databases that belong to the same taxon and study.
+OToL's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., providing a way to automatically link data from different databases.
 
-Physcraper is a python pipeline that uses the OToL metadata system to connect databases through taxon identification numbers.
-It's main functionality is to connect phylogenies stored in the OToL phylesystem, with alignments from TreeBASE and newly realeased DNA data from GenBank, in order to update previously known phylogenetic relationships in a continuous manner.
+Physcraper is a python pipeline that relies on the OToL metadata system to connect databases through taxon identification numbers.
+It's main functionality is to connect phylogenies stored in the OToL phylesystem, with alignments from TreeBASE and newly released DNA data from GenBank, in order to update previously known phylogenetic relationships in a continuous manner.
 Because of its design, it allows taking advantage of the many resources provided by the OToL.
 For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships.
-
 
 This is an effort to keep on directing ourselves towards a fully reproducible workflow in phylogenetics.
 And an effort to more effectively make big data connections for the advantage of phylogenetics and biology in general.
@@ -52,7 +51,7 @@ And an effort to more effectively make big data connections for the advantage of
 
 ## The input: a tree and an alignment
 
-- In order to take advantage of the OToL tools, the tree needs to be stored in the
+- In order to take advantage of the OToL tools, the input tree needs to be stored in the
   OToL phylesystem [@mctavish2015phylesystem]. Currently, only trees connected to
   a published study can be stored in the phylesystem (although there are plans to
   allow storage of non published trees). The main
