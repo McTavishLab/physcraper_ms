@@ -15,7 +15,7 @@ output:
 
 # Introduction
 
-From molecular data to alignments and phylogenies, public biological data repositories such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life curating system [@mctavish2015phylesystem], are still accumulating data.
+From molecular data to alignments and phylogenies, public biological data resources such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life curating system [@mctavish2015phylesystem], are still accumulating data and there is no straightforward way to automatically connect data belonging to the same taxon from these various resources.
 
 More than a decade ago, the National Center for Biodiversity Information (NCBI) molecular database, GenBank, released its version number 159 (April 15, 2007). With 72 million DNA sequences, it was estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa represented in it [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota], covering about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
 In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences <https://ftp.ncbi.nih.gov/genbank/gbrel.txt>.
@@ -23,15 +23,16 @@ In comparison, the current GenBank release number 238 (June 15, 2020) has triple
 Many useful tools have been developed in the past decades in an effort to make sense of the large amount of data in public molecular databases, as well as private ones. Generally refered to as "pipelines", most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses (aka molecular alignments) to reconstruct phylogenetic relationships.
 Pipelines that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction (refered to as "phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward], have been widely used to study the evolutionary relationships among different organisms (TABLE?? maybe supplementary data), from a phylogeny of no more than 20 species of the family of barracuda fish [Sphyraenidae; @santini2013first], to a mega-phylogeny of almost 3 000 species of living ferns [@lehtonen2011towards].
 
-Pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies have been infered using homology hypotheses that have been curated "by hand" [@morrison2009would].
-What explains this preference? aka the discordance between the genomics approach (a gazillion markers poorly aligned, but the amount of data will overcome errors in alignment) and the classic phylogenetics approach (few markers thoughtfully curated).
+Pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility. In contrast, most published phylogenies have been infered using homology hypotheses that have been curated "by hand" [@morrison2009would].
+There seems to be a preference of the classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers, potentially poorly aligned, but the amount of data will overcome errors in the alignment).
+
 On one hand, there are concerns about the use of automated pipelines in phylogenetics.
 Concerns I think people have about these tools:
 - Errors in identification of sequences
 - Little control at different steps of the process
 - Too much of a black box? Most of these phylogenies are being constructed by people learning about the methods (aka students), so they want to know what is going on at each step and end up doing it manually.
--
-It has also been suggested that manual curation of classic and genomic alignments produces better phylogenetic reconstructions [@fragoso2017pilot].
+
+It has also been suggested that manual curation of classic alignments produces better phylogenetic reconstructions and it has been demonstrated for genomic alignments [@fragoso2017pilot].
 
 A way to incorporate the best of two worlds (massive amounts of newly released molecular data VS fine curation from human experts) would be to rely on published manually curated homology hypotheses. This expert-curated alignments can be enriched and updated by incorporating newly released data from public molecular databases.
 
@@ -41,7 +42,7 @@ This provides an untapped source of valuable knowledge with the potential to upd
 The OToL tree repository [phylesystem; @mctavish2015phylesystem] automatically incorporates the phylogenies from TreeBASE, and stores metadata linking the tree to its corresponding alignment repository in TreeBASE. This provides a loose means of linking the tree with the exact alignment that generated it. This can be a difficult task when multiple alignments were originally deposited and no clear link between alignment and tree was provided in TreeBASE.
 
 Ultimately, linkage of original alignment with its corresponding phylogeny has to be done by a human curator.
-Moreover, each one of these data repositories follow their own system for taxon identification. A real challenge is to find an effective way to link data from across databases that belongs to the same taxon.
+Moreover, each one of these data repositories follow their own system for taxon identification, posing a real challenge to automatically link data from across databases that belong to the same taxon.
 OToL's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc.
 
 Physcraper is a python pipeline that uses the OToL metadata system to connect databases through taxon identification numbers.
