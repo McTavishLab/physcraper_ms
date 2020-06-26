@@ -96,3 +96,13 @@ Concerns I think people have about these tools:
 - Errors in identification of sequences
 - Little control at different steps of the process
 - Too much of a black box? Most of these phylogenies are being constructed by people learning about the methods (aka students), so they want to know what is going on at each step and end up doing it manually.
+
+
+Other type of bootstrap that I think is not yet incorporated into physcraper is the Transfer Bootstrap Expectation (TBE) recently proposed in @lemoine2018renewing.
+
+
+***- One way to compare two independent phylogenetic trees is to compare them both to
+the synthetic OToL and then measure how well they do against each other***
+
+- Currently, the root is determined by finding the parent node of the sequences that do not belong to the ingroup/ search taxon. This ensures a correct rooting of the tree even when the search taxon is more inclusive than the ingroup.
+- Conflict information can only be generated in the context of the whole Open Tree of Life. Otherwise, it is not really possible to get conflict data.

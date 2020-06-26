@@ -52,12 +52,13 @@ And an effort to more effectively make big data connections for the advantage of
 ## The input: a tree and an alignment
 
 - In order to take advantage of the OToL tools, the input tree needs to be stored in the
-  OToL phylesystem [@mctavish2015phylesystem]. Currently, only trees connected to
+  OToL phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem).
+  Currently, only trees connected to
   a published study can be stored in the phylesystem (although there are plans to
   allow storage of non published trees). The main
   reason for this is that trees in phylesystem have a set of user defined characteristics
-  that are essential for automatizing the phylogeny update process. The most relevant of these being the standardization of taxonomic names and the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the next steps of the pipeline.
-  A user can choose from the `r rotl::tol_about()$num_source_trees` published trees supporting the resolved nodes of the synthetic tree in the OToL website ([See OToL's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OToL's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
+  that are essential for automatizing the phylogeny update process. The most relevant of these being the standardization of taxonomic names and the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the final steps of the pipeline.
+  A user can choose from among the `r rotl::tol_about()$num_source_trees` published trees supporting the resolved nodes of the synthetic tree in the OToL website ([See OToL's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OToL's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
 - The alignment should be a gene alignment that was used to generate the tree. The original
   alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD ([www.datadryad.org](http://datadryad.org/)), or the journal were the tree was originally published.
@@ -74,82 +75,75 @@ And an effort to more effectively make big data connections for the advantage of
 
 ## DNA sequence search and cleaning
 
-- The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be provided by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
+- Technically, any DNA molecular database can be used to search for new sequences.
+  However, we rely on the GenBank database.
+  The new sequence search can be performed on the remote database or in a local database.
+- The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be determined by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
   matched taxa belonging to the ingroup in the tree, that is also a named clade in the reference taxonomy. This is known as the Most Recent Common
   Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA).
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
-  To automatically identify the MRCAT of a group of taxon names, we make use of the OToL taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>).
+  To automatically identify the MRCAT of a group of taxon names, we make use of the OToL taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>). I FORGOT TO ASK YOU ABOUT THIS CITATION!
 
   Users can provide a search taxon that is either a more or a less inclusive
   clade relative to the ingroup of the original phylogeny. If the search taxon is more inclusive, the sequence search will be performed outside the MRCAT of the matched taxa, e.g., including all taxa within
   the family or the order that the ingroup belongs to. If the search taxon is a less inclusive clade, the users can focus on enriching a particular clade/region within the ingroup of the phylogeny.
 - The Basic Local Alignment Search Tool, BLAST [@altschul1990basic; @altschul1997gapped] is used to identify
   similarity between DNA sequences within the search taxon in a nucleotide
-  database, and the accepted sequences on the alignment.
-  The blastn function from the BLAST command line tools [@camacho2009blast] is used for local-database searches.
-  A modified biopython blast function is used for web-based searches.
+  database, and the sequences on the checked alignment.
+  The `blastn` function from the BLAST command line tools [@camacho2009blast] is used for local-database sequence searches.
+  For remote-database searches, we modified the BioPython [@cock2009biopython] BLAST function in the [NCBIWWW module](https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html) to accept an alternate BLAST URL. This is useful when a user has no access to the computer capacity needed to setup a local database, and a local blast database can be set up on a remote machine to BLAST without NCBI's required wait times.
   <!--***How does the blast is setup? Is it an all-blast-all??***-->
-- The DNA sequence similarity search can be done on a local database that is easily
-  setup by the user. In this case, the blastn function is used to performs the similarity search [@camacho2009blast].
-- The search can also be performed remotely, on the NCBI database. In this case, the
-  bioPython BLAST function was modified to accepts is used to perform the similarity search.
-- A pairwise alignment-against-all BLAST search is performed. This means that each sequence
+- A pairwise BLAST search is performed. This means that each sequence
   in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
   taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
   along with their corresponding identification numbers (accesion numbers in the case of the GenBank database). This information will be used later to store the whole sequences in a dedicated library within the physcraper folder, allowing for secondary analyses to run significantly faster.
-- Matched sequences below an e-value, percentage similarity, and outside a minimum
-  and maximum length threshold are discarded. ***REPORT THE DEFAULT VALUES AND DESCRIBE WHAT THEY MEAN*** This filtering leaves out genomic sequences.
-  All acepted sequences are asigned an internal identifier, and are further filtered.
-- Because the original alignments usually lack database id numbers, a filtering
+- Matched sequences will be discarded if the fall below a default e-value of 0.00001, and outside a default minimum and maximum length of 80% and 120%, respectively, of the average length of sequences in the checked alignment (gaps dropped).
+  This filtering guarantees that genomic sequences are not included.
+  All acepted sequences are assigned an internal identifier, and are further filtered.
+- Because the original alignments usually lack taxonomic identification numbers, an extra filtering
   step is needed. Accepted sequences that belong to the
   same taxon of the query sequence, and that are either identical or shorter than
   the original sequence are discarded. Only longer sequences belonging to the
   same taxon as the orignal sequence will be considered further for analysis.
 - Among the remaining filtered sequences, there are usually several exemplars per taxon.
-  Although it can be useful to keep some of them to, for example, investigate monophyly
+  Although it can be useful to keep some of them, for example, to investigate monophyly
   within species, there can be hundreds of exemplar sequences per taxon for some markers.
   To control the number of sequences per taxon in downstream analyses,
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
 - Reverse complement sequences are identified and translated.
-- Users can choose to perform a more "cycles" of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the alignment are blasted. ***Is there an argument to control the number of cycles of blast searches with new sequences?***
-- Accepted sequences are downloaded in full, and stored as a local database in a directory that is globally accesible (physcraper/taxonomy), so they are accesible for further runs.
+- Users can choose to perform a more "cycles" of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the checked alignment are blasted. ***Is there an argument to control the number of cycles of blast searches with new sequences?***
+- Accepted sequences are downloaded in full, and stored as a local database in a directory that is globally accesible (default to physcraper/taxonomy), so they are accesible for further runs.
 - A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user.
 
 ## DNA sequence alignment
 
-- The software MUSCLE [@edgar2004muscle] is implemented to perform alignments.
+- The software MUSCLE [@edgar2004muscle] is implemented to perform sequence alignments.
 - First, all new sequences are aligned using default MUSCLE options.
 - Then, a MUSCLE profile alignment is performed, in which the original alignment
   is used as a template to align new sequences. This ensures that the final alignment
   follows the homology criteria established by the original alignment.
-- The final alignment is not further processed automatically. We encourage users
+- The final alignment is not further processed automatically. So, we encourage users
   to check it either by eye and perform manual refinement or using any of the many
   tools for alignment processing, to eliminate columns with no information.
 
 ## Tree reconstruction and comparison
 
-- A gene tree is reconstructed for each alignment provided, using a Maximum Likelihood approach implemented with the software RAxML [@stamatakis2014raxml]
-  with 100 classic rapid bootstrap [@felsenstein1985confidence] replicates by default. The number of bootsrap replicates can be modified by the user.
-  Other type of bootstrap that I think is not yet incorporated into physcraper is the Transfer Bootstrap Expectation (TBE) recently proposed in @lemoine2018renewing.
+- A gene tree is reconstructed for each alignment provided, using a Maximum Likelihood approach implemented with the software RAxML [@stamatakis2014raxml], using default settings such as a GTRCAT model of molecular evolution and 100 bootstrap replicates with default method. Currently only the number of bootsrap replicates can be modified by the user.
 - The original tree is used as starting tree for the ML searches. It can also be set as a full topological constraint or not used at all, depending on the goals of the user.
-- Bootstrap results are summarized with Dendropy ADD CITATION
+- Bootstrap results are summarized with Dendropy [@sukumaran2010dendropy]
 - The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
 - Tips on all trees generated by physcraper are defined by a taxon name space, allowing to perform comparisons and conflict analyses.
-- Robinson Foulds weighted and unweighted metrics ARE CALCULATED WITH DENDROPY TOO.
-- Describe what a conflict analysis is: Node by node comparison between the original and updated tree, and the synthetic OToL using the conflict API of otol CITE REDELINGS AND HOLDER [@redelings and holder].
-
+- Robinson Foulds weighted and unweighted metrics are calculated with Dendropy functions.
+- Finally a conflict analysis is performed. This is basically a node by node comparison between the the synthetic OToL and the original and updated tree individually. This is performed with OToL's conflict Application Programming Interface [@redelings2017supertree].
 - For the conflict analysis to be meaningful, the root of the tree ineeds to be accurately defined.
-- A SUGGESTED DEFAULT ROOTING BASED ON THE OPEN TREE TAXONOMY is implemented for now.  DESCRIBE HOW IT WORKS. SAY THAT IT IS A PROBLEM. Automatic rooting is not that smart yet. The best way right now is for users to define outgroups so trees are better rooted.
-- Currently, the root is determined by finding the parent node of the sequences that do not belong to the ingroup/ search taxon. This ensures a correct rooting of the tree even when the search taxon is more inclusive than the ingroup.
-- Conflict information can only be generated in the context of the whole Open Tree of
-  Life. Otherwise, it is not really possible to get conflict data.
-***- One way to compare two independent phylogenetic trees is to compare them both to
-the synthetic OToL and then measure how well they do against each other***
+- A suggested default rooting based on OToL's taxonomy is implemented for now. It takes one descendant from the corresponding induced subtree in OToL's synthetic tree and then finds the MRCA of those in th eupdated trees. However, if the updated tree changes expectations from taxonomy, the root will no longer be accurate. Automatic identification of a phylogenetic tree root is indeed a difficult problem that has not been solved yet. The best way right now is for users to define outgroups so trees are accurately rooted.
+
+
 
 # Examples
 
-To exemplify the utility of physcraper we will address two use-case scenarios. One in which the user is interested in a particular group. Another one in which the user is interested in a particular phylogeny.
-A tutrial as well as illustrated examples of steps needed to perform a physcraper analyses are available elsewhere.
+We will illustrate the utility of physcraper in here with two use-case scenarios. One in which the user is interested in a particular group. Another one in which the user is interested in a particular phylogeny.
+A tutorial as well as illustrated examples of steps needed to perform a physcraper analysis are available elsewhere.
 
 ## The hollies
 
@@ -157,7 +151,6 @@ A student is interested in the genus *Ilex*, the only extant clade within the fa
 The genus encompasses between 400-600 living species. A review of literature reveals that there are three phylogenetic trees showing relationships within the hollies published.
 The first one has been made available in TreeBASE as well as in the OToL phylesystem and is part of the synthetic tree. It samples 48 species.
 The second tree has not been made available anywhere, not even in the supplementary data of the original publication.
-<!-- ***Contact authors? They seem old school, probably do not wanna share their data.*** -->
 The most recent one has been made available in the OToL Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
 This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree will produce something very similar to the newest tree.
 
