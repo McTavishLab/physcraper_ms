@@ -185,8 +185,8 @@ knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 
 # Discussion
 
-Data repositories hold more information than meets the eye.
-Besides the actual data, they are rich sources of information that can be used for the advantage of biology and science in general.
+Data repositories hold even more information than meets the eye.
+Besides the actual data, they are rich sources of metadata that can be used for the advantage of biology and science in general.
 
 Many pipelines are making use of DNA data repositories in different ways.
 Most of them focus on efficient ways to mine the data -- getting the most homologs.
@@ -196,28 +196,28 @@ Most focus on generating full trees *de novo*, mainly for regions of the Tree of
 Life that have no phylogenetic assessment yet in published studies, but also for
 regions that have been already studied and that have phylogenetic data already.
 However, expert phylogenetic knowledge is also an important source of data in public
-and open repositories that is potentiallly being diregarded.
+and open repositories that is not being used to its full potential.
 
 All these tools are key efforts for advancing towards reproducibility in phylogenetics,
-a field that has been largely recognised as somewhat artisanal.
-In here, we highlight the potential of other sources of information available from data repositories and present a method to link data from different repositories, while leveraging on the knowledge and intuition of the expert
-community to build up our phylogenetic knowledge, using not only data accumulated in
+a field that has relied on processes which are somewhat artisanal.
+In here, we highlight the potential of taking advantage of this careful curation work in previous phylogenetic estimates. By taking sources of information available from data repositories and present a method to link data from different repositories, while leveraging on the knowledge and intuition of the expert
+community to build up our phylogenetic knowledge, we can use not only data accumulated in
 molecular data repositories, but phylogenetic knowledge accumulated in phylogenetic tree repositories.
-While not generating full phylogenies *de novo*, pyscraper is still capable of generating new phylogenetic knowledge.
-In this way, the physcraper workflow can be complemented with other pipelines, to potentially increase speed (IS THIS TRUE??).
+While not generating full phylogenies *de novo*, physcraper is still capable of generating new phylogenetic knowledge.
+In this way, the physcraper workflow can be complemented with other pipelines, to potentially increase speed (IS THIS TRUE??). \comment(hmmmm mayeb cut bc I don't know!)
 It can also be combined with data from repositories other than molecular data. For example geographic locations (GBIF), fossils (PBDB), etc.
 
 Physcraper has the potential to be applied for the advantage of the field to rapidly
 place newly discovered species phylogenetically [@webb2010biodiversity],
 obtain trees for ecophylogenetic studies [@helmus2012phylogenetic],
-help to sistematize molecular databases, i.e., curate taxonomic assignations [@san2010molecular],
+help to systematize molecular databases, i.e., curate taxonomic assignations [@san2010molecular],
 and rapidly generate custom species trees for downstream analyses [@stoltzfus2013phylotastic].
 
 
 # Acknowledgements
 
 The University of California, Merced cluster, MERCED (Multi-Environment Research Computer for Exploration and Discovery) supported by the National Science Foundation (Grant No. ACI-1429783).
-
+\comment(need to add teh OPenTree ABI grant..)
 We acknowledge contributions from ...
 
 
