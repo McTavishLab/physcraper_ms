@@ -15,15 +15,15 @@ output:
 
 # Introduction
 
-From molecular data to alignments and phylogenies, public databases such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life data deposition system, the phylesystem [@mctavish2015phylesystem] are still accumulating data.
+From molecular data to alignments and phylogenies, public biological data repositories such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life (OToL) data deposition tool, the phylesystem [@mctavish2015phylesystem], are still accumulating data.
 
-More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of about `r round(236023/240708, digits=4)*100`% of taxa included in the NCBI taxonomy [@sanderson2008phylota; @federhen2003taxonomy] which represents about 10% of described diversity [@scott2011ncbi], taking a conservative estimate of extant diversity.
+More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of about `r round(236023/240708, digits=4)*100`% of taxa included in the NCBI taxonomy [@sanderson2008phylota] which represents about 10% of described diversity [@scott2011ncbi; @federhen2003taxonomy], taking a conservative estimate of extant diversity.
 In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences <https://ftp.ncbi.nih.gov/genbank/gbrel.txt>.
 
 Many useful tools have been developed in the past decades in an effort to make sense of the large amount of DNA data in public and private databases. Most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses to reconstruct phylogenetic relationships.
-Tools that automatize the assembly of homology hypotheses for phylogenetics such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward] have been widely used to assemble genetic datasets to reconstruct phylogenetic relationships among different organisms.
+Tools that automatize the assembly of homology hypotheses from the GenBAnk database for phylogenetics such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward] have been widely used to reconstruct the evolutionary relationships among different organisms.
 
-Considering that 400 phylogenies are published each year, most published phylogenies have been infered from a homology hypothesis that has been constructed "by hand".
+This has been an important contribution to the field of phylogenetics, especially bc they represent a possible way for reproducibility in phylogenetics. Indeed, most published phylogenies have been infered from a homology hypothesis that has been curated "by hand" [@morrison2009would].
 
 On one hand, there are concerns about the use of automated tools.
 Concerns I think people have about these tools:
