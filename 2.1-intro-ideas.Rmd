@@ -90,3 +90,9 @@ to the TreeBase database, to (1) get the original DNA data set matrices (alignme
 a phylogeny that was published and then made available in the OToL database, (2)
 use this DNA alignments as a starting point to get new genetic data belonging
 to the focal group of study, to (3) finally update the phylogenetic relationships in the group.
+
+On one hand, there are concerns about the use of automated pipelines in phylogenetics.
+Concerns I think people have about these tools:
+- Errors in identification of sequences
+- Little control at different steps of the process
+- Too much of a black box? Most of these phylogenies are being constructed by people learning about the methods (aka students), so they want to know what is going on at each step and end up doing it manually.

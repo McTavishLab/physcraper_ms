@@ -18,7 +18,7 @@ knitr::opts_knit$set(
 
 # next:
 
-- [ ] intro: challenge in connecting different parts of the database with other databases that might refer to the same thing. For example taxon ids represent onw challenge in this sense, but it has been solved by the otol taxonomy project. Othe rchallenge is the study ids. This is not fully resolved yet by otol, but only partially by linking to the alignment repo.
+- [ ] intro: challenge in connecting different parts of the database with other databases that might refer to the same thing. For example taxon ids represent own challenge in this sense, but it has been solved by the otol taxonomy project. Othe rchallenge is the study ids. This is not fully resolved yet by otol, but only partially by linking to the alignment repo.
 - [ ] intro: programatic access.
 
 

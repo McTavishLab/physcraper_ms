@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3073
+\textbf{Word count}: 3169
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -155,23 +155,24 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-From molecular data to alignments and phylogenies, public biological data repositories such as the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the TreeBASE repository (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}) and the Open Tree of Life curating system (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}), are still accumulating data.
+From molecular data to alignments and phylogenies, public biological data resources such as the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the TreeBASE repository (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}) and the Open Tree of Life curating system (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}), are still accumulating data and there is currently no straightforward way to automatically connect data belonging to the same taxon from these various resources.
 
 More than a decade ago, the National Center for Biodiversity Information (NCBI) molecular database, GenBank, released its version number 159 (April 15, 2007). With 72 million DNA sequences, it was estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa represented in it (about 98.05\% of taxa in the NCBI taxonomy; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}), covering about 10\% of extant described biodiversity (taking a conservative estimate of extant diversity; Scott \protect\hyperlink{ref-scott2011ncbi}{2011}; Federhen \protect\hyperlink{ref-federhen2003taxonomy}{2003}).
-In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences \url{https://ftp.ncbi.nih.gov/genbank/gbrel.txt}.
+In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences \href{https://ftp.ncbi.nih.gov/genbank/gbrel.txt}{(See GenBank release data)}. Yet, publicly avilable phylogenetic relationships cover about 90 000 taxa {[}Hinchliff \emph{et al.} (\protect\hyperlink{ref-hinchliff2015synthesis}{2015}); current synthesis citation{]}, covering less than one third of the taxonomic diversity with data avilable a decade ago. While it is true that many phylogenies are not publicly shared (Drew \emph{et al.} \protect\hyperlink{ref-drew2013lost}{2013}; Magee \emph{et al.} \protect\hyperlink{ref-magee2014dawn}{2014}), most recently published large trees have been made available, indicating a lag between the amount of new DNA data generated and its analysis in a phylogenetic context.
 
 Many useful tools have been developed in the past decades in an effort to make sense of the large amount of data in public molecular databases, as well as private ones. Generally refered to as ``pipelines'', most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses (aka molecular alignments) to reconstruct phylogenetic relationships.
 Pipelines that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction (refered to as ``phylogenetic pipelines'') such as PHYLOTA (Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}), PHLAWD (Smith \emph{et al.} \protect\hyperlink{ref-smith2009mega}{2009}), and SUPERSMART (Antonelli \emph{et al.} \protect\hyperlink{ref-antonelli2017toward}{2017}), have been widely used to study the evolutionary relationships among different organisms (TABLE?? maybe supplementary data), from a phylogeny of no more than 20 species of the family of barracuda fish (Sphyraenidae; Santini \& Sorenson \protect\hyperlink{ref-santini2013first}{2013}), to a mega-phylogeny of almost 3 000 species of living ferns (Lehtonen \protect\hyperlink{ref-lehtonen2011towards}{2011}).
 
-Pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies have been infered using homology hypotheses that have been curated ``by hand'' (Morrison \protect\hyperlink{ref-morrison2009would}{2009}).
-What explains this preference? aka the discordance between the genomics approach (a gazillion markers poorly aligned, but the amount of data will overcome errors in alignment) and the classic phylogenetics approach (few markers thoughtfully curated).
+Pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility. In contrast, most published phylogenies have been infered using homology hypotheses that have been curated ``by hand'' (Morrison \protect\hyperlink{ref-morrison2009would}{2009}).
+There seems to be a preference of the classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers, potentially poorly aligned, but the amount of data will overcome errors in the alignment).
+
 On one hand, there are concerns about the use of automated pipelines in phylogenetics.
 Concerns I think people have about these tools:
 - Errors in identification of sequences
 - Little control at different steps of the process
 - Too much of a black box? Most of these phylogenies are being constructed by people learning about the methods (aka students), so they want to know what is going on at each step and end up doing it manually.
--
-It has also been suggested that manual curation of classic and genomic alignments produces better phylogenetic reconstructions (Fragoso-Martínez \emph{et al.} \protect\hyperlink{ref-fragoso2017pilot}{2017}).
+
+It has also been suggested that manual curation of classic alignments produces better phylogenetic reconstructions and it has been demonstrated for genomic alignments (Fragoso-Martínez \emph{et al.} \protect\hyperlink{ref-fragoso2017pilot}{2017}).
 
 A way to incorporate the best of two worlds (massive amounts of newly released molecular data VS fine curation from human experts) would be to rely on published manually curated homology hypotheses. This expert-curated alignments can be enriched and updated by incorporating newly released data from public molecular databases.
 
@@ -181,7 +182,7 @@ This provides an untapped source of valuable knowledge with the potential to upd
 The OToL tree repository (phylesystem; McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}) automatically incorporates the phylogenies from TreeBASE, and stores metadata linking the tree to its corresponding alignment repository in TreeBASE. This provides a loose means of linking the tree with the exact alignment that generated it. This can be a difficult task when multiple alignments were originally deposited and no clear link between alignment and tree was provided in TreeBASE.
 
 Ultimately, linkage of original alignment with its corresponding phylogeny has to be done by a human curator.
-Moreover, each one of these data repositories follow their own system for taxon identification. A real challenge is to find an effective way to link data from across databases that belongs to the same taxon.
+Moreover, each one of these data repositories follow their own system for taxon identification, posing a real challenge to automatically link data from across databases that belong to the same taxon.
 OToL's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc.
 
 Physcraper is a python pipeline that uses the OToL metadata system to connect databases through taxon identification numbers.
@@ -455,6 +456,9 @@ Camacho, C., George, C., Vahram, A., Ning, M., Jason, P., Kevin, B. \& Thomas, L
 \leavevmode\hypertarget{ref-deepak2014evominer}{}%
 Deepak, A., Fernández-Baca, D., Tirthapura, S., Sanderson, M.J. \& McMahon, M.M. (2014). EvoMiner: Frequent subtree mining in phylogenetic databases. \emph{Knowledge and Information Systems}, \textbf{41}, 559--590.
 
+\leavevmode\hypertarget{ref-drew2013lost}{}%
+Drew, B.T., Gazis, R., Cabezas, P., Swithers, K.S., Deng, J., Rodriguez, R., Katz, L.A., Crandall, K.A., Hibbett, D.S. \& Soltis, D.E. (2013). Lost branches on the tree of life. \emph{PLoS biology}, \textbf{11}.
+
 \leavevmode\hypertarget{ref-edgar2004muscle}{}%
 Edgar, R.C. (2004). MUSCLE: Multiple sequence alignment with high accuracy and high throughput. \emph{Nucleic acids research}, \textbf{32}, 1792--1797.
 
@@ -470,11 +474,17 @@ Fragoso-Martínez, I., Salazar, G.A., Martínez-Gordillo, M., Magallón, S., Sá
 \leavevmode\hypertarget{ref-helmus2012phylogenetic}{}%
 Helmus, M.R. \& Ives, A.R. (2012). Phylogenetic diversity--area curves. \emph{Ecology}, \textbf{93}, S31--S43.
 
+\leavevmode\hypertarget{ref-hinchliff2015synthesis}{}%
+Hinchliff, C.E., Smith, S.A., Allman, J.F., Burleigh, J.G., Chaudhary, R., Coghill, L.M., Crandall, K.A., Deng, J., Drew, B.T., Gazis, R. \& others. (2015). Synthesis of phylogeny and taxonomy into a comprehensive tree of life. \emph{Proceedings of the National Academy of Sciences}, \textbf{112}, 12764--12769.
+
 \leavevmode\hypertarget{ref-lehtonen2011towards}{}%
 Lehtonen, S. (2011). Towards resolving the complete fern tree of life. \emph{PLoS One}, \textbf{6}.
 
 \leavevmode\hypertarget{ref-lemoine2018renewing}{}%
 Lemoine, F., Entfellner, J.-B.D., Wilkinson, E., Correia, D., Felipe, M.D., De Oliveira, T. \& Gascuel, O. (2018). Renewing felsenstein's phylogenetic bootstrap in the era of big data. \emph{Nature}, \textbf{556}, 452--456.
+
+\leavevmode\hypertarget{ref-magee2014dawn}{}%
+Magee, A.F., May, M.R. \& Moore, B.R. (2014). The dawn of open access to phylogenetic data. \emph{PLoS One}, \textbf{9}.
 
 \leavevmode\hypertarget{ref-mctavish2015phylesystem}{}%
 McTavish, E.J., Hinchliff, C.E., Allman, J.F., Brown, J.W., Cranston, K.A., Holder, M.T., Rees, J.A. \& Smith, S.A. (2015). Phylesystem: A git-based data store for community-curated phylogenetic estimates. \emph{Bioinformatics}, \textbf{31}, 2794--2800.
