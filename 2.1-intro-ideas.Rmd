@@ -72,3 +72,21 @@ There is a lot of phylogenetic knowledge already available in published peer-rev
 In this sense, the non-specialists (and also the specialist) face a new problem: how do I choose the best phylogeny.
 
 Public phylogenies can be updated with the ever increasing amount of genetic data that is available on GenBank [@benson2000genbank; @wheeler2000database].
+
+The pipelines are so powerful and they will give you an answer, but there
+is no way to assess if it is better than previous answers, it just assumes it is
+better because it used more data.
+
+A less automated workflow is one in which the alignments that generated the published
+phylogeny are stored in other public database (such as DRYAD) or elsewhere (the users computer), and
+are provided by the users.
+
+A key aspect of the standard phylogenetic workflow is comparison with already existing
+phylogenetic hypotheses and with phylogenies that are considered "best" by experts
+not only in phylogenetics, but also experts on the focal group of study.
+
+Physcraper uses the Open Tree of Life phylesystem and connects it
+to the TreeBase database, to (1) get the original DNA data set matrices (alignments) that produced
+a phylogeny that was published and then made available in the OToL database, (2)
+use this DNA alignments as a starting point to get new genetic data belonging
+to the focal group of study, to (3) finally update the phylogenetic relationships in the group.

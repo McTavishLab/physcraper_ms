@@ -17,13 +17,13 @@ output:
 
 From molecular data to alignments and phylogenies, public biological data repositories such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life curating system [@mctavish2015phylesystem], are still accumulating data.
 
-More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of most of the taxa represented [about `r round(236023/240708, digits=4)*100`% of taxa; @sanderson2008phylota], covering about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
+More than a decade ago, the National Center for Biodiversity Information (NCBI) molecular database, GenBank, released its version number 159 (April 15, 2007). With 72 million DNA sequences, it was estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa represented in it [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota], covering about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
 In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences <https://ftp.ncbi.nih.gov/genbank/gbrel.txt>.
 
-Many useful tools have been developed in the past decades in an effort to make sense of the large amount of DNA data in public databases such as GenBank, as well as private databases. Generally refered to as "pipelines", most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses (aka molecular alignments) to reconstruct phylogenetic relationships.
-Pipelines that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction (refered to as "phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward], have been widely used to study the evolutionary relationships among different organisms (TABLE?? maybe supplementary data), from a phylogeny of no more than 20 fish species of the family of barracudas [Sphyraenidae; @santini2013first], to a mega-phylogeny of almost 3 000 living fern species [@lehtonen2011towards].
+Many useful tools have been developed in the past decades in an effort to make sense of the large amount of data in public molecular databases, as well as private ones. Generally refered to as "pipelines", most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses (aka molecular alignments) to reconstruct phylogenetic relationships.
+Pipelines that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction (refered to as "phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward], have been widely used to study the evolutionary relationships among different organisms (TABLE?? maybe supplementary data), from a phylogeny of no more than 20 species of the family of barracuda fish [Sphyraenidae; @santini2013first], to a mega-phylogeny of almost 3 000 species of living ferns [@lehtonen2011towards].
 
-Pipelines have been an important incorporation to the field of phylogenetics, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies have been infered using homology hypotheses that have been curated "by hand" [@morrison2009would].
+Pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies have been infered using homology hypotheses that have been curated "by hand" [@morrison2009would].
 What explains this preference? aka the discordance between the genomics approach (a gazillion markers poorly aligned, but the amount of data will overcome errors in alignment) and the classic phylogenetics approach (few markers thoughtfully curated).
 On one hand, there are concerns about the use of automated pipelines in phylogenetics.
 Concerns I think people have about these tools:
@@ -33,48 +33,26 @@ Concerns I think people have about these tools:
 -
 It has also been suggested that manual curation of classic and genomic alignments produces better phylogenetic reconstructions [@fragoso2017pilot].
 
-An way to incorporate the best of two worlds (newly released molecular data with fine knowledge from human experts) would be to rely on published manually curated homology hypotheses that have been made publicly available. This expert-curated alignments can be enriched and updated by incorporating newly released data from public molecular databases.
+A way to incorporate the best of two worlds (massive amounts of newly released molecular data VS fine curation from human experts) would be to rely on published manually curated homology hypotheses. This expert-curated alignments can be enriched and updated by incorporating newly released data from public molecular databases.
 
+As of April 2014, TreeBASE hosted a bit more than 8 200 curated alignments, providing information on evolutionary relationships of almost 105 000 distinct taxa [(see TreeBASE about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.).
+This provides an untapped source of valuable knowledge with the potential to update phylogenetic relationships in different regions of the tree of life.
 
-There are THIS MANY curated alignments publicly available on TreeBASE
+The OToL tree repository [phylesystem; @mctavish2015phylesystem] automatically incorporates the phylogenies from TreeBASE, and stores metadata linking the tree to its corresponding alignment repository in TreeBASE. This provides a loose means of linking the tree with the exact alignment that generated it. This can be a difficult task when multiple alignments were originally deposited and no clear link between alignment and tree was provided in TreeBASE.
 
-This suggests a lot of potential for update of phylogenetic relationships in different regions of the tree of life.
+Ultimately, linkage of original alignment with its corresponding phylogeny has to be done by a human curator.
+Moreover, each one of these data repositories follow their own system for taxon identification. A real challenge is to find an effective way to link data from across databases that belongs to the same taxon.
+OToL's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc.
 
-OToL has integrated the phylogenies fro TreeBASe, and linked to the alignment repo but not the exact alignment that generated the phylogeny.
+Physcraper is a python pipeline that uses the OToL metadata system to connect databases through taxon identification numbers.
 
-Linkage of original alignment with corresponding phylogeny has t be done by a human curator.
+It's main goal is to connect public phylogenetic relationships in OToL, with alignments from TreeBASE and GenBank DNA data.
 
+It also allows automatizing and standardizing the comparison of phylogenetic hypotheses.
 
-We present a way to automatize and standardize the comparison of phylogenetic hypotheses and to allow reproducibility of this last step of the research process.
+This is an effort to keep on directing ourselves towards a fully reproducible workflow in phylogenetics.
+And an effort to more effectively connect the world of big data in biology.
 
-A key aspect of the standard phylogenetic workflow is comparison with already existing
-phylogenetic hypotheses and with phylogenies that are considered "best" by experts
-not only in phylogenetics, but also experts on the focal group of study.
-
-
-
-
-The pipelines are so powerful and they will give you an answer, but there
-is no way to assess if it is better than previous answers, it just assumes it is
-better because it used more data.
-
-The goal of Physcraper is to build upon previous phylogenetic knowledge,
-allowing a direct comparison between existing phylogenies and phylogenies that are constructed
-using new genetic data retrieved from a public nucleotide database (i.e., GenBank [@benson2000genbank; @wheeler2000database]).
-
-To achieve this, Physcraper uses the Open Tree of Life phylesystem and connects it
-to the TreeBase database, to (1) get the original DNA data set matrices (alignments) that produced
-a phylogeny that was published and then made available in the OToL database, (2)
-use this DNA alignments as a starting point to get new genetic data belonging
-to the focal group of study, to (3) finally update the phylogenetic relationships in the group.
-
-A less automated workflow is one in which the alignments that generated the published
-phylogeny are stored in other public database (such as DRYAD) or elsewhere (the users computer), and
-are provided by the users.
-
-
-
-Physcraper implements node by node comparison of the the original and the updated trees, using the conflict API of OToL.
 
 # How does Physcraper work?
 
@@ -83,7 +61,7 @@ Physcraper implements node by node comparison of the the original and the update
 - The study tree is a published phylogenetic tree stored in the OToL database, phylesystem [@mctavish2015phylesystem]. The main
   reason for this is that trees in phylesystem have a set of user defined characteristics
   that are essential for automatizing the phylogeny update process. The most relevant of these being the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the next steps of the pipeline.
-  A user can choose from the 'r rotl::tol_about()$num_source_trees' published trees supporting the resolved node of the synthetic tree in the OToL website (<>). If the tree you are interested in updating is not in there, you can upload it via OToL's curator tool (<https://tree.opentreeoflife.org/curator).
+  A user can choose from the `r rotl::tol_about()$num_source_trees` published trees supporting the resolved node of the synthetic tree in the OToL website (<>). If the tree you are interested in updating is not in there, you can upload it via OToL's curator tool (<https://tree.opentreeoflife.org/curator).
 - The alignment should be a gene alignment that was used to generate the tree. The original
   alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD (<http://datadryad.org/>), or the journal were the tree was originally published.
@@ -164,7 +142,8 @@ Physcraper implements node by node comparison of the the original and the update
 - The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
 - Tips on all trees generated by physcraper are defined by a taxon name space, allowing to perform comparisons and conflict analyses.
 - Robinson Foulds weighted and unweighted metrics ARE CALCULATED WITH DENDROPY TOO.
-- Describe what a conflict analysis is: Node by node comparison of the resulting clades compared to CITE REDELINGS AND HOLDER [@redelings and holder]
+- Describe what a conflict analysis is: Node by node comparison between the original and updated tree, and the synthetic OToL using the conflict API of otol CITE REDELINGS AND HOLDER [@redelings and holder].
+
 - For the conflict analysis to be meaningful, the root of the tree ineeds to be accurately defined.
 - A SUGGESTED DEFAULT ROOTING BASED ON THE OPEN TREE TAXONOMY is implemented for now.  DESCRIBE HOW IT WORKS. SAY THAT IT IS A PROBLEM. Automatic rooting is not that smart yet. The best way right now is for users to define outgroups so trees are better rooted.
 - Currently, the root is determined by finding the parent node of the sequences that do not belong to the ingroup/ search taxon. This ensures a correct rooting of the tree even when the search taxon is more inclusive than the ingroup.

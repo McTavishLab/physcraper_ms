@@ -18,6 +18,7 @@ knitr::opts_knit$set(
 
 # next:
 
+- [ ] intro: challenge in connecting different parts of the database with other databases that might refer to the same thing. For example taxon ids represent onw challenge in this sense, but it has been solved by the otol taxonomy project. Othe rchallenge is the study ids. This is not fully resolved yet by otol, but only partially by linking to the we solve it in 
 - [ ] Do not cite Felsenstein 1985 for bootstrap, just the call that we use for RAxML:
 rax_ex, "-T", "{}".format(self.config.num_threads),
                                  "-m", "GTRCAT",
