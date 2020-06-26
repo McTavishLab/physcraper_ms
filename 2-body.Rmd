@@ -15,25 +15,26 @@ output:
 
 # Introduction
 
-From molecular data to alignments and phylogenies, public biological data repositories such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life (OToL) data deposition tool, the phylesystem [@mctavish2015phylesystem], are still accumulating data.
+From molecular data to alignments and phylogenies, public biological data repositories such as the GenBank database [@benson2000genbank; @wheeler2000database], the TreeBASE repository [@piel2009treebase] and the Open Tree of Life curating system [@mctavish2015phylesystem], are still accumulating data.
 
-More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of about `r round(236023/240708, digits=4)*100`% of taxa included in the NCBI taxonomy [@sanderson2008phylota] which represents about 10% of described diversity [@scott2011ncbi; @federhen2003taxonomy], taking a conservative estimate of extant diversity.
+More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of most of the taxa represented [about `r round(236023/240708, digits=4)*100`% of taxa; @sanderson2008phylota], covering about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
 In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences <https://ftp.ncbi.nih.gov/genbank/gbrel.txt>.
 
-Many useful tools have been developed in the past decades in an effort to make sense of the large amount of DNA data in public and private databases. Most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses to reconstruct phylogenetic relationships.
-Tools that automatize the assembly of homology hypotheses from the GenBAnk database for phylogenetics such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward] have been widely used to reconstruct the evolutionary relationships among different organisms.
+Many useful tools have been developed in the past decades in an effort to make sense of the large amount of DNA data in public databases such as GenBank, as well as private databases. Generally refered to as "pipelines", most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses (aka molecular alignments) to reconstruct phylogenetic relationships.
+Pipelines that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction (refered to as "phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward], have been widely used to study the evolutionary relationships among different organisms (TABLE?? maybe supplementary data), from a phylogeny of no more than 20 fish species of the family of barracudas [Sphyraenidae; @santini2013first], to a mega-phylogeny of almost 3 000 living fern species [@lehtonen2011towards].
 
-This has been an important contribution to the field of phylogenetics, especially bc they represent a possible way for reproducibility in phylogenetics. Indeed, most published phylogenies have been infered from a homology hypothesis that has been curated "by hand" [@morrison2009would].
-
-On one hand, there are concerns about the use of automated tools.
+Pipelines have been an important incorporation to the field of phylogenetics, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies have been infered using homology hypotheses that have been curated "by hand" [@morrison2009would].
+What explains this preference? aka the discordance between the genomics approach (a gazillion markers poorly aligned, but the amount of data will overcome errors in alignment) and the classic phylogenetics approach (few markers thoughtfully curated).
+On one hand, there are concerns about the use of automated pipelines in phylogenetics.
 Concerns I think people have about these tools:
 - Errors in identification of sequences
-- Little control along the process
+- Little control at different steps of the process
 - Too much of a black box? Most of these phylogenies are being constructed by people learning about the methods (aka students), so they want to know what is going on at each step and end up doing it manually.
 -
-It has also been suggested that manual curation of genetic datasets always produces better results in phylogenetic analyses.
+It has also been suggested that manual curation of classic and genomic alignments produces better phylogenetic reconstructions [@fragoso2017pilot].
 
-Fortunately, public manually curated homology hypotheses have the potential to be enriched and updated by incorporating newly released data from public molecular databases as an alternative to automatic identification and clustering of DNA homologs for assembly of homology hypotheses to reconstruct phylogenetic relationships.
+An way to incorporate the best of two worlds (newly released molecular data with fine knowledge from human experts) would be to rely on published manually curated homology hypotheses that have been made publicly available. This expert-curated alignments can be enriched and updated by incorporating newly released data from public molecular databases.
+
 
 There are THIS MANY curated alignments publicly available on TreeBASE
 
@@ -196,7 +197,7 @@ A review of the literature shows them that there are many phylogenetic trees enc
 wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/vignettes/malvaceae-images/cotree-plot2-1.png"
 mv cotree-plot2-1.png docs/figs/cotree-plot2-1.png
 ```
-```{r fig-2, echo=FALSE, fig.cap="Comparison of original tree and update tree of the Malvaceae.", out.width = '75%', fig.retina= 2}
+```{r fig-2, echo=FALSE, fig.cap="Comparison of original tree and update tree of the Malvaceae.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 ```
 \newpage

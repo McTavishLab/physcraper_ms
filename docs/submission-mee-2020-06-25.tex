@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 2969
+\textbf{Word count}: 3016
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -155,15 +155,15 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-From molecular data to alignments and phylogenies, public databases such as the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the TreeBASE repository (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}) and the Open Tree of Life data deposition system, the phylesystem (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}) are still accumulating data.
+From molecular data to alignments and phylogenies, public biological data repositories such as the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the TreeBASE repository (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}) and the Open Tree of Life (OToL) data deposition tool, the phylesystem (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}), are still accumulating data.
 
-More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of about 98.05\% of taxa included in the NCBI taxonomy (Federhen \protect\hyperlink{ref-federhen2003taxonomy}{2003}; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}) which represents about 10\% of described diversity (Scott \protect\hyperlink{ref-scott2011ncbi}{2011}), taking a conservative estimate of extant diversity.
+More than a decade ago, the GenBank database release number 159 (April 15, 2007) had 72 million DNA sequences, and was estimated to have the potential to resolve phylogenetic relationships of about 98.05\% of taxa included in the NCBI taxonomy (Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}) which represents about 10\% of described diversity (Federhen \protect\hyperlink{ref-federhen2003taxonomy}{2003}; Scott \protect\hyperlink{ref-scott2011ncbi}{2011}), taking a conservative estimate of extant diversity.
 In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences \url{https://ftp.ncbi.nih.gov/genbank/gbrel.txt}.
 
 Many useful tools have been developed in the past decades in an effort to make sense of the large amount of DNA data in public and private databases. Most of these tools were motivated by the genomics revolution, to identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses to reconstruct phylogenetic relationships.
-Tools that automatize the assembly of homology hypotheses for phylogenetics such as PHYLOTA (Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}), PHLAWD (Smith \emph{et al.} \protect\hyperlink{ref-smith2009mega}{2009}), and SUPERSMART (Antonelli \emph{et al.} \protect\hyperlink{ref-antonelli2017toward}{2017}) have been widely used to assemble genetic datasets to reconstruct phylogenetic relationships among different organisms.
+Tools that automatize the assembly of homology hypotheses from the GenBAnk database for phylogenetics such as PHYLOTA (Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}), PHLAWD (Smith \emph{et al.} \protect\hyperlink{ref-smith2009mega}{2009}), and SUPERSMART (Antonelli \emph{et al.} \protect\hyperlink{ref-antonelli2017toward}{2017}) have been widely used to reconstruct the evolutionary relationships among different organisms.
 
-Considering that 400 phylogenies are published each year, most published phylogenies have been infered from a homology hypothesis that has been constructed ``by hand''.
+This has been an important contribution to the field of phylogenetics, especially bc they represent a possible way for reproducibility in phylogenetics. Indeed, most published phylogenies have been infered from a homology hypothesis that has been curated ``by hand'' (Morrison \protect\hyperlink{ref-morrison2009would}{2009}).
 
 On one hand, there are concerns about the use of automated tools.
 Concerns I think people have about these tools:
@@ -356,27 +356,34 @@ Physcraper implements node by node comparison of the the original and the update
 \hypertarget{examples}{%
 \section{Examples}\label{examples}}
 
-We will address two use-case scenarios. One in which the user is interested in a particular group. Anothr one in which the user is interested in a particular phylogeny.
+To exemplify the utility of physcraper we will address two use-case scenarios. One in which the user is interested in a particular group. Another one in which the user is interested in a particular phylogeny.
+A tutrial as well as illustrated examples of steps needed to perform a physcraper analyses are available elsewhere.
 
 \hypertarget{the-hollies}{%
 \subsection{The hollies}\label{the-hollies}}
 
 A student is interested in the genus \emph{Ilex}, the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
-It encompasses between 400-600 living species. A review of literature shows them that there are three published phylogenetic trees, showing relationships within the hollies.
-The first one has been made available both in the OToL phylesystem and is part of the synthetic tree, and on treeBASE. It samples 48 species.
+The genus encompasses between 400-600 living species. A review of literature reveals that there are three phylogenetic trees showing relationships within the hollies published.
+The first one has been made available in TreeBASE as well as in the OToL phylesystem and is part of the synthetic tree. It samples 48 species.
 The second tree has not been made available anywhere, not even in the supplementary data of the original publication.
 The most recent one has been made available in the OToL Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
-This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}). We would expect that updating the oldest tree, we would get something very similar to the newest tree.
+This makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree will produce something very similar to the newest tree.
 
 \hypertarget{the-malvaceae}{%
 \subsection{The Malvaceae}\label{the-malvaceae}}
 
 A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species.
-A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the group wants to use a particular marker they beilieve to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology they have been curating.
+A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the group wants to use a particular marker they beilieve to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology they have been curating and that they trust.
 
 \begin{figure}
-\includegraphics[width=0.75\linewidth]{docs/figs/cotree-plot2-1} \caption{Comparison of original tree and update tree of the Malvaceae.}\label{fig:fig-2}
+
+{\centering \includegraphics[width=0.85\linewidth]{docs/figs/cotree-plot2-1} 
+
+}
+
+\caption{Comparison of original tree and update tree of the Malvaceae.}\label{fig:fig-2}
 \end{figure}
+\newpage
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -482,6 +489,9 @@ Lemoine, F., Entfellner, J.-B.D., Wilkinson, E., Correia, D., Felipe, M.D., De O
 
 \leavevmode\hypertarget{ref-mctavish2015phylesystem}{}%
 McTavish, E.J., Hinchliff, C.E., Allman, J.F., Brown, J.W., Cranston, K.A., Holder, M.T., Rees, J.A. \& Smith, S.A. (2015). Phylesystem: A git-based data store for community-curated phylogenetic estimates. \emph{Bioinformatics}, \textbf{31}, 2794--2800.
+
+\leavevmode\hypertarget{ref-morrison2009would}{}%
+Morrison, D.A. (2009). Why would phylogeneticists ignore computerized sequence alignment? \emph{Systematic biology}, \textbf{58}, 150--158.
 
 \leavevmode\hypertarget{ref-piel2009treebase}{}%
 Piel, W., Chan, L., Dominus, M., Ruan, J., Vos, R. \& Tannen, V. (2009). Treebase v. 2: A database of phylogenetic knowledge. E-biosphere.
