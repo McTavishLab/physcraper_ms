@@ -1,0 +1,17 @@
+# What does physcraper do?
+
+Takes an alignment of any number of taxa.
+
+Finds the mrca from the opentree synthetic tree, so it is not a taxonomic mrca, but a phylogenetic one (whenever there is phylogenetic information).
+
+Blast sequences from the alignment, within the mrca context.
+
+Blast can be done directly on NCBI (very slow, as all blast searches are) or on a copy of the NCBI database installed on a server (way faster).
+
+Blasted sequences come back with NCBI taxonomy ids, so we need to match them to ott ids (using an api call).
+
+
+Why not use phlawd or supersmart?
+
+They are not integrated to the open tree workflow
+physcraper allows tagging
