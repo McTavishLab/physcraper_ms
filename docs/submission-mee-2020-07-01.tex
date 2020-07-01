@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3340
+\textbf{Word count}: 3394
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -150,7 +150,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 \section{Introduction}\label{introduction}}
 
 Public biological databases provide an amazing resource for evolutionary estimation. By linking molecular data, available from databases such as the GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), to alignments and phylogenies, available in
-the TreeBASE repository (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}) and the Open Tree of Life datastore (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}), we can place new biological data in an evolutionary context.
+the TreeBASE repository (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}) and the Open Tree of Life (OpenTree) datastore (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}), we can place new biological data in an evolutionary context.
 However, connecting new sequence data with existing estimates of evolutionary relationships represents a challenge.
 
 More than a decade ago, the National Center for Biodiversity Information (NCBI) molecular database, GenBank, released its version number 159 (April 15, 2007). With 72 million DNA sequences, it was estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa represented in it (about 98.05\% of taxa in the NCBI taxonomy; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}), which in turns covers about 10\% of extant described biodiversity (taking a conservative estimate of extant diversity; Scott \protect\hyperlink{ref-scott2011ncbi}{2011}; Federhen \protect\hyperlink{ref-federhen2003taxonomy}{2003}).
@@ -162,22 +162,23 @@ Pipelines that automatize the assembly of DNA alignments from the GenBank databa
 Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated ``by hand'' (Morrison \protect\hyperlink{ref-morrison2009would}{2009}).
 Automated approaches often suffer from errors in homology inference that could rapidly caught by human oversight. CITATION
 Many systemacists support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
-Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships {[}Song \emph{et al.} (\protect\hyperlink{ref-song2012resolving}{2012}); ROJAS ET AL.{]}.
+Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships {[}Song \emph{et al.} (\protect\hyperlink{ref-song2012resolving}{2012}); ROJAS ET AL. bats paper, take citations from there{]}.
 It has also been suggested that manual curation of locus alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments (Fragoso-Martínez \emph{et al.} \protect\hyperlink{ref-fragoso2017pilot}{2017}).
 
-A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine-grained curation from human experts) is be to rely on published manually curated homology hypotheses as ``jump-start'' alignments (Morrison \protect\hyperlink{ref-morrison2006multiple}{2006}). This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
+A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine-grained curation from human experts) is to rely on published manually curated homology hypotheses as ``jump-start'' alignments (Morrison \protect\hyperlink{ref-morrison2006multiple}{2006}). This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
 
 As of April 2014, the TreeBASE repository hosted about 8 200 curated alignments, providing information on evolutionary relationships of almost 105 000 distinct taxa \href{https://www.treebase.org/treebase-web/home.html\#:~:text=TreeBASE\%20is\%20produced\%20and\%20governed,mapped\%20to\%20104\%2C593\%20distinct\%20taxa.}{(see TreeBASE's website about)}.
 This database provides an untapped source of valuable expert knowledge with the potential to update phylogenetic relationships in several different regions of the tree of life.
 
-The OpenTree tree repository (phylesystem; McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}) automatically incorporates phylogenies uploaded into TreeBASE, and stores metadata linking the tree to its corresponding alignment repository in TreeBASE. However, if there are multiple alignments, TreeBASE does not indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
+The Phylesystem (OpenTree's datastore) (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}) automatically incorporates phylogenies from TreeBASE, and saves metadata linking the original tree to its corresponding alignment repository in TreeBASE. If there are multiple alignments, TreeBASE does not always indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
 
-Often linking data in an original alignment with its corresponding phylogeny has to be done by a human curator.
+Often, linking data in an original alignment with its corresponding phylogeny has to be done by a human curator.
 Moreover, different data repositories follow different systems for taxon and study identification, posing a real challenge to automatically link data from across databases that belong to the same taxon and study.
 OpenTree's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., providing a way to automatically link data from different databases.
 
-Physcraper is a python pipeline that relies on the OpenTree metadata system to connect databases through taxon identification numbers.
+Physcraper is a Python encoded pipeline that relies on the OpenTree metadata system to connect databases through taxon identification numbers.
 It's main functionality is to connect phylogenies stored in the OpenTree phylesystem, with alignments from TreeBASE and newly released DNA data from GenBank, in order to update previously known phylogenetic relationships in a continuous manner.
+EXPLIAN WHY PYTHON IS BEST FOR THIS.
 Because of its design, it allows taking advantage of the many resources provided by the OpenTree.
 For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships.
 
@@ -203,10 +204,12 @@ And an effort to more effectively make big data connections for the advantage of
   allow storage of unpublished trees).
   A user can choose from among the 1216 published trees supporting the resolved nodes of the synthetic tree in the OpenTree website (\href{https://tree.opentreeoflife.org/about/synthesis-release/v12.3}{See OpenTree's website about}). If the published tree you are interested in updating is not in there, you can upload it via OpenTree's curator tool (\href{https://tree.opentreeoflife.org/curator}{www.opentreeoflife.org/curator}.
 \item
+  THE INPUT TREE CAN ALSO BE A PERSONAL ONE. A TNRS MATCHING NEEDS TO BE PERFORMED (AND A FILE GENERATED) IN ORDER TO UPDATE A PERSONAL UNPUBLISHED TREE.
+\item
   The alignment should be a gene alignment that was used to generate the tree. The original
   alignments are usually stored in a public repository such as TreeBase (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Vos \emph{et al.} \protect\hyperlink{ref-vos2012nexml}{2012}),
   DRYAD (\href{http://datadryad.org/}{www.datadryad.org}), or the journal were the tree was originally published.
-  If the alignment is stored in TreeBase, \texttt{physcraper} can download it directly,
+  If the alignment is stored in TreeBase, Physcraper can download it directly,
   either from the TreeBASE website (\href{https://treebase.org/}{www.treebase.org})
   or through the TreeBASE GitHub repository (SuperTreeBASE; \href{https://github.com/TreeBASE/supertreebase}{github.com/TreeBASE/supertreebase}).
   If the alignment is on another repository, or constitutes personal data, a path to a local copy of the alignment has to be provided.
@@ -250,11 +253,11 @@ And an effort to more effectively make big data connections for the advantage of
   A pairwise BLAST search is performed. This means that each sequence
   in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
   taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
-  along with their corresponding identification numbers (accession numbers in the case of the GenBank database). This information will be used later to store the whole sequences in a dedicated library within the physcraper folder, allowing for secondary analyses to run significantly faster.
+  along with their corresponding identification numbers (accession numbers in the case of the GenBank database). This information will be used later to store the whole sequences in a dedicated library within the ``physcraper'' folder, allowing for secondary analyses to run significantly faster.
 \item
-  Matched sequences will be discarded if the fall below a default e-value of 0.00001, and outside a default minimum and maximum length of 80\% and 120\%, respectively, of the average length of sequences in the checked alignment (gaps dropped).
+  Matched sequences will be discarded if they fall below a default e-value of 0.00001, and outside a default minimum and maximum length of 80\% and 120\%, respectively, of the average length (gaps dropped) of sequences in the checked alignment .
   These parameters can be configured for each run.
-  This filtering guarantees that whole genome sequences are not included, as they
+  This filtering guarantees the exclusion of whole genome sequences. EXPLAIN WHY THIS IS IMPORTANT.
   All accepted sequences are assigned an internal identifier, and are further filtered.
 \item
   New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they reperesent a different taxon than the existing sequence.
@@ -271,7 +274,7 @@ And an effort to more effectively make big data connections for the advantage of
 \item
   Users can choose to perform cycles of sequence similarity search iteratively, by blasting the newly found sequences until no new sequences are found. By default only one BLAST cycle is performed and only sequences in the checked alignment are blasted.
 \item
-  Accepted sequences are then downloaded in full, and stored as a local database in a directory that is globally accessible (default to physcraper/taxonomy), so they are accessible for further runs.
+  Accepted sequences are then downloaded in full, and stored as a local database in a directory that is globally accessible (default to ``physcraper/taxonomy'' folder), so they are accessible for further runs.
 \item
   A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
 \end{itemize}
@@ -294,7 +297,7 @@ And an effort to more effectively make big data connections for the advantage of
   to check it either by eye and perform manual refinement or using any of the many
   tools for alignment processing, to eliminate columns with no information.
 \item
-  Users may also use physcraper only to gather sequence matches, and apply their own preferred alignemnt and phylogenetic inference tools.
+  Users may also use Physcraper to only gather matched sequences, and apply their own preferred alignment and phylogenetic inference methods.
 \end{itemize}
 
 \hypertarget{tree-reconstruction-and-comparison}{%
@@ -307,11 +310,11 @@ And an effort to more effectively make big data connections for the advantage of
 \item
   The original tree is used as starting tree for the ML searches. It can also be set as a full topological constraint or not used at all, depending on the goals of the user.
 \item
-  Bootstrap results are summarized with Dendropy (Sukumaran \& Holder \protect\hyperlink{ref-sukumaran2010dendropy}{2010}).
+  Bootstrap results are summarized with the SumTrees module of DendroPy (current version 4.4.0; Sukumaran \& Holder \protect\hyperlink{ref-sukumaran2010dendropy}{2010}).
 \item
   The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
 \item
-  Tips on all trees generated by physcraper are defined by a taxon name space, capturing the NCBI accession information, as well as the taxon identifiers, allowing the user perform comparisons and conflict analyses.
+  Tips on all trees generated by Physcraper are defined by a taxon name space, capturing the NCBI accession information, as well as the taxon identifiers, allowing the user perform comparisons and conflict analyses.
 \item
   Robinson Foulds weighted and unweighted metrics between the tips in the input tree and those tips in the updated tree are calculated with Dendropy functions (Sukumaran \& Holder \protect\hyperlink{ref-sukumaran2010dendropy}{2010}).
 \item
@@ -325,8 +328,8 @@ And an effort to more effectively make big data connections for the advantage of
 \hypertarget{examples}{%
 \section{Examples}\label{examples}}
 
-We will illustrate the utility of physcraper in here with two use-case scenarios. One in which the user is interested in a particular group. Another one in which the user is interested in a particular phylogeny.
-A tutorial as well as illustrated examples of commands for every step needed to perform a physcraper analysis are available elsewhere.
+We will illustrate the utility of Physcraper in here with two use-case scenarios. One in which the user is interested in a particular group. Another one in which the user is interested in a particular phylogeny.
+A tutorial as well as illustrated examples of commands for every step needed to perform a Physcraper analysis are available elsewhere.
 
 \hypertarget{the-hollies}{%
 \subsection{The hollies}\label{the-hollies}}
@@ -336,7 +339,7 @@ The genus encompasses between 400-600 living species. A review of literature rev
 The first one has been made available in TreeBASE as well as in the OpenTree phylesystem and is part of the synthetic tree. It samples 48 species.
 The second tree has not been made available anywhere, not even in the supplementary data of the original publication.
 The most recent one has been made available in the OpenTree Phylesystem and in the DRYAD repository. It is the best sampled yet, with 200 species. However, it has not been added to the syntehtic tree yet.
-This also makes it a perfect case to test the basic functionalities of physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree will produce something very similar to the newest tree.
+This also makes it a perfect case to test the basic functionalities of Physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree will produce something very similar to the newest tree.
 
 DESCRIBE RESULTS: SUMMARY OF NEW TAXA FOUND RELATIVE TO ORIGINAL TREE AND RELATIVE TO OpenTree
 RF DISTANCE INTERPRETATION
@@ -382,7 +385,7 @@ a field that has relied on processes which are somewhat artisanal.
 In here, we highlight the potential of taking advantage of this careful curation work in previous phylogenetic estimates. By taking sources of information available from data repositories and present a method to link data from different repositories, while leveraging on the knowledge and intuition of the expert
 community to build up our phylogenetic knowledge, we can use not only data accumulated in
 molecular data repositories, but phylogenetic knowledge accumulated in phylogenetic tree repositories.
-While not generating full phylogenies \emph{de novo}, physcraper is still capable of generating new phylogenetic knowledge.
+While not generating full phylogenies \emph{de novo}, Physcraper is still capable of generating new phylogenetic knowledge.
 It can also be combined with data from repositories other than molecular data. For example geographic locations (GBIF), fossils (PBDB), etc.
 
 Physcraper has the potential to be applied for the advantage of the field to rapidly
