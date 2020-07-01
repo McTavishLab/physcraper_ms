@@ -18,18 +18,13 @@ hypotheses, and choosing of one phylogeny for downstream analyses and discussion
 to one that is not a specialist either on phylogenetic methods or on a particular group of study.
 
 1. Physcraper is an open‐source, command-line Python program that automatizes the update of published
-phylogenies by making use of public DNA sequence data and taxonomic information,
-providing a framework for comparison of published phylogenies with their updated versions.
+phylogenies by enriching underlying gene alignments with public DNA sequence data, and linking taxonomic information across databases.
+This provides a framework for comparison of published phylogenies with their updated versions, by using the conflict Application Programming Interface (API) function of the Open Tree of Life project.
 
 1. Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
 hypothesis based on already available expert phylogenetic knowledge.
 Phylogeneticists and group specialists will find it useful as a tool to facilitate dataset gathering and comparison
 of alternative phylogenetic hypotheses (topologies).
 
-1. Physcraper implements node by node/topology comparison of the the original and the updated
-trees using the conflict Application Programming Ibterface (API) function of the Open Tree of Life project, and summarizes the differences.
-
-1. We hope the physcraper workflow demonstrates the benefits of opening results in phylogenetics and encourages researchers to strive for better data sharing practices.
-
-1. Physcraper can be used with any OS. Detailed instructions for installation and
+1. We hope the physcraper workflow demonstrates the benefits of opening results in phylogenetics and encourages researchers to strive for better data sharing practices. Physcraper can be used with any OS. Detailed instructions for installation and
 use are available at [https://physcraper.readthedocs](https://physcraper.readthedocs.io/en/tutorial/index.html).
