@@ -28,9 +28,8 @@ Pipelines that automatize the assembly of DNA alignments from the GenBank databa
 Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated "by hand" [@morrison2009would].
 Automated approaches often suffer from errors in homology inference that could rapidly caught by human oversight. CITATION
 Many systemacists support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
-Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving; ROJAS ET AL.].
+Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving; ROJAS ET AL. bats paper, take citations from there].
 It has also been suggested that manual curation of locus alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments [@fragoso2017pilot].
-
 
 A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine-grained curation from human experts) is be to rely on published manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
 

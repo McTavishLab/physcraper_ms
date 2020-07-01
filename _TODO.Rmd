@@ -18,6 +18,13 @@ knitr::opts_knit$set(
 
 # next:
 
+
+- [ ] hammer home the message that gene alignments are the gold standard for phylogenetics in many ways:
+  - [ ] genomic data, uces, radseqs are not comparable to other data
+  - [ ] homology in genomic data is not fully known (assembly based on similarity)
+  - [ ] genomic is incorporating tests to try to curate alignments better
+  - [ ] but data from gene sequences can only be used in a gene alignment context, not genomic data
+
 - [ ] ilex remote example started on Sun Jun 28 at 20:07:32 PDT 2020 and finished on Mon Jun 29 at 06:33:57 PDT 2020
 
 - [ ] on methods, bootstrap summary part cite:
