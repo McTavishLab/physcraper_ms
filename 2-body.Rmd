@@ -26,9 +26,9 @@ Many useful computational tools have been developed in an effort to make sense o
 Pipelines that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction ("phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward], have been widely applied to study the evolutionary relationships among different organisms (TABLE?? maybe supplementary data), from a phylogeny of no more than 20 species of the family of barracuda fish [Sphyraenidae; @santini2013first], to a mega-phylogeny of almost 3 000 species of living ferns [Moniloformopses; @lehtonen2011towards].
 
 Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated "by hand" [@morrison2009would].
-Automated approaches often to suffer from errors in homology inference that are rapidly caught by human oversight. ()
+Automated approaches often suffer from errors in homology inference that could rapidly caught by human oversight. CITATION
 Many systemacists support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
-Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships.  \comment(Citations... I think there are some Scott Edwards papers...https://www.pnas.org/content/109/37/14942, maybe Roajs et al...)
+Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving; ROJAS ET AL.].
 It has also been suggested that manual curation of locus alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments [@fragoso2017pilot].
 
 
@@ -85,10 +85,10 @@ And an effort to more effectively make big data connections for the advantage of
   By default we rely on the GenBank database.
   The new sequence search can be performed on the remote database or in a local database.
 - The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be determined by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
-  matched taxa belonging to the ingroup in the OPenTree synthetic tree, that is also a named clade in the reference taxonomy. \comment(hmm, a figure might be good for this. I can work on one!) This is known as the Most Recent Common
-  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA) \comment(prob need a cite here).
+  matched taxa belonging to the ingroup in the OPenTree synthetic tree, that is also a named clade in the reference taxonomy. FIGURE RECOMMENDED. This is known as the Most Recent Common
+  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA) CITATION NEEDED.
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
-  To automatically identify the MRCAT of a group of taxon names, we make use of the OpenTree taxonomy tool (<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>). I FORGOT TO ASK YOU ABOUT THIS CITATION! \comment( it's here! https://bdj.pensoft.net/article/12581/instance/3545675/)
+  To automatically identify the MRCAT of a group of taxon names, we make use of the OpenTree taxonomic tool [Taxonomy-API-v3](<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>) [@rees2017automated].
 
   Users can provide a search taxon that is either a more or a less inclusive
   clade relative to the ingroup of the original phylogeny. If the search taxon is more inclusive, the sequence search will be performed outside the MRCAT of the matched taxa, e.g., including all taxa within
@@ -117,8 +117,8 @@ Longer sequences belonging to the
   To control the number of sequences per taxon in downstream analyses,
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
 - Reverse complement sequences are identified and translated.
-- Users can choose to perform a more "cycles" of sequence similarity search, by blasting the newly found sequences. This can be done iteratively, but by default only sequences in the checked alignment are blasted. I ALSO FORGOT TO ASK: ***Is there an argument to control the number of cycles of blast searches with new sequences?*** \comment(there's only two options - one cycle or, -r where it runs until it doesn't find anything new)
-- Accepted sequences are downloaded in full, and stored as a local database in a directory that is globally accessible (default to physcraper/taxonomy), so they are accessible for further runs.
+- Users can choose to perform cycles of sequence similarity search iteratively, by blasting the newly found sequences until no new sequences are found. By default only one BLAST cycle is performed and only sequences in the checked alignment are blasted.
+- Accepted sequences are then downloaded in full, and stored as a local database in a directory that is globally accessible (default to physcraper/taxonomy), so they are accessible for further runs.
 - A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
 
 ## DNA sequence alignment
@@ -203,7 +203,6 @@ In here, we highlight the potential of taking advantage of this careful curation
 community to build up our phylogenetic knowledge, we can use not only data accumulated in
 molecular data repositories, but phylogenetic knowledge accumulated in phylogenetic tree repositories.
 While not generating full phylogenies *de novo*, physcraper is still capable of generating new phylogenetic knowledge.
-In this way, the physcraper workflow can be complemented with other pipelines, to potentially increase speed (IS THIS TRUE??). \comment(hmmmm mayeb cut bc I don't know!)
 It can also be combined with data from repositories other than molecular data. For example geographic locations (GBIF), fossils (PBDB), etc.
 
 Physcraper has the potential to be applied for the advantage of the field to rapidly
@@ -215,9 +214,10 @@ and rapidly generate custom species trees for downstream analyses [@stoltzfus201
 
 # Acknowledgements
 
-The University of California, Merced cluster, MERCED (Multi-Environment Research Computer for Exploration and Discovery) supported by the National Science Foundation (Grant No. ACI-1429783).
-\comment(need to add teh OPenTree ABI grant..)
-We acknowledge contributions from ...
+Research was supported by the grant "Sustaining the Open Tree of Life", National Science Foundation ABI No. 1759838.
+Computer time was provided by the Multi-Environment Research Computer for Exploration and Discovery (MERCED) cluster from the University of California, Merced (UCM), supported by the NSF Grant No. ACI-1429783.
+
+We thank member of the "short bar" Science and Engineering Building 1, UCM, joint lab paper discussion meeting for valuable comments on a first version of this manuscript.
 
 
 # Authors' Contributions
