@@ -27,13 +27,12 @@ knitr::opts_knit$set(
 
 - [ ] ilex remote example started on Sun Jun 28 at 20:07:32 PDT 2020 and finished on Mon Jun 29 at 06:33:57 PDT 2020
 
-- [ ] on methods, bootstrap summary part cite:
+- [x] on methods, bootstrap summary part cite:
  SumTrees: Phylogenetic Tree Summarization Version 4.4.0, from DendroPy 4.4.0 (main-bc20409)
 
 - [ ] intro: challenge in connecting different parts of the database with other databases that might refer to the same thing. For example taxon ids represent own challenge in this sense, but it has been solved by the otol taxonomy project. Othe rchallenge is the study ids. This is not fully resolved yet by otol, but only partially by linking to the alignment repo.
+
 - [ ] intro: programatic access.
-
-
 
 - [ ] Finding a tree to update
   - [ ]  Using the curator website. Mention that there is a differnce between focal clade and ingroup. Physcraper does not take into account the focal clade from Open Tree. Because that is arbitrarily assigned by a curator. The focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.
