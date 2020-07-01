@@ -23,3 +23,9 @@ Things that physcraper does not do:
 - analyse the whole GenBank database [@benson2000genbank; @wheeler2000database] to find homolog regions suitable to reconstruct phylogenies, as mentioned in @antonelli2017toward. There are already some very good tools that do that.
 - provide basic statistics on data availability to assemble molecular datasets, as mentioned by @ranwez2009phyloexplorer. Phyloexplorer does this?
 - it is not a tree repo, as phylota is, mentioned in @deepak2014evominer
+
+
+***Is physcraper intended for the nonspecialist?? We have two types of nonspecialists:
+the ones that do not know about phylogenetic methods and the ones that might know
+about phylogenetic methods but do not know much about a certain biological group.***
+\comment(hmm yeah, I think it is probably better for the latter - phylogeneticists who are tired of blast searching :P)

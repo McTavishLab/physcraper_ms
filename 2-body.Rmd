@@ -15,9 +15,9 @@ output:
 
 # Introduction
 
-Public biological databases provide an amazing resource for evolutionary estimation. By linking molecular data, available from database such as the GenBank [@benson2000genbank; @wheeler2000database], to alignments and phylogenies, available in
-the TreeBASE repository [@piel2009treebase] and the Open Tree of Life datastore [@mctavish2015phylesystem], we can place new biological data in evolutionary context.
-However, it has been challenging to connect new sequence data with existing estimates of evolutionary relationships. 
+Public biological databases provide an amazing resource for evolutionary estimation. By linking molecular data, available from databases such as the GenBank [@benson2000genbank; @wheeler2000database], to alignments and phylogenies, available in
+the TreeBASE repository [@piel2009treebase] and the Open Tree of Life datastore [@mctavish2015phylesystem], we can place new biological data in an evolutionary context.
+However, connecting new sequence data with existing estimates of evolutionary relationships represents a challenge.
 
 More than a decade ago, the National Center for Biodiversity Information (NCBI) molecular database, GenBank, released its version number 159 (April 15, 2007). With 72 million DNA sequences, it was estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa represented in it [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota], which in turns covers about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
 In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences [(See GenBank's release website)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt). Yet, publicly available estimates of phylogenetic relationships still cover only about 90 000 taxa [@hinchliff2015synthesis; CURRENT SYNTH TREE CITATION], covering less than one third of the taxonomic diversity with data available a decade ago. Some of this discrepance is because that many phylogenies are not publicly shared [@drew2013lost; @magee2014dawn, @mctavish2018bioessay]. However, most recently published large trees have been made available in recent years, indicating there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context.
@@ -27,7 +27,7 @@ Pipelines that automatize the assembly of DNA alignments from the GenBank databa
 
 Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated "by hand" [@morrison2009would].
 Automated approaches often to suffer from errors in homology inference that are rapidly caught by human oversight. ()
-Many systemacists support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation). 
+Many systemacists support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
 Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships.  \comment(Citations... I think there are some Scott Edwards papers...https://www.pnas.org/content/109/37/14942, maybe Roajs et al...)
 It has also been suggested that manual curation of locus alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments [@fragoso2017pilot].
 
@@ -63,8 +63,8 @@ And an effort to more effectively make big data connections for the advantage of
   that are essential for automatizing the phylogeny update process. The most relevant of these being the standardization of taxonomic names and the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the final steps of the pipeline.
   Currently, only trees connected to
   a published study can be stored in the phylesystem (although there are plans to
-  allow storage of unpublished trees). 
-  A user can choose from among the `r rotl::tol_about()$num_source_trees` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website ([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OpenTree's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
+  allow storage of unpublished trees).
+  A user can choose from among the `r tryCatch({rotl::tol_about()$num_source_trees}, error = function(e) {1216})` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website ([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OpenTree's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
 - The alignment should be a gene alignment that was used to generate the tree. The original
   alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD ([www.datadryad.org](http://datadryad.org/)), or the journal were the tree was originally published.
@@ -103,11 +103,11 @@ And an effort to more effectively make big data connections for the advantage of
   in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
   taxon. Results from each one of these BLAST runs are recorded, and matched sequences are saved
   along with their corresponding identification numbers (accession numbers in the case of the GenBank database). This information will be used later to store the whole sequences in a dedicated library within the physcraper folder, allowing for secondary analyses to run significantly faster.
-- Matched sequences will be discarded if the fall below a default e-value of 0.00001, and outside a default minimum and maximum length of 80% and 120%, respectively, of the average length of sequences in the checked alignment (gaps dropped). 
+- Matched sequences will be discarded if the fall below a default e-value of 0.00001, and outside a default minimum and maximum length of 80% and 120%, respectively, of the average length of sequences in the checked alignment (gaps dropped).
 These parameters can be configured for each run.
-  This filtering guarantees that whole genome sequences are not included, as they 
+  This filtering guarantees that whole genome sequences are not included, as they
   All accepted sequences are assigned an internal identifier, and are further filtered.
-  
+
 - New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they reperesent a different taxon than the existing sequence.
 Longer sequences belonging to the
   same taxon as the original sequence will be considered further for analysis.
@@ -135,7 +135,7 @@ Longer sequences belonging to the
 
 ## Tree reconstruction and comparison
 
-- A gene tree is reconstructed for each alignment provided, using a Maximum Likelihood approach implemented with the software RAxML [@stamatakis2014raxml], using default settings such as a GTRCAT model of molecular evolution and 100 bootstrap replicates with default method. Currently only the number of bootsrap replicates can be modified by the user. 
+- A gene tree is reconstructed for each alignment provided, using a Maximum Likelihood approach implemented with the software RAxML [@stamatakis2014raxml], using default settings such as a GTRCAT model of molecular evolution and 100 bootstrap replicates with default method. Currently only the number of bootsrap replicates can be modified by the user.
 - The original tree is used as starting tree for the ML searches. It can also be set as a full topological constraint or not used at all, depending on the goals of the user.
 - Bootstrap results are summarized with Dendropy [@sukumaran2010dendropy].
 - The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
