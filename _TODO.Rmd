@@ -34,12 +34,7 @@ knitr::opts_knit$set(
 - [ ] intro: programatic access.
 
 
-- [ ] Do not cite Felsenstein 1985 for bootstrap, just the call that we use for RAxML:
-rax_ex, "-T", "{}".format(self.config.num_threads),
-                                 "-m", "GTRCAT",
-                                 "-s", alignment,
-                                 "-p", "1", "-b", "1", "-#", str(num_reps),
-                                 "-n", "BOOT{}".format(self.date)
+
 - [ ] Finding a tree to update
   - [ ]  Using the curator website. Mention that there is a differnce between focal clade and ingroup. Physcraper does not take into account the focal clade from Open Tree. Because that is arbitrarily assigned by a curator. The focal clade is a search MRCA more than a taxonomic MRCA, physcraper's default is to get the ingroup from Otol, which is not the focal group.
   - [ ] The link between the ingroup and the search taxon.
@@ -52,7 +47,6 @@ rax_ex, "-T", "{}".format(self.config.num_threads),
 
 - [ ] How does pyphlawd, or phylota do the exemplar per species choosing for the baited analyses?
 
-- [ ] bootsrap: is it classic [@felsenstein1985confidence] or transfer bootstrap expectation [@lemoine2018renewing]
 
 - [ ] check the all-vs-all blast method, where does it come from?
 
@@ -109,3 +103,13 @@ rax_ex, "-T", "{}".format(self.config.num_threads),
 - [x] the ingroup
   - [x] how is it determined
   - [x] how is it relevant for blast results
+
+- [x] Do not cite Felsenstein 1985 for bootstrap, just explain it while explaining each argument from the call that we use for RAxML:
+  rax_ex, "-T", "{}".format(self.config.num_threads),
+                                   "-m", "GTRCAT",
+                                   "-s", alignment,
+                                   "-p", "1", "-b", "1", "-#", str(num_reps),
+                                   "-n", "BOOT{}".format(self.date)
+
+- [x] bootsrap: is it classic [@felsenstein1985confidence] or transfer bootstrap expectation [@lemoine2018renewing]
+  - probably classic, but we are not citing, just explaining, see point above.
