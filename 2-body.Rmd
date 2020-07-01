@@ -217,7 +217,7 @@ and rapidly generate custom species trees for downstream analyses [@stoltzfus201
 Research was supported by the grant "Sustaining the Open Tree of Life", National Science Foundation ABI No. 1759838.
 Computer time was provided by the Multi-Environment Research Computer for Exploration and Discovery (MERCED) cluster from the University of California, Merced (UCM), supported by the NSF Grant No. ACI-1429783.
 
-We thank member of the "short bar" Science and Engineering Building 1, UCM, joint lab paper discussion meeting for valuable comments on a first version of this manuscript.
+We thank members of the "short bar" Science and Engineering Building 1, UCM, joint lab paper discussion meeting for valuable comments on a first version of this manuscript.
 
 
 # Authors' Contributions

@@ -71,6 +71,10 @@ email: <`r params$email3`>
 
 \newpage
 
+\begingroup\Large
+**Abstract**
+\endgroup
+
 ``` {r child = '1-abstract.Rmd'}
 ```
 
