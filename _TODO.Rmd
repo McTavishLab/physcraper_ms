@@ -18,6 +18,15 @@ knitr::opts_knit$set(
 
 # next:
 
+- [ ] Kinsey comment: reduce paragraph about history of pipelines and how they were developed, maybe send to discussion?
+  She suggests deleting the whole paragraph and just citing the pipelines at the beginning of L72
+  Focus on importance of pipelines for the context of physcraper
+    - [x] they do database wide homology search
+    - [ ] they forget about original alignments
+    - [x] do they take into account homology?
+    - [x] how pipelines are crucial to fulfill the phylogenetically informative potential of GenBank.
+    - [ ] but why have they failed
+
 - [ ] add interactive table of csv metadata to physcraper examples
 
 - [ ] hammer home the message that gene alignments are the gold standard for phylogenetics in many ways:
