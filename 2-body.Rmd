@@ -54,6 +54,8 @@ And an effort to more effectively make big data connections for the advantage of
 
 # How does Physcraper work?
 
+The general workflow is described in FIGURE. Next, we will describe the technical details of each step.
+
 ## The input: a tree and an alignment
 
 - In order to take advantage of the OpenTree tools, the input tree needs to be stored in the
@@ -124,7 +126,7 @@ Longer sequences belonging to the
 
 ## DNA sequence alignment
 
-- The software MUSCLE [@edgar2004muscle] is used by default to perform sequence alignments.
+- The software MUSCLE [@edgar2004muscle] is used by default to perform sequence alignments. It has to be installed by the user, previous to running physcraper.
 - First, all new sequences are aligned using default MUSCLE options.
 - Then, a MUSCLE profile alignment is performed, in which the original alignment
   is used as a template to align new sequences. This ensures that the final alignment
