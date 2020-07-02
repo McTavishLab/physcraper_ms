@@ -97,12 +97,6 @@ Concerns I think people have about these tools:
 - Little control at different steps of the process
 - Too much of a black box? Most of these phylogenies are being constructed by people learning about the methods (aka students), so they want to know what is going on at each step and end up doing it manually.
 
+Many useful computational tools have been developed in an effort to make sense of the large amount of data in public molecular databases, as well as private ones. Generally referred to as "pipelines", most of these tools were motivated by the genomics revolution, to help researchers to deal with the massive amount of data, and automatically identify clusters of homologs for genomic assembly. Notably, this homolog DNA clusters can be used as homology hypotheses (i.e., molecular alignments) to reconstruct phylogenetic relationships.
 
-Other type of bootstrap that I think is not yet incorporated into physcraper is the Transfer Bootstrap Expectation (TBE) recently proposed in @lemoine2018renewing.
-
-
-***- One way to compare two independent phylogenetic trees is to compare them both to
-the synthetic OToL and then measure how well they do against each other***
-
-- Currently, the root is determined by finding the parent node of the sequences that do not belong to the ingroup/ search taxon. This ensures a correct rooting of the tree even when the search taxon is more inclusive than the ingroup.
-- Conflict information can only be generated in the context of the whole Open Tree of Life. Otherwise, it is not really possible to get conflict data.
+Pipelines that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction ("phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward], have been widely applied to study the evolutionary relationships among different organisms (TABLE?? maybe supplementary data), from a phylogeny of no more than 20 species of the family of barracuda fish [Sphyraenidae; @santini2013first], to a mega-phylogeny of almost 3 000 species of living ferns [Moniloformopses; @lehtonen2011towards].
