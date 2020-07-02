@@ -18,6 +18,7 @@ knitr::opts_knit$set(
 
 # next:
 
+- [ ] add interactive table of csv metadata to physcraper examples
 
 - [ ] hammer home the message that gene alignments are the gold standard for phylogenetics in many ways:
   - [ ] genomic data, uces, radseqs are not comparable to other data
