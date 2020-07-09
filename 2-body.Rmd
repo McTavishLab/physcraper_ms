@@ -59,7 +59,7 @@ The general workflow is described in FIGURE. Next, we will describe the technica
 ## The input: a tree and an alignment
 
 - In order to take advantage of the OpenTree tools, the input tree needs to be stored in the
-  OpenTree phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem).
+  OpenTree phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem), or need to have the tip labels mapped to the unified OpenTree taxonomy via bulk taxonomic name resolution (https://tree.opentreeoflife.org/curator/tnrs/).
   The main
   reason for this is that trees in phylesystem have a set of user defined characteristics
   that are essential for automatizing the phylogeny update process. The most relevant of these being the standardization of taxonomic names and the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the final steps of the pipeline.
@@ -67,9 +67,9 @@ The general workflow is described in FIGURE. Next, we will describe the technica
   a published study can be stored in the phylesystem (although there are plans to
   allow storage of unpublished trees).
   A user can choose from among the `r tryCatch({rotl::tol_about()$num_source_trees}, error = function(e) {1216})` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website ([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OpenTree's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
-- THE INPUT TREE CAN ALSO BE A PERSONAL ONE. A TNRS MATCHING NEEDS TO BE PERFORMED (AND A FILE GENERATED) IN ORDER TO UPDATE A PERSONAL UNPUBLISHED TREE.
-- The alignment should be a gene alignment that was used to generate the tree. The original
-  alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
+  If the user is not ready to make the input tree public, `physcraper` can use as input a tree, and aliognment, and a file of mappings between the tip labels and taxonomic names.
+- The input alignment should be a single locus alignment that was used to generate the tree. For public data, the original
+  alignments are often stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD ([www.datadryad.org](http://datadryad.org/)), or the journal were the tree was originally published.
   If the alignment is stored in TreeBase, Physcraper can download it directly,
   either from the TreeBASE website ([www.treebase.org](https://treebase.org/))
@@ -217,8 +217,8 @@ and rapidly generate custom species trees for downstream analyses [@stoltzfus201
 
 # Acknowledgements
 
-Research was supported by the grant "Sustaining the Open Tree of Life", National Science Foundation ABI No. 1759838.
-Computer time was provided by the Multi-Environment Research Computer for Exploration and Discovery (MERCED) cluster from the University of California, Merced (UCM), supported by the NSF Grant No. ACI-1429783.
+Research was supported by the grant "Sustaining the Open Tree of Life", National Science Foundation ABI No. 1759838, and ABI No. 1759846.
+Compute time was provided by the Multi-Environment Research Computer for Exploration and Discovery (MERCED) cluster from the University of California, Merced (UCM), supported by the NSF Grant No. ACI-1429783.
 
 We thank members of the "short bar" Science and Engineering Building 1, UCM, joint lab paper discussion meeting for valuable comments on a first version of this manuscript.
 
