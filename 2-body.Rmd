@@ -205,7 +205,7 @@ A postdoc started working with a new reserach group. They are interested in solv
 A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the research group wants to use a particular marker they believe to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology that they have been curating and that they trust.
 
 ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
-wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/vignettes/malvaceae-images/cotree-plot2-1.png"
+wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/data-raw/malvaceae-images/cotree-plot2-1.png"
 mv cotree-plot2-1.png docs/figs/cotree-plot2-1.png
 ```
 ```{r fig-2, echo=FALSE, fig.cap="Comparison of original tree and tree updated with Physcraper, family Malvaceae.", out.width = '85%', fig.retina= 2, fig.align = "center"}
