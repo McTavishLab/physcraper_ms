@@ -76,7 +76,7 @@ EXPLIAN WHY PYTHON IS BEST FOR THIS.
 By design, this approach focusses on interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and other data stores, users can easily perform downstream analyses.
 For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships in the Open Tree of Life taxonomy and phylogenetic data store.
 
-This is an effort to keep on directing ourselves towards a fully reproducible workflow in phylogenetics.
+ELABORATE MORE ON THIS, USE LESS CASUAL LANGUAGE: This is an effort to keep on directing ourselves towards a fully reproducible workflow in phylogenetics.
 And an effort to more effectively make big data connections for the advantage of phylogenetics and biology in general.
 
 
