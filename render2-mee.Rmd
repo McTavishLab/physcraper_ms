@@ -35,8 +35,7 @@ knitr::opts_chunk$set(
   comment = "##",
   eval = TRUE
 )
-library(wordcountaddin)
-word_count_body <- wordcountaddin::word_count(filename="2-body.Rmd")
+
 ```
 **1. `r params$author1`**
 
@@ -62,7 +61,7 @@ email: <`r params$email3`>
 
 **Running title**: `r params$running_title`
 
-**Word count**: `r word_count_body`
+
 
 **Manuscript prepared for submission to Methods in Ecology and Evolution**
 
