@@ -18,6 +18,8 @@ knitr::opts_knit$set(
 
 # next:
 
+- [ ] from phylotar paper: "requires stand-alone BLAST. Instructions for installing the BLAST+ suite can be found via NCBI [27]"
+
 - [ ] Kinsey comment: reduce paragraph about history of pipelines and how they were developed, maybe send to discussion?
   She suggests deleting the whole paragraph and just citing the pipelines at the beginning of L72
   Focus on importance of pipelines for the context of physcraper
@@ -37,8 +39,6 @@ knitr::opts_knit$set(
 
 - [ ] ilex remote example started on Sun Jun 28 at 20:07:32 PDT 2020 and finished on Mon Jun 29 at 06:33:57 PDT 2020
 
-- [x] on methods, bootstrap summary part cite:
- SumTrees: Phylogenetic Tree Summarization Version 4.4.0, from DendroPy 4.4.0 (main-bc20409)
 
 - [ ] intro: challenge in connecting different parts of the database with other databases that might refer to the same thing. For example taxon ids represent own challenge in this sense, but it has been solved by the otol taxonomy project. Othe rchallenge is the study ids. This is not fully resolved yet by otol, but only partially by linking to the alignment repo.
 
@@ -93,9 +93,12 @@ knitr::opts_knit$set(
 
 # Done!
 
-- [ ] determining the root
+- [x] on methods, bootstrap summary part cite:
+ SumTrees: Phylogenetic Tree Summarization Version 4.4.0, from DendroPy 4.4.0 (main-bc20409)
+
+- [x] determining the root
   - [ ] write something about the need to set the root to be able to do comparisons
-  - [ ] say that utis hard to set it up automatically and that solutions are being sought
+  - [ ] say that it is hard to set it up automatically and that solutions are being sought
 
 - [x] add bootsrap to methods
 
