@@ -22,7 +22,7 @@ GenBank contains over 217 million DNA sequences [(release number 238; June 15, 2
 These sequences are estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa in GenBank [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota].
 This in turns covers about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
 
-Yet, publicly available estimates of phylogenetic relationships still only about 100 000 taxa [@piel2009treebase; @hinchliff2015synthesis; @opentreeoflife_2019_synth].
+Yet, publicly available estimates of phylogenetic relationships still cover only about 100 000 taxa [@piel2009treebase; @hinchliff2015synthesis; @opentreeoflife2019synth].
 These data comprise less than one third of the taxonomic diversity for which sequence data was available a decade ago!
 
 Some of this discrepancy between data availability and phylogenetic estimates is because many phylogenies which are generated and published are not publicly shared in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
@@ -48,7 +48,7 @@ While the focus on single locus and gene sequence alignments could appear backwa
 One major challenge of inferring phylogenies from genome scale data is inference of homology, and acquiring homologous data across divergent species.
 Different research questions call for on different approaches to genomic sequencing, from whole genomes, to transcriptomes, to RadSeq and UCE's.
 This variety of approaches results in non-overlapping data sets across taxa.
-Even when the same sequencing approach is applied, such as RadSeq phylogenetic distance can cause allelic dropout at deeper divergences [@eaton2016]
+Even when the same sequencing approach is applied, such as RadSeq phylogenetic distance can cause allelic dropout at deeper divergences [@eaton2016misconceptions]
 In contrast, single locus sequencing generates homologous data across large phylogenetic scales.
 
 Indeed, some systematics support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
@@ -204,10 +204,10 @@ FIGURE: FACE TO FACE ORIGINAL VS UPDATED PHYLOGENY, IN RED NEW TAXA NOT IN OpenT
 A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species, containing the relatives of cacao, cotton, durian and okra.
 A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the research group wants to use a particular marker they believe to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology that they have been curating and that they trust.
 
-```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
+<!-- ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
 wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/data-raw/malvaceae-images/cotree-plot2-1.png"
 mv cotree-plot2-1.png docs/figs/cotree-plot2-1.png
-```
+``` -->
 ```{r fig-2, echo=FALSE, fig.cap="Comparison of original tree and tree updated with Physcraper, family Malvaceae.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 ```
