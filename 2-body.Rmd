@@ -15,24 +15,53 @@ output:
 
 # Introduction
 
-Public biological databases provide an amazing resource for evolutionary estimation. By linking molecular data, available from databases such as the GenBank [@benson2000genbank; @wheeler2000database], to alignments and phylogenies, available in
+Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide context for biological observations.
+Public biological databases provide an amazing resource for evolutionary estimation, but there is a lot of sequence data available that has never been incorporated into any phylogenetic estimates.
+
+GenBank contains over 217 million DNA sequences [(release number 238; June 15, 2020)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt).
+These sequences are estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa in GenBank [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota].
+This in turns covers about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
+
+Yet, publicly available estimates of phylogenetic relationships still only about 100 000 taxa [@piel2009treebase; @hinchliff2015synthesis; @opentreeoflife_2019_synth].
+These data comprise less than one third of the taxonomic diversity for which sequence data was available a decade ago!
+
+Some of this discrepancy between data availability and phylogenetic estimates is because many phylogenies which are generated and published are not publicly shared in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
+
+We address this gap by extending existing phylogenetic estimates with publicly available sequence data.  By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees for of loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
+The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
+These automated trees can provide a quick inference of potential relationships, of problems in the taxonomic assignments of sequences, and flag areas of potential systematic interest.
+
+Physcraper leverages phylogentic data stored in Open Tree of Life and in Treebase
+The Open Tree of Life (https://opentreeoflife.github.io/) is a project that unites phylogenetic inferences and taxonomy to provide a synthetic estimate of species relationships across the entire tree of life.
+Open Tree of Life aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
+Currently the tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
+
+The Open Tree of Life data store, [Phylesystem](https://academic.oup.com/bioinformatics/article/31/17/2794/183373), contains more than 4,500 phylogenetic trees from published studies.
+The tips in these trees are mapped a unified taxonomy, which makes these data searchable in a phylogenetically explicit way.
+This provides a resource for finding existing estimates of phylogenetic relationships,
+and assessing which regions of the tree of life which are lacking available phylogenetic estimates.
+
+By linking molecular data, available from databases such as the GenBank [@benson2000genbank; @wheeler2000database], to alignments and phylogenies, available in
 the TreeBASE repository [@piel2009treebase] and the Open Tree of Life (OpenTree) datastore [@mctavish2015phylesystem], we can place new biological data in an evolutionary context.
-However, connecting new sequence data with existing estimates of evolutionary relationships represents a challenge.
 
-More than a decade ago, the National Center for Biodiversity Information (NCBI) molecular database, GenBank, released its version number 159 (April 15, 2007). With 72 million DNA sequences, it was estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa covered in it [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota] which in turn represent only about 10% of all extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
-In comparison, the current GenBank release number 238 (June 15, 2020) has tripled in size, hosting data for more than 217 million DNA sequences [(See GenBank's release website)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt). Yet, the phylogeneyic potential of the database has not been attained yet, with data on phylogenetic relationships available for about 90 000 taxa [@hinchliff2015synthesis; CURRENT SYNTH TREE CITATION], representing only one third of the taxonomic diversity with data available a decade ago (or 3% of the whole diversity) ALSO COMPARE WITH NUMBER OF TAXA REPRESENTED IN GENEBANK TODAY. Some of this discrepancy is explained by the many phylogenies that are not publicly shared [@drew2013lost; @magee2014dawn, @mctavish2018bioessay]. However, most recently published large trees have been made available in recent years, indicating there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context.
+While the focus on single locus and gene sequence alignments could appear backwards-looking, in the age of genomics, single locus data has a lot to offer phylogenetics.
+One major challenge of inferring phylogenies from genome scale data is inference of homology, and acquiring homologous data across divergent species.
+Different research questions call for on different approaches to genomic sequencing, from whole genomes, to transcriptomes, to RadSeq and UCE's.
+This variety of approaches results in non-overlapping data sets across taxa.
+Even when the same sequencing approach is applied, such as RadSeq phylogenetic distance can cause allelic dropout at deeper divergences [@eaton2016]
+In contrast, single locus sequencing generates homologous data across large phylogenetic scales.
 
-Computational tools are crucial to making sense of the massive amount of data in molecular databases. "Pipelines" that automate similarity based identification of DNA homologs and assembly of molecular homology hypotheses, i.e., molecular alignments [@sanderson2008phylota; @antonelli2017toward; @smith2009mega] have been a very important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. They have been widely applied to study the evolutionary relationships among different organisms, from vertebrates, to plants and bacteria (TABLE OF PIPELINES AND STUDIES THAT HAVE USED THEM?? maybe supplementary data).
-
-Still, most published phylogenies to date have been inferred using alignments that have been assembled and curated "by hand" [@morrison2009would]. GETTING AN ESTIMATE OF TOTAL PUBLISHED PHYLOGENIES WOULD BE NICE.
-Automated approaches often suffer from errors in homology inference that could be rapidly caught by human oversight. CITATION
-Many systemacists support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
+Indeed, some systematics support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
 Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving; ROJAS ET AL. bats paper, take citations from there].
 It has also been suggested that manual curation of locus alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments [@fragoso2017pilot].
 
 A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine-grained curation from human experts) is to rely on published manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
 
-As of April 2014, the TreeBASE repository hosted about 8 200 curated alignments, providing information on evolutionary relationships of almost 105 000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.).
+In leveraging existing homology statements in the form of alignments, this approach differs from existing approaches that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction ("phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward].
+Physcraper shares a similar conceptual framework to Pumper [@izquierdo-carrasco_pumper:_2014], but that software is not currently supported or developed (*or runnable at all honestly...*)
+
+Data input availability:
+As of April 2014, the TreeBASE repository hosted about 8 200 curated alignments, providing information on evolutionary relationships of around 100 000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.).
 This database provides an untapped source of valuable expert knowledge with the potential to update phylogenetic relationships in several different regions of the tree of life.
 
 The Phylesystem (OpenTree's datastore) [@mctavish2015phylesystem] automatically incorporates phylogenies from TreeBASE, and saves metadata linking the original tree to its corresponding alignment repository in TreeBASE. If there are multiple alignments, TreeBASE does not always indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
@@ -41,11 +70,11 @@ Often, linking data in an original alignment with its corresponding phylogeny ha
 Moreover, different data repositories follow different systems for taxon and study identification, posing a real challenge to automatically link data from across databases that belong to the same taxon and study.
 OpenTree's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., providing a way to automatically link data from different databases.
 
-Physcraper is a Python encoded pipeline that relies on the OpenTree metadata system to connect databases through taxon identification numbers.
-It's main functionality is to connect phylogenies stored in the OpenTree phylesystem, with alignments from TreeBASE and newly released DNA data from GenBank, in order to update previously known phylogenetic relationships in a continuous manner.
+Physcraper is a Python encoded pipeline that relies on the OpenTree metadata system to connect databases through unique taxon identifiers.
+ main functionality is to connect phylogenies stored in the OpenTree phylesystem, with alignments from TreeBASE and newly released DNA data from GenBank, in order to update previously known phylogenetic relationships in a continuous manner.
 EXPLIAN WHY PYTHON IS BEST FOR THIS.
-Because of its design, it allows taking advantage of the many resources provided by the OpenTree.
-For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships.
+By design, this approach focusses on interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and other data stores, users can easily perform downstream analyses.
+For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships in the Open Tree of Life taxonomy and phylogenetic data store.
 
 This is an effort to keep on directing ourselves towards a fully reproducible workflow in phylogenetics.
 And an effort to more effectively make big data connections for the advantage of phylogenetics and biology in general.
@@ -58,7 +87,7 @@ The general workflow is described in FIGURE. Next, we will describe the technica
 ## The input: a tree and an alignment
 
 - In order to take advantage of the OpenTree tools, the input tree needs to be stored in the
-  OpenTree phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem).
+  OpenTree phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem), or need to have the tip labels mapped to the unified OpenTree taxonomy via bulk taxonomic name resolution (https://tree.opentreeoflife.org/curator/tnrs/).
   The main
   reason for this is that trees in phylesystem have a set of user defined characteristics
   that are essential for automatizing the phylogeny update process. The most relevant of these being the standardization of taxonomic names and the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the final steps of the pipeline.
@@ -66,9 +95,9 @@ The general workflow is described in FIGURE. Next, we will describe the technica
   a published study can be stored in the phylesystem (although there are plans to
   allow storage of unpublished trees).
   A user can choose from among the `r tryCatch({rotl::tol_about()$num_source_trees}, error = function(e) {1216})` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website ([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). If the published tree you are interested in updating is not in there, you can upload it via OpenTree's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
-- THE INPUT TREE CAN ALSO BE A PERSONAL ONE. A TNRS MATCHING NEEDS TO BE PERFORMED (AND A FILE GENERATED) IN ORDER TO UPDATE A PERSONAL UNPUBLISHED TREE.
-- The alignment should be a gene alignment that was used to generate the tree. The original
-  alignments are usually stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
+  If the user is not ready to make the input tree public, `physcraper` can use as input a tree, and aliognment, and a file of mappings between the tip labels and taxonomic names.
+- The input alignment should be a single locus alignment that was used to generate the tree. For public data, the original
+  alignments are often stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD ([www.datadryad.org](http://datadryad.org/)), or the journal were the tree was originally published.
   If the alignment is stored in TreeBase, Physcraper can download it directly,
   either from the TreeBASE website ([www.treebase.org](https://treebase.org/))
@@ -189,6 +218,7 @@ knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 Data repositories hold even more information than meets the eye.
 Besides the actual data, they are rich sources of metadata that can be used for the advantage of biology and science in general.
 
+
 Many pipelines are making use of DNA data repositories in different ways.
 Most of them focus on efficient ways to mine the data -- getting the most homologs.
 Some focus on accurate ways of mining the data -- getting real and clean homologs.
@@ -198,6 +228,9 @@ Life that have no phylogenetic assessment yet in published studies, but also for
 regions that have been already studied and that have phylogenetic data already.
 However, expert phylogenetic knowledge is also an important source of data in public
 and open repositories that is not being used to its full potential.
+
+
+
 
 All these tools are key efforts for advancing towards reproducibility in phylogenetics,
 a field that has relied on processes which are somewhat artisanal.
@@ -216,8 +249,8 @@ and rapidly generate custom species trees for downstream analyses [@stoltzfus201
 
 # Acknowledgements
 
-Research was supported by the grant "Sustaining the Open Tree of Life", National Science Foundation ABI No. 1759838.
-Computer time was provided by the Multi-Environment Research Computer for Exploration and Discovery (MERCED) cluster from the University of California, Merced (UCM), supported by the NSF Grant No. ACI-1429783.
+Research was supported by the grant "Sustaining the Open Tree of Life", National Science Foundation ABI No. 1759838, and ABI No. 1759846.
+Compute time was provided by the Multi-Environment Research Computer for Exploration and Discovery (MERCED) cluster from the University of California, Merced (UCM), supported by the NSF Grant No. ACI-1429783.
 
 We thank members of the "short bar" Science and Engineering Building 1, UCM, joint lab paper discussion meeting for valuable comments on a first version of this manuscript.
 
@@ -228,3 +261,10 @@ We thank members of the "short bar" Science and Engineering Building 1, UCM, joi
 
 \newpage
 # References
+
+
+
+
+Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated "by hand" [@morrison2009would].
+
+Automated approaches often suffer from errors in homology inference that could rapidly caught by human oversight. CITATION
