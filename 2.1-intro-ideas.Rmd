@@ -1,3 +1,13 @@
+over 217 million DNA sequences [(release number 238; June 15, 2020)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt)
+
+This in turns covers about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
+
+
+Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated "by hand" [@morrison2009would].
+
+Automated approaches often suffer from errors in homology inference that could rapidly caught by human oversight. CITATION
+
+
 The PHYLOTA [@sanderson2008phylota] tool has been used to construct homolog DNA datasets for about 42 studies reconstructing phylogenetic trees from various organisms.
 
 In face of the science reproducibility crisis, more and more researchers are contributing to making data available, contributing to a continual growth in information available from different databases.

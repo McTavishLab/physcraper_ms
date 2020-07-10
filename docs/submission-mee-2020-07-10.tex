@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3768
+\textbf{Word count}: 3702
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -142,24 +142,21 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
   use are available at \href{https://physcraper.readthedocs.io/en/tutorial/index.html}{https://physcraper.readthedocs}.
 \end{enumerate}
 
-\textbf{Keywords}: cross-connectivity, gene tree, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, updated alignment
+\textbf{Keywords}: gene tree, interoperability, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, updated alignment
 
 \newpage
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide context for biological observations.
-Public biological databases provide an amazing resource for evolutionary estimation, but there is a lot of sequence data available that has never been incorporated into any phylogenetic estimates.
+Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide key context for all our biological observations.
+Public biological databases provide an amazing resource for evolutionary estimation, but a large portion of sequence data available has never been incorporated into any phylogenetic estimate DO WE NEED CITATIONS FOR THIS?.
 
-GenBank contains over 217 million DNA sequences \href{https://ftp.ncbi.nih.gov/genbank/gbrel.txt}{(release number 238; June 15, 2020)}.
-These sequences are estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa in GenBank (about 98.05\% of taxa in the NCBI taxonomy; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}).
-This in turns covers about 10\% of extant described biodiversity (taking a conservative estimate of extant diversity; Scott \protect\hyperlink{ref-scott2011ncbi}{2011}; Federhen \protect\hyperlink{ref-federhen2003taxonomy}{2003}).
+GenBank, the National Center for Biodiversity Information (NCBI) molecular database, release number 159 (from April 15, 2007) hosts 72 million DNA sequences that are estimated to have the potential to resolve evolutionary relationships of most of its 241 000 distinct taxa (about 98.05\% of taxa in the NCBI taxonomy release 159; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}).
 
-Yet, publicly available estimates of phylogenetic relationships still cover only about 100 000 taxa (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Hinchliff \emph{et al.} \protect\hyperlink{ref-hinchliff2015synthesis}{2015}; OpenTreeOfLife \emph{et al.} \protect\hyperlink{ref-opentreeoflife2019synth}{2019}).
-These data comprise less than one third of the taxonomic diversity for which sequence data was available a decade ago!
+Yet, current public estimates of phylogenetic relationships are available for only about 100 000 taxa (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Hinchliff \emph{et al.} \protect\hyperlink{ref-hinchliff2015synthesis}{2015}; OpenTreeOfLife \emph{et al.} \protect\hyperlink{ref-opentreeoflife2019synth}{2019}), representing less than half of the taxonomic diversity with phylogeentically informative sequence data available in GenBank more than a decade ago.
 
-Some of this discrepancy between data availability and phylogenetic estimates is because many phylogenies which are generated and published are not publicly shared in an accesible way (Drew \emph{et al.} \protect\hyperlink{ref-drew2013lost}{2013}; Magee \emph{et al.} \protect\hyperlink{ref-magee2014dawn}{2014}; McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2018bioessay}{2017}). However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
+Some of the discrepancy between data availability and phylogenetic estimates can be explained by the many phylogenies that are generated and published and not shared publicly in an accesible way (Drew \emph{et al.} \protect\hyperlink{ref-drew2013lost}{2013}; Magee \emph{et al.} \protect\hyperlink{ref-magee2014dawn}{2014}; McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2018bioessay}{2017}). However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
 
 We address this gap by extending existing phylogenetic estimates with publicly available sequence data. By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees for of loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
 The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
@@ -442,10 +439,6 @@ We thank members of the ``short bar'' Science and Engineering Building 1, UCM, j
 \hypertarget{references}{%
 \section{References}\label{references}}
 
-Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated ``by hand'' (Morrison \protect\hyperlink{ref-morrison2009would}{2009}).
-
-Automated approaches often suffer from errors in homology inference that could rapidly caught by human oversight. CITATION
-
 \newpage
 \begin{center}
 \textsc{References}
@@ -479,9 +472,6 @@ Eaton, D.A.R., Spriggs, E.L., Park, B. \& Donoghue, M.J. (2016). Misconceptions 
 \leavevmode\hypertarget{ref-edgar2004muscle}{}%
 Edgar, R.C. (2004). MUSCLE: Multiple sequence alignment with high accuracy and high throughput. \emph{Nucleic acids research}, \textbf{32}, 1792--1797.
 
-\leavevmode\hypertarget{ref-federhen2003taxonomy}{}%
-Federhen, S. (2003). The taxonomy project. \emph{The NCBI Handbook}.
-
 \leavevmode\hypertarget{ref-fragoso2017pilot}{}%
 Fragoso-Martínez, I., Salazar, G.A., Martínez-Gordillo, M., Magallón, S., Sánchez-Reyes, L., Lemmon, E.M., Lemmon, A.R., Sazatornil, F. \& Mendoza, C.G. (2017). A pilot study applying the plant anchored hybrid enrichment method to new world sages (salvia subgenus calosphace; lamiaceae). \emph{Molecular Phylogenetics and Evolution}, \textbf{117}, 124--134.
 
@@ -506,9 +496,6 @@ McTavish, E.J., Hinchliff, C.E., Allman, J.F., Brown, J.W., Cranston, K.A., Hold
 \leavevmode\hypertarget{ref-morrison2006multiple}{}%
 Morrison, D.A. (2006). Multiple sequence alignment for phylogenetic purposes. \emph{Australian Systematic Botany}, \textbf{19}, 479--539.
 
-\leavevmode\hypertarget{ref-morrison2009would}{}%
-Morrison, D.A. (2009). Why would phylogeneticists ignore computerized sequence alignment? \emph{Systematic biology}, \textbf{58}, 150--158.
-
 \leavevmode\hypertarget{ref-opentreeoflife2019synth}{}%
 OpenTreeOfLife, Redelings, B., Reyes, L.L.S., Cranston, K.A., Allman, J., Holder, M.T. \& McTavish, E.J. (2019). Open tree of life synthetic tree. Retrieved from \url{https://doi.org/10.5281/zenodo.3937742}
 
@@ -526,9 +513,6 @@ Sanderson, M.J., Boss, D., Chen, D., Cranston, K.A. \& Wehe, A. (2008). The PhyL
 
 \leavevmode\hypertarget{ref-san2010molecular}{}%
 San Mauro, D. \& Agorreta, A. (2010). Molecular systematics: A synthesis of the common methods and the state of knowledge. \emph{Cellular \& Molecular Biology Letters}, \textbf{15}, 311.
-
-\leavevmode\hypertarget{ref-scott2011ncbi}{}%
-Scott, F. (2011). The ncbi taxonomy database. \emph{Nucleic Acids Research}, \textbf{40}, D136--D14.
 
 \leavevmode\hypertarget{ref-smith2009mega}{}%
 Smith, S.A., Beaulieu, J.M. \& Donoghue, M.J. (2009). Mega-phylogeny approach for comparative biology: An alternative to supertree and supermatrix approaches. \emph{BMC evolutionary biology}, \textbf{9}, 37.

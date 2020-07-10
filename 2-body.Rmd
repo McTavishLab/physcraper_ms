@@ -15,17 +15,13 @@ output:
 
 # Introduction
 
-Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide context for biological observations.
-Public biological databases provide an amazing resource for evolutionary estimation, but there is a lot of sequence data available that has never been incorporated into any phylogenetic estimates.
+Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide key context for all our biological observations.
+Public biological databases provide an amazing resource for evolutionary estimation, but a large portion of sequence data available has never been incorporated into any phylogenetic estimate.
 
-GenBank contains over 217 million DNA sequences [(release number 238; June 15, 2020)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt).
-These sequences are estimated to have the potential to resolve evolutionary relationships of most of the 241 000 distinct taxa in GenBank [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy; @sanderson2008phylota].
-This in turns covers about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
+GenBank, the USA National Center for Biodiversity Information (NCBI) molecular database, release number 159 (April 15, 2007) hosts 72 million DNA sequences that are estimated to have the potential to resolve evolutionary relationships of most of its 241 000 distinct taxa [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy release 159; @sanderson2008phylota].
+Yet, current public estimates of phylogenetic relationships are available for only about 100 000 taxa [@piel2009treebase; @hinchliff2015synthesis; @opentreeoflife2019synth], representing less than half of the taxonomic diversity with phylogenetically informative sequence data available in GenBank more than a decade ago.
 
-Yet, publicly available estimates of phylogenetic relationships still cover only about 100 000 taxa [@piel2009treebase; @hinchliff2015synthesis; @opentreeoflife2019synth].
-These data comprise less than one third of the taxonomic diversity for which sequence data was available a decade ago!
-
-Some of this discrepancy between data availability and phylogenetic estimates is because many phylogenies which are generated and published are not publicly shared in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
+Some of the discrepancy between data availability and phylogenetic estimates can be explained by the many phylogenies that are generated and published and not shared publicly in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
 
 We address this gap by extending existing phylogenetic estimates with publicly available sequence data.  By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees for of loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
 The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
@@ -261,10 +257,3 @@ We thank members of the "short bar" Science and Engineering Building 1, UCM, joi
 
 \newpage
 # References
-
-
-
-
-Automated sequence gathering pipelines have been an important incorporation to the field of phylogenetics in many ways, particularly because they represent a clear step towards reproducibility in the field. In contrast, most published phylogenies to date have been inferred using alignments that have been assembled and curated "by hand" [@morrison2009would].
-
-Automated approaches often suffer from errors in homology inference that could rapidly caught by human oversight. CITATION
