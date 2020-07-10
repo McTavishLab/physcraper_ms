@@ -79,7 +79,7 @@ email: <`r params$email3`>
 ``` {r child = '1-abstract.Rmd'}
 ```
 
-**Keywords**: cross-connectivity, gene tree, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, updated alignment
+**Keywords**: gene tree, interoperability, open science, open tree of life, phylogeny, public database, python, reproducibility, taxonomy, updated alignment
 
 \newpage
 
