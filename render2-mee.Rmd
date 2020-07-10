@@ -23,10 +23,11 @@ params:
   author1: Luna L. Sanchez Reyes
   email1: sanchez.reyes.luna@gmail.com
   author2: Martha Kandziora
-  email2: martha.kandziora@mailbox.org
+  email2: kandziom@natur.cuni.cz
   author3: Emily Jane McTavish
   email3: ejmctavish@gmail.com
   affiliation: School of Natural Sciences, University of California, Merced
+  affiliation2: Department of Botany, Faculty of Science, Charles University, Prague, Czech Republic
   correspondence_address: Science and Engineering Building 1, University of California, Merced, 5200 N. Lake Rd, Merced CA 95343
 ---
 ```{r setup, include = FALSE}
@@ -46,7 +47,7 @@ email: <`r params$email1`>
 
 **2. `r params$author2`**
 
-`r params$affiliation`
+`r params$affiliation2`
 
 email: <`r params$email2`>
 
