@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3702
+\textbf{Word count}: 3694
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -138,7 +138,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
   Phylogeneticists and group specialists will find it useful as a tool to facilitate molecular dataset gathering and comparison
   of alternative phylogenetic hypotheses (topologies).
 \item
-  We hope that the Physcraper workflow demonstrates the benefits of open science for phylogenetics, encouraging more researchers to strive for better sharing practices. Physcraper can be used with any OS. Detailed instructions for installation and
+  We hope that the Physcraper workflow demonstrates the benefits of doing open science for phylogenetics, encouraging more researchers to strive for better sharing practices. Physcraper can be used with any OS. Detailed instructions for installation and
   use are available at \href{https://physcraper.readthedocs.io/en/tutorial/index.html}{https://physcraper.readthedocs}.
 \end{enumerate}
 
@@ -150,19 +150,19 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 \section{Introduction}\label{introduction}}
 
 Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide key context for all our biological observations.
-Public biological databases provide an amazing resource for evolutionary estimation, but a large portion of sequence data available has never been incorporated into any phylogenetic estimate DO WE NEED CITATIONS FOR THIS?.
+Public biological databases provide an amazing resource for evolutionary estimation, but a large portion of sequence data available has never been incorporated into any phylogenetic estimate.
 
-GenBank, the National Center for Biodiversity Information (NCBI) molecular database, release number 159 (from April 15, 2007) hosts 72 million DNA sequences that are estimated to have the potential to resolve evolutionary relationships of most of its 241 000 distinct taxa (about 98.05\% of taxa in the NCBI taxonomy release 159; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}).
-
-Yet, current public estimates of phylogenetic relationships are available for only about 100 000 taxa (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Hinchliff \emph{et al.} \protect\hyperlink{ref-hinchliff2015synthesis}{2015}; OpenTreeOfLife \emph{et al.} \protect\hyperlink{ref-opentreeoflife2019synth}{2019}), representing less than half of the taxonomic diversity with phylogeentically informative sequence data available in GenBank more than a decade ago.
+GenBank, the USA National Center for Biodiversity Information (NCBI) molecular database, release number 159 (April 15, 2007) hosts 72 million DNA sequences that are estimated to have the potential to resolve evolutionary relationships of most of its 241 000 distinct taxa (about 98.05\% of taxa in the NCBI taxonomy release 159; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}).
+Yet, current public estimates of phylogenetic relationships are available for only about 100 000 taxa (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Hinchliff \emph{et al.} \protect\hyperlink{ref-hinchliff2015synthesis}{2015}; OpenTreeOfLife \emph{et al.} \protect\hyperlink{ref-opentreeoflife2019synth}{2019}), representing less than half of the taxonomic diversity with phylogenetically informative sequence data available in GenBank more than a decade ago.
 
 Some of the discrepancy between data availability and phylogenetic estimates can be explained by the many phylogenies that are generated and published and not shared publicly in an accesible way (Drew \emph{et al.} \protect\hyperlink{ref-drew2013lost}{2013}; Magee \emph{et al.} \protect\hyperlink{ref-magee2014dawn}{2014}; McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2018bioessay}{2017}). However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
+WHY IS IT A CHALLENGE
 
-We address this gap by extending existing phylogenetic estimates with publicly available sequence data. By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees for of loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
+We address this gap by extending existing phylogenetic estimates with publicly available sequence data. By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees using loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
 The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
 These automated trees can provide a quick inference of potential relationships, of problems in the taxonomic assignments of sequences, and flag areas of potential systematic interest.
 
-Physcraper leverages phylogentic data stored in Open Tree of Life and in Treebase
+Physcraper leverages phylogentic data stored in Open Tree of Life and in TreeBase.
 The Open Tree of Life (\url{https://opentreeoflife.github.io/}) is a project that unites phylogenetic inferences and taxonomy to provide a synthetic estimate of species relationships across the entire tree of life.
 Open Tree of Life aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
 Currently the tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
@@ -207,8 +207,7 @@ EXPLIAN WHY PYTHON IS BEST FOR THIS.
 By design, this approach focusses on interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and other data stores, users can easily perform downstream analyses.
 For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships in the Open Tree of Life taxonomy and phylogenetic data store.
 
-ELABORATE MORE ON THIS, USE LESS CASUAL LANGUAGE: This is an effort to keep on directing ourselves towards a fully reproducible workflow in phylogenetics.
-And an effort to more effectively make big data connections for the advantage of phylogenetics and biology in general.
+We envision Physraper as an staple tool to make data connections across databases in a phylogenetic context for the advantage of phylogenetics and biology in general, as well as an effort towards fully reproducible workflows in phylogenetics.
 
 \hypertarget{how-does-physcraper-work}{%
 \section{How does Physcraper work?}\label{how-does-physcraper-work}}

@@ -22,12 +22,13 @@ GenBank, the USA National Center for Biodiversity Information (NCBI) molecular d
 Yet, current public estimates of phylogenetic relationships are available for only about 100 000 taxa [@piel2009treebase; @hinchliff2015synthesis; @opentreeoflife2019synth], representing less than half of the taxonomic diversity with phylogenetically informative sequence data available in GenBank more than a decade ago.
 
 Some of the discrepancy between data availability and phylogenetic estimates can be explained by the many phylogenies that are generated and published and not shared publicly in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
+WHY IS IT A CHALLENGE
 
-We address this gap by extending existing phylogenetic estimates with publicly available sequence data.  By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees for of loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
+We address this gap by extending existing phylogenetic estimates with publicly available sequence data.  By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees using loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
 The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
 These automated trees can provide a quick inference of potential relationships, of problems in the taxonomic assignments of sequences, and flag areas of potential systematic interest.
 
-Physcraper leverages phylogentic data stored in Open Tree of Life and in Treebase
+Physcraper leverages phylogentic data stored in Open Tree of Life and in TreeBase.
 The Open Tree of Life (https://opentreeoflife.github.io/) is a project that unites phylogenetic inferences and taxonomy to provide a synthetic estimate of species relationships across the entire tree of life.
 Open Tree of Life aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
 Currently the tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
@@ -72,8 +73,7 @@ EXPLIAN WHY PYTHON IS BEST FOR THIS.
 By design, this approach focusses on interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and other data stores, users can easily perform downstream analyses.
 For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships in the Open Tree of Life taxonomy and phylogenetic data store.
 
-ELABORATE MORE ON THIS, USE LESS CASUAL LANGUAGE: This is an effort to keep on directing ourselves towards a fully reproducible workflow in phylogenetics.
-And an effort to more effectively make big data connections for the advantage of phylogenetics and biology in general.
+We envision Physraper as an staple tool to make data connections across databases in a phylogenetic context for the advantage of phylogenetics and biology in general, as well as an effort towards fully reproducible workflows in phylogenetics.
 
 
 # How does Physcraper work?
