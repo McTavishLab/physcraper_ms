@@ -78,7 +78,13 @@ We envision Physraper as a staple tool to make data connections across databases
 
 # How does Physcraper work?
 
-The general workflow is described in FIGURE. Next, we will describe the technical details of each step.
+```{r framework, echo=FALSE, fig.cap="Physcraper general framework.", out.width = '85%', fig.retina= 2, fig.align = "center"}
+knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcraper/pyopensci/docs/img/schematic.svg")
+# knitr::include_graphics("docs/figs/schematic.svg")
+```
+
+The Physcraper software is fully described on its documentation website at https://physcraper.readthedocs.io/en/latest/, along with installation, tutorials, examples and function usage.
+The general Physcraper workflow is shown in Figure \@ref(fig:framework). Next, we will describe the technical details of each step of the workflow.
 
 ## The input: a tree and an alignment
 
@@ -204,7 +210,7 @@ A review of the literature shows them that there are many phylogenetic trees enc
 wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/data-raw/malvaceae-images/cotree-plot2-1.png"
 mv cotree-plot2-1.png docs/figs/cotree-plot2-1.png
 ``` -->
-```{r fig-2, echo=FALSE, fig.cap="Comparison of original tree and tree updated with Physcraper, family Malvaceae.", out.width = '85%', fig.retina= 2, fig.align = "center"}
+```{r malvaceae, echo=FALSE, fig.cap="Comparison of original tree and tree updated with Physcraper, family Malvaceae.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 ```
 \newpage
