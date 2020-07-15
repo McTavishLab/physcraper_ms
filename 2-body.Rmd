@@ -67,13 +67,13 @@ Often, linking data in an original alignment with its corresponding phylogeny ha
 Moreover, different data repositories follow different systems for taxon and study identification, posing a real challenge to automatically link data from across databases that belong to the same taxon and study.
 OpenTree's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., providing a way to automatically link data from different databases.
 
-Physcraper is a Python encoded pipeline that relies on the OpenTree metadata system to connect databases through unique taxon identifiers.
- main functionality is to connect phylogenies stored in the OpenTree phylesystem, with alignments from TreeBASE and newly released DNA data from GenBank, in order to update previously known phylogenetic relationships in a continuous manner.
-EXPLIAN WHY PYTHON IS BEST FOR THIS.
-By design, this approach focusses on interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and other data stores, users can easily perform downstream analyses.
+Physcraper is a Python encoded pipeline that relies on the OpenTree metadata system to connect databases through unique taxon identifiers, automatizing taxonomic name matching across biological data stores.
+It's main goal is to update previously known phylogenetic relationships in a continuous manner by connecting phylogenies stored in the OpenTree Phylesystem with alignments from TreeBASE and newly released DNA data from GenBank.
+EXPLAIN WHY PYTHON IS BEST FOR THIS: does it help with interoperability? It is flexible enough?
+By design, this approach focuses on data interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and other data stores, users can easily perform downstream analyses.
 For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships in the Open Tree of Life taxonomy and phylogenetic data store.
 
-We envision Physraper as a staple tool to make data connections across databases in a phylogenetic context for the advantage of phylogenetics and biology in general, as well as an effort towards fully reproducible workflows in phylogenetics.
+We propose Physcraper as a tool to make data connections across biological databases in a phylogenetic context for the advantage of phylogenetics and biology in general, as well as an effort towards fully reproducible workflows in phylogenetics.
 
 
 # How does Physcraper work?
