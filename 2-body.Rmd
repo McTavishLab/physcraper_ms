@@ -16,12 +16,12 @@ output:
 # Introduction
 
 Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide key context for all our biological observations.
-Public biological databases provide an amazing resource for evolutionary estimation, but a large portion of sequence data available has never been incorporated into any phylogenetic estimate.
+Public biological data stores constitute an amazing resource for evolutionary estimation, but a large portion of sequence data available has never been incorporated into any phylogenetic estimate.
 
-GenBank, the USA National Center for Biodiversity Information (NCBI) molecular database, release number 159 (April 15, 2007) hosts 72 million DNA sequences that are estimated to have the potential to resolve evolutionary relationships of most of its 241 000 distinct taxa [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy release 159; @sanderson2008phylota].
+GenBank, the USA National Center for Biodiversity Information (NCBI) molecular database, release number 159 (April 15, 2007) hosted 72 million DNA sequences that were estimated to have the potential to resolve evolutionary relationships of most of its 241 000 distinct taxa [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy release 159; @sanderson2008phylota].
 Yet, current public estimates of phylogenetic relationships are available for only about 100 000 taxa [@piel2009treebase; @hinchliff2015synthesis; @opentreeoflife2019synth], representing less than half of the taxonomic diversity with phylogenetically informative sequence data available in GenBank more than a decade ago.
 
-Some of the discrepancy between data availability and phylogenetic estimates can be explained by the many phylogenies that are generated and published and not shared publicly in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
+The discrepancy between data availability and phylogenetic estimates can be partially explained by the many phylogenies that are generated and published and not shared publicly in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context. Connecting new sequence data with existing estimates of evolutionary relationships is a challenge.
 WHY IS IT A CHALLENGE
 
 We address this gap by extending existing phylogenetic estimates with publicly available sequence data.  By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees using loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
@@ -83,7 +83,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcrape
 # knitr::include_graphics("docs/figs/schematic.svg")
 ```
 
-The Physcraper software is fully described on its documentation website at https://physcraper.readthedocs.io/en/latest/, along with installation, tutorials, examples and function usage.
+The Physcraper software is fully described on its documentation website at https://physcraper.readthedocs.io/en/latest/, along with installation instructions, tutorials, examples and function usage documentation.
 The general Physcraper workflow is shown in Figure \@ref(fig:framework). Next, we will describe the technical details of each step of the workflow.
 
 ## The input: a tree and an alignment
