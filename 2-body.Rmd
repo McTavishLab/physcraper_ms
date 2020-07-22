@@ -71,26 +71,26 @@ Often, linking data in an original alignment with its corresponding phylogeny ha
 Moreover, different data repositories follow different systems for taxon and study identification, posing a real challenge to automatically link data from across databases that belong to the same taxon and study.
 OpenTree's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., providing a way to automatically link data from different databases.
 
-Physcraper is a Python encoded pipeline that relies on the OpenTree metadata system to connect databases through unique taxon identifiers, automatizing taxonomic name matching across biological data stores.
-It's main goal is to update previously known phylogenetic relationships in a continuous manner by connecting phylogenies stored in the OpenTree Phylesystem with alignments from TreeBASE and newly released DNA data from GenBank.
+Physcraper is a Python encoded pipeline designed to update previously known phylogenetic relationships in a continuous manner, by connecting phylogenies stored in the OpenTree Phylesystem with alignments from TreeBASE and newly released DNA data from GenBank, by using the OpenTree metadata system to connect independent databases through their unique taxon identifiers, automatizing taxonomic name matching across them.
 EXPLAIN WHY PYTHON IS BEST FOR THIS: does it help with interoperability? It is flexible enough?
-By design, this approach focuses on data interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and other data stores, users can easily perform downstream analyses.
-For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships in the Open Tree of Life taxonomy and the phylogenetic data store.
+By design, this approach focuses on data interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and virtually any biological database, users can perform downstream analyses straightforwardly.
+For example, it automatizes and standardizes comparison of phylogenetic hypotheses with currently known relationships from the synthetic Open Tree of Life, the Open Tree of Life taxonomy tree and any phylogeny that is stored in the
+Phylesystem.
 
-We propose Physcraper as a tool to make data connections across biological databases in a phylogenetic context for the advantage of phylogenetics and biology in general, as well as an effort towards fully reproducible workflows in phylogenetics.
+We propose Physcraper as a tool to make data connections across biological databases in a phylogenetic context for the advantage of phylogenetics and comparative biology, as well as an effort towards establishing fully reproducible workflows in phylogenetics.
 
 
-# How does Physcraper work?
+# The Physcraper framework
 
-```{r framework, echo=FALSE, fig.cap="Physcraper general framework.", out.width = '85%', fig.retina= 2, fig.align = "center"}
+```{r framework, echo=FALSE, fig.cap="The Physcraper software is fully described on its documentation website at https://physcraper.readthedocs.io/en/latest/, along with installation instructions, tutorials, examples and function usage documentation.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcraper/pyopensci/docs/img/schematic.svg")
 # knitr::include_graphics("docs/figs/schematic.svg")
 ```
 
-The Physcraper software is fully described on its documentation website at https://physcraper.readthedocs.io/en/latest/, along with installation instructions, tutorials, examples and function usage documentation.
-The general Physcraper workflow is shown in Figure \@ref(fig:framework). Next, we will describe the technical details of each step of the workflow.
 
-## The input: a tree and an alignment
+The general Physcraper framework is shown in Figure \@ref(fig:framework). Next, we will describe the technical details of each step of the workflow.
+
+## The inputs: a tree and an alignment
 
 - In order to take advantage of the OpenTree tools, the input tree needs to be stored in the
   OpenTree phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem), or need to have the tip labels mapped to the unified OpenTree taxonomy via bulk taxonomic name resolution (https://tree.opentreeoflife.org/curator/tnrs/).
@@ -104,17 +104,17 @@ The general Physcraper workflow is shown in Figure \@ref(fig:framework). Next, w
   If the user is not ready to make the input tree public, `physcraper` can use as input a tree, and aliognment, and a file of mappings between the tip labels and taxonomic names.
 - The input alignment should be a single locus alignment that was used to generate the tree. For public data, the original
   alignments are often stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
-  DRYAD ([www.datadryad.org](http://datadryad.org/)), or the journal were the tree was originally published.
+  DRYAD ([www.datadryad.org](http://datadryad.org/)), or the journal where the tree was originally published.
   If the alignment is stored in TreeBase, Physcraper can download it directly,
   either from the TreeBASE website ([www.treebase.org](https://treebase.org/))
   or through the TreeBASE GitHub repository (SuperTreeBASE; [github.com/TreeBASE/supertreebase](https://github.com/TreeBASE/supertreebase)).
   If the alignment is on another repository, or constitutes personal data, a path to a local copy of the alignment has to be provided.
 - A taxon name matching step is performed to verify that all taxon names on the tips
   of the tree are in the DNA character matrix and vice versa.
-- A ".csv" file with the summary of taxon name matching is produced for the user.
+- A "csv" file with the summary of taxon name matching is produced for the user.
 - Unmatched taxon names are dropped from both the tree and alignment.
   Technically, just one matching name is needed to perform the searches. See below.
-- A ".tre" file and a ".fas" file containing only the matched taxa are generated and saved in the "inputs" folder to be used in the following steps.
+- A "newick" file and a "fasta" file containing only the matched taxa are generated and saved in the "inputs" folder to be used in the following steps.
 
 ## DNA sequence search and filtering
 
@@ -123,7 +123,7 @@ The general Physcraper workflow is shown in Figure \@ref(fig:framework). Next, w
 
 - The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be determined by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
   matched taxa belonging to the ingroup in the OpenTree synthetic tree, that is also a named clade in the reference taxonomy. FIGURE RECOMMENDED. This is known as the Most Recent Common
-  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA) CITATION NEEDED.
+  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral taxon - LICA) CITATION NEEDED.
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
   To automatically identify the MRCAT of a group of taxon names, we make use of the OpenTree taxonomic tool [Taxonomy-API-v3](<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>) [@rees2017automated].
 
@@ -134,7 +134,7 @@ The general Physcraper workflow is shown in Figure \@ref(fig:framework). Next, w
   similarity between DNA sequences within the search taxon in a nucleotide
   database, and the sequences on the checked alignment.
   The `blastn` function from the BLAST command line tools [@camacho2009blast] is used for local-database sequence searches.
-  For remote-database searches, we modified the BioPython [@cock2009biopython] BLAST function in the [NCBIWWW module](https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html) to accept an alternate BLAST URL. This is useful when a user has no access to the computer capacity needed to setup a local database, and a local blast database can be set up on a remote machine to BLAST without NCBI's required wait times.
+  For remote-database searches, we modified the BioPython [@cock2009biopython] BLAST function from the [NCBIWWW module](https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html) to accept an alternative BLAST address (URL). This is useful when a user has no access to the computer capacity needed to setup a local database, and a local blast database can be set up on a remote machine to BLAST without NCBI's required wait times.
   <!--***How does the blast is setup? Is it an all-blast-all??***-->
 - A pairwise BLAST search is performed. This means that each sequence
   in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
@@ -154,32 +154,30 @@ Longer sequences belonging to the
   To control the number of sequences per taxon in downstream analyses,
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
 - Reverse complement sequences are identified and translated. HOW IS THIS DONE.
-- Users can choose to perform cycles of sequence similarity search iteratively, by blasting the newly found sequences until no new sequences are found. By default only one BLAST cycle is performed and only sequences in the checked alignment are blasted.
-- Accepted sequences are then downloaded in full, and stored as a local database in a directory that is globally accessible (default to "physcraper/taxonomy" folder), so they are accessible for further runs.
-- A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
+- Iterative cycles of sequence similarity search can be performed, by blasting the newly found sequences until no new sequences are found. By default only one BLAST search cycle is performed in which only sequences in the processed original alignment are blasted.
+- To speed up future runs, accepted sequences are downloaded in full, and stored in a local directory (default to "physcraper/taxonomy" folder) that is globally accessible to users.
+- A "fasta" file containing all filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
 
 ## New DNA sequence alignment
 
-- Physcraper uses the software MUSCLE [@edgar2004muscle] to perform the sequence alignments. Instructions on how to install this nad other software dependencies used by Physcraper is provided in the documentation.
+- Physcraper uses the software MUSCLE [@edgar2004muscle] to perform DNA sequence alignments. Instructions on how to install all software dependencies used by Physcraper are provided in the documentation.
 - The process to align new sequences consists of two steps. First, all new sequences are aligned using the default MUSCLE options.
 - Second, a MUSCLE profile alignment is performed, in which the original alignment
   is used as a template to align the new sequences. This ensures that the final alignment
   follows the homology criteria established by the original alignment.
-- The final alignment is not further processed automatically. We encourage users
-  to check it either by eye and perform manual refinement or using any of the many
-  tools for alignment processing, to eliminate columns with no information.
-- Manual curation is a critical step in te process, it is not reproducible, bc the process is nottracked. A form of version control, to register the differences between the alignment that was produced by the siftware and the manually curated aligment will be ideal. Versioning alignments and adding them to a  global database is a next step for us!
-- Users may also use Physcraper to only gather matched sequences, and apply their own preferred alignment and phylogenetic inference methods.
+- The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for alignment processing EXAMPLES OF SUCH TOOLS.
+- While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the siftware and the manually curated aligment will be ideal. Versioning alignments and adding them to a  global database is a next step for us!
+- Users may also use Physcraper to gather matched sequences only, and apply their own preferred alignment and phylogenetic inference methods.
 
 ## Tree reconstruction and comparison
 
-- A gene tree is reconstructed for each alignment provided, using a Maximum Likelihood approach implemented with the software RAxML [@stamatakis2014raxml], using default settings such as a GTRCAT model of molecular evolution and 100 bootstrap replicates with default method. Currently only the number of bootsrap replicates can be modified by the user.
-- The original tree is used as starting tree for the ML searches. It can also be set as a full topological constraint or not used at all, depending on the goals of the user.
+- A Maximum Likelihood (ML) gene tree is reconstructed for each alignment provided, using the software RAxML [@stamatakis2014raxml] with default settings, such as a GTRCAT model of molecular evolution and 100 bootstrap replicates with the default algorithm. Currently only the number of bootsrap replicates can be specified by the user.
+- By default, the original tree is used as a starting tree for the ML searches. Alternatively, users can set the original tree as a full topological constraint, or ignore it completely for the searches.
 - Bootstrap results are summarized with the SumTrees module of DendroPy [current version 4.4.0; @sukumaran2010dendropy].
-- The final result is an updated phylogenetic hypothesis for each of the genes provided in the alignment.
-- Tips on all trees generated by Physcraper are defined by a taxon name space, capturing the NCBI accession information, as well as the taxon identifiers, allowing the user perform comparisons and conflict analyses.
-- Robinson Foulds weighted and unweighted metrics between the tips in the input tree and those tips in the updated tree are calculated with Dendropy functions [@sukumaran2010dendropy].
-- Finally a conflict analysis is performed. This is basically a node by node comparison between the the synthetic OpenTree and the original and updated tree individually. This is performed with OpenTree's conflict Application Programming Interface [@redelings2017supertree].
+- Physcraper's final result is an updated phylogenetic hypothesis for each of the genes provided in the input alignment.
+- Tips on all trees generated by Physcraper are defined by a taxon "name space", which captures the NCBI accession information, as well as the taxon identifiers, allowing the user to perform comparisons and conflict analyses.
+- Two ways to compare the updated tree with the original tree are implemented in Physcraper. First, Robinson Foulds weighted and unweighted metrics are estimated using Dendropy functions [@sukumaran2010dendropy].
+- Second, a conflict analysis is performed. This is a node by node comparison between the the synthetic OpenTree and the original and updated tree individually. This is performed with OpenTree's conflict Application Programming Interface [@redelings2017supertree].
 - For the conflict analysis to be meaningful, the root of the tree needs to be accurately defined.
 - A suggested default rooting based on OpenTree's taxonomy is implemented for now. This approach uses the taxon labels for all the tips in the updated tree, pulls an inferred subtree from OpenTree's taxonomy and then applies the same rooting to the inferred updated tree. However, if the updated tree changes expectations from taxonomy, the root may no longer be appropriate. Automatic identification of a phylogenetic tree root is indeed a difficult problem that has not been solved yet. The best way right now is for users to define outgroups so trees are accurately rooted.
 
@@ -209,7 +207,7 @@ FIGURE: FACE TO FACE ORIGINAL VS UPDATED PHYLOGENY, IN RED NEW TAXA NOT IN OpenT
 ## The Malvaceae
 
 A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species, containing the relatives of cacao, cotton, durian and okra.
-A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the research group wants to use a particular marker they believe to be the best one to be able to solve the relationships in the group. They have been working in the alignment for long and they want to incorporate new data into the hypothesis of homology that they have been curating and that they trust.
+A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the research group wants to use a particular marker they believe to be the best one to be able to solve the relationships in the group. They have been working on the alignment for a long time and they want to incorporate new data into the hypothesis of homology that they have been curating and that they trust.
 
 <!-- ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
 wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/data-raw/malvaceae-images/cotree-plot2-1.png"
@@ -223,7 +221,7 @@ knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 # Discussion
 
 Data repositories hold even more information than meets the eye.
-Besides the actual data, they are rich sources of metadata that can be used for the advantage of biology and science in general.
+Besides the actual data, they are rich sources of metadata that can be used for the advantage of all areas of biology as well as the advancement of scientific policy and applications.
 
 COMPARE WITH PERFORMANCE OF OTHER PIPELINES FOR SEQUENCE SCRAPING
 WHY WE DID NOT MAKE A BENCHMARK COMPARISON
@@ -235,7 +233,7 @@ Some focus on accurate ways of mining the data -- getting real and clean homolog
 Others focus on refining the alignment.
 Most focus on generating full trees *de novo*, mainly for regions of the Tree of
 Life that have no phylogenetic assessment yet in published studies, but also for
-regions that have been already studied and that have phylogenetic data already.
+regions that have already been studied and which have phylogenetic data.
 However, expert phylogenetic knowledge is also an important source of data in public
 and open repositories that is not being used to its full potential.
 
@@ -244,7 +242,7 @@ and open repositories that is not being used to its full potential.
 
 All these tools are key efforts for advancing towards reproducibility in phylogenetics,
 a field that has relied on processes which are somewhat artisanal.
-In here, we highlight the potential of taking advantage of this careful curation work in previous phylogenetic estimates. By taking sources of information available from data repositories and present a method to link data from different repositories, while leveraging on the knowledge and intuition of the expert
+Here, we highlight the potential of taking advantage of this careful curation work in previous phylogenetic estimates. By taking sources of information available from data repositories and present a method to link data from different repositories, while leveraging the knowledge and intuition of the expert
 community to build up our phylogenetic knowledge, we can use not only data accumulated in
 molecular data repositories, but phylogenetic knowledge accumulated in phylogenetic tree repositories.
 
