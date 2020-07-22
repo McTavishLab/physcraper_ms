@@ -153,21 +153,22 @@ Longer sequences belonging to the
   within species, there can be hundreds of exemplar sequences per taxon for some markers.
   To control the number of sequences per taxon in downstream analyses,
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
-- Reverse complement sequences are identified and translated.
+- Reverse complement sequences are identified and translated. HOW IS THIS DONE.
 - Users can choose to perform cycles of sequence similarity search iteratively, by blasting the newly found sequences until no new sequences are found. By default only one BLAST cycle is performed and only sequences in the checked alignment are blasted.
 - Accepted sequences are then downloaded in full, and stored as a local database in a directory that is globally accessible (default to "physcraper/taxonomy" folder), so they are accessible for further runs.
 - A fasta file containing all filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
 
-## DNA sequence alignment
+## New DNA sequence alignment
 
-- The software MUSCLE [@edgar2004muscle] is used by default to perform sequence alignments. It has to be installed by the user, previous to running physcraper.
-- First, all new sequences are aligned using default MUSCLE options.
-- Then, a MUSCLE profile alignment is performed, in which the original alignment
-  is used as a template to align new sequences. This ensures that the final alignment
+- Physcraper uses the software MUSCLE [@edgar2004muscle] to perform the sequence alignments. Instructions on how to install this nad other software dependencies used by Physcraper is provided in the documentation.
+- The process to align new sequences consists of two steps. First, all new sequences are aligned using the default MUSCLE options.
+- Second, a MUSCLE profile alignment is performed, in which the original alignment
+  is used as a template to align the new sequences. This ensures that the final alignment
   follows the homology criteria established by the original alignment.
-- The final alignment is not further processed automatically. So, we encourage users
+- The final alignment is not further processed automatically. We encourage users
   to check it either by eye and perform manual refinement or using any of the many
   tools for alignment processing, to eliminate columns with no information.
+- Manual curation is a critical step in te process, it is not reproducible, bc the process is nottracked. A form of version control, to register the differences between the alignment that was produced by the siftware and the manually curated aligment will be ideal. Versioning alignments and adding them to a  global database is a next step for us!
 - Users may also use Physcraper to only gather matched sequences, and apply their own preferred alignment and phylogenetic inference methods.
 
 ## Tree reconstruction and comparison
