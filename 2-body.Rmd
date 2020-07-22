@@ -28,7 +28,7 @@ We address this gap by extending existing phylogenetic estimates with publicly a
 The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
 These automated trees can provide a quick inference of potential relationships, of problems in the taxonomic assignments of sequences, and flag areas of potential systematic interest.
 
-Physcraper leverages phylogentic data stored in Open Tree of Life and in TreeBase.
+Physcraper leverages public phylogenetic data stored in Open Tree of Life and in TreeBase.
 The Open Tree of Life (https://opentreeoflife.github.io/) is a project that unites phylogenetic inferences and taxonomy to provide a synthetic estimate of species relationships across the entire tree of life.
 Open Tree of Life aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
 Currently the tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
@@ -41,12 +41,16 @@ and assessing which regions of the tree of life which are lacking available phyl
 By linking molecular data, available from databases such as the GenBank [@benson2000genbank; @wheeler2000database], to alignments and phylogenies, available in
 the TreeBASE repository [@piel2009treebase] and the Open Tree of Life (OpenTree) datastore [@mctavish2015phylesystem], we can place new biological data in an evolutionary context.
 
+ARGUMENT - GENES ARE STILL USEFUL IN THE GENOMICS ERA, AND HERE'S WHY:
+GENOMIC MARKERS SUCH AS RADSEQ, SNP, MISCROSATS AND UCES - ARE HOMOLOGY HYPOTHESIS THE SAME ON THESE MARKERS THAN FOR PROTEIN CODING AND NON CODING LOCI?
+WHAT ARE THE PROS AND CONS OF USING GENE ALIGNMENTS ONLY AND NOT GENOMIC MARKERS?
 While the focus on single locus and gene sequence alignments could appear backwards-looking, in the age of genomics, single locus data has a lot to offer phylogenetics.
 One major challenge of inferring phylogenies from genome scale data is inference of homology, and acquiring homologous data across divergent species.
-Different research questions call for on different approaches to genomic sequencing, from whole genomes, to transcriptomes, to RadSeq and UCE's.
+Different research questions call for on different approaches to genomic sequencing, from whole genomes, to transcriptomes, to RadSeq, SNP, mirosats and UCE's.
 This variety of approaches results in non-overlapping data sets across taxa.
-Even when the same sequencing approach is applied, such as RadSeq phylogenetic distance can cause allelic dropout at deeper divergences [@eaton2016misconceptions]
+Even when the same sequencing approach is applied, such as RadSeq, phylogenetic distance can cause allelic dropout at deeper divergences [@eaton2016misconceptions]
 In contrast, single locus sequencing generates homologous data across large phylogenetic scales.
+
 
 Indeed, some systematics support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
 Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving; ROJAS ET AL. bats paper, take citations from there].
@@ -55,7 +59,7 @@ It has also been suggested that manual curation of locus alignments produces bet
 A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine-grained curation from human experts) is to rely on published manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
 
 In leveraging existing homology statements in the form of alignments, this approach differs from existing approaches that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction ("phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward].
-Physcraper shares a similar conceptual framework to Pumper [@izquierdo-carrasco_pumper:_2014], but that software is not currently supported or developed (*or runnable at all honestly...*)
+Physcraper shares a similar conceptual framework to Pumper [@izquierdo2014pumper], but that software is not currently supported or developed (*or runnable at all honestly...*)
 
 Data input availability:
 As of April 2014, the TreeBASE repository hosted about 8 200 curated alignments, providing information on evolutionary relationships of around 100 000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.).
@@ -71,7 +75,7 @@ Physcraper is a Python encoded pipeline that relies on the OpenTree metadata sys
 It's main goal is to update previously known phylogenetic relationships in a continuous manner by connecting phylogenies stored in the OpenTree Phylesystem with alignments from TreeBASE and newly released DNA data from GenBank.
 EXPLAIN WHY PYTHON IS BEST FOR THIS: does it help with interoperability? It is flexible enough?
 By design, this approach focuses on data interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and other data stores, users can easily perform downstream analyses.
-For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships in the Open Tree of Life taxonomy and phylogenetic data store.
+For example, it allows automatizing and standardizing the comparison of phylogenetic hypotheses with currently known relationships in the Open Tree of Life taxonomy and the phylogenetic data store.
 
 We propose Physcraper as a tool to make data connections across biological databases in a phylogenetic context for the advantage of phylogenetics and biology in general, as well as an effort towards fully reproducible workflows in phylogenetics.
 
@@ -109,16 +113,16 @@ The general Physcraper workflow is shown in Figure \@ref(fig:framework). Next, w
   of the tree are in the DNA character matrix and vice versa.
 - A ".csv" file with the summary of taxon name matching is produced for the user.
 - Unmatched taxon names are dropped from both the tree and alignment.
-  Technically, just one matching name is needed to perform the searches. Please, see next section.
-- A ".tre" file and a ".fas" file containing only the matched taxa are generated and saved in the `inputs` folder to be used in the following steps.
+  Technically, just one matching name is needed to perform the searches. See below.
+- A ".tre" file and a ".fas" file containing only the matched taxa are generated and saved in the "inputs" folder to be used in the following steps.
 
 ## DNA sequence search and filtering
 
-- Technically, any DNA molecular database can be used to search for new sequences.
-  By default we rely on the GenBank database.
-  The new sequence search can be performed on the remote database or in a local database.
+- Physcraper's code design relies on the GenBank DNA database to search for new sequences. The DNA sequence search can be performed on the GenBank remote database or in a GenBank local database set up by the user. Using the latter speeds up the process. Detailed nstructions to setup a local database are provided on the software documenttaion.
+<!-- Alternative DNA molecular databases could be used for this purpose, either personal or public databases, such as the European Nucleotide Archive or the DNA DataBank of Japan. The code to do this with Physcraper is not yet implemented. -->
+
 - The next step is to identify the search taxon within the reference taxonomy. The search taxon will be used to constraint the DNA sequence search on the nucleotide database within that taxonomic group. Because we are using the NCBI nucleotide database, by default the reference taxonomy is the NCBI taxonomy. The search taxon can be determined by the user. If none is provided, then the search taxon is identified as the Most Recent Common Ancestor (MRCA) of the
-  matched taxa belonging to the ingroup in the OPenTree synthetic tree, that is also a named clade in the reference taxonomy. FIGURE RECOMMENDED. This is known as the Most Recent Common
+  matched taxa belonging to the ingroup in the OpenTree synthetic tree, that is also a named clade in the reference taxonomy. FIGURE RECOMMENDED. This is known as the Most Recent Common
   Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral Taxon - LICA) CITATION NEEDED.
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
   To automatically identify the MRCAT of a group of taxon names, we make use of the OpenTree taxonomic tool [Taxonomy-API-v3](<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>) [@rees2017automated].
@@ -220,6 +224,9 @@ knitr::include_graphics("docs/figs/cotree-plot2-1.png")
 Data repositories hold even more information than meets the eye.
 Besides the actual data, they are rich sources of metadata that can be used for the advantage of biology and science in general.
 
+COMPARE WITH PERFORMANCE OF OTHER PIPELINES FOR SEQUENCE SCRAPING
+WHY WE DID NOT MAKE A BENCHMARK COMPARISON
+
 
 Many pipelines are making use of DNA data repositories in different ways.
 Most of them focus on efficient ways to mine the data -- getting the most homologs.
@@ -239,10 +246,11 @@ a field that has relied on processes which are somewhat artisanal.
 In here, we highlight the potential of taking advantage of this careful curation work in previous phylogenetic estimates. By taking sources of information available from data repositories and present a method to link data from different repositories, while leveraging on the knowledge and intuition of the expert
 community to build up our phylogenetic knowledge, we can use not only data accumulated in
 molecular data repositories, but phylogenetic knowledge accumulated in phylogenetic tree repositories.
-While not generating full phylogenies *de novo*, Physcraper is still capable of generating new phylogenetic knowledge.
-It can also be combined with data from repositories other than molecular data. For example geographic locations (GBIF), fossils (PBDB), etc.
 
-Physcraper has the potential to be applied for the advantage of the field to rapidly
+While not generating full phylogenies *de novo*, Physcraper is still capable of generating new phylogenetic knowledge.
+It can also be combined with data from repositories other than molecular data. For example geographic locations (GBIF), fossils (PBDB), etc. *from Robert: I think you can sell the program more here. Why is it better than the other methods? You mentioned in lab meeting that its difficult to run other programs, talk about that here, talk about the speed and other advantages*
+
+Physcraper has the potential to be applied for the advantage of the field to rapidly HOW FAST IS "RAPID"
 place newly discovered species phylogenetically [@webb2010biodiversity],
 obtain trees for ecophylogenetic studies [@helmus2012phylogenetic],
 help to systematize molecular databases, i.e., curate taxonomic assignations [@san2010molecular],
