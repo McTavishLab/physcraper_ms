@@ -83,8 +83,8 @@ We propose Physcraper as a tool to make data connections across biological datab
 # The Physcraper framework
 
 ```{r framework, echo=FALSE, fig.cap="The Physcraper software is fully described on its documentation website at https://physcraper.readthedocs.io/en/latest/, along with installation instructions, tutorials, examples and function usage documentation.", out.width = '85%', fig.retina= 2, fig.align = "center"}
-knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcraper/pyopensci/docs/img/schematic.svg")
-# knitr::include_graphics("docs/figs/schematic.svg")
+# knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcraper/pyopensci/docs/img/schematic.svg")
+knitr::include_graphics("docs/figs/schematic.svg")
 ```
 
 
