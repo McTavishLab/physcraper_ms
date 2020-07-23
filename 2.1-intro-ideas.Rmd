@@ -1,3 +1,8 @@
+TELL THEM WHAT YOU ARE GONNA TELL THEM
+TELL TEHM
+THEN TELL THEM WHAT YOU JUST TOLD THEM
+
+
 over 217 million DNA sequences [(release number 238; June 15, 2020)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt)
 
 This in turns covers about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].

@@ -29,17 +29,17 @@ The sequences added in the search are limited to a user specified taxon or monop
 These automated trees can provide a quick inference of potential relationships, of problems in the taxonomic assignments of sequences, and flag areas of potential systematic interest.
 
 Physcraper leverages public phylogenetic data stored in Open Tree of Life and in TreeBase.
-The Open Tree of Life (https://opentreeoflife.github.io/) is a project that unites phylogenetic inferences and taxonomy to provide a synthetic estimate of species relationships across the entire tree of life.
-Open Tree of Life aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
-Currently the tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
+The Open Tree of Life (OpenTree from now on https://opentreeoflife.github.io/) is a project that unites phylogenetic inferences and taxonomy to provide a synthetic estimate of species relationships across the entire tree of life.
+OpenTree aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
+This "synthetic" tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
 
-The Open Tree of Life data store, [Phylesystem](https://academic.oup.com/bioinformatics/article/31/17/2794/183373), contains more than 4,500 phylogenetic trees from published studies.
-The tips in these trees are mapped a unified taxonomy, which makes these data searchable in a phylogenetically explicit way.
+The Open Tree of Life data store, the [Phylesystem](https://academic.oup.com/bioinformatics/article/31/17/2794/183373), contains more than 4,500 phylogenetic trees from published studies.
+The tips in these trees are mapped to a unified taxonomy, which makes these data searchable in a phylogenetically explicit way.
 This provides a resource for finding existing estimates of phylogenetic relationships,
-and assessing which regions of the tree of life which are lacking available phylogenetic estimates.
+and assessing which regions of the tree of life are lacking available phylogenetic estimates.
 
 By linking molecular data, available from databases such as the GenBank [@benson2000genbank; @wheeler2000database], to alignments and phylogenies, available in
-the TreeBASE repository [@piel2009treebase] and the Open Tree of Life (OpenTree) datastore [@mctavish2015phylesystem], we can place new biological data in an evolutionary context.
+the TreeBASE repository [@piel2009treebase] and OpenTree's Phylesystem, we can place new biological data in an evolutionary context.
 
 ARGUMENT - GENES ARE STILL USEFUL IN THE GENOMICS ERA, AND HERE'S WHY:
 GENOMIC MARKERS SUCH AS RADSEQ, SNP, MISCROSATS AND UCES - ARE HOMOLOGY HYPOTHESIS THE SAME ON THESE MARKERS THAN FOR PROTEIN CODING AND NON CODING LOCI?

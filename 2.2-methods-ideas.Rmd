@@ -27,3 +27,9 @@ the synthetic OToL and then measure how well they do against each other***
 
 - Currently, the root is determined by finding the parent node of the sequences that do not belong to the ingroup/ search taxon. This ensures a correct rooting of the tree even when the search taxon is more inclusive than the ingroup.
 - Conflict information can only be generated in the context of the whole Open Tree of Life. Otherwise, it is not really possible to get conflict data.
+
+
+figure of unified taxonomy
+
+a table that is a snipet of the csv to show the unified taxonoy for some taxa
+also, a screen shoy of the diffeent taxon ides on opentree website works!
