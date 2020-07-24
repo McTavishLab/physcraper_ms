@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 4225
+\textbf{Word count}: 4114
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -229,26 +229,27 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \subsection{The inputs: a tree and an alignment}\label{the-inputs-a-tree-and-an-alignment}}
 
 \begin{itemize}
-\tightlist
 \item
   In order to take advantage of the OpenTree tools, it is reccommended that the input tree is either stored in the
-  OpenTree \href{https://github.com/opentreeoflife/phylesystem}{Phylesystem}, or submitted via OpenTree's curator \href{https://tree.opentreeoflife.org/curator}{application} (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}). If the user is not ready to make the input tree public, tree tip labels must be standardized to the unified OpenTree taxonomy using the bulk Taxonomic Name Resolution Service \href{https://tree.opentreeoflife.org/curator/tnrs/}{TNRS} tool \emph{Is there a tnrs bulk citation?}. If taxonomic names can't be standardized, they will be excluded for further analysis.
-  Adding the tree to OpenTree's Phylesystem is recommended because it saves a set of user defined characteristics
-  that are essential for automatizing the phylogeny updating process. The most relevant of these is the standardization of taxonomic names and the definition of ingroup and outgroup taxa, allowing to automatically set the root for the updated tree on the final steps of the pipeline. Currently, only trees connected to a published study can be stored in the Phylesystem.
-  Users can choose from among the 1216 published trees supporting the resolved nodes of the synthetic tree in the OpenTree website (\href{https://tree.opentreeoflife.org/about/synthesis-release/v12.3}{See OpenTree's website about}). \emph{MK suggests that WE SHOULD ACTUALLY SAY HERE HOW MANY OPENTREE TREES HAVE ALIGNMENT DATA FROM TREEBASE, I think it's a good idea}
+  OpenTree \href{https://github.com/opentreeoflife/phylesystem}{Phylesystem}, or submitted via OpenTree's curator \href{https://tree.opentreeoflife.org/curator}{application} (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}). If the user is not ready to make the input tree public, tree tip labels must be standardized to the unified OpenTree taxonomy using the bulk Taxonomic Name Resolution Service \href{https://tree.opentreeoflife.org/curator/tnrs/}{TNRS} tool. \emph{Should we saythat it is based on Boyle's 2012 algorithm? or is it a TNRS algorithm independently developed by the OpenTree team?}
+  This step is referred to as taxon name mapping. If taxonomic names can't be mapped, their taxonomic information will be excluded from further analysis.
+  Mapping tip names to OpenTree's unified taxonomy saves a set of user defined characteristics
+  that are essential for automatizing the phylogeny updating process. The most relevant of these is the taxonomic name mapping and the definition of ingroup and outgroup taxa, allowing to automatically set the root for the updated tree on the final steps of the pipeline. Currently, only trees connected to a published study can be stored in the Phylesystem.
+  Users can choose from among the 2950 studies that have alignments on
+  TreeBASE that are also stored in OpenTree's Phylesystem.
 \item
   The input alignment should be a single locus alignment that was used to generate the tree. Alignments are often stored in a public repository such as TreeBase (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Vos \emph{et al.} \protect\hyperlink{ref-vos2012nexml}{2012}),
-  DRYAD (\href{http://datadryad.org/}{www.datadryad.org}), or the journal where the tree was originally published.
+  DRYAD (\href{http://datadryad.org/}{www.datadryad.org}), or a data repository associated with the journal where the tree was originally published.
   If the alignment is stored in TreeBase, Physcraper downloads it directly,
   either from the TreeBASE website (\href{https://treebase.org/}{www.treebase.org})
   or through the TreeBASE GitHub repository (SuperTreeBASE; \href{https://github.com/TreeBASE/supertreebase}{github.com/TreeBASE/supertreebase}).
   If the alignment is on another repository, or constitutes personal data, a path to a local copy of the alignment has to be provided.
 \item
-  When dealing with single locus alignments, it is common for alignments to have less taxa than the tree, simply because a single molecular marker usually does not cover all the taxa included in the phylogenetic analysis. Hence, a pruning step to reconcile taxon presence in the tree and alignment is performed. This verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its coresonding sequence in the alignment) is needed to continue the algorithm. See next section. \emph{MK mentioned that nothing shoul be dropped here bc the name standardization should have matched everything, so I explained a bit more what this step is. It is not an unmatched taxa pruning but more of an absent taxa pruning. Also, taxa that are not matched should be dropped before right?}
+  When dealing with single locus alignments, they sometimes have fewer taxa than the tree inferred from concatenated data, simply because a single molecular marker usually does not cover all the taxa sampled for phylogenetic analysis. Physcraper prunes the input tree to taxa found in the alignment, and verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its corresponding sequence in the alignment) is needed to continue the algorithm. See next section.
 \item
   A summary ``csv'' file with the results from the taxon name standardization and pruning is produced for the user.
 \item
-  The standardized and pruned tree and alignment (checked tree and alignment from now on) are written down as ``newick'' and ``fasta'' respectively in the ``inputs'' folder to be used in the following steps.
+  The standardized and pruned tree and alignment (checked tree and alignment from now on) are output as ``newick'' and ``fasta'' respectively in the ``inputs'' folder to be used in the following steps.
 \end{itemize}
 
 \hypertarget{dna-sequence-search-and-filtering}{%
@@ -259,11 +260,12 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
   Physcraper uses the GenBank DNA database as source to search for new sequences. The DNA sequence search can be performed on the GenBank remote database or in a GenBank local database set up by the user, which can speed up the search process. Detailed instructions to setup a local database are provided on Physcraper's software documentation.
 \item
   The next step is to identify a ``search taxon'' to constrain the sequence search on the GenBank database within that taxonomic group.
-  The search taxon can be chosen by the user from the NCBI taxonomy. If none is provided, then the search taxon is automatically set as the Most Recent Common Ancestor (MRCA) of the
-  matched taxa belonging to the ingroup in the OpenTree synthetic tree, that is also a named clade in the NCBI taxonomy.
+  The search taxon can be chosen by the user from the NCBI taxonomy.
+  If none is provided, then the search taxon is automatically set using the taxa in the input tree labeled as the ``ingroup'' (Fig. \ref{fig:framework}).
+  The search taxon is The Most Recent Common Ancestor (MRCA) of the ingroup taxa in the OpenTree synthetic tree, that is also a named clade in the NCBI taxonomy.
   This is known in the OpenTree as the Most Recent Common
   Ancestral Taxon (MRCAT; also referred as the Least Inclusive Common Ancestral taxon - LICA) \emph{I looked for a citation but it seems that it is a concept used on the open tree of life API wikis only}.
-  The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
+  The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the synthetic tree.
   To identify the MRCAT of a group of taxon names, we use the OpenTree \href{https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3\#mrca}{taxonomic tool v3} (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}).
 
   Users can provide a search taxon that is either a more or a less inclusive
@@ -274,22 +276,21 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
   similarity between DNA sequences within the search taxon in a nucleotide
   database, and the sequences on the checked alignment.
   The \texttt{blastn} function from the BLAST command line tools (Camacho \emph{et al.} \protect\hyperlink{ref-camacho2009blast}{2009}) is used for local database sequence searches.
-  For remote database searches, we modified the BioPython (Cock \emph{et al.} \protect\hyperlink{ref-cock2009biopython}{2009}) BLAST function from the \href{https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html}{NCBIWWW module} to accept an alternative BLAST address (URL). This is useful when a user has no access to the computer capacity needed to setup a local database, and a local blast database can be set up on a remote machine to BLAST avoiding NCBI's required wait times, which slow down the searches markedly.
-  \emph{MK suggest explaining here what the ncbi waiting times are, but I don;t think it's needed, what do you think?}
+  For remote database searches, we modified the BioPython (Cock \emph{et al.} \protect\hyperlink{ref-cock2009biopython}{2009}) BLAST function from the \href{https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html}{NCBIWWW module} to accept an alternative BLAST address (URL). This is useful when a user has no access to the computer capacity needed to setup a local database, and a local blast database can be set up on a remote machine to BLAST avoiding NCBI's required waiting times, which slow down the searches markedly.
 \item
   A constrained BLAST search is performed, in which each sequence
   in the alignment is BLASTed once against all database DNA sequences belonging to the search
-  taxon. All results from each BLAST run are written down, and sequences above the e-value (default to 0.00001) are saved
-  along with their corresponding identification numbers, i.e., their GenBank accession numbers, which will be used later to get the whole sequence from the GenBank database into a dedicated library within the ``physcraper'' folder, allowing for secondary analyses to run significantly faster.
+  taxon. All results from each BLAST run are stored, and sequences with match scores better than the e-value cutoff (default to 0.00001) are saved
+  along with their corresponding metadata, i.e., their GenBank accession number.
+  The full sequence for each match is downloaded from NCBI into a dedicated library within the ``physcraper'' folder, allowing for secondary analyses to run significantly faster.
 \item
-  BLAST result sequences will be discarded if they fall outside a default minimum and maximum length of 80\% and 120\%, respectively, of the average length without gaps of sequences in the checked alignment.
-  This filtering guarantees the exclusion of whole genome sequences.
+  BLAST result sequences will be discarded if they fall outside the user set min and max length cutoffs, set as proportions of the average length without gaps of sequences in the input alignment (defaults values of 80\% and 120\%, respectively).
+  This filtering guarantees the exclusion of whole genome sequences, which create problems in multiple sequence alignment.
+  The GenBank accession numbers of sequences removed to due to not meeting e-value or length cutoffs are stored in output files.
 \item
-  All accepted sequences up to this point are assigned an internal identifier, and are further filtered.
+  All sequences accepted up to this point are assigned an internal identifier, and are further filtered.
 \item
-  New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they represent a different taxon than the existing sequence \emph{MK mentioned it was unclear to her if this was an NCBI or OTT taxon. I think it is the unified taxonomy, hence an OTT taxon? I think it doesn;t harm to be super explicit about it}.
-  Longer sequences belonging to the
-  same taxon as the original sequence will be considered further for analysis.
+  New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they represent a different taxon in the unified taxonomy than the existing sequence or they are longer than the sequence in the original alignment.
 \item
   Among the filtered sequences, there are often several representatives per taxon.
   Although it can be useful to keep some of them, for example, to investigate monophyly
@@ -303,8 +304,6 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \item
   Iterative cycles of sequence similarity search can be performed, by blasting the newly found sequences until no new sequences are found. By default only one BLAST search cycle is performed in which only sequences in the processed original alignment are blasted.
 \item
-  To speed up future runs, accepted sequences are downloaded in full, and stored in a local directory (default to ``physcraper/taxonomy'' folder) that is globally accessible to users.
-\item
   New sequences passing all filtering steps are added to the ``csv'' taxon summary file.
 \item
   A ``fasta'' file containing all new filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
@@ -316,7 +315,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \begin{itemize}
 \tightlist
 \item
-  Physcraper uses the software MUSCLE (Edgar \protect\hyperlink{ref-edgar2004muscle}{2004}) to perform DNA sequence alignments. Instructions on how to install all software dependencies used by Physcraper are provided in the documentation.
+  By default, Physcraper uses the software MUSCLE (Edgar \protect\hyperlink{ref-edgar2004muscle}{2004}) to perform DNA sequence alignments. Instructions on how to install all software dependencies used by Physcraper are provided in the documentation.
 \item
   The process to align new sequences consists of two steps. First, all new sequences are aligned using the default MUSCLE options.
 \item
@@ -326,7 +325,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \item
   The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for automatic alignment processing (Castresana \protect\hyperlink{ref-castresana2000selection}{2000}, \protect\hyperlink{ref-castresana2002gblocks}{2002}).
 \item
-  While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the software and the manually curated alignment will be ideal. Versioning alignments and adding them to a global database is a next step for us!
+  While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the software and the manually curated alignment will be ideal.
 \item
   Users may also use Physcraper to only gather new GenBank sequences, to then apply their own preferred alignment and phylogenetic inference methods.
 \end{itemize}
@@ -343,9 +342,9 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \item
   Bootstrap results are summarized with the SumTrees module of DendroPy (current version 4.4.0; Sukumaran \& Holder \protect\hyperlink{ref-sukumaran2010dendropy}{2010}).
 \item
-  Physcraper's final result is an updated phylogenetic hypothesis for each of the genes provided in the input alignment.
+  Physcraper's final result is an updated phylogenetic hypothesis for the locus provided in the input alignment.
 \item
-  Tips on all trees generated by Physcraper are defined by a taxon ``name space'', which captures the NCBI accession information, as well as the taxon identifiers, allowing the user to perform comparisons and conflict analyses.
+  Tips on all trees generated by Physcraper are defined by a taxon ``name space''. The taxon metadata captures the NCBI accession information, as well as the taxon identifiers, allowing the user to perform comparisons and conflict analyses.
 \item
   Two ways to compare the updated tree with the original tree are implemented in Physcraper. First, Robinson Foulds weighted and unweighted metrics are estimated using Dendropy functions (Sukumaran \& Holder \protect\hyperlink{ref-sukumaran2010dendropy}{2010}).
 \item
