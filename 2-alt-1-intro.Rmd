@@ -39,7 +39,7 @@ WHAT ARE THE PROS AND CONS OF USING GENE ALIGNMENTS ONLY AND NOT GENOMIC MARKERS
 Martha: Genomic data is not available for a large number of taxa.
 While the focus on single locus and gene sequence alignments could appear backwards-looking, in the age of genomics, single locus data has a lot to offer phylogenetics.
 One major challenge of inferring phylogenies from genome scale data is inference of homology, and acquiring homologous data across divergent species.
-Different research questions call for on different approaches to genomic sequencing, from whole genomes, to transcriptomes, to RadSeq, SNP, mirosats and UCE's.
+Different research questions call for different approaches to genomic sequencing, from whole genomes, to transcriptomes, to RadSeq, SNP, mirosats and UCE's.
 This variety of approaches results in non-overlapping data sets across taxa.
 Even when the same sequencing approach is applied, such as RadSeq, phylogenetic distance can cause allelic dropout at deeper divergences [@eaton2016misconceptions]
 In contrast, single locus sequencing generates homologous data across large phylogenetic scales.
