@@ -85,7 +85,7 @@ We propose Physcraper as a tool to make data connections across biological datab
 
 ```{r framework, echo=FALSE, fig.cap="The Physcraper software is fully described on its documentation website at https://physcraper.readthedocs.io/en/latest/, along with installation instructions, tutorials, examples and function usage documentation.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 # knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcraper/pyopensci/docs/img/schematic.svg")
-knitr::include_graphics("docs/figs/schematic.svg")
+knitr::include_graphics("docs/figs/schematic.pdf")
 ```
 
 
@@ -93,43 +93,35 @@ The general Physcraper framework is shown in Figure \@ref(fig:framework). Next, 
 
 ## The inputs: a tree and an alignment
 
-- In order to take advantage of the OpenTree tools, the input tree needs to be stored in the
-  OpenTree phylesystem [github.com/opentreeoflife/phylesystem](https://github.com/opentreeoflife/phylesystem), or need to have the tip labels mapped to the unified OpenTree taxonomy via bulk taxonomic name resolution (https://tree.opentreeoflife.org/curator/tnrs/).
-  The main
-  reason for this is that trees in phylesystem have a set of user defined characteristics
-  that are essential for automatizing the phylogeny update process. The most relevant of these being the standardization of taxonomic names and the definition of ingroup and outgroup. Outgroup and ingroup taxa in the original tree are identified and tagged. This allows to automatically set the root for the updated tree on the final steps of the pipeline.
-  Currently, only trees connected to
-  a published study can be stored in the phylesystem (although there are plans to
-  allow storage of unpublished trees).
-  A user can choose from among the `r tryCatch({rotl::tol_about()$num_source_trees}, error = function(e) {1216})` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website ([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). WE SHOYLD ACTUALLY SAY HERE HOW MANY OPENTREE TREES HAVE ALIGNMENT DATA FROM TREEBASE??? If the published tree you are interested in updating is not in there, you can upload it via OpenTree's curator tool ([www.opentreeoflife.org/curator](https://tree.opentreeoflife.org/curator).
-  If the user is not ready to make the input tree public, `physcraper` can use as input a tree, and aliognment, and a file of mappings between the tip labels and taxonomic names.
-- The input alignment should be a single locus alignment that was used to generate the tree. For public data, the original
-  alignments are often stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
+- In order to take advantage of the OpenTree tools, it is reccommended that the input tree is either stored in the
+  OpenTree [Phylesystem] (https://github.com/opentreeoflife/phylesystem), or submitted via OpenTree's curator [application](https://tree.opentreeoflife.org/curator). If the user is not ready to make the input tree public, tree tip labels must be standardized to the unified OpenTree taxonomy using the bulk Taxonomic Name Resolution Service [TNRS](https://tree.opentreeoflife.org/curator/tnrs/) tool. Ix taxonomic names can't be standardized, they will be excluded for further analysis.
+  Adding the tree to OpenTree's Phylesystem is recommended because it saves a set of user defined characteristics
+  that are essential for automatizing the phylogeny updating process. The most relevant of these is the standardization of taxonomic names and the definition of ingroup and outgroup taxa, allowing to automatically set the root for the updated tree on the final steps of the pipeline. Currently, only trees connected to a published study can be stored in the Phylesystem.
+  <!-- Discussion: (although there are plans to allow storage of unpublished trees). -->
+  Users can choose from among the `r tryCatch({rotl::tol_about()$num_source_trees}, error = function(e) {1216})` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website ([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)). *MK suggests that WE SHOULD ACTUALLY SAY HERE HOW MANY OPENTREE TREES HAVE ALIGNMENT DATA FROM TREEBASE, I think it's a good idea*
+- The input alignment should be a single locus alignment that was used to generate the tree. Alignments are often stored in a public repository such as TreeBase [@piel2009treebase; @vos2012nexml],
   DRYAD ([www.datadryad.org](http://datadryad.org/)), or the journal where the tree was originally published.
-  If the alignment is stored in TreeBase, Physcraper can download it directly,
+  If the alignment is stored in TreeBase, Physcraper downloads it directly,
   either from the TreeBASE website ([www.treebase.org](https://treebase.org/))
   or through the TreeBASE GitHub repository (SuperTreeBASE; [github.com/TreeBASE/supertreebase](https://github.com/TreeBASE/supertreebase)).
   If the alignment is on another repository, or constitutes personal data, a path to a local copy of the alignment has to be provided.
-- EXPLAIN CONCEPT OF UNIFIED TAXONOMY HERE A taxon name matching step is performed to verify that all taxon names on the tips
-  of the tree are in the DNA character matrix and vice versa.
-- A "csv" file with the summary of taxon name matching is produced for the user.
-- EXPLAIN THIS BETTER, IT IS NOT THAT MUCH A DROP UNMATCHED AS DROP ABSENT! Unmatched taxon names are dropped from both the tree and alignment. Technically, all taxa in alignment should be in NCBI taxonomy and hence in the OpenTree taxonomy. Single locus alignments might contain less taxa than the tree constructed using a concatenated matrix.
-  Technically, just one matching name is needed to perform the searches. See below.
+- When dealing with single locus alignments, it is common for alignments to have less taxa than the tree, simply because a single molecular marker usually does not cover all the taxa included in the phylogenetic analysis. Hence, a pruning step to reconcile taxon presence in the tree and alignment is performed. This verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its coresonding sequence in the alignment) is needed to continue the algorithm. See next section. *MK mentioned that nothing shoul be dropped here bc the name standardization should have matched everything, so I explained a bit more what this step is. It is not an unmatched taxa pruning but more of an absent taxa pruning. Also, taxa that are not matched should be dropped before right?*
+- A "csv" file with the summary of taxon name standardization and pruning is produced for the user.
 - A "newick" file and a "fasta" file containing the tree and alignment respectively with matched taxa only are generated and saved in the "inputs" folder to be used in the following steps.
 
 ## DNA sequence search and filtering
 
-- Physcraper's uses the GenBank DNA database as source to search for new sequences. The DNA sequence search can be performed on the GenBank remote database or in a GenBank local database set up by the user. Using the latter speeds up the process. Detailed instructions to setup a local database are provided on the software documentation.
+- Physcraper uses the GenBank DNA database as source to search for new sequences. The DNA sequence search can be performed on the GenBank remote database or in a GenBank local database set up by the user. Using the latter speeds up the process. Detailed instructions to setup a local database are provided on the software documentation.
 <!-- Alternative DNA molecular databases could be used for this purpose, either personal or public databases, such as the European Nucleotide Archive or the DNA DataBank of Japan. The code to do this with Physcraper is not yet implemented. -->
 
 - The next step is to identify a "search taxon" to constrain the sequence search on the GenBank database within that taxonomic group.
 The search taxon can be chosen by the user from the NCBI taxonomy. If none is provided, then the search taxon is automatically set as the Most Recent Common Ancestor (MRCA) of the
   matched taxa belonging to the ingroup in the OpenTree synthetic tree, that is also a named clade in the NCBI taxonomy.
   <!-- FIGURE RECOMMENDED: Figure \@ref(fig:search)  -->
-  This is known as the Most Recent Common
-  Ancestral Taxon (MRCAT; also referred in the literature as the Least Inclusive Common Ancestral taxon - LICA) CITATION NEEDED.
+  This is known in the OpenTree as the Most Recent Common
+  Ancestral Taxon (MRCAT; also referred as the Least Inclusive Common Ancestral taxon - LICA) *I looked for a citation but it seems that it is a concept used on the open tree of life API wikis only*.
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the reference taxonomy.
-  To automatically identify the MRCAT of a group of taxon names, we use the OpenTree taxonomic tool v3 [[Taxonomy-API-v3](<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>); @rees2017automated].
+  To identify the MRCAT of a group of taxon names, we use the OpenTree [taxonomic tool v3](<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>) [@rees2017automated].
 
   Users can provide a search taxon that is either a more or a less inclusive
   clade relative to the ingroup of the original phylogeny. If the search taxon is more inclusive, the sequence search will be performed outside the MRCAT of the matched taxa, e.g., including all taxa within
@@ -139,7 +131,7 @@ The search taxon can be chosen by the user from the NCBI taxonomy. If none is pr
   database, and the sequences on the checked alignment.
   The `blastn` function from the BLAST command line tools [@camacho2009blast] is used for local database sequence searches.
   For remote database searches, we modified the BioPython [@cock2009biopython] BLAST function from the [NCBIWWW module](https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html) to accept an alternative BLAST address (URL). This is useful when a user has no access to the computer capacity needed to setup a local database, and a local blast database can be set up on a remote machine to BLAST avoiding NCBI's required wait times, which slow down the searches markedly.
-  *MK suggest explaining here what the nbi waiting times are, but I'm not sure it's needed*
+  *MK suggest explaining here what the ncbi waiting times are, but I don;t think it's needed, what do you think?*
   <!--***How does the blast is setup? Is it an all-blast-all??***-->
 - A pairwise BLAST search is performed. This means that each sequence
   in the alignment is BLASTed against DNA sequences in a nucleotide database constrained to the search
@@ -150,7 +142,7 @@ These parameters can be configured for each run.
   This filtering guarantees the exclusion of whole genome sequences. EXPLAIN WHY THIS IS IMPORTANT.
   All accepted sequences are assigned an internal identifier, and are further filtered.
 
-- New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they represent a different NCBI *or otol?* taxon than the existing sequence.
+- New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they represent a different taxon than the existing sequence *MK mentioned it was unclear to her if this was an NCBI or OTT taxon. I think it is the unified taxonomy, hence an OTT taxon? I think it doesn;t harm to be super explicit about it*.
 Longer sequences belonging to the
   same taxon as the original sequence will be considered further for analysis.
 - Among the filtered sequences, there are often several representatives per taxon.
@@ -158,10 +150,10 @@ Longer sequences belonging to the
   within species, there can be hundreds of exemplar sequences per taxon for some markers.
   To control the number of sequences per taxon in downstream analyses,
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
-- Reverse complement sequences are identified and translated. HOW IS THIS DONE.
+- Reverse, complement, and reverse-complement BLAST result sequences are identified and translated using BioPython internal functions.
 - Iterative cycles of sequence similarity search can be performed, by blasting the newly found sequences until no new sequences are found. By default only one BLAST search cycle is performed in which only sequences in the processed original alignment are blasted.
 - To speed up future runs, accepted sequences are downloaded in full, and stored in a local directory (default to "physcraper/taxonomy" folder) that is globally accessible to users.
-- A "fasta" file containing all filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
+- A "fasta" file containing all new filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
 
 ## New DNA sequence alignment
 
@@ -184,7 +176,7 @@ Longer sequences belonging to the
 - Two ways to compare the updated tree with the original tree are implemented in Physcraper. First, Robinson Foulds weighted and unweighted metrics are estimated using Dendropy functions [@sukumaran2010dendropy].
 - Second, a conflict analysis is performed. This is a node by node comparison between the the synthetic OpenTree and the original and updated tree individually. This is performed with OpenTree's conflict Application Programming Interface [@redelings2017supertree].
 - For the conflict analysis to be meaningful, the root of the tree needs to be accurately defined.
-- A suggested default rooting based on OpenTree's taxonomy is implemented for now. This approach uses the taxon labels for all the tips in the updated tree, pulls an inferred subtree from OpenTree's taxonomy and then applies the same rooting to the inferred updated tree. However, if the updated tree changes expectations from taxonomy, the root may no longer be appropriate. Automatic identification of a phylogenetic tree root is indeed a difficult problem that has not been solved yet. The best way right now is for users to define outgroup directly on the updated tree, so trees are accurately rooted. *It would be a nice addiion to have users give the output of the inout tree as an argument at some point, or maybe we could add a super outgroup at random based on the search taxon*
+- A suggested default rooting based on OpenTree's taxonomy is implemented for now. This approach uses the taxon labels for all the tips in the updated tree, pulls an inferred subtree from OpenTree's taxonomy and then applies the same rooting to the inferred updated tree. However, if the updated tree changes expectations from taxonomy, the root may no longer be appropriate. Automatic identification of a phylogenetic tree root is indeed a difficult problem that has not been solved yet. The best way right now is for users to define outgroup directly on the updated tree, so trees are accurately rooted. *It would be a nice addiion to have users give the output of the input tree as an argument at some point, or maybe we could add a super outgroup at random based on the search taxon*
 
 
 # Examples
