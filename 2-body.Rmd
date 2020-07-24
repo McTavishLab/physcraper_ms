@@ -17,16 +17,12 @@ output:
 
 Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide key context for all our biological observations.
 Public biological databases constitute an amazing resource for evolutionary estimation, but a large portion of molecular data publicly available has never been incorporated into any phylogenetic estimate. Extending existing phylogenetic estimates with DNA sequence data from molecular databases in an automatic and continuous manner is possible by generating a connection between biological databases. Here, we propose Physcraper, a tool that uses a starting tree and single locus alignment, to take advantage of existing research and extend trees using molecular data that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
-Automated trees can provide a quick inference of potential phylogenetic relationships, of problems in the taxonomic assignments of sequences, and flag areas of systematic interest.
 
 One of the main challenges in connecting data from disparate biological databases is the prevalence of taxonomic idiosincracies across databases. To standardize taxonomic names, a unified taxonomy is necessary. The main aim of the Open Tree of Life (OpenTree from now on) project
 <!-- [project](https://opentreeoflife.github.io/)  -->
-is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. This "synthetic" tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the rest of taxa are placed in the tree based on their taxonomic assignment. For this goal, OpenTree unifies taxonomy from various databases [@rees2017automated] such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank [@benson2000genbank; @wheeler2000database], the Global biodiversity Information Facility (GBIF) [@secretariat2017gbif], the Encyclopedia of Life (EOL) [@wilson2003encyclopedia], etc., providing a key resource that can be used to connect data from all the aforementioned databases to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
+is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. This "synthetic" tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the rest of taxa are placed in the tree based on their taxonomic assignment. For this goal, OpenTree unifies taxonomy from various databases [@rees2017automated] such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank [@benson2000genbank; @wheeler2000database], the Global biodiversity Information Facility[GBIF; @secretariat2017gbif], the Encyclopedia of Life [EOL; @wilson2003encyclopedia], etc., providing a key resource that can be used to connect data from all these databases to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
 
-
-
-
-
+The Phylesystem (OpenTree's datastore) [@mctavish2015phylesystem] automatically incorporates phylogenies from TreeBASE, and saves metadata linking the original tree to its corresponding alignment repository in TreeBASE. If there are multiple alignments, TreeBASE does not always indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
 # The Physcraper framework
 
 ```{r framework, echo=FALSE, fig.cap="The Physcraper software is fully described on its documentation website at [physcraper.readthedocs.io](https://physcraper.readthedocs.io/en/latest/), along with installation instructions, tutorials, examples and function usage documentation.", out.width = '85%', fig.retina= 2, fig.align = "center"}
@@ -223,6 +219,11 @@ LLSR: Wrote the manuscript, alignment code, documentation, performed analyses an
 All authors contributed to the manuscript.
 
 # Data Avilability
+
+Physcraper source code available at https://github.com/McTavishLab/physcraper
+Documentation available at https://physcraper.readthedocs.io/en/latest/index.html
+Illustrated examples available at https://github.com/McTavishLab/physcraperex
+This is a reproducible manuscript available at https://github.com/McTavishLab/physcraper_ms
 
 \newpage
 # References

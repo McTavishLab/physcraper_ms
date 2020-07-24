@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3107
+\textbf{Word count}: 3167
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -151,13 +151,12 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide key context for all our biological observations.
 Public biological databases constitute an amazing resource for evolutionary estimation, but a large portion of molecular data publicly available has never been incorporated into any phylogenetic estimate. Extending existing phylogenetic estimates with DNA sequence data from molecular databases in an automatic and continuous manner is possible by generating a connection between biological databases. Here, we propose Physcraper, a tool that uses a starting tree and single locus alignment, to take advantage of existing research and extend trees using molecular data that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
-Automated trees can provide a quick inference of potential phylogenetic relationships, of problems in the taxonomic assignments of sequences, and flag areas of systematic interest.
 
 One of the main challenges in connecting data from disparate biological databases is the prevalence of taxonomic idiosincracies across databases. To standardize taxonomic names, a unified taxonomy is necessary. The main aim of the Open Tree of Life (OpenTree from now on) project
-is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. This ``synthetic'' tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the rest of taxa are placed in the tree based on their taxonomic assignment. For this goal, OpenTree unifies taxonomy from various databases (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}) such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the Global biodiversity Information Facility (GBIF) (Secretariat \protect\hyperlink{ref-secretariat2017gbif}{2017}), the Encyclopedia of Life (EOL) (Wilson \protect\hyperlink{ref-wilson2003encyclopedia}{2003}), etc., providing a key resource that can be used to connect data from all the aforementioned databases to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
+is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. This ``synthetic'' tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the rest of taxa are placed in the tree based on their taxonomic assignment. For this goal, OpenTree unifies taxonomy from various databases (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}) such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the Global biodiversity Information Facility(GBIF; Secretariat \protect\hyperlink{ref-secretariat2017gbif}{2017}), the Encyclopedia of Life (EOL; Wilson \protect\hyperlink{ref-wilson2003encyclopedia}{2003}), etc., providing a key resource that can be used to connect data from all these databases to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
 
-\hypertarget{the-physcraper-framework}{%
-\section{The Physcraper framework}\label{the-physcraper-framework}}
+The Phylesystem (OpenTree's datastore) (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}) automatically incorporates phylogenies from TreeBASE, and saves metadata linking the original tree to its corresponding alignment repository in TreeBASE. If there are multiple alignments, TreeBASE does not always indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
+\# The Physcraper framework
 
 \begin{figure}
 
@@ -390,6 +389,11 @@ All authors contributed to the manuscript.
 
 \hypertarget{data-avilability}{%
 \section{Data Avilability}\label{data-avilability}}
+
+Physcraper source code available at \url{https://github.com/McTavishLab/physcraper}
+Documentation available at \url{https://physcraper.readthedocs.io/en/latest/index.html}
+Illustrated examples available at \url{https://github.com/McTavishLab/physcraperex}
+This is a reproducible manuscript available at \url{https://github.com/McTavishLab/physcraper_ms}
 
 \newpage
 
