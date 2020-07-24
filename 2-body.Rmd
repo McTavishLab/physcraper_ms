@@ -136,8 +136,8 @@ The search taxon can be chosen by the user from the NCBI taxonomy. If none is pr
 - A constrained BLAST search is performed, in which each sequence
   in the alignment is BLASTed once against all database DNA sequences belonging to the search
   taxon. All results from each BLAST run are written down, and sequences above the e-value (default to 0.00001) are saved
-  along with their corresponding identification numbers, i.e., their GenBank accession numbers, which will be used later to get the whole sequence from the GenBank database in a dedicated library within the "physcraper" folder, allowing for secondary analyses to run significantly faster.
-- BLAST result sequences will be discarded if they fall outside a default minimum and maximum length of 80% and 120%, respectively, of the average length (gaps dropped) of sequences in the checked alignment.
+  along with their corresponding identification numbers, i.e., their GenBank accession numbers, which will be used later to get the whole sequence from the GenBank database into a dedicated library within the "physcraper" folder, allowing for secondary analyses to run significantly faster.
+- BLAST result sequences will be discarded if they fall outside a default minimum and maximum length of 80% and 120%, respectively, of the average length without gaps of sequences in the checked alignment.
   This filtering guarantees the exclusion of whole genome sequences.
 - All accepted sequences up to this point are assigned an internal identifier, and are further filtered.
 - New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they represent a different taxon than the existing sequence *MK mentioned it was unclear to her if this was an NCBI or OTT taxon. I think it is the unified taxonomy, hence an OTT taxon? I think it doesn;t harm to be super explicit about it*.
@@ -152,7 +152,7 @@ Longer sequences belonging to the
 - Reverse, complement, and reverse-complement BLAST result sequences are identified and translated using BioPython internal functions [@cock2009biopython].
 - Iterative cycles of sequence similarity search can be performed, by blasting the newly found sequences until no new sequences are found. By default only one BLAST search cycle is performed in which only sequences in the processed original alignment are blasted.
 - To speed up future runs, accepted sequences are downloaded in full, and stored in a local directory (default to "physcraper/taxonomy" folder) that is globally accessible to users.
-- New seqeunces that pass all filtering steps are added to the "csv" taxon summary file.
+- New sequences passing all filtering steps are added to the "csv" taxon summary file.
 - A "fasta" file containing all new filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
 
 ## New DNA sequence alignment
@@ -162,9 +162,9 @@ Longer sequences belonging to the
 - Second, a MUSCLE profile alignment is performed, in which the original alignment
   is used as a template to align the new sequences. This ensures that the final alignment
   follows the homology criteria established by the original alignment.
-- The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for alignment processing EXAMPLES OF SUCH TOOLS.
-- While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the siftware and the manually curated aligment will be ideal. Versioning alignments and adding them to a  global database is a next step for us!
-- Users may also use Physcraper to gather matched sequences only, and apply their own preferred alignment and phylogenetic inference methods.
+- The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for automatic alignment processing [@castresana2000selection; @castresana2002gblocks].
+- While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the software and the manually curated alignment will be ideal. Versioning alignments and adding them to a  global database is a next step for us!
+- Users may also use Physcraper to only gather new GenBank sequences, to then apply their own preferred alignment and phylogenetic inference methods.
 
 ## Tree reconstruction and comparison
 

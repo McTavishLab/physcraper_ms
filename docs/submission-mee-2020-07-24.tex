@@ -220,7 +220,7 @@ We propose Physcraper as a tool to make data connections across biological datab
 
 }
 
-\caption{The Physcraper software is fully described on its documentation website at https://physcraper.readthedocs.io/en/latest/, along with installation instructions, tutorials, examples and function usage documentation.}\label{fig:framework}
+\caption{The Physcraper software is fully described on its documentation website at [physcraper.readthedocs.io](https://physcraper.readthedocs.io/en/latest/), along with installation instructions, tutorials, examples and function usage documentation.}\label{fig:framework}
 \end{figure}
 
 The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, we will describe the technical details of each step of the workflow.
@@ -280,9 +280,9 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
   A constrained BLAST search is performed, in which each sequence
   in the alignment is BLASTed once against all database DNA sequences belonging to the search
   taxon. All results from each BLAST run are written down, and sequences above the e-value (default to 0.00001) are saved
-  along with their corresponding identification numbers, i.e., their GenBank accession numbers, which will be used later to get the whole sequence from the GenBank database in a dedicated library within the ``physcraper'' folder, allowing for secondary analyses to run significantly faster.
+  along with their corresponding identification numbers, i.e., their GenBank accession numbers, which will be used later to get the whole sequence from the GenBank database into a dedicated library within the ``physcraper'' folder, allowing for secondary analyses to run significantly faster.
 \item
-  BLAST result sequences will be discarded if they fall outside a default minimum and maximum length of 80\% and 120\%, respectively, of the average length (gaps dropped) of sequences in the checked alignment.
+  BLAST result sequences will be discarded if they fall outside a default minimum and maximum length of 80\% and 120\%, respectively, of the average length without gaps of sequences in the checked alignment.
   This filtering guarantees the exclusion of whole genome sequences.
 \item
   All accepted sequences up to this point are assigned an internal identifier, and are further filtered.
@@ -305,7 +305,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \item
   To speed up future runs, accepted sequences are downloaded in full, and stored in a local directory (default to ``physcraper/taxonomy'' folder) that is globally accessible to users.
 \item
-  New seqeunces that pass all filtering steps are added to the ``csv'' taxon summary file.
+  New sequences passing all filtering steps are added to the ``csv'' taxon summary file.
 \item
   A ``fasta'' file containing all new filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
 \end{itemize}
@@ -324,11 +324,11 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
   is used as a template to align the new sequences. This ensures that the final alignment
   follows the homology criteria established by the original alignment.
 \item
-  The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for alignment processing EXAMPLES OF SUCH TOOLS.
+  The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for automatic alignment processing (Castresana \protect\hyperlink{ref-castresana2000selection}{2000}, \protect\hyperlink{ref-castresana2002gblocks}{2002}).
 \item
-  While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the siftware and the manually curated aligment will be ideal. Versioning alignments and adding them to a global database is a next step for us!
+  While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the software and the manually curated alignment will be ideal. Versioning alignments and adding them to a global database is a next step for us!
 \item
-  Users may also use Physcraper to gather matched sequences only, and apply their own preferred alignment and phylogenetic inference methods.
+  Users may also use Physcraper to only gather new GenBank sequences, to then apply their own preferred alignment and phylogenetic inference methods.
 \end{itemize}
 
 \hypertarget{tree-reconstruction-and-comparison}{%
@@ -472,6 +472,12 @@ Benson, D.A., Karsch-Mizrachi, I., Lipman, D.J., Ostell, J., Rapp, B.A. \& Wheel
 
 \leavevmode\hypertarget{ref-camacho2009blast}{}%
 Camacho, C., George, C., Vahram, A., Ning, M., Jason, P., Kevin, B. \& Thomas, L. (2009). BLAST+: Architecture and applications. \emph{BMC bioinformatics}, \textbf{10}, 421.
+
+\leavevmode\hypertarget{ref-castresana2002gblocks}{}%
+Castresana, J. (2002). GBLOCKS: Selection of conserved blocks from multiple alignments for their use in phylogenetic analysis. \emph{Version 0.91 b. Copyrighted by J. Castresana, EMBL}.
+
+\leavevmode\hypertarget{ref-castresana2000selection}{}%
+Castresana, J. (2000). Selection of conserved blocks from multiple alignments for their use in phylogenetic analysis. \emph{Molecular biology and evolution}, \textbf{17}, 540--552.
 
 \leavevmode\hypertarget{ref-cock2009biopython}{}%
 Cock, P.J., Antao, T., Chang, J.T., Chapman, B.A., Cox, C.J., Dalke, A., Friedberg, I., Hamelryck, T., Kauff, F., Wilczynski, B. \& others. (2009). Biopython: Freely available python tools for computational molecular biology and bioinformatics. \emph{Bioinformatics}, \textbf{25}, 1422--1423.
