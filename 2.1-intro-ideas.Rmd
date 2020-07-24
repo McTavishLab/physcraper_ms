@@ -4,6 +4,8 @@ THEN TELL THEM WHAT YOU JUST TOLD THEM
 
 
 over 217 million DNA sequences [(release number 238; June 15, 2020)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt)
+Data of number of nodes in the NCBI taxonomy can be found in their [homepage](https://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/index.cgi?chapter=statistics&?&uncultured=hide&unspecified=hide&m=0)
+In 2020 it has 668 929 taxa below spp, 474 760 species.
 
 This in turns covers about 10% of extant described biodiversity [taking a conservative estimate of extant diversity; @scott2011ncbi; @federhen2003taxonomy].
 

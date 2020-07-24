@@ -13,7 +13,7 @@ output:
 ---
 
 1. Phylogenies are a key part of research in many areas of biology. Tools that automatize
-some parts of the process of phylogenetic reconstruction (mainly character matrix construction)
+some parts of the process of phylogenetic reconstruction, mainly molecular character matrix assembly,
 have been developed for the advantage of both specialists in the field of phylogenetics and nonspecialists.
 However, interpretation of results, comparison with previously available phylogenetic
 hypotheses, and choosing of one phylogeny for downstream analyses and discussion still impose difficulties

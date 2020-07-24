@@ -1,0 +1,74 @@
+Phylogenetic estimates of evolutionary relationships capture the shared history of
+living organisms, and provide key context for all our biological observations.
+Public biological databases constitute an amazing resource for evolutionary estimation,
+but a large portion of publicly available molecular data has never been incorporated into any public phylogenetic estimate.
+
+
+Connecting new sequence data with existing estimates of evolutionary relationships is a challenge
+largely because taxonomy across databases is not consistent.
+
+
+Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide key context for all our biological observations.
+Public biological databases constitute an amazing resource for evolutionary estimation, but a large portion of molecular data publicly available has never been incorporated into any phylogenetic estimate.
+
+GenBank, the USA National Center for Biodiversity Information (NCBI) molecular database, release number 159 (April 15, 2007) hosted 72 million DNA sequences that were gauged to have the potential to resolve phylogenetic relationships of most of its 241 000 distinct taxa [about `r round(236023/240708, digits=4)*100`% of taxa in the NCBI taxonomy release 159; @sanderson2008phylota].
+Currently, estimates of phylogenetic relationships are publicly available for about 100 000 taxa only [@piel2009treebase; @hinchliff2015synthesis; @opentreeoflife2019synth], representing less than half of the taxonomic diversity with phylogenetically informative sequence data available in GenBank more than a decade ago.
+
+The discrepancy between molecular data availability and phylogenetic estimates can be partially explained by the many phylogenies that are generated and published and not shared publicly in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context.
+
+We address this gap by extending existing phylogenetic estimates with publicly available sequence data.  By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees using loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
+The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
+These automated trees can provide a quick inference of potential relationships, of problems in the taxonomic assignments of sequences, and flag areas of potential systematic interest.
+
+Physcraper leverages public phylogenetic data stored in Open Tree of Life and in TreeBase.
+The Open Tree of Life (OpenTree from now on https://opentreeoflife.github.io/) is a project that unites phylogenetic inferences and taxonomy to provide a synthetic estimate of species relationships across the entire tree of life.
+OpenTree aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
+This "synthetic" tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
+
+The Open Tree of Life data store, the [Phylesystem](https://academic.oup.com/bioinformatics/article/31/17/2794/183373), contains more than 4,500 phylogenetic trees from published studies.
+The tips in these trees are mapped to a unified taxonomy, which makes these data searchable in a phylogenetically explicit way.
+This provides a resource for finding existing estimates of phylogenetic relationships,
+and assessing which regions of the tree of life are lacking available phylogenetic estimates.
+
+By linking molecular data, available from databases such as the GenBank [@benson2000genbank; @wheeler2000database], to alignments and phylogenies, available in
+the TreeBASE repository [@piel2009treebase] and OpenTree's Phylesystem, we can place new biological data in an evolutionary context.
+
+ARGUMENT - GENES ARE STILL USEFUL IN THE GENOMICS ERA, AND HERE'S WHY:
+GENOMIC MARKERS SUCH AS RADSEQ, SNP, MISCROSATS AND UCES - ARE HOMOLOGY HYPOTHESIS THE SAME ON THESE MARKERS THAN FOR PROTEIN CODING AND NON CODING LOCI?
+WHAT ARE THE PROS AND CONS OF USING GENE ALIGNMENTS ONLY AND NOT GENOMIC MARKERS?
+Martha: Genomic data is not available for a large number of taxa.
+While the focus on single locus and gene sequence alignments could appear backwards-looking, in the age of genomics, single locus data has a lot to offer phylogenetics.
+One major challenge of inferring phylogenies from genome scale data is inference of homology, and acquiring homologous data across divergent species.
+Different research questions call for on different approaches to genomic sequencing, from whole genomes, to transcriptomes, to RadSeq, SNP, mirosats and UCE's.
+This variety of approaches results in non-overlapping data sets across taxa.
+Even when the same sequencing approach is applied, such as RadSeq, phylogenetic distance can cause allelic dropout at deeper divergences [@eaton2016misconceptions]
+In contrast, single locus sequencing generates homologous data across large phylogenetic scales.
+
+
+Indeed, some systematics support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
+Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving; ROJAS ET AL. bats paper, take citations from there].
+It has also been suggested that manual curation of locus alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments [@fragoso2017pilot].
+
+A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine-grained curation from human experts) is to rely on published manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
+
+In leveraging existing homology statements in the form of alignments, this approach differs from existing approaches that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction ("phylogenetic pipelines") such as PHYLOTA [@sanderson2008phylota], PHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward].
+Physcraper shares a similar conceptual framework to Pumper [@izquierdo2014pumper], but that software is not currently supported or developed (*or runnable at all honestly...*)
+
+Data input availability:
+As of April 2014, the TreeBASE repository hosted about 8 200 curated alignments, providing information on evolutionary relationships of around 100 000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.).
+This database provides an untapped source of valuable expert knowledge with the potential to update phylogenetic relationships in several different regions of the tree of life.
+
+The Phylesystem (OpenTree's datastore) [@mctavish2015phylesystem] automatically incorporates phylogenies from TreeBASE, and saves metadata linking the original tree to its corresponding alignment repository in TreeBASE. If there are multiple alignments, TreeBASE does not always indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
+
+Often, linking data in an original alignment with its corresponding phylogeny has to be done by a human curator.
+Moreover, different data repositories follow different systems for taxon and study identification, posing a real challenge to automatically link data from across databases that belong to the same taxon and study.
+OpenTree's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., MORE EXAMPLES OF DATABASES providing a way to automatically link data from different databases.
+
+Physcraper is a Python encoded pipeline designed to update previously known phylogenetic relationships in a continuous manner, by connecting phylogenies stored in the OpenTree Phylesystem with alignments from TreeBASE and newly released DNA data from GenBank, by using the OpenTree metadata system to connect independent databases through their unique taxon identifiers, automatizing taxonomic name matching across them.
+<!-- WE COULD EXPLAIN WHY PYTHON IS BEST FOR THIS: does it help with interoperability? It is flexible enough?
+Maybe not relevant for now, so we'll keep it out-->
+By design, this approach focuses on data interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and virtually any biological database, users can perform downstream analyses straightforwardly.
+For example, it automatizes and standardizes comparison of phylogenetic hypotheses with currently known relationships from the synthetic Open Tree of Life, the Open Tree of Life taxonomy tree and any phylogeny that is stored in the
+Phylesystem.
+
+We propose Physcraper as a tool to make data connections across biological databases in a phylogenetic context for the advantage of phylogenetics and comparative biology, as well as an effort towards establishing fully reproducible workflows in phylogenetics.
