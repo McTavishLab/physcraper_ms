@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 4114
+\textbf{Word count}: 3107
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -150,66 +150,11 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 \section{Introduction}\label{introduction}}
 
 Phylogenetic estimates of evolutionary relationships capture the shared history of living organisms, and provide key context for all our biological observations.
-Public biological databases constitute an amazing resource for evolutionary estimation, but a large portion of molecular data publicly available has never been incorporated into any phylogenetic estimate.
+Public biological databases constitute an amazing resource for evolutionary estimation, but a large portion of molecular data publicly available has never been incorporated into any phylogenetic estimate. Extending existing phylogenetic estimates with DNA sequence data from molecular databases in an automatic and continuous manner is possible by generating a connection between biological databases. Here, we propose Physcraper, a tool that uses a starting tree and single locus alignment, to take advantage of existing research and extend trees using molecular data that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
+Automated trees can provide a quick inference of potential phylogenetic relationships, of problems in the taxonomic assignments of sequences, and flag areas of systematic interest.
 
-GenBank, the USA National Center for Biodiversity Information (NCBI) molecular database, release number 159 (April 15, 2007) hosted 72 million DNA sequences that were gauged to have the potential to resolve phylogenetic relationships of most of its 241 000 distinct taxa (about 98.05\% of taxa in the NCBI taxonomy release 159; Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}).
-Currently, estimates of phylogenetic relationships are publicly available for about 100 000 taxa only (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Hinchliff \emph{et al.} \protect\hyperlink{ref-hinchliff2015synthesis}{2015}; OpenTreeOfLife \emph{et al.} \protect\hyperlink{ref-opentreeoflife2019synth}{2019}), representing less than half of the taxonomic diversity with phylogenetically informative sequence data available in GenBank more than a decade ago.
-
-The discrepancy between molecular data availability and phylogenetic estimates can be partially explained by the many phylogenies that are generated and published and not shared publicly in an accesible way (Drew \emph{et al.} \protect\hyperlink{ref-drew2013lost}{2013}; Magee \emph{et al.} \protect\hyperlink{ref-magee2014dawn}{2014}; McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2018bioessay}{2017}). However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context.
-
-We address this gap by extending existing phylogenetic estimates with publicly available sequence data. By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees using loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
-The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
-These automated trees can provide a quick inference of potential relationships, of problems in the taxonomic assignments of sequences, and flag areas of potential systematic interest.
-
-Physcraper leverages public phylogenetic data stored in Open Tree of Life and in TreeBase.
-The Open Tree of Life (OpenTree from now on \url{https://opentreeoflife.github.io/}) is a project that unites phylogenetic inferences and taxonomy to provide a synthetic estimate of species relationships across the entire tree of life.
-OpenTree aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
-This ``synthetic'' tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
-
-The Open Tree of Life data store, the \href{https://academic.oup.com/bioinformatics/article/31/17/2794/183373}{Phylesystem}, contains more than 4,500 phylogenetic trees from published studies.
-The tips in these trees are mapped to a unified taxonomy, which makes these data searchable in a phylogenetically explicit way.
-This provides a resource for finding existing estimates of phylogenetic relationships,
-and assessing which regions of the tree of life are lacking available phylogenetic estimates.
-
-By linking molecular data, available from databases such as the GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), to alignments and phylogenies, available in
-the TreeBASE repository (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}) and OpenTree's Phylesystem, we can place new biological data in an evolutionary context.
-
-ARGUMENT - GENES ARE STILL USEFUL IN THE GENOMICS ERA, AND HERE'S WHY:
-GENOMIC MARKERS SUCH AS RADSEQ, SNP, MISCROSATS AND UCES - ARE HOMOLOGY HYPOTHESIS THE SAME ON THESE MARKERS THAN FOR PROTEIN CODING AND NON CODING LOCI?
-WHAT ARE THE PROS AND CONS OF USING GENE ALIGNMENTS ONLY AND NOT GENOMIC MARKERS?
-Martha: Genomic data is not available for a large number of taxa.
-While the focus on single locus and gene sequence alignments could appear backwards-looking, in the age of genomics, single locus data has a lot to offer phylogenetics.
-One major challenge of inferring phylogenies from genome scale data is inference of homology, and acquiring homologous data across divergent species.
-Different research questions call for on different approaches to genomic sequencing, from whole genomes, to transcriptomes, to RadSeq, SNP, mirosats and UCE's.
-This variety of approaches results in non-overlapping data sets across taxa.
-Even when the same sequencing approach is applied, such as RadSeq, phylogenetic distance can cause allelic dropout at deeper divergences (Eaton \emph{et al.} \protect\hyperlink{ref-eaton2016misconceptions}{2016})
-In contrast, single locus sequencing generates homologous data across large phylogenetic scales.
-
-Indeed, some systematics support a classic phylogenetics approach (few markers thoughtfully curated) over the genomics approach (a massive amount of DNA markers that will overcome potential errors in the alignment coming from a lack of human curation).
-Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships {[}Song \emph{et al.} (\protect\hyperlink{ref-song2012resolving}{2012}); ROJAS ET AL. bats paper, take citations from there{]}.
-It has also been suggested that manual curation of locus alignments produces better phylogenetic reconstructions and this has been demonstrated for genomic alignments (Fragoso-Martínez \emph{et al.} \protect\hyperlink{ref-fragoso2017pilot}{2017}).
-
-A way to incorporate the best of two worlds (massive amounts of newly released molecular data AND fine-grained curation from human experts) is to rely on published manually curated homology hypotheses as ``jump-start'' alignments (Morrison \protect\hyperlink{ref-morrison2006multiple}{2006}). This expert-curated alignments can be continuously enriched and updated by incorporating newly released data from public molecular databases.
-
-In leveraging existing homology statements in the form of alignments, this approach differs from existing approaches that automatize the assembly of DNA alignments from the GenBank database for phylogenetic reconstruction (``phylogenetic pipelines'') such as PHYLOTA (Sanderson \emph{et al.} \protect\hyperlink{ref-sanderson2008phylota}{2008}), PHLAWD (Smith \emph{et al.} \protect\hyperlink{ref-smith2009mega}{2009}), and SUPERSMART (Antonelli \emph{et al.} \protect\hyperlink{ref-antonelli2017toward}{2017}).
-Physcraper shares a similar conceptual framework to Pumper (Izquierdo-Carrasco \emph{et al.} \protect\hyperlink{ref-izquierdo2014pumper}{2014}), but that software is not currently supported or developed (\emph{or runnable at all honestly\ldots{}})
-
-Data input availability:
-As of April 2014, the TreeBASE repository hosted about 8 200 curated alignments, providing information on evolutionary relationships of around 100 000 distinct taxa \href{https://www.treebase.org/treebase-web/home.html\#:~:text=TreeBASE\%20is\%20produced\%20and\%20governed,mapped\%20to\%20104\%2C593\%20distinct\%20taxa.}{(see TreeBASE's website about)}.
-This database provides an untapped source of valuable expert knowledge with the potential to update phylogenetic relationships in several different regions of the tree of life.
-
-The Phylesystem (OpenTree's datastore) (McTavish \emph{et al.} \protect\hyperlink{ref-mctavish2015phylesystem}{2015}) automatically incorporates phylogenies from TreeBASE, and saves metadata linking the original tree to its corresponding alignment repository in TreeBASE. If there are multiple alignments, TreeBASE does not always indicate how they were used to generate the tree. This provides a loose means of linking the tree with the exact alignment that generated it.
-
-Often, linking data in an original alignment with its corresponding phylogeny has to be done by a human curator.
-Moreover, different data repositories follow different systems for taxon and study identification, posing a real challenge to automatically link data from across databases that belong to the same taxon and study.
-OpenTree's metadata system incorporates taxon identifiers from a variety of taxonomies and repositories, including the NCBI taxonomy, GBIF, etc., MORE EXAMPLES OF DATABASES providing a way to automatically link data from different databases.
-
-Physcraper is a Python encoded pipeline designed to update previously known phylogenetic relationships in a continuous manner, by connecting phylogenies stored in the OpenTree Phylesystem with alignments from TreeBASE and newly released DNA data from GenBank, by using the OpenTree metadata system to connect independent databases through their unique taxon identifiers, automatizing taxonomic name matching across them.
-By design, this approach focuses on data interoperability. By automating taxonomic name matching across NCBI, OpenTree, GBIF and virtually any biological database, users can perform downstream analyses straightforwardly.
-For example, it automatizes and standardizes comparison of phylogenetic hypotheses with currently known relationships from the synthetic Open Tree of Life, the Open Tree of Life taxonomy tree and any phylogeny that is stored in the
-Phylesystem.
-
-We propose Physcraper as a tool to make data connections across biological databases in a phylogenetic context for the advantage of phylogenetics and comparative biology, as well as an effort towards establishing fully reproducible workflows in phylogenetics.
+One of the main challenges in connecting data from disparate biological databases is the prevalence of taxonomic idiosincracies across databases. To standardize taxonomic names, a unified taxonomy is necessary. The main aim of the Open Tree of Life (OpenTree from now on) project
+is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. This ``synthetic'' tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the rest of taxa are placed in the tree based on their taxonomic assignment. For this goal, OpenTree unifies taxonomy from various databases (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}) such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the Global biodiversity Information Facility (GBIF) (Secretariat \protect\hyperlink{ref-secretariat2017gbif}{2017}), the Encyclopedia of Life (EOL) (Wilson \protect\hyperlink{ref-wilson2003encyclopedia}{2003}), etc., providing a key resource that can be used to connect data from all the aforementioned databases to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
 
 \hypertarget{the-physcraper-framework}{%
 \section{The Physcraper framework}\label{the-physcraper-framework}}
@@ -245,7 +190,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
   or through the TreeBASE GitHub repository (SuperTreeBASE; \href{https://github.com/TreeBASE/supertreebase}{github.com/TreeBASE/supertreebase}).
   If the alignment is on another repository, or constitutes personal data, a path to a local copy of the alignment has to be provided.
 \item
-  When dealing with single locus alignments, they sometimes have fewer taxa than the tree inferred from concatenated data, simply because a single molecular marker usually does not cover all the taxa sampled for phylogenetic analysis. Physcraper prunes the input tree to taxa found in the alignment, and verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its corresponding sequence in the alignment) is needed to continue the algorithm. See next section.
+  Single locus alignments sometimes have fewer taxa than the tree inferred from the full concatenated data, simply because a single molecular marker usually does not cover all the taxa sampled for the full phylogenetic analysis. Physcraper prunes the input tree to taxa found in the alignment, and verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its corresponding sequence in the alignment) is needed to continue the algorithm. See next section.
 \item
   A summary ``csv'' file with the results from the taxon name standardization and pruning is produced for the user.
 \item
@@ -264,7 +209,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
   If none is provided, then the search taxon is automatically set using the taxa in the input tree labeled as the ``ingroup'' (Fig. \ref{fig:framework}).
   The search taxon is The Most Recent Common Ancestor (MRCA) of the ingroup taxa in the OpenTree synthetic tree, that is also a named clade in the NCBI taxonomy.
   This is known in the OpenTree as the Most Recent Common
-  Ancestral Taxon (MRCAT; also referred as the Least Inclusive Common Ancestral taxon - LICA) \emph{I looked for a citation but it seems that it is a concept used on the open tree of life API wikis only}.
+  Ancestral Taxon (MRCAT; also referred as the Least Inclusive Common Ancestral taxon - LICA).
   The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the synthetic tree.
   To identify the MRCAT of a group of taxon names, we use the OpenTree \href{https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3\#mrca}{taxonomic tool v3} (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}).
 
@@ -323,7 +268,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
   is used as a template to align the new sequences. This ensures that the final alignment
   follows the homology criteria established by the original alignment.
 \item
-  The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for automatic alignment processing (Castresana \protect\hyperlink{ref-castresana2000selection}{2000}, \protect\hyperlink{ref-castresana2002gblocks}{2002}).
+  The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for automatic alignment processing (e.g., GBlocks; Castresana \protect\hyperlink{ref-castresana2000selection}{2000}, \protect\hyperlink{ref-castresana2002gblocks}{2002}).
 \item
   While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the software and the manually curated alignment will be ideal.
 \item
@@ -352,7 +297,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \item
   For the conflict analysis to be meaningful, the root of the tree needs to be accurately defined.
 \item
-  A suggested default rooting based on OpenTree's taxonomy is implemented for now. This approach uses the taxon labels for all the tips in the updated tree, pulls an inferred subtree from OpenTree's taxonomy and then applies the same rooting to the inferred updated tree. However, if the updated tree changes expectations from taxonomy, the root may no longer be appropriate. Automatic identification of a phylogenetic tree root is indeed a difficult problem that has not been solved yet. The best way right now is for users to define outgroup directly on the updated tree, so trees are accurately rooted. \emph{It would be a nice addiion to have users give the output of the input tree as an argument at some point, or maybe we could add a super outgroup at random based on the search taxon}
+  A suggested default rooting based on OpenTree's taxonomy is implemented for now. This approach uses the taxon labels for all the tips in the updated tree, pulls an inferred subtree from OpenTree's taxonomy and then applies the same rooting to the inferred updated tree. However, if the updated tree changes expectations from taxonomy, the root may no longer be appropriate. Automatic identification of a phylogenetic tree root is indeed a difficult problem that has not been solved yet. The best way right now is for users to define outgroup directly on the updated tree, so trees are accurately rooted.
 \end{itemize}
 
 \hypertarget{examples}{%
@@ -365,7 +310,7 @@ A tutorial as well as illustrated examples of commands for every step needed to 
 \subsection{The hollies}\label{the-hollies}}
 
 A student is interested in the genus \emph{Ilex}, the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
-The genus encompasses between 400-600 living species. A review of literature (google scholar search for ``ilex phylogeny'') reveals that there are several published phylogenetic trees showing relationships within the hollies (CUÉNOUD \emph{et al.} \protect\hyperlink{ref-cuenoud2000molecular}{2000}; Setoguchi \& Watanabe \protect\hyperlink{ref-setoguchi2000intersectional}{2000}; Selbach-Schnadelbach \emph{et al.} \protect\hyperlink{ref-selbach2009new}{2009}; Manen \emph{et al.} \protect\hyperlink{ref-manen2010history}{2010}), but only two have their data available publicly (Gottlieb \emph{et al.} \protect\hyperlink{ref-gottlieb2005molecular}{2005}; Yao \emph{et al.} \protect\hyperlink{ref-yao2020phylogeny}{2020}).
+The genus encompasses between 400-600 living species. A review of literature (google scholar search for ``ilex phylogeny'') reveals that there are several published phylogenetic trees showing relationships within the hollies (Cuénoud \emph{et al.} \protect\hyperlink{ref-cuenoud2000molecular}{2000}; Setoguchi \& Watanabe \protect\hyperlink{ref-setoguchi2000intersectional}{2000}; Selbach-Schnadelbach \emph{et al.} \protect\hyperlink{ref-selbach2009new}{2009}; Manen \emph{et al.} \protect\hyperlink{ref-manen2010history}{2010}), but only two have their data available publicly (Gottlieb \emph{et al.} \protect\hyperlink{ref-gottlieb2005molecular}{2005}; Yao \emph{et al.} \protect\hyperlink{ref-yao2020phylogeny}{2020}).
 Gottlieb \emph{et al.} (\protect\hyperlink{ref-gottlieb2005molecular}{2005}) made tree and alignment data available in TreeBASE. The tree sampling 48 species was integrated to the OpenTree Phylesystem and is part of OpenTree's synthetic tree.
 The most recent \emph{Ilex} tree from Yao \emph{et al.} (\protect\hyperlink{ref-yao2020phylogeny}{2020}) has been made available in the OpenTree Phylesystem and in the DRYAD repository. It is the best sampled yet for the genus, with 200 species. However, it has not been added to OpenTree's synthtetic tree yet.
 This makes it a perfect case to test the basic functionalities of Physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree should at least contain the same species sampled in the largest tree.
@@ -463,9 +408,6 @@ Altschul, S.F., Gish, W., Miller, W., Myers, E.W. \& Lipman, D.J. (1990). Basic 
 \leavevmode\hypertarget{ref-altschul1997gapped}{}%
 Altschul, S.F., Madden, T.L., Schäffer, A.A., Zhang, J., Zhang, Z., Miller, W. \& Lipman, D.J. (1997). Gapped blast and psi-blast: A new generation of protein database search programs. \emph{Nucleic acids research}, \textbf{25}, 3389--3402.
 
-\leavevmode\hypertarget{ref-antonelli2017toward}{}%
-Antonelli, A., Hettling, H., Condamine, F.L., Vos, K., Nilsson, R.H., Sanderson, M.J., Sauquet, H., Scharn, R., Silvestro, D., Töpel, M. \& others. (2017). Toward a self-updating platform for estimating rates of speciation and migration, ages, and relationships of taxa. \emph{Systematic Biology}, \textbf{66}, 152--166.
-
 \leavevmode\hypertarget{ref-benson2000genbank}{}%
 Benson, D.A., Karsch-Mizrachi, I., Lipman, D.J., Ostell, J., Rapp, B.A. \& Wheeler, D.L. (2000). GenBank. \emph{Nucleic acids research}, \textbf{28}, 15--18.
 
@@ -482,19 +424,10 @@ Castresana, J. (2000). Selection of conserved blocks from multiple alignments fo
 Cock, P.J., Antao, T., Chang, J.T., Chapman, B.A., Cox, C.J., Dalke, A., Friedberg, I., Hamelryck, T., Kauff, F., Wilczynski, B. \& others. (2009). Biopython: Freely available python tools for computational molecular biology and bioinformatics. \emph{Bioinformatics}, \textbf{25}, 1422--1423.
 
 \leavevmode\hypertarget{ref-cuenoud2000molecular}{}%
-CUÉNOUD, P., MARTINEZ, M.A.D.P., LOIZEAU, P.-A., SPICHIGER, R., ANDREWS, S. \& MANEN, J.-F. (2000). Molecular phylogeny and biogeography of the genus ilex l.(Aquifoliaceae). \emph{Annals of Botany}, \textbf{85}, 111--122.
-
-\leavevmode\hypertarget{ref-drew2013lost}{}%
-Drew, B.T., Gazis, R., Cabezas, P., Swithers, K.S., Deng, J., Rodriguez, R., Katz, L.A., Crandall, K.A., Hibbett, D.S. \& Soltis, D.E. (2013). Lost branches on the tree of life. \emph{PLoS biology}, \textbf{11}.
-
-\leavevmode\hypertarget{ref-eaton2016misconceptions}{}%
-Eaton, D.A.R., Spriggs, E.L., Park, B. \& Donoghue, M.J. (2016). Misconceptions on Missing Data in RAD-seq Phylogenetics with a Deep-scale Example from Flowering Plants. \emph{Systematic Biology}, \textbf{66}, 399--412. Retrieved from \url{https://doi.org/10.1093/sysbio/syw092}
+Cuénoud, P., Martinez, M.A. del P., Loizeay, P.-A., Spichiger, R., Andrews, S. \& Manen, J.-F. (2000). Molecular phylogeny and biogeography of the genus ilex l.(Aquifoliaceae). \emph{Annals of Botany}, \textbf{85}, 111--122.
 
 \leavevmode\hypertarget{ref-edgar2004muscle}{}%
 Edgar, R.C. (2004). MUSCLE: Multiple sequence alignment with high accuracy and high throughput. \emph{Nucleic acids research}, \textbf{32}, 1792--1797.
-
-\leavevmode\hypertarget{ref-fragoso2017pilot}{}%
-Fragoso-Martínez, I., Salazar, G.A., Martínez-Gordillo, M., Magallón, S., Sánchez-Reyes, L., Lemmon, E.M., Lemmon, A.R., Sazatornil, F. \& Mendoza, C.G. (2017). A pilot study applying the plant anchored hybrid enrichment method to new world sages (salvia subgenus calosphace; lamiaceae). \emph{Molecular Phylogenetics and Evolution}, \textbf{117}, 124--134.
 
 \leavevmode\hypertarget{ref-gottlieb2005molecular}{}%
 Gottlieb, A.M., Giberti, G.C. \& Poggio, L. (2005). Molecular analyses of the genus ilex (aquifoliaceae) in southern south america, evidence from aflp and its sequence data. \emph{American Journal of Botany}, \textbf{92}, 352--369.
@@ -502,29 +435,11 @@ Gottlieb, A.M., Giberti, G.C. \& Poggio, L. (2005). Molecular analyses of the ge
 \leavevmode\hypertarget{ref-helmus2012phylogenetic}{}%
 Helmus, M.R. \& Ives, A.R. (2012). Phylogenetic diversity--area curves. \emph{Ecology}, \textbf{93}, S31--S43.
 
-\leavevmode\hypertarget{ref-hinchliff2015synthesis}{}%
-Hinchliff, C.E., Smith, S.A., Allman, J.F., Burleigh, J.G., Chaudhary, R., Coghill, L.M., Crandall, K.A., Deng, J., Drew, B.T., Gazis, R. \& others. (2015). Synthesis of phylogeny and taxonomy into a comprehensive tree of life. \emph{Proceedings of the National Academy of Sciences}, \textbf{112}, 12764--12769.
-
-\leavevmode\hypertarget{ref-izquierdo2014pumper}{}%
-Izquierdo-Carrasco, F., Cazes, J., Smith, S.A. \& Stamatakis, A. (2014). PUmPER: Phylogenies updated perpetually. \emph{Bioinformatics}, \textbf{30}, 1476--1477.
-
-\leavevmode\hypertarget{ref-magee2014dawn}{}%
-Magee, A.F., May, M.R. \& Moore, B.R. (2014). The dawn of open access to phylogenetic data. \emph{PLoS One}, \textbf{9}.
-
 \leavevmode\hypertarget{ref-manen2010history}{}%
 Manen, J.-F., Barriera, G., Loizeau, P.-A. \& Naciri, Y. (2010). The history of extant ilex species (aquifoliaceae): Evidence of hybridization within a miocene radiation. \emph{Molecular Phylogenetics and Evolution}, \textbf{57}, 961--977.
 
-\leavevmode\hypertarget{ref-mctavish2018bioessay}{}%
-McTavish, E.J., Drew, B.T., Redelings, B. \& Cranston, K.A. (2017). How and Why to Build a Unified Tree of Life. \emph{BioEssays}, \textbf{39}. Retrieved April 10, 2018, from \url{https://onlinelibrary.wiley.com/doi/abs/10.1002/bies.201700114}
-
 \leavevmode\hypertarget{ref-mctavish2015phylesystem}{}%
 McTavish, E.J., Hinchliff, C.E., Allman, J.F., Brown, J.W., Cranston, K.A., Holder, M.T., Rees, J.A. \& Smith, S.A. (2015). Phylesystem: A git-based data store for community-curated phylogenetic estimates. \emph{Bioinformatics}, \textbf{31}, 2794--2800.
-
-\leavevmode\hypertarget{ref-morrison2006multiple}{}%
-Morrison, D.A. (2006). Multiple sequence alignment for phylogenetic purposes. \emph{Australian Systematic Botany}, \textbf{19}, 479--539.
-
-\leavevmode\hypertarget{ref-opentreeoflife2019synth}{}%
-OpenTreeOfLife, Redelings, B., Reyes, L.L.S., Cranston, K.A., Allman, J., Holder, M.T. \& McTavish, E.J. (2019). Open tree of life synthetic tree. Retrieved from \url{https://doi.org/10.5281/zenodo.3937742}
 
 \leavevmode\hypertarget{ref-piel2009treebase}{}%
 Piel, W., Chan, L., Dominus, M., Ruan, J., Vos, R. \& Tannen, V. (2009). Treebase v. 2: A database of phylogenetic knowledge. E-biosphere.
@@ -535,23 +450,17 @@ Redelings, B.D. \& Holder, M.T. (2017). A supertree pipeline for summarizing phy
 \leavevmode\hypertarget{ref-rees2017automated}{}%
 Rees, J.A. \& Cranston, K. (2017). Automated assembly of a reference taxonomy for phylogenetic data synthesis. \emph{Biodiversity Data Journal}.
 
-\leavevmode\hypertarget{ref-sanderson2008phylota}{}%
-Sanderson, M.J., Boss, D., Chen, D., Cranston, K.A. \& Wehe, A. (2008). The PhyLoTA Browser: Processing GenBank for Molecular Phylogenetics Research. \emph{Systematic Biology}, \textbf{57}, 335--346.
-
 \leavevmode\hypertarget{ref-san2010molecular}{}%
 San Mauro, D. \& Agorreta, A. (2010). Molecular systematics: A synthesis of the common methods and the state of knowledge. \emph{Cellular \& Molecular Biology Letters}, \textbf{15}, 311.
+
+\leavevmode\hypertarget{ref-secretariat2017gbif}{}%
+Secretariat, G. (2017). GBIF backbone taxonomy. \emph{Checklist Dataset {[}cited 2017 Nov 14{]}. doi}, \textbf{10}.
 
 \leavevmode\hypertarget{ref-selbach2009new}{}%
 Selbach-Schnadelbach, A., Cavalli, S.S., Manen, J.-F., Coelho, G.C. \& De Souza-Chies, T.T. (2009). New information for ilex phylogenetics based on the plastid psbA-trnH intergenic spacer (aquifoliaceae). \emph{Botanical Journal of the Linnean Society}, \textbf{159}, 182--193.
 
 \leavevmode\hypertarget{ref-setoguchi2000intersectional}{}%
 Setoguchi, H. \& Watanabe, I. (2000). Intersectional gene flow between insular endemics of ilex (aquifoliaceae) on the bonin islands and the ryukyu islands. \emph{American Journal of Botany}, \textbf{87}, 793--810.
-
-\leavevmode\hypertarget{ref-smith2009mega}{}%
-Smith, S.A., Beaulieu, J.M. \& Donoghue, M.J. (2009). Mega-phylogeny approach for comparative biology: An alternative to supertree and supermatrix approaches. \emph{BMC evolutionary biology}, \textbf{9}, 37.
-
-\leavevmode\hypertarget{ref-song2012resolving}{}%
-Song, S., Liu, L., Edwards, S.V. \& Wu, S. (2012). Resolving conflict in eutherian mammal phylogeny using phylogenomics and the multispecies coalescent model. \emph{Proceedings of the National Academy of Sciences}, \textbf{109}, 14942--14947.
 
 \leavevmode\hypertarget{ref-stamatakis2014raxml}{}%
 Stamatakis, A. (2014). RAxML version 8: A tool for phylogenetic analysis and post-analysis of large phylogenies. \emph{Bioinformatics}, \textbf{30}, 1312--1313.
@@ -570,6 +479,9 @@ Webb, C.O., Slik, J.F. \& Triono, T. (2010). Biodiversity inventory and informat
 
 \leavevmode\hypertarget{ref-wheeler2000database}{}%
 Wheeler, D.L., Chappey, C., Lash, A.E., Leipe, D.D., Madden, T.L., Schuler, G.D., Tatusova, T.A. \& Rapp, B.A. (2000). Database resources of the national center for biotechnology information. \emph{Nucleic acids research}, \textbf{28}, 10--14.
+
+\leavevmode\hypertarget{ref-wilson2003encyclopedia}{}%
+Wilson, E.O. (2003). The encyclopedia of life. \emph{Trends in Ecology \& Evolution}, \textbf{18}, 77--80.
 
 \leavevmode\hypertarget{ref-yao2020phylogeny}{}%
 Yao, X., Song, Y., Yang, J.-B., Tan, Y.-H. \& Corlett, R.T. (2020). Phylogeny and biogeography of the hollies (ilex l., aquifoliaceae). \emph{Journal of Systematics and Evolution}.

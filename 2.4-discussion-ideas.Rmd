@@ -32,3 +32,8 @@ Things that physcraper does not do:
 the ones that do not know about phylogenetic methods and the ones that might know
 about phylogenetic methods but do not know much about a certain biological group.***
 \comment(hmm yeah, I think it is probably better for the latter - phylogeneticists who are tired of blast searching :P)
+
+
+There is danger in creating a unified standard, however, in this case it provides usefulness.
+Physcraper might be overlapping/partially solving the goal of the Encyclopedia of Life:
+"the exploration and analysis of biodiversity at a vastly accelerated pace. Its momentum will return systematics from its long sojourn at the margin and back into the mainstream of science." [@wilson2003encyclopedia]

@@ -17,7 +17,7 @@ Currently, estimates of phylogenetic relationships are publicly available for ab
 The discrepancy between molecular data availability and phylogenetic estimates can be partially explained by the many phylogenies that are generated and published and not shared publicly in an accesible way [@drew2013lost; @magee2014dawn; @mctavish2018bioessay]. However, there is also a lag between the amount of new DNA data generated and the analysis of these data in a phylogenetic context.
 
 We address this gap by extending existing phylogenetic estimates with publicly available sequence data.  By using a starting tree and single locus alignment, Physcraper, takes advantage of existing research, and extends trees using loci that taxon specialists have assessed and deemed appropriate for the phylogenetic scope.
-The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree.
+<!-- The sequences added in the search are limited to a user specified taxon or monophyletic group, or within the taxonomic scope of the in-group of the starting tree. -->
 These automated trees can provide a quick inference of potential relationships, of problems in the taxonomic assignments of sequences, and flag areas of potential systematic interest.
 
 Physcraper leverages public phylogenetic data stored in Open Tree of Life and in TreeBase.
@@ -25,7 +25,7 @@ The Open Tree of Life (OpenTree from now on https://opentreeoflife.github.io/) i
 OpenTree aims to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data.
 This "synthetic" tree comprises 2.3 million tips, of which around 90,000 of those taxa are represented by phylogenetic estimates - the rest are placed in the tree based on their taxonomic names.
 
-The Open Tree of Life data store, the [Phylesystem](https://academic.oup.com/bioinformatics/article/31/17/2794/183373), contains more than 4,500 phylogenetic trees from published studies.
+The OpenTree database, the [Phylesystem](https://academic.oup.com/bioinformatics/article/31/17/2794/183373) [@mctavish2015phylesystem], stores more than 4,500 phylogenetic trees from published studies.
 The tips in these trees are mapped to a unified taxonomy, which makes these data searchable in a phylogenetically explicit way.
 This provides a resource for finding existing estimates of phylogenetic relationships,
 and assessing which regions of the tree of life are lacking available phylogenetic estimates.
