@@ -72,3 +72,6 @@ For example, it automatizes and standardizes comparison of phylogenetic hypothes
 Phylesystem.
 
 We propose Physcraper as a tool to make data connections across biological databases in a phylogenetic context for the advantage of phylogenetics and comparative biology, as well as an effort towards establishing fully reproducible workflows in phylogenetics.
+
+
+Physcraper is a Python encoded pipeline that focuses on database interoperability and provides programmatic access to the GenBank, TreeBASE and OpenTree public databases, to automatize taxonomic name matching across virtually any  biological database, so users can perform any kind of downstream analysis straightforwardly. It's main goal is to link molecular data to alignments and phylogenies, as well as other biological databases to place new biological data in an evolutionary context.
