@@ -19,14 +19,14 @@ However, interpretation of results, comparison with previously available phyloge
 hypotheses, and choosing of one phylogeny for downstream analyses and discussion still impose difficulties
 to one that is not a specialist either on phylogenetic methods or on a particular group of study.
 
-1. Physcraper is an open‐source, command-line Python program that automatizes the update of published
-phylogenies by enriching underlying gene alignments with public DNA sequence data, and linking taxonomic information across databases.
-This provides a framework for comparison of published phylogenies with their updated versions, by using the conflict Application Programming Interface (API) function of the Open Tree of Life project.
+1. Physcraper is a command-line Python program that automatizes the update of published
+phylogenies by enriching underlying gene alignments with public DNA sequence data. It builds upon tools from the Open Tree of Life project to link taxonomic information across databases, providing a framework for straightforward comparison of published phylogenies with their updated versions.
+<!-- the conflict Application Programming Interface (API) function of  the Open Tree of Life project-->
 
 1. Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
-hypotheses based on already available expert phylogenetic knowledge.
+hypotheses based on publicly available expert phylogenetic knowledge.
 Phylogeneticists and group specialists will find it useful as a tool to facilitate molecular dataset gathering and comparison
 of alternative phylogenetic hypotheses (topologies).
 
-1. We hope that the Physcraper workflow demonstrates the benefits of doing open science for phylogenetics, encouraging more researchers to strive for better sharing practices. Physcraper can be used with any OS and is released under an open source license. Detailed instructions for installation and
+1. We hope that the Physcraper workflow demonstrates the benefits of doing open science for phylogenetics, encouraging more researchers to strive for better sharing practices. Physcraper can be used with any OS and is released under an open-source license. Detailed instructions for installation and
 use are available at [https://physcraper.readthedocs](https://physcraper.readthedocs.io/en/tutorial/index.html).
