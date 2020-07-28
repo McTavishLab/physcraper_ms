@@ -20,7 +20,7 @@ Public biological databases constitute an amazing resource for evolutionary esti
 
 The prevalence of taxonomic idiosincracies across databases represent a big challenge to automatically connect data from disparate biological databases in a phylogenetic context. To standardize taxonomic names, a unified taxonomy is needed. The main aim of the Open Tree of Life (OpenTree from now on) project
 <!-- [project](https://opentreeoflife.github.io/)  -->
-is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. Currently, OpenTree's "synthetic" tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the remaining 1.4 million taxa are placed in the tree based on their taxonomic assignment. To achieve this, OpenTree unifies taxonomy from various databases [@rees2017automated] such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank [@benson2000genbank; @wheeler2000database], the Global Biodiversity Information Facility [GBIF; @secretariat2017gbif], and the Encyclopedia of Life [EOL; @wilson2003encyclopedia], providing a key resource that can be used to connect data from virtually any biological database to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
+is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. Currently, OpenTree's "synthetic" tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the remaining 1.4 million taxa are placed in the tree based on their taxonomic assignment. To achieve this, OpenTree unifies taxonomy from various databases [@rees2017automated] such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank [@benson2000genbank; @wheeler2000database], the Global Biodiversity Information Facility [GBIF; @secretariat2017gbif], and the World Register of Marine Species [WoRMS; www.marinespecies.org/], providing a key resource that can be used to connect data from virtually any biological database to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
 
 Another challenge to incorporating molecular data from public databases to update phylogenetic knowledge is assembling high-quality homology hypotheses. Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are seen as the gold standard for inferring species relationships [@song2012resolving].
 <!-- ROJAS ET AL. bats paper, take citations from there -->
@@ -43,7 +43,7 @@ It focuses on database interoperability, by automatizing taxonomic name matching
 
 # The Physcraper framework
 
-```{r framework, echo=FALSE, fig.cap="The Physcraper software is fully described on its documentation website at [physcraper.readthedocs.io](https://physcraper.readthedocs.io/en/latest/), along with installation instructions, tutorials, examples and function usage documentation.", out.width = '85%', fig.retina= 2, fig.align = "center"}
+```{r framework, echo=FALSE, fig.cap="The Physcraper software is fully described on its documentation website at physcraper.readthedocs.io, along with installation instructions, tutorials, examples and function usage documentation.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 # knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcraper/pyopensci/docs/img/schematic.svg")
 knitr::include_graphics("docs/figs/schematic.pdf")
 ```
@@ -59,8 +59,8 @@ The general Physcraper framework is shown in Figure \@ref(fig:framework). Next, 
   Mapping tip names to OpenTree's unified taxonomy saves a set of user defined characteristics
   that are essential for automatizing the phylogeny updating process. The most relevant of these is the taxonomic name mapping and the definition of ingroup and outgroup taxa, allowing to automatically set the root for the updated tree on the final steps of the pipeline. Currently, only trees connected to a published study can be stored in the Phylesystem.
   <!-- Discussion: (although there are plans to allow storage of unpublished trees). -->
-  Users can choose from among the 2950 studies that have alignments on
-  TreeBASE that are also stored in OpenTree's Phylesystem.
+  Users can choose from among the 2, 950 studies in OpenTree's Phylesystem that have alignments on
+  TreeBASE.
   <!--
   **EJM: Currently 2950 studies have treebase data links. It is possible that some/many of these have multiple trees in them, but that is harder to count.** -->
   <!-- there are `r tryCatch({rotl::tol_about()$num_source_trees}, error = function(e) {1216})` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website
@@ -73,7 +73,7 @@ The general Physcraper framework is shown in Figure \@ref(fig:framework). Next, 
   or through the TreeBASE GitHub repository (SuperTreeBASE; [github.com/TreeBASE/supertreebase](https://github.com/TreeBASE/supertreebase)).
   If the alignment is on another repository, or constitutes personal data, a path to a local copy of the alignment has to be provided.
 - Single locus alignments sometimes have fewer taxa than the tree inferred from the full concatenated data, simply because a single molecular marker usually does not cover all the taxa sampled for the full phylogenetic analysis. Physcraper prunes the input tree to taxa found in the alignment, and verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its corresponding sequence in the alignment) is needed to continue the algorithm. See next section.
-- A summary "csv" file with the results from the taxon name standardization and pruning is produced for the user.
+- A summary "csv" file with results from the taxon name standardization and pruning is produced for the user.
 - The standardized and pruned tree and alignment (checked tree and alignment from now on) are output as "newick" and "fasta" respectively in the "inputs" folder to be used in the following steps.
 
 ## DNA sequence search and filtering
@@ -106,11 +106,11 @@ The general Physcraper framework is shown in Figure \@ref(fig:framework). Next, 
   The full sequence for each match is downloaded from NCBI into a dedicated library within the "physcraper" folder, allowing for secondary analyses to run significantly faster.
 - BLAST result sequences will be discarded if they fall outside the user set min and max length cutoffs, set as proportions of the average length without gaps of sequences in the input alignment (defaults values of 80% and 120%, respectively).
   This filtering guarantees the exclusion of whole genome sequences, which create problems in multiple sequence alignment.
-  The GenBank accession numbers of sequences removed to due to not meeting e-value or length cutoffs are stored in output files.
+  The GenBank accession numbers of sequences removed due to not meeting e-value or length cutoffs are stored in output files.
 - All sequences accepted up to this point are assigned an internal identifier, and are further filtered.
-- New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they represent a different taxon in the unified taxonomy than the existing sequence or they are longer than the sequence in the original alignment.
+- New sequences that are either identical or a subset of any existing sequence in the input alignment are discarded, unless they represent a different taxon in the unified taxonomy, or they are longer than the sequence in the input alignment.
 <!-- *MK mentioned it was unclear to her if this was an NCBI or OTT taxon. I think it is the unified taxonomy, hence an OTT taxon? I think it doesn't harm to be super explicit about it*
-**EJM: It checks using the OTT taxonomy, but it practice OpenTree doesn't merge ncbi taxa, so it is both/either** -->
+**EJM: It checks using the OTT taxonomy, but in practice OpenTree doesn't merge ncbi taxa, so it is both/either** -->
 - Among the filtered sequences, there are often several representatives per taxon.
   Although it can be useful to keep some of them, for example, to investigate monophyly
   within species, there can be hundreds of exemplar sequences per taxon for some markers.
@@ -118,7 +118,7 @@ The general Physcraper framework is shown in Figure \@ref(fig:framework). Next, 
   5 sequences per taxon are chosen at random. This number is set by default but can be modified by the user.
 - All BLAST and filtering parameters can be customized by the user.
 - Reverse, complement, and reverse-complement BLAST result sequences are identified and translated using BioPython internal functions [@cock2009biopython].
-- Iterative cycles of sequence similarity search can be performed, by blasting the newly found sequences until no new sequences are found. By default only one BLAST search cycle is performed in which only sequences in the processed original alignment are blasted.
+- Iterative cycles of sequence similarity search can be performed, by blasting the newly found sequences until no new sequences are found. By default only one BLAST search cycle is performed in which only sequences in the input alignment are blasted.
 - New sequences passing all filtering steps are added to the "csv" taxon summary file.
 - A "fasta" file containing all new filtered and processed sequences resulting from the BLAST search is generated for the user, and is used as an input for alignment.
 

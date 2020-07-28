@@ -106,7 +106,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3652
+\textbf{Word count}: 3646
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -152,7 +152,7 @@ Phylogenetic estimates of evolutionary relationships capture the shared history 
 Public biological databases constitute an amazing resource for evolutionary estimation, but a large portion of molecular data publicly available has never been incorporated into any phylogenetic estimate. Extending existing phylogenetic estimates with new DNA sequence data, geographical location, fossil data, etc., in a reproducible and continuous manner is possible by automatizing connections between biological databases. Here, we propose Physcraper, a tool that uses existing phylogenetic research and data from public biological databases to update a starting tree and single locus alignments, to build upon molecular data that taxon specialists have assessed and deemed appropriate for a specific phylogenetic scope.
 
 The prevalence of taxonomic idiosincracies across databases represent a big challenge to automatically connect data from disparate biological databases in a phylogenetic context. To standardize taxonomic names, a unified taxonomy is needed. The main aim of the Open Tree of Life (OpenTree from now on) project
-is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. Currently, OpenTree's ``synthetic'' tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the remaining 1.4 million taxa are placed in the tree based on their taxonomic assignment. To achieve this, OpenTree unifies taxonomy from various databases (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}) such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the Global Biodiversity Information Facility (GBIF; Secretariat \protect\hyperlink{ref-secretariat2017gbif}{2017}), and the Encyclopedia of Life (EOL; Wilson \protect\hyperlink{ref-wilson2003encyclopedia}{2003}), providing a key resource that can be used to connect data from virtually any biological database to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
+is to construct a comprehensive, dynamic and digitally-available tree of life by synthesizing published phylogenetic trees along with taxonomic data. Currently, OpenTree's ``synthetic'' tree comprises 2.3 million tips, of which around 90,000 are represented by phylogenetic estimates - the remaining 1.4 million taxa are placed in the tree based on their taxonomic assignment. To achieve this, OpenTree unifies taxonomy from various databases (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}) such as the USA National Center for Biodiversity Information (NCBI) molecular database GenBank (Benson \emph{et al.} \protect\hyperlink{ref-benson2000genbank}{2000}; Wheeler \emph{et al.} \protect\hyperlink{ref-wheeler2000database}{2000}), the Global Biodiversity Information Facility (GBIF; Secretariat \protect\hyperlink{ref-secretariat2017gbif}{2017}), and the World Register of Marine Species {[}WoRMS; www.marinespecies.org/{]}, providing a key resource that can be used to connect data from virtually any biological database to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
 
 Another challenge to incorporating molecular data from public databases to update phylogenetic knowledge is assembling high-quality homology hypotheses. Species tree reconstructions from multi-gene data sets taking into account the multispecies coalescent model are seen as the gold standard for inferring species relationships (Song \emph{et al.} \protect\hyperlink{ref-song2012resolving}{2012}).
 While genomics have allowed us to obtain large quantities of molecular data from one organism, different research questions call for different genomic sequencing approaches, from whole genomes, to transcriptomes, restriction-site associated DNA sequencing (RADSeq), single nucleotide polymorphisms (SNPs), microsatellites, and ultra-conserved elements (UCEs).
@@ -175,7 +175,7 @@ It focuses on database interoperability, by automatizing taxonomic name matching
 
 }
 
-\caption{The Physcraper software is fully described on its documentation website at [physcraper.readthedocs.io](https://physcraper.readthedocs.io/en/latest/), along with installation instructions, tutorials, examples and function usage documentation.}\label{fig:framework}
+\caption{The Physcraper software is fully described on its documentation website at physcraper.readthedocs.io, along with installation instructions, tutorials, examples and function usage documentation.}\label{fig:framework}
 \end{figure}
 
 The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, we will describe the technical details of each step of the workflow.
@@ -190,8 +190,8 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
   This step is referred to as taxon name mapping. If taxonomic names can't be mapped, their taxonomic information will be excluded from further analysis.
   Mapping tip names to OpenTree's unified taxonomy saves a set of user defined characteristics
   that are essential for automatizing the phylogeny updating process. The most relevant of these is the taxonomic name mapping and the definition of ingroup and outgroup taxa, allowing to automatically set the root for the updated tree on the final steps of the pipeline. Currently, only trees connected to a published study can be stored in the Phylesystem.
-  Users can choose from among the 2950 studies that have alignments on
-  TreeBASE that are also stored in OpenTree's Phylesystem.
+  Users can choose from among the 2, 950 studies in OpenTree's Phylesystem that have alignments on
+  TreeBASE.
 \item
   The input alignment should be a single locus alignment that was used to generate the tree. Alignments are often stored in a public repository such as TreeBase (Piel \emph{et al.} \protect\hyperlink{ref-piel2009treebase}{2009}; Vos \emph{et al.} \protect\hyperlink{ref-vos2012nexml}{2012}),
   DRYAD (\href{http://datadryad.org/}{www.datadryad.org}), or a data repository associated with the journal where the tree was originally published.
@@ -202,7 +202,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \item
   Single locus alignments sometimes have fewer taxa than the tree inferred from the full concatenated data, simply because a single molecular marker usually does not cover all the taxa sampled for the full phylogenetic analysis. Physcraper prunes the input tree to taxa found in the alignment, and verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its corresponding sequence in the alignment) is needed to continue the algorithm. See next section.
 \item
-  A summary ``csv'' file with the results from the taxon name standardization and pruning is produced for the user.
+  A summary ``csv'' file with results from the taxon name standardization and pruning is produced for the user.
 \item
   The standardized and pruned tree and alignment (checked tree and alignment from now on) are output as ``newick'' and ``fasta'' respectively in the ``inputs'' folder to be used in the following steps.
 \end{itemize}
@@ -241,11 +241,11 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \item
   BLAST result sequences will be discarded if they fall outside the user set min and max length cutoffs, set as proportions of the average length without gaps of sequences in the input alignment (defaults values of 80\% and 120\%, respectively).
   This filtering guarantees the exclusion of whole genome sequences, which create problems in multiple sequence alignment.
-  The GenBank accession numbers of sequences removed to due to not meeting e-value or length cutoffs are stored in output files.
+  The GenBank accession numbers of sequences removed due to not meeting e-value or length cutoffs are stored in output files.
 \item
   All sequences accepted up to this point are assigned an internal identifier, and are further filtered.
 \item
-  New sequences that are identical to existing sequences, or to subsets of an existing sequence are discarded, unless they represent a different taxon in the unified taxonomy than the existing sequence or they are longer than the sequence in the original alignment.
+  New sequences that are either identical or a subset of any existing sequence in the input alignment are discarded, unless they represent a different taxon in the unified taxonomy, or they are longer than the sequence in the input alignment.
 \item
   Among the filtered sequences, there are often several representatives per taxon.
   Although it can be useful to keep some of them, for example, to investigate monophyly
@@ -257,7 +257,7 @@ The general Physcraper framework is shown in Figure \ref{fig:framework}. Next, w
 \item
   Reverse, complement, and reverse-complement BLAST result sequences are identified and translated using BioPython internal functions (Cock \emph{et al.} \protect\hyperlink{ref-cock2009biopython}{2009}).
 \item
-  Iterative cycles of sequence similarity search can be performed, by blasting the newly found sequences until no new sequences are found. By default only one BLAST search cycle is performed in which only sequences in the processed original alignment are blasted.
+  Iterative cycles of sequence similarity search can be performed, by blasting the newly found sequences until no new sequences are found. By default only one BLAST search cycle is performed in which only sequences in the input alignment are blasted.
 \item
   New sequences passing all filtering steps are added to the ``csv'' taxon summary file.
 \item
@@ -518,9 +518,6 @@ Webb, C.O., Slik, J.F. \& Triono, T. (2010). Biodiversity inventory and informat
 
 \leavevmode\hypertarget{ref-wheeler2000database}{}%
 Wheeler, D.L., Chappey, C., Lash, A.E., Leipe, D.D., Madden, T.L., Schuler, G.D., Tatusova, T.A. \& Rapp, B.A. (2000). Database resources of the national center for biotechnology information. \emph{Nucleic acids research}, \textbf{28}, 10--14.
-
-\leavevmode\hypertarget{ref-wilson2003encyclopedia}{}%
-Wilson, E.O. (2003). The encyclopedia of life. \emph{Trends in Ecology \& Evolution}, \textbf{18}, 77--80.
 
 \leavevmode\hypertarget{ref-yao2020phylogeny}{}%
 Yao, X., Song, Y., Yang, J.-B., Tan, Y.-H. \& Corlett, R.T. (2020). Phylogeny and biogeography of the hollies (ilex l., aquifoliaceae). \emph{Journal of Systematics and Evolution}.
