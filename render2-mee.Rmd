@@ -48,6 +48,7 @@ email: <`r params$email1`>
 **2. `r params$author2`**
 
 `r params$affiliation`
+
 `r params$affiliation2`
 
 email: <`r params$email2`>
