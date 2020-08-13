@@ -27,4 +27,4 @@ Phylogeneticists and group specialists will find it useful as a tool to facilita
 of alternative phylogenetic hypotheses (topologies).
 
 1. We hope the physcraper workflow demonstrates the benefits of opening results in phylogenetics and encourages researchers to strive for better data sharing practices. Physcraper can be used with any OS. Detailed instructions for installation and
-use are available at [https://physcraper.readthedocs](https://physcraper.readthedocs.io/en/tutorial/index.html).
+use are available at [physcraper.readthedocs.io](https://physcraper.readthedocs.io/).

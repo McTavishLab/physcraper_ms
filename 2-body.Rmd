@@ -150,7 +150,7 @@ The general Physcraper framework is shown in Figure \@ref(fig:framework). Next, 
 # Examples
 
 We will illustrate the utility of Physcraper in here with two use-case scenarios. One in which the user is interested in a particular group. Another one in which the user is interested in a particular phylogeny.
-A tutorial as well as illustrated examples of commands for every step needed to perform a Physcraper analysis are available elsewhere.
+A tutorial as well as illustrated examples of commands for every step needed to perform a Physcraper analysis are available in the documentation website.
 
 ## The hollies
 
@@ -160,6 +160,27 @@ The genus encompasses between 400-600 living species. A review of literature (go
 <!-- The second tree has not been made available anywhere, not even in the supplementary data of the original publication. -->
 The most recent *Ilex* tree from @yao2020phylogeny has been made available in the OpenTree Phylesystem and in the DRYAD repository. It is the best sampled yet for the genus, with 200 species. However, it has not been added to OpenTree's synthtetic tree yet.
 This makes it a perfect case to test the basic functionalities of Physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree should at least contain the same species sampled in the largest tree.
+
+<!-- ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
+wget -O docs/figs/ilex-plot-tips-and-branches-1.png https://raw.githubusercontent.com/McTavishLab/physcraperex/master/docs/articles/ilex_files/figure-html/plot-tips-and-branches-1.png
+``` -->
+
+```{r ilex-updated-tree, echo=FALSE, fig.cap="A phylogenetic tree is the main result of a Physcraper analysis. In this example, Physcraper updated an alignment of 48 samples of the genus Ilex from Gottlieb et al. 2005 (black tips) and added 222 new samples from the GenBank database (red tips), corresponding to 78 new taxa, aligned the new seqeunces to the original alignment using MUSCLE and performed the phylogenetic reconstruction using RAxML.", out.width = '100%', fig.retina= 2}
+
+knitr::include_graphics("docs/figs/ilex-plot-tips-and-branches-1.png")
+
+```
+
+The Physcraper updated tree has 57 original tips, representing 51 unique OTT taxa, and 222 new tips representing 78 new OTT taxa added to the original tree.
+
+It has THIS many resolved nodes, and THIS MANY nodes with bootsrap values above 95%
+
+The original tree has THIS MANY resolved nodes
+
+The alignments have THIS MANY columns and THIS AMOUNT of missing data.
+
+
+
 
 DESCRIBE RESULTS: SUMMARY OF NEW TAXA FOUND RELATIVE TO ORIGINAL TREE AND RELATIVE TO OpenTree
 RF DISTANCE INTERPRETATION
@@ -224,7 +245,7 @@ and rapidly generate custom species trees for downstream analyses [@stoltzfus201
 # Acknowledgements
 
 Research was supported by the grant "Sustaining the Open Tree of Life", National Science Foundation ABI No. 1759838, and ABI No. 1759846.
-Compute time was provided by the Multi-Environment Research Computer for Exploration and Discovery (MERCED) cluster from the University of California, Merced (UCM), supported by the NSF Grant No. ACI-1429783.
+Computer time was provided by the Multi-Environment Research Computer for Exploration and Discovery (MERCED) cluster from the University of California, Merced (UCM), supported by the NSF Grant No. ACI-1429783.
 
 We thank members of the "short bar" Science and Engineering Building 1, University of California Merced, joint lab paper discussion meeting for valuable comments on a first version of this manuscript.
 
