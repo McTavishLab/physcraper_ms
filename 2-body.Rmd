@@ -62,7 +62,7 @@ The general Physcraper framework is depicted in Figure \@ref(fig:framework). Bri
   Physcraper saves a summary "csv" file with results from the taxon name standardization for advantage of the user.
   If taxon names can't be mapped, their taxonomic information can't be used in comparison analysis. They will still be used in the sequence search and phylogenetic reconstruction steps.
   Mapping tip names to OpenTree's unified taxonomy saves a set of user defined characteristics
-  that are essential for automatizing the phylogeny updating process. The most relevant of these is the standardized taxonomic names and the definition of ingroup and outgroup taxa, allowing to automatically set the root for the updated tree on the final steps of the pipeline. 
+  that are essential for automatizing the phylogeny updating process. The most relevant of these is the standardized taxonomic names and the definition of ingroup and outgroup taxa, allowing to automatically set the root for the updated tree on the final steps of the pipeline.
   <!-- Discussion: (although there are plans to allow storage of unpublished trees). -->
 
   <!--
@@ -151,14 +151,15 @@ The general Physcraper framework is depicted in Figure \@ref(fig:framework). Bri
 
 # Example: The hollies
 
-We will illustrate the utility of Physcraper in here with one use-case scenario in which a user is interested in a particular group, e.g., the genus *Ilex*, encompassing between 400-600 living species, is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants, commonly known as "hollies".
-A tutorial as well as illustrated examples of commands implementation on every step of the Physcraper workflow are available in the documentation website.
+To illustrate the utility of Physcraper we will use a scenario in which a user is interested in a particular group, e.g., the genus *Ilex*, which encompasses between 400-700 living species, and is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants, commonly known as "hollies".
 
-A review of literature (google scholar search for "ilex phylogeny") reveals that there are several published phylogenetic trees showing relationships within the hollies [@cuenoud2000molecular; @manen2010history; @setoguchi2000intersectional; @selbach2009new], but only two have their data available publicly [@gottlieb2005molecular; @yao2020phylogeny].
-@gottlieb2005molecular made tree and alignment data available in TreeBASE. The tree sampling 48 species was integrated to the OpenTree Phylesystem and is part of OpenTree's synthetic tree.
+An online literature review in June 2020 (google scholar search for "ilex phylogeny") reveals that there are several published phylogenetic trees showing relationships within the hollies [@cuenoud2000molecular; @manen2010history; @setoguchi2000intersectional; @selbach2009new], but only two have their data available publicly [@gottlieb2005molecular; @yao2020phylogeny].
+@gottlieb2005molecular made original tree and alignment data available in TreeBASE. The "Gottlieb2005" tree sampling 48 species was added to the [OpenTree Phylesystem](https://tree.opentreeoflife.org/curator/study/edit/pg_2827/?tab=home) and its information has been integrated into [OpenTree's synthetic tree](https://devtree.opentreeoflife.org/opentree/opentree12.3@mrcaott68451ott89474/Ilex-theizans--Ilex-dumosa).
 <!-- The second tree has not been made available anywhere, not even in the supplementary data of the original publication. -->
-The most recent *Ilex* tree from @yao2020phylogeny has been made available in the OpenTree Phylesystem and in the DRYAD repository. It is the best sampled yet for the genus, with 200 species. However, it has not been added to OpenTree's synthtetic tree yet.
-This makes it a perfect case to test the basic functionalities of Physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree should at least contain the same species sampled in the largest tree.
+The most recent *Ilex* tree from @yao2020phylogeny, has been made available in the [OpenTree Phylesystem](https://tree.opentreeoflife.org/curator/study/view/ot_1984) and in the [DRYAD repository](https://datadryad.org/stash/dataset/doi:10.5061/dryad.k0p2ngf4x). The "Yao2020" tree, is the best sampled phylogenetic tree yet available for the hollies, with 175 tips.
+<!-- However, it has not been added to OpenTree's synthtetic tree yet. -->
+This makes it a great case to highlight the basic functionalities of Physcraper: we know that the sequences of the Yao2020 tree have been made available on the GenBank database. Hence, we expect that updating the Gottlieb2005 tree should at least recover the same species sampled in the Yao2020 tree.
+A tutorial as well as illustrated examples of functions implementated on each step of the Physcraper framework are available in the documentation website.
 
 <!-- ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
 wget -O docs/figs/ilex-plot-tips-and-branches-1.png https://raw.githubusercontent.com/McTavishLab/physcraperex/master/docs/articles/ilex_files/figure-html/plot-tips-and-branches-1.png
@@ -189,18 +190,6 @@ ML ESTIMATES OF UPDATED TREE VS ORIGINAL TREE
 FIGURE: FACE TO FACE ORIGINAL VS UPDATED PHYLOGENY, IN RED NEW TAXA NOT IN OpenTree.
 
 
-## The Malvaceae
-
-A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species, containing the relatives of cacao, cotton, durian and okra.
-A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the research group wants to use a particular marker they believe to be the best one to be able to solve the relationships in the group. They have been working on the alignment for a long time and they want to incorporate new data into the hypothesis of homology that they have been curating and that they trust.
-
-<!-- ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
-wget "https://raw.githubusercontent.com/McTavishLab/physcraperex/master/data-raw/malvaceae-images/cotree-plot2-1.png"
-mv cotree-plot2-1.png docs/figs/cotree-plot2-1.png
-``` -->
-```{r malvaceae, echo=FALSE, fig.cap="Comparison of original tree and tree updated with Physcraper, family Malvaceae.", out.width = '85%', fig.retina= 2, fig.align = "center"}
-knitr::include_graphics("docs/figs/cotree-plot2-1.png")
-```
 \newpage
 
 # Discussion

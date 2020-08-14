@@ -108,7 +108,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3784
+\textbf{Word count}: 3658
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -318,13 +318,13 @@ The general Physcraper framework is depicted in Figure \ref{fig:framework}. Brie
 \hypertarget{example-the-hollies}{%
 \section{Example: The hollies}\label{example-the-hollies}}
 
-We will illustrate the utility of Physcraper in here with one use-case scenario in which a user is interested in a particular group, e.g., the genus \emph{Ilex}, encompassing between 400-600 living species, is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants, commonly known as ``hollies''.
-A tutorial as well as illustrated examples of commands implementation on every step of the Physcraper workflow are available in the documentation website.
+To illustrate the utility of Physcraper we will use a scenario in which a user is interested in a particular group, e.g., the genus \emph{Ilex}, which encompasses between 400-700 living species, and is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants, commonly known as ``hollies''.
 
-A review of literature (google scholar search for ``ilex phylogeny'') reveals that there are several published phylogenetic trees showing relationships within the hollies (Cuénoud \emph{et al.} \protect\hyperlink{ref-cuenoud2000molecular}{2000}; Setoguchi \& Watanabe \protect\hyperlink{ref-setoguchi2000intersectional}{2000}; Selbach-Schnadelbach \emph{et al.} \protect\hyperlink{ref-selbach2009new}{2009}; Manen \emph{et al.} \protect\hyperlink{ref-manen2010history}{2010}), but only two have their data available publicly (Gottlieb \emph{et al.} \protect\hyperlink{ref-gottlieb2005molecular}{2005}; Yao \emph{et al.} \protect\hyperlink{ref-yao2020phylogeny}{2020}).
-Gottlieb \emph{et al.} (\protect\hyperlink{ref-gottlieb2005molecular}{2005}) made tree and alignment data available in TreeBASE. The tree sampling 48 species was integrated to the OpenTree Phylesystem and is part of OpenTree's synthetic tree.
-The most recent \emph{Ilex} tree from Yao \emph{et al.} (\protect\hyperlink{ref-yao2020phylogeny}{2020}) has been made available in the OpenTree Phylesystem and in the DRYAD repository. It is the best sampled yet for the genus, with 200 species. However, it has not been added to OpenTree's synthtetic tree yet.
-This makes it a perfect case to test the basic functionalities of Physcraper: we know that the sequences of the most recently published tree have been made available on the GenBank database. Hence, we expect that updating the oldest tree should at least contain the same species sampled in the largest tree.
+An online literature review in June 2020 (google scholar search for ``ilex phylogeny'') reveals that there are several published phylogenetic trees showing relationships within the hollies (Cuénoud \emph{et al.} \protect\hyperlink{ref-cuenoud2000molecular}{2000}; Setoguchi \& Watanabe \protect\hyperlink{ref-setoguchi2000intersectional}{2000}; Selbach-Schnadelbach \emph{et al.} \protect\hyperlink{ref-selbach2009new}{2009}; Manen \emph{et al.} \protect\hyperlink{ref-manen2010history}{2010}), but only two have their data available publicly (Gottlieb \emph{et al.} \protect\hyperlink{ref-gottlieb2005molecular}{2005}; Yao \emph{et al.} \protect\hyperlink{ref-yao2020phylogeny}{2020}).
+Gottlieb \emph{et al.} (\protect\hyperlink{ref-gottlieb2005molecular}{2005}) made original tree and alignment data available in TreeBASE. The ``Gottlieb2005'' tree sampling 48 species was added to the \href{https://tree.opentreeoflife.org/curator/study/edit/pg_2827/?tab=home}{OpenTree Phylesystem} and its information has been integrated into \href{https://devtree.opentreeoflife.org/opentree/opentree12.3@mrcaott68451ott89474/Ilex-theizans--Ilex-dumosa}{OpenTree's synthetic tree}.
+The most recent \emph{Ilex} tree from Yao \emph{et al.} (\protect\hyperlink{ref-yao2020phylogeny}{2020}), has been made available in the \href{https://tree.opentreeoflife.org/curator/study/view/ot_1984}{OpenTree Phylesystem} and in the \href{https://datadryad.org/stash/dataset/doi:10.5061/dryad.k0p2ngf4x}{DRYAD repository}. The ``Yao2020'' tree, is the best sampled phylogenetic tree yet available for the hollies, with 175 tips.
+This makes it a great case to highlight the basic functionalities of Physcraper: we know that the sequences of the Yao2020 tree have been made available on the GenBank database. Hence, we expect that updating the Gottlieb2005 tree should at least recover the same species sampled in the Yao2020 tree.
+A tutorial as well as illustrated examples of functions implementated on each step of the Physcraper framework are available in the documentation website.
 
 \begin{figure}
 \includegraphics[width=1\linewidth]{docs/figs/ilex-plot-tips-and-branches-1} \caption{A phylogenetic tree is the main result of a Physcraper analysis. In this example, Physcraper updated an alignment of 48 samples of the genus Ilex from Gottlieb et al. 2005 (black tips) and added 222 new samples from the GenBank database (red tips), corresponding to 78 new taxa, aligned the new seqeunces to the original alignment using MUSCLE and performed the phylogenetic reconstruction using RAxML.}\label{fig:ilex-updated-tree}
@@ -345,20 +345,6 @@ ML ESTIMATES OF UPDATED TREE VS ORIGINAL TREE
 
 FIGURE: FACE TO FACE ORIGINAL VS UPDATED PHYLOGENY, IN RED NEW TAXA NOT IN OpenTree.
 
-\hypertarget{the-malvaceae}{%
-\subsection{The Malvaceae}\label{the-malvaceae}}
-
-A postdoc started working with a new reserach group. They are interested in solving relationships among lineages of the Malvaceae, a family of flowering plants with almost 6 000 known species, containing the relatives of cacao, cotton, durian and okra.
-A review of the literature shows them that there are many phylogenetic trees encompassing some of the linegaes in the group. However, the head of the research group wants to use a particular marker they believe to be the best one to be able to solve the relationships in the group. They have been working on the alignment for a long time and they want to incorporate new data into the hypothesis of homology that they have been curating and that they trust.
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.85\linewidth]{docs/figs/cotree-plot2-1} 
-
-}
-
-\caption{Comparison of original tree and tree updated with Physcraper, family Malvaceae.}\label{fig:malvaceae}
-\end{figure}
 \newpage
 
 \hypertarget{discussion}{%
