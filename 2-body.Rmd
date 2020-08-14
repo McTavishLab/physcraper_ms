@@ -48,7 +48,6 @@ Physcraper is coded as a Python pipeline that focuses on data interoperability, 
 knitr::include_graphics("docs/figs/schematic.pdf")
 ```
 
-
 The general Physcraper framework is depicted in Figure \@ref(fig:framework). Briefly, it consists of 4 steps: 1) identifying and processing a phylogenetic tree to update and its underlying alignment; 2) performing a constrained BLAST search of sequences from the original alignment on the GenBank DNA database, and filtering of newly found sequences; 3) profile-aligning new sequences that passed the filtering to the original alignment; 4) performing a phylogenetic analysis and comparing the updated tree to previous phylogenetic estimates in the focus group. Next, we will describe technical details for each step.
 
 ## The inputs: a tree and an alignment
@@ -135,7 +134,7 @@ The general Physcraper framework is depicted in Figure \@ref(fig:framework). Bri
 - While curating the alignment is a critical step, it is not a reproducible one. The main reason for its lack of reproducibility might be that it is hard to track changes made on the alignment. A form of version control, to register the differences between the alignment that was produced by the software and the manually curated alignment will be ideal.
 - Users may also use Physcraper to only gather new GenBank sequences, to then apply their own preferred alignment and phylogenetic inference methods.
 
-## Tree reconstruction
+## Tree reconstruction and comparison
 
 - A Maximum Likelihood (ML) gene tree is reconstructed for each alignment provided, using the software RAxML [@stamatakis2014raxml] with default settings, such as a GTRCAT model of molecular evolution and 100 bootstrap replicates with the default algorithm. Currently only the number of bootsrap replicates can be specified by the user.
 - By default, the original tree is used as a starting tree for the ML searches. Alternatively, users can set the original tree as a full topological constraint, or ignore it completely for the searches.
