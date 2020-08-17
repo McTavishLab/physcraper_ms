@@ -150,27 +150,28 @@ The general Physcraper framework is depicted in Figure \@ref(fig:framework). Bri
 
 # Example: The hollies
 
-To illustrate the utility of Physcraper we propose a scenario in which a user is interested in a particular group, e.g., the genus *Ilex*, which encompasses between 400-700 living species, and is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants, commonly known as "hollies".
+To illustrate the utility of Physcraper we propose a scenario in which a user is interested in phylogenetic relationships within the genus *Ilex*. Commonly known as "hollies", the genus encompasses between 400-700 living species, and is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
 
 An online literature review in June 2020 (google scholar search for "ilex phylogeny") reveals that there are several published phylogenetic trees showing relationships within the hollies [@cuenoud2000molecular; @manen2010history; @setoguchi2000intersectional; @selbach2009new], but only two have their data available publicly [@gottlieb2005molecular; @yao2020phylogeny].
 @gottlieb2005molecular made original tree and alignment data available in TreeBASE. The "Gottlieb2005" tree sampling 48 species was added to the [OpenTree Phylesystem](https://tree.opentreeoflife.org/curator/study/edit/pg_2827/?tab=home) and its information has been integrated into [OpenTree's synthetic tree](https://devtree.opentreeoflife.org/opentree/opentree12.3@mrcaott68451ott89474/Ilex-theizans--Ilex-dumosa).
-<!-- The second tree has not been made available anywhere, not even in the supplementary data of the original publication. -->
+
 The most recent *Ilex* tree from @yao2020phylogeny, has been made available in the [OpenTree Phylesystem](https://tree.opentreeoflife.org/curator/study/view/ot_1984) and in the [DRYAD repository](https://datadryad.org/stash/dataset/doi:10.5061/dryad.k0p2ngf4x). The "Yao2020" tree, is the best sampled phylogenetic tree yet available for the hollies, with 175 tips.
 <!-- However, it has not been added to OpenTree's synthtetic tree yet. -->
-This makes it a great case to highlight the basic functionalities of Physcraper: we know that the sequences of the Yao2020 tree have been made available on the GenBank database. Hence, we expect that updating the Gottlieb2005 tree should at least recover the same species sampled in the Yao2020 tree.
-A tutorial as well as illustrated examples of functions implemented on each step of the framework are available in Physcraper's documentation website.
+This makes it a great case to highlight the functionalities of Physcraper and assess its limitations.
+<!-- we know that the sequences of the Yao2020 tree have been made available on the GenBank database. Hence, we expect that updating the Gottlieb2005 tree should at least recover the same species sampled in the Yao2020 tree. -->
+A tutorial as well as illustrated examples of functions implemented on each step of the analysis are available in Physcraper's documentation website.
+Figure \@ref(fig:results) shows results from updating one alignment from the Gottlieb2005 tree. It contains all 41 distinct taxa from the original Gottlieb2005 tree plus 231 new tips, contributing phylogenetic data to 84 additional taxa within *Ilex*. The tree is 99% resolved, however, a large portion of branches are negligibly small (133 branches < 0.00001 substitution rate units), appearing as unresolved nodes in the figure.
 
 <!-- ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
 wget -O docs/figs/ilex-plot-tips-and-branches-1.png https://raw.githubusercontent.com/McTavishLab/physcraperex/master/docs/articles/ilex_files/figure-html/plot-tips-and-branches-1.png
 ``` -->
 
-```{r ilex-updated-tree, echo=FALSE, fig.cap="A phylogenetic tree is the main result of a Physcraper analysis. The tree results from updating an input tree of 48 tips belonging to the genus Ilex published in Gottlieb et al. 2005 (black tips) with 222 new sequences (red tips) corresponding to 78 distinct taxa that were not sampled in the original alignment. Physcraper obtained sequences from the GenBank database via BLAST, filtered them following specified criteria, aligned them to the original alignment using MUSCLE and performed a phylogenetic reconstruction using RAxML as well as a conflict analysis", out.width = '100%', fig.retina= 2}
+```{r results, echo=FALSE, fig.cap="A phylogenetic tree is the main result of a Physcraper analysis. The tree results from updating an alignment that was used to generate a tree of 48 tips belonging to the genus Ilex published in Gottlieb et al. 2005 (black tips). Physcraper added 231 new sequences (red tips) corresponding to 84 distinct taxa that were not sampled in the original alignment. Physcraper obtained sequences from the GenBank database via BLAST, filtered them following specified criteria, aligned them to the original alignment using MUSCLE and performed a phylogenetic reconstruction using RAxML as well as a conflict analysis.", out.width = '100%', fig.retina= 2}
 
 knitr::include_graphics("docs/figs/ilex-plot-tips-and-branches-1.png")
 
 ```
 
-The Gottlieb2005 updated tree has 48 original tips, representing 45 distinct taxa, and 231 new tips representing 84 distinct taxa.
 
 It has THIS many resolved nodes, and THIS MANY nodes with bootsrap values above 95%
 
