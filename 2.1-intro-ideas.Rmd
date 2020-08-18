@@ -2,6 +2,7 @@ TELL THEM WHAT YOU ARE GONNA TELL THEM
 TELL TEHM
 THEN TELL THEM WHAT YOU JUST TOLD THEM
 
+However, if there are multiple alignments and trees, TreeBASE does not always indicate how they are connected. Hence, Phylesystem's metadata only provides a loose means of linking the tree with the exact alignment that generated it and a human curator must make the link.
 
 over 217 million DNA sequences [(release number 238; June 15, 2020)](https://ftp.ncbi.nih.gov/genbank/gbrel.txt)
 Data of number of nodes in the NCBI taxonomy can be found in their [homepage](https://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/index.cgi?chapter=statistics&?&uncultured=hide&unspecified=hide&m=0)

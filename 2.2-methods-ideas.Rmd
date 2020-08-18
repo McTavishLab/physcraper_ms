@@ -33,3 +33,10 @@ figure of unified taxonomy
 
 a table that is a snipet of the csv to show the unified taxonoy for some taxa
 also, a screen shoy of the diffeent taxon ides on opentree website works!
+
+
+**EJM: Currently 2950 studies have treebase data links. It is possible that some/many of these have multiple trees in them, but that is harder to count.**
+there are `r tryCatch({rotl::tol_about()$num_source_trees}, error = function(e) {1216})` published trees supporting the resolved nodes of the synthetic tree in the OpenTree website
+([See OpenTree's website about](https://tree.opentreeoflife.org/about/synthesis-release/v12.3)).  
+
+Alternative DNA molecular databases could be used for this purpose, either personal or public databases, such as the European Nucleotide Archive or the DNA DataBank of Japan. The code to do this with Physcraper is not yet implemented.

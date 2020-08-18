@@ -108,7 +108,7 @@ email: \href{mailto:ejmctavish@gmail.com}{\nolinkurl{ejmctavish@gmail.com}}
 
 \textbf{Running title}: Continually updated gene trees with Physcraper
 
-\textbf{Word count}: 3769
+\textbf{Word count}: 3775
 
 \textbf{Manuscript prepared for submission to Methods in Ecology and Evolution}
 
@@ -250,7 +250,7 @@ The general Physcraper framework is depicted in Figure \ref{fig:framework}. Brie
 \item
   All sequences accepted up to this point are assigned an internal identifier, and are further filtered.
 \item
-  New sequences that are either identical or a subset of any existing sequence in the input alignment are discarded, unless they represent a different taxon in the unified taxonomy, or they are longer than the sequence in the input alignment.
+  New sequences that are either identical or a subset of any existing sequence in the input alignment are discarded, unless they represent a different taxon in the OTT taxonomy or the NCBI taxonomy, or they are longer than the sequence in the input alignment.
 \item
   Among the filtered sequences, there are often several representatives per taxon.
   Although it can be useful to keep some of them, for example, to investigate monophyly
@@ -353,22 +353,22 @@ focus mainly on generating full trees \emph{de novo} for regions of the Tree of
 Life that have no phylogenetic assessment yet in published studies.
 While Physcraper does not generate phylogenies \emph{de novo} in a traditional sense,
 it successfully generates new phylogenetic knowledge, revealing the potential of pre-existing
-phylogenetic knowledge available in tree repostories to facilitate phylogenetic placement of public molecular data.
+phylogenetic knowledge available in tree repositories to facilitate phylogenetic placement of public molecular data.
 The PUMPER pipeline (Izquierdo-Carrasco \emph{et al.} \protect\hyperlink{ref-izquierdo2014pumper}{2014}) also uses the concept of updating
 pre-existing alignments to incorporate public molecular data into phylogenies. Unfortunately, installation of the tool was unsuccesful following instructions from the author, and we were unable to conduct a comparison analysis to Physcraper.
 
 As far as we know, Physcraper is the only phylogenetic pipeline that links molecular and tree data repositories.
-It can also link to various biological databases, such as GBIF, the Paleobiology Database, etc, by leveraging the integrated taxonomy from OpenTree (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}), a resource that is allowing us to reach decade-long dreams of ``exploring and analysing biodiversity at an accelerated pace, and returning systematics into the mainstream of science'' (Wilson \protect\hyperlink{ref-wilson2003encyclopedia}{2003}).
+It can also link to various biological databases, such as GBIF, the Paleobiology Database, etc, by leveraging the integrated taxonomy from OpenTree (Rees \& Cranston \protect\hyperlink{ref-rees2017automated}{2017}), a resource that is contributing to the Encyclopedia of Life main goal of ``exploring and analysing biodiversity at an accelerated pace, and returning systematics into the mainstream of science'' (Wilson \protect\hyperlink{ref-wilson2003encyclopedia}{2003}).
 
-As such, Physcraper has the potential to rapidly (in a matter of hours)
+As such, Physcraper can be used to rapidly (in a matter of hours)
 solve challenges overarching both fields of ecology and evolution, such as
 placing newly discovered species phylogenetically (Webb \emph{et al.} \protect\hyperlink{ref-webb2010biodiversity}{2010}),
 obtaining trees for ecophylogenetic studies (Helmus \& Ives \protect\hyperlink{ref-helmus2012phylogenetic}{2012}),
 sistematizing molecular (and other) databases, i.e., curating taxonomic assignations (San Mauro \& Agorreta \protect\hyperlink{ref-san2010molecular}{2010}),
 and generating custom species trees for ecological and evolutionary downstream analyses (Stoltzfus \emph{et al.} \protect\hyperlink{ref-stoltzfus2013phylotastic}{2013}).
+
 Data repositories hold more information than meets the eye.
 Besides the main data, they are rich sources of metadata that can be leveraged for the advantage of all areas of biology as well as the advancement of scientific policy and applications.
-
 Usually, initial ideas about the data are changed by new analyses.
 Ideally, new understanding of the data can be registered on databases,
 exposing newcomers to the most up to date knowledge about the data.

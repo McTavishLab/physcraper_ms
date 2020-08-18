@@ -9,6 +9,9 @@ exposing newcomers to the most up to date knowledge about the data. -->
 
 <!-- Taking advantage of public DNA data bases have been the main focus. -->
 
+Discussion: (although there are plans to allow storage of unpublished trees).
+
+
 Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
 Mention statistics provided by other tools: PhyloExplorer [@ranwez2009phyloexplorer].
 Compare and discuss.
@@ -44,3 +47,11 @@ Here, we highlight the potential of taking advantage of this careful curation wo
 
 <!-- Physcraper might be overlapping/partially solving the goal of the Encyclopedia of Life:
 "the exploration and analysis of biodiversity at a vastly accelerated pace. Its momentum will return systematics from its long sojourn at the margin and back into the mainstream of science." [@wilson2003encyclopedia] -->
+
+
+<!-- Most of them focus on efficient ways to mine the data -- getting the most homologs.
+Some focus on accurate ways of mining the data -- getting real and clean homologs.
+Others focus on refining the alignment. -->
+
+
+ <!-- *from Robert: I think you can sell the program more here. Why is it better than the other methods? You mentioned in lab meeting that its difficult to run other programs, talk about that here, talk about the speed and other advantages* -->
