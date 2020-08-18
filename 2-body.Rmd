@@ -190,41 +190,43 @@ knitr::include_graphics("docs/figs/ilex-results.png")
 
 # Discussion
 
+Data repositories designed to preserve and democratize access to biological data
+constitute an essential resource for evolutionary estimation. While data keep accumulating,
+our ability to reanalyze and incorporate new data to available knowledge is being challenged.
+
+Various phylogenetic pipelines have been designed to make sense of the vast amount of public molecular data available in different ways.
+Pipelines like Phylota [@sanderson2008phylota], PyPHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward]
+focus mainly on generating full trees *de novo* for regions of the Tree of
+Life that have no phylogenetic assessment yet in published studies.
+While Physcraper does not generate phylogenies *de novo* in a traditional sense,
+it successfully generates new phylogenetic knowledge, revealing the potential of pre-existing
+phylogenetic knowledge available in tree repostories to facilitate phylogenetic placement of public molecular data.
+The PUMPER pipeline [@izquierdo2014pumper] also uses the concept of updating
+pre-existing alignments to incorporate public molecular data into phylogenies. Unfortunately, installation of the tool was unsuccesful following instructions from the author, and we were unable to conduct a comparison analysis to Physcraper.
+
+As far as we know, Physcraper is the only phylogenetic pipeline that links molecular and tree data repositories.
+It can also link to various biological databases, such as GBIF, the Paleobiology Database, etc, by leveraging the integrated taxonomy from OpenTree [@rees2017automated], a resource that is allowing us to reach decade-long dreams of "exploring and analysing biodiversity at an accelerated pace, and returning systematics into the mainstream of science" [@wilson2003encyclopedia].
+
+As such, Physcraper has the potential to rapidly (in a matter of hours)
+solve challenges overarching both fields of ecology and evolution, such as
+placing newly discovered species phylogenetically [@webb2010biodiversity],
+obtaining trees for ecophylogenetic studies [@helmus2012phylogenetic],
+sistematizing molecular (and other) databases, i.e., curating taxonomic assignations [@san2010molecular],
+and generating custom species trees for ecological and evolutionary downstream analyses [@stoltzfus2013phylotastic].
 Data repositories hold more information than meets the eye.
-Besides the main data, they are rich sources of metadata that can be used for the advantage of all areas of biology as well as the advancement of scientific policy and applications.
+Besides the main data, they are rich sources of metadata that can be leveraged for the advantage of all areas of biology as well as the advancement of scientific policy and applications.
 
-*COMPARE WITH PERFORMANCE OF OTHER PIPELINES FOR SEQUENCE SCRAPING*
-*WHY WE DID NOT MAKE A BENCHMARK COMPARISON?*
+Usually, initial ideas about the data are changed by new analyses.
+Ideally, new understanding of the data can be registered on databases,
+exposing newcomers to the most up to date knowledge about the data.
 
-
-Many pipelines are making use of DNA data repositories in different ways.
-Most of them focus on efficient ways to mine the data -- getting the most homologs.
+<!-- Most of them focus on efficient ways to mine the data -- getting the most homologs.
 Some focus on accurate ways of mining the data -- getting real and clean homologs.
-Others focus on refining the alignment.
-Most focus on generating full trees *de novo* for regions of the Tree of
-Life that have no phylogenetic assessment yet in published studies, but also for
-regions that have already been studied and which have phylogenetic data.
-However, expert phylogenetic knowledge is also an important source of data in public
-and open repositories that is not being used to its full potential.
+Others focus on refining the alignment. -->
 
 
+ <!-- *from Robert: I think you can sell the program more here. Why is it better than the other methods? You mentioned in lab meeting that its difficult to run other programs, talk about that here, talk about the speed and other advantages* -->
 
-
-All these tools are key efforts for advancing towards reproducibility in phylogenetics,
-a field that has relied on processes which are somewhat artisanal.
-Here, we highlight the potential of taking advantage of this careful curation work in previous phylogenetic estimates. By taking sources of information available from data repositories and present a method to link data from different repositories, while leveraging the knowledge and intuition of the expert
-community to build up our phylogenetic knowledge, we can use not only data accumulated in
-molecular data repositories, but phylogenetic knowledge accumulated in phylogenetic tree repositories.
-
-While not generating full phylogenies *de novo*, Physcraper is still capable of generating new phylogenetic knowledge.
-Moreover, it can combine phylogenies with data from repositories other than molecular data. For example geographic locations (using GBIF ids), fossils (using PBDB ids), etc. *from Robert: I think you can sell the program more here. Why is it better than the other methods? You mentioned in lab meeting that its difficult to run other programs, talk about that here, talk about the speed and other advantages*
-
-Physcraper has the potential to rapidly (in a matter of hours)
-solve  in various 
-place newly discovered species phylogenetically [@webb2010biodiversity],
-obtain trees for ecophylogenetic studies [@helmus2012phylogenetic],
-help to systematize molecular databases, i.e., curate taxonomic assignations [@san2010molecular],
-and rapidly generate custom species trees for downstream analyses [@stoltzfus2013phylotastic].
 
 
 # Acknowledgements
@@ -245,8 +247,11 @@ All authors contributed to the manuscript.
 # Data Avilability
 
 Physcraper source code available at https://github.com/McTavishLab/physcraper
+
 Documentation available at https://physcraper.readthedocs.io/en/latest/index.html
+
 Illustrated examples available at https://github.com/McTavishLab/physcraperex
+
 This is a reproducible manuscript available at https://github.com/McTavishLab/physcraper_ms
 
 \newpage

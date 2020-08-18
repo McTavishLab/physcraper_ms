@@ -1,11 +1,13 @@
-databases designed to preserve and democratize access to biological data constitute an amazing resource for evolutionary estimation
+<!-- databases designed to preserve and democratize access to biological data constitute an amazing resource for evolutionary estimation -->
 
+*COMPARE WITH PERFORMANCE OF OTHER PIPELINES FOR SEQUENCE SCRAPING*
+*WHY WE DID NOT MAKE A BENCHMARK COMPARISON?*
 
-Usually, initial ideas about the data are changed by analyses.
-We expect that this new ideas on the data can be registered on databases,
-exposing newcomers to expert understanding about the data.
+<!-- Usually, initial ideas about the data are changed by analyses.
+Ideally, new understanding of the data can be registered on databases,
+exposing newcomers to the most up to date knowledge about the data. -->
 
-Taking advantage of public DNA data bases have been the main focus.
+<!-- Taking advantage of public DNA data bases have been the main focus. -->
 
 Describe again statistics to compare phylogenies provided by physcraper via OpenTreeOfLife.
 Mention statistics provided by other tools: PhyloExplorer [@ranwez2009phyloexplorer].
@@ -14,12 +16,13 @@ Compare and discuss.
 How is physcraper already useful:
 - to mine targeted sequences, in this way it is similar to baited analyses from PHLAWD and pyPHLAWD. Phylota does not do baited analyses, I think, only clustered analyses.
 - Finding
-
+-
+<!--
 Physcraper potential:
 - rapid phylogenetic placing of newly discovered species, as mentioned in @webb2010biodiversity
 - obtain trees for ecophylogenetic studies, as mentioned in @helmus2012phylogenetic
 - one day could be used to sistematize nucleotide databases, such as Genbank [@benson2000genbank; @wheeler2000database], as mentioned in @san2010molecular, i.e., curate ncbi taxonomic assignations.
-- allows to generate custom species trees for downstream analyses, as mentioned in @stoltzfus2013phylotastic
+- allows to generate custom species trees for downstream analyses, as mentioned in @stoltzfus2013phylotastic -->
 
 
 Things that physcraper does not do:
@@ -33,7 +36,11 @@ the ones that do not know about phylogenetic methods and the ones that might kno
 about phylogenetic methods but do not know much about a certain biological group.***
 \comment(hmm yeah, I think it is probably better for the latter - phylogeneticists who are tired of blast searching :P)
 
+All these tools are key efforts for advancing towards reproducibility in phylogenetics,
+a field that has relied on processes which are somewhat artisanal.
+Here, we highlight the potential of taking advantage of this careful curation work in previous phylogenetic estimates.
 
-There is danger in creating a unified standard, however, in this case it provides usefulness.
-Physcraper might be overlapping/partially solving the goal of the Encyclopedia of Life:
-"the exploration and analysis of biodiversity at a vastly accelerated pace. Its momentum will return systematics from its long sojourn at the margin and back into the mainstream of science." [@wilson2003encyclopedia]
+<!-- Creating unified standards usually ends up generating an extra standard. However, the OpenTree Taxonomy is a powerful tool that is allowing us to reach decade-long dreams of "exploring and analysing biodiversity at an accelerated pace, to return systematics into the mianstream of science" [@wilson2003encyclopedia]. -->
+
+<!-- Physcraper might be overlapping/partially solving the goal of the Encyclopedia of Life:
+"the exploration and analysis of biodiversity at a vastly accelerated pace. Its momentum will return systematics from its long sojourn at the margin and back into the mainstream of science." [@wilson2003encyclopedia] -->
