@@ -14,8 +14,8 @@ keep_tex: true
 some parts of the process of phylogenetic reconstruction (mainly character matrix construction)
 have been developed for the advantage of both specialists in the field of phylogenetics and nonspecialists.
 However, interpretation of results, comparison with previously available phylogenetic
-hypotheses, and choosing of one phylogeny for downstream analyses and discussion still impose difficulties
-to one that is not a specialist either on phylogenetic methods or on a particular group of study.
+hypotheses, and selection of a phylogeny for downstream analyses and discussion still impose difficulties
+for one that is not a specialist either on phylogenetic methods or on a particular group of study.
 
 1. Physcraper is an open‐source, command-line Python program that automatizes the update of published
 phylogenies by enriching underlying gene alignments with public DNA sequence data, and linking taxonomic information across databases.
@@ -23,7 +23,7 @@ This provides a framework for comparison of published phylogenies with their upd
 
 1. Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
 hypothesis based on already available expert phylogenetic knowledge.
-Phylogeneticists and group specialists will find it useful as a tool to facilitate dataset gathering and comparison
+Phylogeneticists and group specialists will find it useful as a tool to facilitate dataset gathering for downstream analyses and comparison
 of alternative phylogenetic hypotheses (topologies).
 
 1. We hope the physcraper workflow demonstrates the benefits of opening results in phylogenetics and encourages researchers to strive for better data sharing practices. Physcraper can be used with any OS. Detailed instructions for installation and
