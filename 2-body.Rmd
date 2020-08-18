@@ -36,7 +36,7 @@ However, even during phylogenomic reconstructions, thoughtfully curated markers 
 A way to incorporate the best of two worlds (massive amounts of newly released molecular data and fine-grained curation from human experts) is to rely on published manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. The TreeBASE database [@piel2009treebase] hosts about 8, 200 publicly accessible alignments, providing information on evolutionary relationships of around 100, 000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.), representing a source of valuable expert knowledge. Linking published alignments with public molecular data that has not yet been included in any public phylogenetic estimate, has the potential to accelerate the enrichment and updating of phylogenetic relationships in many regions of the tree of life. The phylogenies associated to TreeBASE alignments have been integrated to the OpenTree's datastore, the Phylesystem [@mctavish2015phylesystem], and metadata linking them to their corresponding alignment repository is available, providing a non-automated way of linking trees with the alignment that generated them.
 <!-- However, if there are multiple alignments and trees, TreeBASE does not always indicate how they are connected. Hence, Phylesystem's metadata only provides a loose means of linking the tree with the exact alignment that generated it and a human curator must make the link. -->
 
-Physcraper relies on programmatic access protocols to automatically link molecular data from GenBank to alignments from TreeBASE and phylogenies from OpenTree's Phylesystem, to continually update and enrich phylogenetic knowledge based on expertly-curated homology hypotheses. Physcraper also provides new types of access to various general OpenTree programmatic tools for comparison of existing phylogenetic hypotheses with newly generated ones.
+Physcraper relies on programmatic access protocols available to automatically link molecular data from GenBank to alignments from TreeBASE and phylogenies from OpenTree's Phylesystem, to continually update and enrich phylogenetic knowledge based on expertly-curated homology hypotheses. Physcraper also provides new types of access to various general OpenTree programmatic tools for comparison of existing phylogenetic hypotheses with newly generated ones.
 Physcraper is coded as a Python pipeline that focuses on data interoperability, by integrating taxonomic name matching across biological databases. This integration also allows users to rapidly place new data from a diverse range of biological databases in an evolutionary context, making a variety of downstream analyses straightforward.
 
 
@@ -160,22 +160,22 @@ The most recent *Ilex* tree from @yao2020phylogeny, has been made available in t
 This makes it a great case to highlight the functionalities of Physcraper and assess its limitations.
 <!-- we know that the sequences of the Yao2020 tree have been made available on the GenBank database. Hence, we expect that updating the Gottlieb2005 tree should at least recover the same species sampled in the Yao2020 tree. -->
 A tutorial as well as illustrated examples of functions implemented on each step of the analysis are available in Physcraper's documentation website.
-Figure \@ref(fig:results) shows results from a Physcraper analysis applied to an alignment of internal transcribed spacer DNA regions (ITS) from @gottlieb2005molecular. Physcraper ran on a local BLAST database, on a laptop Linux computer for 19hrs 45min to finish BLAST and RAxML analyses. Bootstrap analyses took an additional 13hrs.
+Figure \@ref(fig:results) shows results from a Physcraper analysis applied to an alignment of internal transcribed spacer DNA regions (ITS) from @gottlieb2005molecular. Physcraper ran on a local BLAST database, on a laptop Linux computer for 19hrs 45min to perform BLAST and RAxML analyses, with bootstrap analyses taking an additional 13hrs.
 The updated Gottlieb2005 tree contains all 41 distinct taxa from the original study plus 231 new tips, contributing phylogenetic data to 84 additional taxa within *Ilex*. The tree is 99% resolved, however, a large portion of branches are negligibly small (133 branches < 0.00001 substitution rate units), appearing as unresolved nodes (Fig. \@ref(fig:results)).
 <!-- ADD percentage of nodes with bootsrap values above 95%  and below 50%?-->
 For comparison, the Yao2020 tree also contains all 41 distinct taxa from the original Gottlieb2005 study,
 <!-- has less new tips (134), but  -->
 and contributes phylogenetic data to 134 additional taxa within *Ilex*, from which
-`r 135-68` are also in updated Gottlieb2005.
+`r 135-68` are also in updated Gottlieb2005. @yao2020phylogeny also used ITS as a marker, but their data in GenBank is not public yet, so Physcraper was unable to incorporate 68 additional taxa into the analysis. The Yao2020 tree also misses 18 taxa that were added by Physcraper. This might be caused by the method they used to download existing ITS *Ilex* sequences from GenBank, which is not fully explained in the publication.
 <!-- The alignments have THIS MANY columns and THIS AMOUNT of missing data. -->
 <!-- RF DISTANCE INTERPRETATION -->
-<!-- ADD ML ESTIMATES OF UPDATED TREE VS ORIGINAL TREE -->
+<!-- ADD ML ESTIMATES OF UPDATED TREE VS ORIGINAL TREE ?-->
 
 <!-- ```{bash echo= FALSE, include=FALSE, message= FALSE, results='hide'}
 wget -O docs/figs/ilex-plot-tips-and-branches-1.png https://raw.githubusercontent.com/McTavishLab/physcraperex/master/docs/articles/ilex_files/figure-html/plot-tips-and-branches-1.png
 ``` -->
 
-```{r results, echo=FALSE, fig.cap="A phylogenetic tree is the main result of a Physcraper analysis.", out.width = '100%', fig.retina= 2}
+```{r results, echo=FALSE, fig.cap="A) Phylogenetic tree obtained by updating the Gottlieb et al. 2005 tree in B) using Physcraper.", out.width = '100%', fig.retina= 2}
 
 # knitr::include_graphics("docs/figs/ilex-plot-tips-and-branches-1.png")
 knitr::include_graphics("docs/figs/ilex-results.png")
@@ -185,13 +185,13 @@ knitr::include_graphics("docs/figs/ilex-results.png")
 
 \newpage
 
-Figure \@ref(fig:results) caption continued: The tree results from updating an alignment that was used to generate a tree of 48 tips of the genus Ilex, published in Gottlieb et al. 2005 (black tips). Physcraper added 231 new sequences (red tips) corresponding to 84 distinct taxa that were not sampled in the original alignment. Physcraper obtained sequences from the GenBank database via BLAST, filtered them following specified criteria, aligned them to the original alignment using MUSCLE and performed a phylogenetic reconstruction using RAxML, as well as a conflict analysis using the OpenTree tools.
+*Figure \@ref(fig:results) caption continued*: Tips in original alignment and new tips added with Physcraper are depicted in black and red, respectively. Physcraper obtained sequences from the GenBank database via local BLAST of all sequences in the original alignment that generated tree in B), filtered them following criteria specified in section "DNA sequence search and filtering", aligned them to the original alignment using MUSCLE and performed a phylogenetic reconstruction using RAxML with 100 bootstraps. B-D show results of the conflict analysis performed with OpenTree tools.
 
 
 # Discussion
 
-Data repositories hold even more information than meets the eye.
-Besides the actual data, they are rich sources of metadata that can be used for the advantage of all areas of biology as well as the advancement of scientific policy and applications.
+Data repositories hold more information than meets the eye.
+Besides the main data, they are rich sources of metadata that can be used for the advantage of all areas of biology as well as the advancement of scientific policy and applications.
 
 *COMPARE WITH PERFORMANCE OF OTHER PIPELINES FOR SEQUENCE SCRAPING*
 *WHY WE DID NOT MAKE A BENCHMARK COMPARISON?*
@@ -201,7 +201,7 @@ Many pipelines are making use of DNA data repositories in different ways.
 Most of them focus on efficient ways to mine the data -- getting the most homologs.
 Some focus on accurate ways of mining the data -- getting real and clean homologs.
 Others focus on refining the alignment.
-Most focus on generating full trees *de novo*, mainly for regions of the Tree of
+Most focus on generating full trees *de novo* for regions of the Tree of
 Life that have no phylogenetic assessment yet in published studies, but also for
 regions that have already been studied and which have phylogenetic data.
 However, expert phylogenetic knowledge is also an important source of data in public
@@ -219,7 +219,8 @@ molecular data repositories, but phylogenetic knowledge accumulated in phylogene
 While not generating full phylogenies *de novo*, Physcraper is still capable of generating new phylogenetic knowledge.
 Moreover, it can combine phylogenies with data from repositories other than molecular data. For example geographic locations (using GBIF ids), fossils (using PBDB ids), etc. *from Robert: I think you can sell the program more here. Why is it better than the other methods? You mentioned in lab meeting that its difficult to run other programs, talk about that here, talk about the speed and other advantages*
 
-Physcraper has the potential to be applied for the advantage of the field to rapidly *HOW FAST IS "RAPID" mention it in results and then here again*
+Physcraper has the potential to rapidly (in a matter of hours)
+solve  in various 
 place newly discovered species phylogenetically [@webb2010biodiversity],
 obtain trees for ecophylogenetic studies [@helmus2012phylogenetic],
 help to systematize molecular databases, i.e., curate taxonomic assignations [@san2010molecular],
