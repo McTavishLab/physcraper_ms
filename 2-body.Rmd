@@ -59,7 +59,7 @@ The general Physcraper framework is depicted in Figure \@ref(fig:framework). Bri
   If the user is not ready to make the input tree public, tree tip labels can be standardized to the unified OpenTree taxonomy using OpenTree's bulk Taxonomic Name Resolution Service [TNRS](https://tree.opentreeoflife.org/curator/tnrs/) tool.
   This step is referred to as taxonomic name mapping and Phylesystem stored trees are processed in this way upon submission.
   Physcraper saves a summary "csv" file with results from the taxon name standardization for advantage of the user, including the mappings to unique identifiers in the OpenTree and NCBI taxonomies.
-  If taxon names can't be mapped, their taxonomic information isn't be used in comparison analysis. These taxa will still be used in the sequence search and phylogenetic reconstruction steps.
+  If taxon names can't be mapped, their taxonomic information is not used in comparison analysis. These taxa will still be used in the sequence search and phylogenetic reconstruction steps.
   Mapping tip names to OpenTree's unified taxonomy saves a set of user defined characteristics
   that are essential for automatizing the phylogeny updating process. The most relevant of these is the standardized taxonomic names and the definition of ingroup and outgroup taxa, allowing to automatically set the root for the updated tree on the final steps of the pipeline.
 
@@ -69,7 +69,7 @@ The general Physcraper framework is depicted in Figure \@ref(fig:framework). Bri
   either from the TreeBASE website ([www.treebase.org](https://treebase.org/))
   or through the TreeBASE GitHub repository (SuperTreeBASE; [github.com/TreeBASE/supertreebase](https://github.com/TreeBASE/supertreebase)).
   If the alignment is on another repository, or constitutes personal data, a path to a local copy of the alignment has to be provided.
-- Single locus alignments sometimes have fewer taxa than the tree inferred from the full concatenated data, simply because a single molecular marker usually does not cover all the taxa sampled for the full phylogenetic analysis. Physcraper prunes the input tree to taxa found in the alignment, and verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its corresponding sequence in the alignment) is needed to continue the algorithm. 
+- Single locus alignments sometimes have fewer taxa than the tree inferred from the full concatenated data, simply because a single molecular marker usually does not cover all the taxa sampled for the full phylogenetic analysis. Physcraper prunes the input tree to taxa found in the alignment, and verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name (and its corresponding sequence in the alignment) is needed to continue the algorithm.
 - The standardized and pruned tree and alignment (checked tree and alignment from now on) are output as "newick" and "fasta" respectively in the "inputs" folder to be used in the following steps.
 
 ## DNA sequence search and filtering
@@ -150,15 +150,15 @@ The most recent *Ilex* tree from @yao2020phylogeny, has been made available in t
 This makes it a great case to highlight the functionalities of Physcraper and assess its limitations.
 A tutorial as well as illustrated examples of functions implemented on each step of the analysis are available in Physcraper's documentation website.
 Figure \@ref(fig:results) shows results from a Physcraper analysis applied to an alignment of internal transcribed spacer DNA regions (ITS) from @gottlieb2005molecular. Physcraper ran on a local BLAST database, on a laptop Linux computer for 19hrs 45min to perform BLAST and RAxML analyses, with bootstrap analyses taking an additional 13hrs.
-The updated Gottlieb2005 tree contains all 41 distinct taxa from the original study plus 231 new tips, contributing phylogenetic data to 84 additional taxa within *Ilex*. The tree is 99% resolved, however, a large portion of branches are negligibly small (133 branches < 0.00001 substitution rate units), appearing as unresolved nodes (Fig. \@ref(fig:results)). **Is this in the consensus tree? I'm surprised they survive bootstrapping!**
-<!-- ADD percentage of nodes with bootsrap values above 95%  and below 50%?-->
+The updated Gottlieb2005 tree contains all 41 distinct taxa from the original study plus 231 new tips, contributing phylogenetic data to 84 additional taxa within *Ilex*. The best RaxML tree is 99% resolved, while the consensus tree is 75% resolved, meaning that 25% of nodes have a bootstrap < 0.1, while 48% nodes have bootstrap support > 0.75.
+A large portion of internal branches are negligibly small, with 30 branches < 0.00001 substitution rate units, from which only 9 have a bootstrap support > 0.75 (Fig. \@ref(fig:results)).
 For comparison, the Yao2020 tree also contains all 41 distinct taxa from the original Gottlieb2005 study,
 <!-- has less new tips (134), but  -->
 and contributes phylogenetic data to 134 additional taxa within *Ilex*, from which
-`r 135-68` are also in updated Gottlieb2005. @yao2020phylogeny also used ITS as a marker, but their data in GenBank is not public yet, so Physcraper was unable to incorporate 68 additional taxa into the analysis. 
+`r 135-68` are also in the updated Gottlieb2005 tree. @yao2020phylogeny also used ITS as a marker, but their data in GenBank is not public yet, so Physcraper was unable to incorporate 68 additional taxa into the analysis.
 When those sequences are available online, repeating the physcraper run will easily incorporate them into the expanded analysis.
-The Yao2020 tree also lacks 18 taxa that were added by Physcraper. 
-**Any statements about relationships or anything? Are there multiple seqs for these taxa?**
+The Yao2020 tree also lacks 18 taxa that were added by Physcraper.
+<!-- **Any statements about relationships or anything? Are there multiple seqs for these taxa?** -->
 This might be caused by the method they used to download existing ITS *Ilex* sequences from GenBank, which is not fully explained in the publication.
   Other examples of Physcraper runs on empirical data at a range of taxonomic scales are available in the Physcraper documentation online.
 <!-- The alignments have THIS MANY columns and THIS AMOUNT of missing data. -->
@@ -188,18 +188,19 @@ Data repositories designed to preserve and democratize access to biological data
 constitute an essential resource for evolutionary estimation. While data keep accumulating,
 our ability to reanalyze and incorporate new data with available knowledge is being challenged.
 
-Various phylogenetic pipelines have been designed to make sense of the vast amount of public molecular data available in different ways.
+Various phylogenetic pipelines have been designed to make evolutionary sense of the vast amount of public molecular data available in different ways.
 Pipelines like Phylota [@sanderson2008phylota], PyPHLAWD [@smith2009mega], and SUPERSMART [@antonelli2017toward]
-focus mainly on generating full trees *de novo* for regions of the Tree of
+focus mainly on generating full trees *de novo* (i.e., inferring phylogenetic relationships from a newly generated homology hypothesis, as opposed to e.g., supertrees, that are generated by assembling previous phylogenetic estimates) for regions of the Tree of
 Life that have no phylogenetic assessment yet in published studies.
 While Physcraper does not generate phylogenies *de novo* in a traditional sense,
 it successfully generates new phylogenetic knowledge, revealing the potential of pre-existing
 phylogenetic knowledge available in tree repositories to facilitate phylogenetic placement of public molecular data.
 The PUMPER pipeline [@izquierdo2014pumper] also uses the concept of updating
 pre-existing alignments to incorporate public molecular data into phylogenies. Unfortunately, installation of the tool was unsuccesful following instructions from the author, and we were unable to conduct a comparison analysis to Physcraper.
+Physcraper on it's own generates individual gene trees, which do not capture the full complexity of species' evolutionary history [@song2012resolving]. However, using Physcraper it is straightforward to gather alignments and gene trees for multiple loci for a taxonomic group of interest, which can be used as inputs for downstream tools to perform coalescent analyses and assess species tree relationships, (e.g. ASTRAL [@mirarab2014astral], BEAST2 [@bouckaert2019beast], SVD Quartets [@chifman2014quartet]).
 
 As far as we know, Physcraper is the only phylogenetic pipeline that links molecular and tree data repositories.
-It can also link to various biological databases, such as GBIF, the Paleobiology Database, etc, by leveraging the integrated taxonomy from OpenTree [@rees2017automated], a resource that is contributing to the Encyclopedia of Life main goal of "exploring and analysing biodiversity at an accelerated pace, and returning systematics into the mainstream of science" [@wilson2003encyclopedia].
+It can also link to various biological databases, such as GBIF, the Paleobiology Database, and others, by leveraging the integrated taxonomy from OpenTree [@rees2017automated], a resource that is contributing to the Encyclopedia of Life main goal of "exploring and analysing biodiversity at an accelerated pace, and returning systematics into the mainstream of science" [@wilson2003encyclopedia].
 
 As such, Physcraper can be used to rapidly (in a matter of hours)
 solve challenges overarching both fields of ecology and evolution, such as
@@ -208,13 +209,11 @@ obtaining trees for ecophylogenetic studies [@helmus2012phylogenetic],
 systematizing molecular (and other) databases, i.e., curating taxonomic assignations [@san2010molecular],
 and generating custom species trees for ecological and evolutionary downstream analyses [@stoltzfus2013phylotastic].
 
-Physcraper on it's own generates individual gene trees, which do not capture the full complexity of species' evolutionary history [@song2012resolving]. However, using Physcraper it is straightforward to gather alignments and gene trees for multiple loci for a taxonomic group of interest, which can be used as inputs for downstream tools to perform coalescent analyses and assess species tree relationships, (e.g. ASTRAL [@mirarab2014astral], BEAST2 [@bouckaert2019beast], SVD Quartets [@chifman2014quartet]).
-
 Data repositories hold more information than meets the eye.
 Besides the main data, they are rich sources of metadata that can be leveraged for the advantage of all areas of biology as well as the advancement of scientific policy and applications.
 Usually, initial ideas about the data are changed by new analyses.
-Ideally, new understanding of the data can be registered on databases,
-exposing newcomers to the most up to date knowledge about the data.
+Ideally, new understanding of the data can be continually registered on databases
+to consistently expose newcomers to the most up to date knowledge about the data.
 
 # Acknowledgements
 
