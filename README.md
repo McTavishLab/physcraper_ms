@@ -27,3 +27,6 @@ rmarkdown::draft("ams_submission", template = "ams_article", package = "rticles"
 
 rmarkdown::render(input = "physcraper_ms.Rmd", output_file= paste("ams_submission.pdf"), output_yaml= "ams.yaml")
 ```
+
+To compile a .tex file to pdf I simply use the complie pdf button from RStudio,
+which I think uses `tools::texi2pdf(output, clean=clean )`
