@@ -29,4 +29,4 @@ rmarkdown::render(input = "physcraper_ms.Rmd", output_file= paste("ams_submissio
 ```
 
 To compile a .tex file to pdf I simply use the complie pdf button from RStudio,
-which I think uses `tools::texi2pdf(output, clean=clean )`
+which I think uses `tools::texi2pdf(output, clean=clean )`, tip from this [RStudio community thread](https://community.rstudio.com/t/what-commands-are-run-when-the-compile-pdf-button-is-clicked/6291/4)
