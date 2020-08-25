@@ -11,6 +11,7 @@ rmarkdown::render(input = "render2-word.Rmd", output_file = paste0("docs/word-",
 rmarkdown::render(input = "render2-sysbio.Rmd", output_file = paste0("docs/submission-sysbio-", Sys.Date(), ".pdf"))
 rmarkdown::render(input = "render2-mee.Rmd", output_file = paste0("docs/submission-mee-", Sys.Date(), ".pdf"))
 
+rmarkdown::render(input = "render2-mee.Rmd", output_file = paste0("docs/submission-mee-", Sys.Date(), ".doc"), output_format = "word_document")
 ```
 
 The following will render the ms on various outputs specified in the yaml. This does not work with different outputs from the `rticles` package.

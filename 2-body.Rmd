@@ -232,15 +232,14 @@ Computer time was provided by the Multi-Environment Research Computer for Explor
 
 We thank the members of the OpenTree development team and the "short bar" Science and Engineering Building 1, UCM, joint lab paper discussion group for valuable comments on this manuscript.
 
+The authors have no conflict of interest to declare.
 
 # Authors' Contributions
 
-EJM: Conceived study, wrote most of the code, documentation and tests.
-MK: Wrote code for ncbidataparser module, filtering of sequences per OTU and using offline blast searches, wrote documentation and tests.
-LLSR: Wrote the manuscript, alignment code, documentation, performed analyses and developed examples.
-All authors contributed to the manuscript.
+LLSR wrote the manuscript, alignment code, documentation, performed analyses and developed examples; MK wrote code for ncbidataparser module, filtering of sequences per OTU and using offline blast searches, wrote documentation and tests; EJM conceived study, wrote most of the code, documentation and tests.
+All authors contributed to the manuscript and gave final approval for publication.
 
-# Data Avilability
+# Data Archiving
 
 Physcraper source code available at https://github.com/McTavishLab/physcraper
 
