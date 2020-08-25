@@ -19,7 +19,8 @@ header-includes:
     - \linenumbers
 title: 'Physcraper: a python package for continual update of evolutionary estimates using the Open Tree of Life'
 params:
-  running_title: Continually updated gene trees with Physcraper
+  running_title: Updating gene trees with the Open Tree of Life
+  twitter: 'Physcraper: a tool to update published phylogenies and link taxa to biological databases using the Open Tree of Life'
   author1: Luna L. Sanchez Reyes
   email1: sanchez.reyes.luna@gmail.com
   author2: Martha Kandziora
