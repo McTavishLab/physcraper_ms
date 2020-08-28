@@ -1,8 +1,10 @@
 ---
 output:
+  bookdown::pdf_document2:
+    keep_tex: yes
+    toc: false
   html_document:
     keep_md: yes
-    toc: false
 geometry: margin = 1in
 bibliography: paper.bib
 csl: submission-mee/methods-in-ecology-and-evolution.csl

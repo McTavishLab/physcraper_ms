@@ -2,6 +2,7 @@
 output:
   html_document:
     keep_md: yes
+    keep_tex: yes
     toc: false
 geometry: margin = 1in
 bibliography: paper.bib
