@@ -88,8 +88,3 @@ email: <`r params$email3`>
 
 ``` {r child = '2-body.Rmd'}
 ```
-
-\newpage
-\begin{center}
-\textsc{References}
-\end{center}
