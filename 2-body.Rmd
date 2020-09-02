@@ -15,29 +15,28 @@ output:
 
 # Introduction
 
-Phylogenies capture the shared history of living and extinct organisms and provide key evolutionary context for all our biological observations.
-Public biological databases constitute an amazing resource for evolutionary studies, but a large portion of molecular data publicly available has never been incorporated into any phylogenetic estimate. Extending existing phylogenies with new DNA sequence data, geographical location, and other metadata in a reproducible and continuous manner is possible by automating connections between biological databases. Here, we introduce Physcraper, a tool to build upon molecular data that taxon specialists have assessed and deemed appropriate for a specific phylogenetic scope, by using sequence data from public biological databases to update a starting tree and single locus alignments.
+Phylogenies capture the shared history of organisms and provide key evolutionary context for our biological observations.
+Public biological databases constitute an amazing resource for evolutionary studies, but a large portion of public molecular data has never been incorporated into any phylogenetic estimate. Extending existing phylogenies with new DNA sequence data, geographical location, and other metadata in a reproducible and continuous manner is possible by automating connections between biological databases. Here, we introduce Physcraper, a tool to build upon DNA datasets that taxon specialists have assessed and deemed appropriate for a specific phylogenetic scope, by using data from public DNA databases to update a starting tree and single locus alignments.
 
-Automatic integration of data in a phylogenetic context is challenged by the prevalence of taxonomic idiosyncrasies across biological databases. Taxonomic name standardization represents a step toward tackling this issue, but requires a unified system. The Open Tree of Life project (OpenTree)
+Taxonomic idiosyncrasies across databases represent a huge challenge for automatic integration of data into phylogenies; challenge that can be addressed with a unified taxonomy for name standardization. The Open Tree of Life project (OpenTree)
 <!-- [project](https://opentreeoflife.github.io/)  -->
-has constructed a comprehensive tree of life by synthesizing published phylogenies along with taxonomic data. OpenTree's "synthetic" tree comprises 2.3 million tips, of which around 90,000 are supported by phylogenetic estimates - the remaining 1.4 million taxa are placed in the tree based on taxonomy. To achieve this, OpenTree unifies taxonomy from various databases [@rees2017automated], including the USA National Center for Biodiversity Information (NCBI) molecular database GenBank [@benson2000genbank], the Global Biodiversity Information Facility (GBIF), the World Register of Marine Species (WoRMS), and other resources. The OpenTree unified taxonomy represents a key resource for connecting data from virtually any biological database to phylogenetic data that has been standardized to OpenTree's unified taxonomy.
+constructs a comprehensive tree of life by synthesizing published phylogenies along with taxonomic data. OpenTree's "synthetic" tree comprises 2.3 million tips, of which around 90,000 are supported by phylogenies - the remaining 1.4 million taxa are placed in the tree based on taxonomy. To achieve this, OpenTree unifies taxonomy from various databases [@rees2017automated], including the USA National Center for Biodiversity Information (NCBI) molecular database GenBank [@benson2000genbank], among others. This OpenTree taxonomy represents a key resource for connecting data from any biological database that has been integrated to it.
+<!-- to phylogenetic data that has been standardized to it. -->
 
-Another challenge to incorporating molecular data from public databases to update phylogenetic knowledge is assembling high-quality homology hypotheses.
-Species tree reconstructions from multiple single locus data sets taking into account the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving].
-Genomics has, and will continue to, revolutionize phylogenetic inference.
-Yet, different research questions call for different genomic sequencing approaches (e.g., whole genomes vs microsatellites), which produce largely non-overlapping genomic data sets across taxa, creating challenges in wide scale phylogenetic reconstruction.
+Another challenhe for incorporating public molecular data into existing phylogenies is assembling high-quality homology hypotheses.
+While genomics has, and will continue to, revolutionize phylogenetic inference, the variety of alternative genomic sequencing approaches produce largely non-overlapping genomic datasets across taxa, creating challenges in wide scale phylogenetic reconstruction.
 <!-- Also, as @andermann2020guide point out, "assembling full genomes is often unnecessary for phylogenomic studies if the main goal is to retrieve an appropriate number of phylogenetically informative characters from several independent and single-copy genetic markers [@jones2016targeted]." -->
-While phylogenomics ameliorates the problem of non-overlapping genomic data sets by focusing on targeted capture of informative characters from independent and single-copy genetic markers [@andermann2020guide], decades of single locus sequencing have generated massive amounts of homologous DNA data sets that can be used for phylogenetic reconstruction at many scales.
-Even in phylogenomic reconstructions, thoughtfully curated markers and alignments can improve phylogenetic reconstructions [@fragoso2017pilot].
+Phylogenomics ameliorate this problem by focusing on targeted capture of informative characters from independent and single-copy genetic markers [@andermann2020guide]. Yet, decades of single locus sequencing have generated massive amounts of homologous DNA datasets that can be used for phylogenetic reconstruction at many scales. Moreover, species tree reconstructions from multiple single locus datasets using the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving].
 
-More than a decade ago, GenBank release number 159 (April 15, 2007) already hosted 72 million DNA sequences. These sequences were gauged to have the potential to resolve phylogenetic relationships of most (`r round(236023/240708, digits=4)*100`%) of the almost 241, 000 distinct taxa in the NCBI taxonomy at the time [@sanderson2008phylota]. Assembling a DNA alignment from such a massive database can be done "by hand", but it is a largely time consuming and mostly non-reproducible approach. Computational pipelines that make DNA sequence search faster and more efficient, as well as more reproducible, have been applied to study evolutionary relationships among a variety of organisms [e.g., @smith2009mega; @antonelli2017toward; @izquierdo2014pumper].
+More than a decade ago, GenBank release number 159 (April 15, 2007) already hosted 72 million DNA sequences that were gauged to have the potential to resolve phylogenetic relationships of `r round(236023/240708, digits=4)*100`% of the almost 241,000 distinct taxa in the NCBI taxonomy at the time [@sanderson2008phylota]. Assembling a DNA alignment from such a massive database can be done "by hand", but it is a largely time consuming and mostly non-reproducible approach. Computational pipelines that make DNA sequence search faster and more efficient, as well as more reproducible, have been applied to infer phylogenetic relationships in a variety of organisms [e.g., @smith2009mega; @antonelli2017toward; @izquierdo2014pumper].
 <!-- *maybe a box of all pipelines?* -->
+However, thoughtfully curated markers and alignments can improve phylogenetic reconstructions, even in phylogenomic reconstructions [@fragoso2017pilot].
 
-A way to incorporate the benefits from massive amounts of newly released molecular data and fine-grained curation from human experts, is to rely on manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. The TreeBASE database [@piel2009treebase] hosts about 8, 200 alignments, providing information on evolutionary relationships of around 100, 000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.), representing a public source of valuable expert knowledge. Linking published alignments with molecular data that has not yet been included in any public phylogenetic estimate, has the potential to accelerate the enrichment and updating of phylogenetic relationships in many regions of the tree of life.
+A way to incorporate the benefits from massive amounts of newly released molecular data and fine-grained curation from human experts, is to rely on manually curated homology hypotheses as "jump-start" alignments [@morrison2006multiple]. The TreeBASE database [@piel2009treebase] hosts about 8,200 alignments from published peer-reviewed studies, providing information on evolutionary relationships of around 100,000 distinct taxa [(see TreeBASE's website about)](https://www.treebase.org/treebase-web/home.html#:~:text=TreeBASE%20is%20produced%20and%20governed,mapped%20to%20104%2C593%20distinct%20taxa.). Linking published alignments generated by experts with molecular data that has not yet been included in any public phylogenetic estimate has the potential to accelerate the enrichment and updating of phylogenetic relationships in many regions of the tree of life.
 <!-- The phylogenies associated with TreeBASE alignments have been integrated to the OpenTree's datastore, Phylesystem [@mctavish2015phylesystem], and metadata linking them to their corresponding alignment repository is available, providing a framework linking trees with the alignment that generated them. -->
 
-Physcraper relies on programmatic access protocols (API's) to automatically link molecular data from GenBank to alignments from TreeBASE and phylogenies from OpenTree's Phylesystem, to continually update and enrich phylogenetic knowledge based on expertly-curated homology hypotheses. Physcraper also provides new types of access to various OpenTree tools for comparison of existing phylogenetic hypotheses with newly generated ones.
-Physcraper is coded as a Python pipeline that focuses on data interoperability, by using the standardized taxonomy as a way to link taxon data from different databases. This integration also allows users to rapidly place new data from a diverse range of biological databases in an evolutionary context, opening the possibility for a variety of comparative downstream analyses.
+Physcraper relies on programmatic access protocols (API's) and the OpenTree taxonomy to automatically link phylogenetic data to molecular data from GenBank, alignments from TreeBASE, and phylogenies from OpenTree's Phylesystem, to continually update and enrich phylogenetic knowledge based on expertly-curated homology hypotheses. Physcraper also provides new types of access to various OpenTree tools for comparison of existing phylogenetic hypotheses with newly generated ones.
+Physcraper is coded as a Python pipeline that focuses on data interoperability, by using the OpenTree taxonomy as a way to link taxon data from different databases. This integration also allows users to rapidly place new data from a diverse range of biological databases in an evolutionary context, opening the possibility for a variety of comparative downstream analyses.
 
 
 
@@ -45,57 +44,51 @@ Physcraper is coded as a Python pipeline that focuses on data interoperability, 
 
 ```{r framework, echo=FALSE, fig.cap="The Physcraper framework consists of 4 steps (see text). The software is fully described on its documentation website at physcraper.readthedocs.io, along with installation instructions, function usage descriptions, examples and tutorials.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 # knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcraper/pyopensci/docs/img/schematic.svg")
-knitr::include_graphics("docs/figs/schematic.pdf")
+knitr::include_graphics("docs/figs/schematic-3.png")
 ```
 
-The general Physcraper framework is depicted in Figure \@ref(fig:framework). It consists of 4 steps: 1) identifying and processing a phylogenetic tree to update its underlying alignment; 2) performing a constrained BLAST search of DNA sequences in the original alignment on the GenBank database, and filtering of new sequences; 3) profile-aligning filtered new sequences to the original alignment; 4) performing a phylogenetic analysis and comparing the updated tree to previous phylogenetic estimates within the focus group.
+The general Physcraper framework is depicted in Figure \@ref(fig:framework). It consists of 4 steps: 1) identifying and processing a tree and its underlying alignment; 2) performing a BLAST search of DNA sequences from the original alignment on GenBank, and filtering of new sequences; 3) profile-aligning new sequences to the original alignment; 4) performing a phylogenetic analysis and comparing the updated tree to previous phylogenetic estimates.
 
 ## The inputs: a tree and an alignment
 
-Taxon names in the input tree must be standardized or "mapped" to the unified OpenTree taxonomy [@rees2017automated] using OpenTree's bulk Taxonomic Name Resolution Service [TNRS](https://tree.opentreeoflife.org/curator/tnrs/) tool. Users can upload their own tree, or choose from among the 2, 950 mapped trees stored in OpenTree's [Phylesystem](https://github.com/opentreeoflife/phylesystem) that also have alignments avilable on TreeBASE [@piel2009treebase].
+Taxon names in the input tree must be standardized to the OpenTree taxonomy [@rees2017automated] using OpenTree's bulk Taxonomic Name Resolution Service [TNRS](https://tree.opentreeoflife.org/curator/tnrs/) tool. Users can upload their own tree, or choose from among the 2, 950 standardized trees stored in OpenTree's [Phylesystem](https://github.com/opentreeoflife/phylesystem) that also have alignments avilable on TreeBASE [@piel2009treebase].
 
-The input alignment should be a single locus alignment that was used in part or in whole, to generate the input tree. If the alignment associated to the input tree is stred in TreeBASE, Physcraper retrieves it automatically. Alignments stored in any other repository, or constituting personal data have to be downloaded by the user.
-
-Physcraper processes the input tree to match taxa found in the alignment, and verifies that all taxon names on the tips of the tree are in the DNA character matrix and vice versa. Technically, just one taxon name and its corresponding sequence in the alignment are needed to continue the algorithm.
+The input alignment is a single locus alignment that was used in part or in whole to generate the input tree. If it is stored in TreeBASE, Physcraper retrieves it automatically. Otherwise, the user must provide the path to a local copy of the alignment.
+<!-- Alignments stored in any other repository, or constituting personal data have to be stored locally. -->
+Only taxa that are both in the sequence alignment and in the tree are considered further for analysis; at least one taxon and its corresponding sequence are required.
 
 ## DNA sequence search and filtering
 
-The DNA sequence search is performed with the Basic Local Alignment Search Tool, BLAST [@altschul1990basic], either on the GenBank remote database or in a GenBank local database set up by the user. It is constrained to a taxonomic group in the NCBI taxonomy, defined as the "search taxon". Users can arbitrarily define a search taxon that is either a more or a less inclusive
-clade relative to the ingroup of the input tree.
-Otherwise, the search taxon is automatically identified using the OpenTree [API](<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>) [@rees2017automated], as the Most Recent Common Ancestral Taxon (MRCAT) of the ingroup taxa in the input tree, i.e., the MRCA that is also a named clade in the NCBI taxonomy (Fig. \@ref(fig:framework)).
+The Basic Local Alignment Search Tool, BLAST [@altschul1990basic] is used for DNA sequence search on a remote or local GenBank database. It is constrained to a "search taxon", a taxonomic group in the NCBI taxonomy that is automatically identified using the OpenTree [API](<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>) [@rees2017automated], as the most recent common ancestor of the ingroup taxa in the tree that is also a named clade in the NCBI taxonomy (Fig. \@ref(fig:framework)).
   <!-- FIGURE RECOMMENDED: Figure \@ref(fig:search)  -->
-The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the synthetic tree.
+<!-- The MRCAT can be different from the phylogenetic MRCA when the latter is an unnamed clade in the synthetic tree.  -->
+Alternatively, users can arbitrarily define a search taxon that is either a more or less inclusive clade relative to the ingroup of the input tree.
 
 
-BLAST command line tools `blastn` function [@camacho2009blast] is used for local database sequence searches.
-For remote database searches, we modified the BioPython [@cock2009biopython] BLAST function from the [NCBIWWW module](https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html) to accept an alternative BLAST address (URL). This is useful when a user lacks access to the computer capacity needed to setup a local database, but has access to an institutional server.
-Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank within the search taxon. GenBank sequences with match scores smaller than the e-value cutoff (default to 0.00001) are downloaded into a local library.
-
-Downlodaded sequences are not further considered in the analysis if they fall outside a min and max length threshold, defined as the proportion of the average length without gaps of all sequences in the input alignment (default values of 80% and 120%, respectively); or if they are either identical to or shorter than an existing sequence in the input alignment and they represent the same taxon in the OTT taxonomy or the NCBI taxonomy.
-If there are several sequences per taxon, an arbitrary number of 5 (can be modified by the user) sequences per taxon are chosen at random.
+BLAST is implemented with the BLAST command line tools `blastn` function [@camacho2009blast] and the BioPython [@cock2009biopython] BLAST function from the [NCBIWWW module](https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html) modified to accept an alternative BLAST address.
+Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
+New sequences are excuded for analysis if 1) they do not belong to the search taxon; 2) they have an e-value above the cutoff (default to 0.00001); 3) they fall outside a min and max length threshold, defined as the proportion of the average length without gaps of all sequences in the input alignment (default values of 80% and 120%, respectively); 4) or if they are either identical to or shorter than an existing sequence in the input alignment and they represent the same taxon in the OpenTree taxonomy or the NCBI taxonomy.
+An arbitrary maximum number of randomly chosen sequences per taxon are allowed (default to 5).
 
 Reverse, complement, and reverse-complement sequences are identified and translated using BioPython internal functions [@cock2009biopython].
-Iterative cycles of BLAST searches can be performed, by blasting the new sequences until no new ones are found. By default only one BLAST search cycle is performed in which only sequences in the input alignment are blasted.
+Iterative cycles of BLAST searches can be performed, by blasting all new sequences until no new ones are found. By default only one BLAST cycle is performed.
+<!-- in which only sequences in the input alignment are BLASTed. -->
 
 
 ## New DNA sequence alignment
 
-By default, Physcraper uses MUSCLE [@edgar2004muscle] to perform DNA sequence alignments in a two step process. First, all new sequences are aligned using the default MUSCLE options.
-
-Second, a MUSCLE profile alignment is performed, in which the original alignment is used as a template to align the new sequences. This ensures that the final alignment
-follows the homology criteria established by the original alignment.
-The final alignment is not further processed by Physcraper. It is recommended that the alignment is checked by the user, by eye followed by manual refinement, or using a tool for automatic alignment processing [e.g., GBlocks; @castresana2000selection].
-Users may also use Physcraper to only gather new GenBank sequences, to then apply their own preferred alignment and phylogenetic inference methods.
+MUSCLE [@edgar2004muscle] is used to perform a profile alignment in which the original alignment is used as a template of homology criteria to align new sequences.
+The final alignment is not further automatically checked, and additional inspection and refinement are recommended.
 
 ## Tree reconstruction and comparison
 
-A Maximum Likelihood (ML) gene tree is reconstructed for each alignment provided, using RAxML [@stamatakis2014raxml] with default settings (GTRCAT model of molecular evolution and 100 bootstrap replicates with the default algorithm). Only the number of bootsrap replicates can be defined by the user.
-By default, the original tree is used as a starting tree for the ML searches. Alternatively, the original tree can be set as full topological constraint, or simply be ignored for the ML searches.
-Bootstrap results are summarized with the SumTrees module of DendroPy [current version 4.4.0; @sukumaran2010dendropy].
+A Maximum Likelihood (ML) gene tree is reconstructed for each alignment provided, using RAxML [@stamatakis2014raxml] with default settings (GTRCAT model and 100 bootstrap replicates with the default algorithm) and using the input tree as a starting tree for the ML searches.
+Bootstrap results are summarized with DendroPy's SumTrees module [current version 4.4.0; @sukumaran2010dendropy].
 
 Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
-The updated tree can be compared with the original tree using an automated conflict analysis which calculates Robinson Foulds weighted and unweighted metrics using Dendropy  [@sukumaran2010dendropy], and performs a node by node comparison between the synthetic OpenTree and the original and updated tree individually, using OpenTree's conflict API [@redelings2017supertree].
-For the conflict analysis to be meaningful, the root of the tree needs to be accurately defined. A default rooting based on OpenTree's taxonomy is implemented for now. It uses the taxon labels for all the tips in the updated tree, pulls an inferred subtree from OpenTree's taxonomy and then applies the same rooting to the inferred updated tree. However, if the updated tree changes expectations from taxonomy, the rooting may no longer be appropriate. Automatic identification of a phylogenetic tree root is a difficult problem that has not been solved yet. The best way right now is for users to define the outgroup directly on the updated tree as part of the conflict analysis, so trees are accurately rooted.
+The updated tree is compared to the original tree using an automated conflict analysis which calculates Robinson Foulds weighted and unweighted metrics using Dendropy  [@sukumaran2010dendropy], and performs a node by node comparison between the synthetic OpenTree and the original and updated tree individually, using OpenTree's conflict API [@redelings2017supertree].
+For the conflict analysis to be meaningful, the root of the tree needs to be accurately identified. The best way to currenty do this is by hand, although a default rooting based on OpenTree's taxonomy is also available.
+<!-- It uses the taxon labels for all the tips in the updated tree, pulls an inferred subtree from OpenTree's taxonomy and then applies the same rooting to the inferred updated tree. However, if the updated tree changes expectations from taxonomy, the rooting may no longer be appropriate. Automatic identification of a phylogenetic tree root is a difficult problem that has not been solved yet. The best way is to define the outgroup directly on the updated tree as part of the conflict analysis, so trees are accurately rooted. -->
 <!-- *It would be a nice addition to have users give the output of the input tree as an argument at some point, or maybe we could add a super outgroup at random based on the search taxon* -->
 
 
@@ -108,7 +101,6 @@ An online literature review in June 2020 (google scholar search for "ilex phylog
 
 The most recent *Ilex* tree from @yao2020phylogeny, has been made available in the [OpenTree Phylesystem](https://tree.opentreeoflife.org/curator/study/view/ot_1984) and in the [DRYAD repository](https://datadryad.org/stash/dataset/doi:10.5061/dryad.k0p2ngf4x). The "Yao2020" tree, is the best sampled phylogenetic tree yet available for the hollies, with 175 tips.
 
-A tutorial as well as illustrated examples of functions implemented on each step of the analysis are available in Physcraper's documentation website.
 Figure \@ref(fig:results) shows results from the Physcraper analysis of an alignment of the internal transcribed spacer DNA region (ITS) from @gottlieb2005molecular. Physcraper ran on a local BLAST database, on a laptop Linux computer for 19hrs 45min to perform BLAST and RAxML analyses, with bootstrap analyses taking an additional 13hrs.
 <!-- **MTH: you probably need some details about the hardware, given the fact that you are discussing running times** -->
 The updated Gottlieb2005 tree contains all 41 distinct taxa from the original study plus 231 new tips, contributing phylogenetic data to 84 additional *Ilex* taxa. The best RaxML tree is 99% resolved, with 25% of nodes with bootstrap support < 0.1 and 48% nodes with bootstrap support > 0.75.
@@ -141,34 +133,33 @@ knitr::include_graphics("docs/figs/ilex-results.png")
 
 \newpage
 
-*Figure \@ref(fig:results) caption continued*: Tips in original alignment and new tips added with Physcraper are depicted in black and red, respectively. Physcraper obtained sequences from the GenBank database via local BLAST of all sequences in the original alignment that generated tree in B), filtered them following criteria specified in section "DNA sequence search and filtering", aligned them to the original alignment using MUSCLE and performed a phylogenetic reconstruction using RAxML with 100 bootstraps. B-D show results of the conflict analysis comparing estimated relationships to taxonomy, performed with OpenTree tools.
+*Figure \@ref(fig:results) caption continued*: Tips in original alignment and new tips added with Physcraper are depicted in black and red, respectively. Physcraper obtained sequences from the GenBank database via local BLAST of all sequences in the original alignment that generated tree in B), filtered them following criteria specified in section "DNA sequence search and filtering", aligned them to the original alignment using MUSCLE and performed a phylogenetic reconstruction using RAxML with 100 bootstraps. B-D show results of the conflict analysis performed with OpenTree tools.
 
 
 # Discussion
 
-Data repositories designed to preserve and democratize access to biological data
-are essential resources for evolutionary estimation. While data keep accumulating,
-our ability to reanalyze and incorporate new data with available knowledge is being challenged.
+Databases that preserve and democratize access to biological data
+are essential resources for our scientific endeavor.
+New molecular data keep accumulating and tools facilitating its integration into existent evolutionary knowledge are essential.
 
-While phylogenetic pipelines designed to make evolutionary sense of the vast amount of public molecular data are available (e.g., Phylota [@sanderson2008phylota], PyPHLAWD [@smith2009mega], SUPERSMART [@antonelli2017toward]), they focus on generating full trees *de novo* (i.e., inferring phylogenetic relationships from a newly generated homology hypothesis, as opposed to e.g., supertrees, that are generated by assembling previous phylogenetic estimates).
+Phylogenetic pipelines designed to make evolutionary sense of the vast amount of public molecular data (e.g., Phylota [@sanderson2008phylota], PHLAWD [@smith2009mega], SUPERSMART [@antonelli2017toward]) focus on generating full phylogenies *de novo*, i.e., inferring phylogenetic relationships from a newly generated homology hypothesis, as opposed to e.g., supertrees, that are generated by summarizing previous phylogenetic estimates.
 While Physcraper does not generate phylogenies *de novo* in a traditional sense,
-it successfully generates new phylogenetic knowledge, revealing the potential of
-phylogenetic knowledge published in databases to facilitate phylogenetic placement of public molecular data.
+it successfully generates new phylogenetic knowledge, revealing the importance of
+open science in facilitating phylogenetic placement of public molecular data and accelerating the enrichment and updating of phylogenetic relationships in any region of the tree of life.
 The PUMPER pipeline [@izquierdo2014pumper] also uses the concept of updating
 pre-existing alignments to incorporate public molecular data into phylogenies. Unfortunately, installation of the tool was unsuccesful following instructions from the author, and we were unable to benchmark a comparison.
 <!-- **MTH: add some more details about what aspect of the PUMPER install failed** -->
 
-Physcraper generates individual gene trees, which fail to capture the complexity of species' evolutionary history [@song2012resolving]. Yet, Physcraper makes it straightforward to gather alignments and gene trees for multiple loci from a taxonomic group of interest, which can then be used by any tool that performs coalescent analyses to generate species trees, e.g., ASTRAL [@mirarab2014astral], BEAST2 [@bouckaert2019beast], SVD Quartets [@chifman2014quartet]).
+Physcraper generates individual gene trees, which fail to capture the complexity of species' evolutionary history [@song2012resolving]. Yet, Physcraper makes it straightforward to gather alignments and gene trees for multiple loci from a taxonomic group of interest, which can then be used to perform coalescent analysis to generate species trees with e.g., ASTRAL [@mirarab2014astral], BEAST2 [@bouckaert2019beast], or SVD Quartets [@chifman2014quartet]).
 
-Physcraper not only links molecular and tree databases, it can also link phylogenies to various biological databases, such as GBIF, the Paleobiology Database, and others, by leveraging the integrated taxonomy from OpenTree [@rees2017automated].
+Physcraper has the potential to link phylogenies to data available in any of the taxonomies integrated by the OpenTree taxonomy [@rees2017automated], such as geographical locations from the Global Biodiversity Information Facility, or fossils from the Paleobiology Database.
 <!-- a resource that is contributing to achieve the goal of "exploring and analysing biodiversity at an accelerated pace, and returning systematics into the mainstream of science" [@wilson2003encyclopedia]. -->
-
-Physcraper in conjuction with OpenTree can be used to rapidly (in a matter of hours)
+The Physcraper workflow can be used to rapidly (in a matter of hours)
 address challenges overarching both fields of ecology and evolution, such as
 placing newly discovered species phylogenetically [@webb2010biodiversity],
 obtaining trees for ecophylogenetic studies [@helmus2012phylogenetic],
 systematizing molecular (and other) databases, i.e., curating taxonomic assignations [@san2010molecular],
-and generating custom species trees for ecological and evolutionary downstream analyses [@stoltzfus2013phylotastic].
+and generating custom trees for ecological and evolutionary downstream analyses [@stoltzfus2013phylotastic].
 
 Data repositories hold more information than meets the eye.
 Besides the main data, they are rich sources of metadata that can be leveraged for the advantage of all areas of biology as well as the advancement of scientific policy and applications.
