@@ -23,7 +23,7 @@ Taxonomic idiosyncrasies across databases represent a huge challenge for automat
 constructs a comprehensive tree of life by synthesizing published phylogenies along with taxonomic data. OpenTree's "synthetic" tree comprises 2.3 million tips, of which around 90,000 are supported by phylogenies - the remaining 1.4 million taxa are placed in the tree based on taxonomy. To achieve this, OpenTree unifies taxonomy from various databases [@rees2017automated], including the USA National Center for Biodiversity Information (NCBI) molecular database GenBank [@benson2000genbank], among others. This OpenTree taxonomy represents a key resource for connecting data from any biological database that has been integrated to it.
 <!-- to phylogenetic data that has been standardized to it. -->
 
-Another challenhe for incorporating public molecular data into existing phylogenies is assembling high-quality homology hypotheses.
+Another challenge for incorporating public molecular data into existing phylogenies is assembling high-quality homology hypotheses.
 While genomics has, and will continue to, revolutionize phylogenetic inference, the variety of alternative genomic sequencing approaches produce largely non-overlapping genomic datasets across taxa, creating challenges in wide scale phylogenetic reconstruction.
 <!-- Also, as @andermann2020guide point out, "assembling full genomes is often unnecessary for phylogenomic studies if the main goal is to retrieve an appropriate number of phylogenetically informative characters from several independent and single-copy genetic markers [@jones2016targeted]." -->
 Phylogenomics ameliorate this problem by focusing on targeted capture of informative characters from independent and single-copy genetic markers [@andermann2020guide]. Yet, decades of single locus sequencing have generated massive amounts of homologous DNA datasets that can be used for phylogenetic reconstruction at many scales. Moreover, species tree reconstructions from multiple single locus datasets using the multispecies coalescent model are considered the gold standard for inferring species relationships [@song2012resolving].
@@ -51,7 +51,7 @@ The general Physcraper framework is depicted in Figure \@ref(fig:framework). It 
 
 ## The inputs: a tree and an alignment
 
-Taxon names in the input tree must be standardized to the OpenTree taxonomy [@rees2017automated] using OpenTree's bulk Taxonomic Name Resolution Service [TNRS](https://tree.opentreeoflife.org/curator/tnrs/) tool. Users can upload their own tree, or choose from among the 2, 950 standardized trees stored in OpenTree's [Phylesystem](https://github.com/opentreeoflife/phylesystem) that also have alignments avilable on TreeBASE [@piel2009treebase].
+Taxon names in the input tree must be standardized to the OpenTree taxonomy [@rees2017automated] using OpenTree's bulk Taxonomic Name Resolution Service [TNRS](https://tree.opentreeoflife.org/curator/tnrs/) tool. Users can upload their own tree, or choose from among the 2, 950 standardized trees stored in OpenTree's [Phylesystem](https://github.com/opentreeoflife/phylesystem) that also have alignments available on TreeBASE [@piel2009treebase].
 
 The input alignment is a single locus alignment that was used in part or in whole to generate the input tree. If it is stored in TreeBASE, Physcraper retrieves it automatically. Otherwise, the user must provide the path to a local copy of the alignment.
 <!-- Alignments stored in any other repository, or constituting personal data have to be stored locally. -->
@@ -67,7 +67,7 @@ Alternatively, users can arbitrarily define a search taxon that is either a more
 
 BLAST is implemented with the BLAST command line tools `blastn` function [@camacho2009blast] and the BioPython [@cock2009biopython] BLAST function from the [NCBIWWW module](https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html) modified to accept an alternative BLAST address.
 Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
-New sequences are excuded for analysis if 1) they do not belong to the search taxon; 2) they have an e-value above the cutoff (default to 0.00001); 3) they fall outside a min and max length threshold, defined as the proportion of the average length without gaps of all sequences in the input alignment (default values of 80% and 120%, respectively); 4) or if they are either identical to or shorter than an existing sequence in the input alignment and they represent the same taxon in the OpenTree taxonomy or the NCBI taxonomy.
+New sequences are excluded for analysis if 1) they do not belong to the search taxon; 2) they have an e-value above the cutoff (default to 0.00001); 3) they fall outside a min and max length threshold, defined as the proportion of the average length without gaps of all sequences in the input alignment (default values of 80% and 120%, respectively); 4) or if they are either identical to or shorter than an existing sequence in the input alignment and they represent the same taxon in the OpenTree taxonomy or the NCBI taxonomy.
 An arbitrary maximum number of randomly chosen sequences per taxon are allowed (default to 5).
 
 Reverse, complement, and reverse-complement sequences are identified and translated using BioPython internal functions [@cock2009biopython].
@@ -87,7 +87,7 @@ Bootstrap results are summarized with DendroPy's SumTrees module [current versio
 
 Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
 The updated tree is compared to the original tree using an automated conflict analysis which calculates Robinson Foulds weighted and unweighted metrics using Dendropy  [@sukumaran2010dendropy], and performs a node by node comparison between the synthetic OpenTree and the original and updated tree individually, using OpenTree's conflict API [@redelings2017supertree].
-For the conflict analysis to be meaningful, the root of the tree needs to be accurately identified. The best way to currenty do this is by hand, although a default rooting based on OpenTree's taxonomy is also available.
+For the conflict analysis to be meaningful, the root of the tree needs to be accurately identified. The best way to currently do this is by hand, although a default rooting based on OpenTree's taxonomy is also available.
 <!-- It uses the taxon labels for all the tips in the updated tree, pulls an inferred subtree from OpenTree's taxonomy and then applies the same rooting to the inferred updated tree. However, if the updated tree changes expectations from taxonomy, the rooting may no longer be appropriate. Automatic identification of a phylogenetic tree root is a difficult problem that has not been solved yet. The best way is to define the outgroup directly on the updated tree as part of the conflict analysis, so trees are accurately rooted. -->
 <!-- *It would be a nice addition to have users give the output of the input tree as an argument at some point, or maybe we could add a super outgroup at random based on the search taxon* -->
 
@@ -96,7 +96,7 @@ For the conflict analysis to be meaningful, the root of the tree needs to be acc
 
 A user is interested in the phylogenetic relationships within the genus *Ilex*. Commonly known as "hollies", the genus encompasses between 400-700 living species, and is the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering plants.
 
-An online literature review in June 2020 (google scholar search for "ilex phylogeny") reveals that there are several published phylogenetic trees showing relationships within the hollies [@cuenoud2000molecular; @manen2010history; @setoguchi2000intersectional; @selbach2009new], but only two have their data available publicly [@gottlieb2005molecular; @yao2020phylogeny].
+An online literature review in June 2020 (Google scholar search for "ilex phylogeny") reveals that there are several published phylogenetic trees showing relationships within the hollies [@cuenoud2000molecular; @manen2010history; @setoguchi2000intersectional; @selbach2009new], but only two have their data available publicly [@gottlieb2005molecular; @yao2020phylogeny].
 @gottlieb2005molecular made original tree and alignment data available in [TreeBASE](https://treebase.org/treebase-web/search/study/summary.html?id=1091). The "Gottlieb2005" tree sampling 41 species was added to the [OpenTree Phylesystem](https://tree.opentreeoflife.org/curator/study/edit/pg_2827/?tab=home) and its information has been integrated into [OpenTree's synthetic tree](https://devtree.opentreeoflife.org/opentree/opentree12.3@mrcaott68451ott89474/Ilex-theizans--Ilex-dumosa).
 
 The most recent *Ilex* tree from @yao2020phylogeny, has been made available in the [OpenTree Phylesystem](https://tree.opentreeoflife.org/curator/study/view/ot_1984) and in the [DRYAD repository](https://datadryad.org/stash/dataset/doi:10.5061/dryad.k0p2ngf4x). The "Yao2020" tree, is the best sampled phylogenetic tree yet available for the hollies, with 175 tips.
@@ -147,7 +147,7 @@ While Physcraper does not generate phylogenies *de novo* in a traditional sense,
 it successfully generates new phylogenetic knowledge, revealing the importance of
 open science in facilitating phylogenetic placement of public molecular data and accelerating the enrichment and updating of phylogenetic relationships in any region of the tree of life.
 The PUMPER pipeline [@izquierdo2014pumper] also uses the concept of updating
-pre-existing alignments to incorporate public molecular data into phylogenies. Unfortunately, installation of the tool was unsuccesful following instructions from the author, and we were unable to benchmark a comparison.
+pre-existing alignments to incorporate public molecular data into phylogenies. Unfortunately, installation of the tool was unsuccessful following instructions from the author, and we were unable to benchmark a comparison.
 <!-- **MTH: add some more details about what aspect of the PUMPER install failed** -->
 
 Physcraper generates individual gene trees, which fail to capture the complexity of species' evolutionary history [@song2012resolving]. Yet, Physcraper makes it straightforward to gather alignments and gene trees for multiple loci from a taxonomic group of interest, which can then be used to perform coalescent analysis to generate species trees with e.g., ASTRAL [@mirarab2014astral], BEAST2 [@bouckaert2019beast], or SVD Quartets [@chifman2014quartet]).
