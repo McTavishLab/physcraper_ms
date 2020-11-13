@@ -26,7 +26,7 @@ params:
   author2: Martha Kandziora
   email2: kandziom@natur.cuni.cz
   author3: Emily Jane McTavish
-  email3: ejmctavish@gmail.com
+  email3: ejmctavish@ucmerced.edu
   affiliation: School of Natural Sciences, University of California, Merced
   affiliation2: Department of Botany, Faculty of Science, Charles University, Prague, Czech Republic
   correspondence_address: Science and Engineering Building 1, University of California, Merced, 5200 N. Lake Rd, Merced CA 95343
@@ -39,6 +39,7 @@ knitr::opts_chunk$set(
 )
 library(wordcountaddin)
 word_count_body <- wordcountaddin::word_count(filename="2-body.Rmd")
+word_count_references <- 873
 ```
 **1. `r params$author1`**
 
@@ -66,7 +67,7 @@ email: <`r params$email3`>
 
 **Running title**: `r params$running_title`
 
-**Word count**: `r word_count_body`
+**Word count**: `r word_count_body + word_count_references`
 
 **Manuscript prepared for submission to Methods in Ecology and Evolution**
 
