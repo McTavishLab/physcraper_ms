@@ -1,6 +1,6 @@
 # Physcraper manuscript
 
-## To render the BMC Bioinformatics version:
+## To render the BMC Bioinformatics template version:
 
 ```
 tools::texi2pdf(file = "sources/bmc_template/bmc_article.tex", clean=TRUE)
@@ -10,6 +10,13 @@ tools::texi2pdf(file = "sources/bmc_template/bmc_article.tex", clean=TRUE)
 mv bmc_article.pdf docs/submission-bmc-2020-11-25.pdf
 
 #output = paste0("docs/submission-bmc-", Sys.Date(), ".pdf")
+```
+
+# A previous try to bmc format that failed:
+
+```
+rmarkdown::render(input = "sources/2pdf-bmc.Rmd", output_file = paste0("../docs/try-submission-bmc", Sys.Date(), ".pdf"))
+
 ```
 
 ## How to render other versions of this ms.

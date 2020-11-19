@@ -44,7 +44,7 @@ Physcraper aims to demonstrate the benefits of reproducible workflows and open s
 
 ```{r framework, echo=FALSE, fig.cap="The Physcraper framework consists of 4 steps (see text). The software is fully described on its documentation website at physcraper.readthedocs.io, along with installation instructions, function usage descriptions, examples and tutorials.", out.width = '85%', fig.retina= 2, fig.align = "center"}
 # knitr::include_graphics("https://raw.githubusercontent.com/McTavishLab/physcraper/pyopensci/docs/img/schematic.svg")
-knitr::include_graphics("docs/figs/schematic-4.png")
+knitr::include_graphics("../docs/figs/schematic-4.png")
 ```
 
 The general Physcraper framework consists of 4 steps (Fig. \@ref(fig:framework)): 1) identifying and processing a tree and its underlying alignment; 2) performing a BLAST search of DNA sequences from original alignment on GenBank, and filtering of new sequences; 3) profile-aligning new sequences to original alignment; 4) performing a phylogenetic analysis and comparing the updated tree to existing phylogenies.
@@ -126,7 +126,7 @@ wget -O docs/figs/ilex-plot-tips-and-branches-1.png https://raw.githubuserconten
 ```{r results, echo=FALSE, fig.cap="A) Phylogeny updated with Physcraper from Gottlieb et al. 2005 tree in B.", out.width = '100%', fig.retina= 2}
 
 # knitr::include_graphics("docs/figs/ilex-plot-tips-and-branches-1.png")
-knitr::include_graphics("docs/figs/ilex-results.png")
+knitr::include_graphics("../docs/figs/ilex-results.png")
 
 ```
 
