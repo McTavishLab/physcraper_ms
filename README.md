@@ -3,11 +3,11 @@
 ## To render the BMC Bioinformatics template version:
 
 ```
-tools::texi2pdf(file = "sources/bmc_template/bmc_article.tex", clean=TRUE)
+tools::texi2pdf(file = "sources/bmc_template_submission/bmc_article.tex", clean=TRUE)
 # but I have not found a way to assign name and location to output.
 
 # so I just moved it:
-mv bmc_article.pdf docs/submission-bmc-2020-11-25.pdf
+mv bmc_article.pdf docs/submission-bmc-2020-12-28.pdf
 
 #output = paste0("docs/submission-bmc-", Sys.Date(), ".pdf")
 ```
