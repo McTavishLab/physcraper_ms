@@ -171,16 +171,42 @@
 %% and include the section headings          %%
 %% accordingly for your article type.        %%
 %%                                           %%
+%% I followed sections from here:            %%
+%% https://bmcbioinformatics.biomedcentral.com/submission-guidelines/preparing-your-manuscript/software-article
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstractbox}
 
-\begin{abstract} % abstract
-\parttitle{First part title} %if any
-Text for this section.
+\begin{abstract}
+\parttitle{Background}
+Phylogenies are a key part of research in many areas of biology. Tools that automate
+some parts of the process of phylogenetic reconstruction, mainly molecular character matrix assembly,
+have been developed for the advantage of both specialists in the field of phylogenetics and non-specialists.
+However, interpretation of results, comparison with previously available phylogenetic
+hypotheses, and selection of one phylogeny for downstream analyses and discussion still impose difficulties
+to one that is not a specialist either on phylogenetic methods or on a particular group of study.
 
-\parttitle{Second part title} %if any
-Text for this section.
+\parttitle{Results}
+Physcraper is a command-line Python program that automates the update of published
+phylogenies by adding public DNA sequences to underlying alignments of previously
+published phylogenies. It also provides a framework for straightforward comparison
+of published phylogenies with their updated versions, by leveraging upon tools from
+the Open Tree of Life project to link taxonomic information across databases.
+
+Physcraper can be used by the nonspecialist, as a tool to generate phylogenetic
+hypotheses based on publicly available expert phylogenetic knowledge.
+Phylogeneticists and taxonomic group specialists will find it useful as a tool
+to facilitate molecular dataset gathering and comparison
+of alternative phylogenetic hypotheses (topologies).
+
+\parttitle{Conclusions}
+The Physcraper workflow demonstrates the benefits of doing open science for
+phylogenetics, encouraging researchers to strive for better sharing practices.
+Physcraper can be used with any OS and is released under an open-source license.
+Detailed instructions for installation and
+use are available at [https://physcraper.readthedocs](https://physcraper.readthedocs.io).
+
+
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
