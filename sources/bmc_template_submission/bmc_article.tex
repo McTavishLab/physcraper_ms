@@ -201,7 +201,7 @@ to facilitate molecular dataset gathering and comparison
 of alternative phylogenetic hypotheses (topologies).
 
 \parttitle{Conclusions}
-The Physcraper workflow demonstrates the benefits of doing open science for
+The Physcraper workflow showcases the benefits of doing open science for
 phylogenetics, encouraging researchers to strive for better sharing practices.
 Physcraper can be used with any OS and is released under an open-source license.
 Detailed instructions for installation and
@@ -224,7 +224,7 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 \kwd{open science}
 \kwd{reproducibility}
 \kwd{public database}
-\kwd{dna alignment}
+\kwd{DNA alignment}
 \end{keyword}
 
 % MSC classifications codes, if any
@@ -266,20 +266,145 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 %% Background %%
 %%
 \section*{Background}
-Text and results for this section, as per the individual journal's instructions for authors.
+Phylogenies capture the shared history of organisms and provide key evolutionary
+context for our biological observations.
+Public biological databases constitute an amazing resource for evolutionary
+studies. Updating existing phylogenies with molecular data that has never been
+incorporated into any phylogenetic estimate, geographical location, fossils, and
+other data in a reproducible and continuous manner is possible by establishing a
+data interoperability framework for biological databases. Here, we introduce
+Physcraper, a tool that automates database connections to build upon homology
+hypotheses that taxon specialists have assessed and deemed appropriate for a
+specific phylogenetic scope to update a starting tree and single locus alignments
+with public DNA data.
+
+Taxonomic idiosyncrasies across databases represent a huge challenge for automatic
+integration of data into phylogenies, which can be addressed with a unified
+taxonomy for name standardization. The Open Tree of Life project (OpenTree)
+constructs a comprehensive tree of life by synthesizing published phylogenies
+and taxonomy. OpenTree's "synthetic" tree comprises 2.3 million tips, of which
+around 90,000 are supported by phylogenies - the remaining 1.4 million taxa are
+placed in the tree based on taxonomy. To achieve this, OpenTree unifies taxonomic
+data from various databases \cite{rees2017automated}, including the USA National
+Center for Biodiversity Information (NCBI) molecular database GenBank
+\cite{benson2000genbank}, among others. The OpenTree taxonomy represents a key resource
+for connecting data from any biological database that has been integrated to it.
+
+Another challenge for incorporating public molecular data into existing phylogenies
+is assembling high-quality homology hypotheses.
+While genomics has, and will continue to, revolutionize phylogenetic inference,
+the variety of alternative genomic sequencing approaches it uses produce largely
+non-overlapping genomic datasets across taxa, creating challenges in wide scale
+phylogenetic reconstruction.
+
+Phylogenomics ameliorate this problem by focusing on targeted capture of informative
+loci \cite{andermann2020guide}. Yet, decades of single locus sequencing have generated
+massive amounts of homologous DNA datasets that can be used for phylogenetic
+reconstruction at many scales.
+
+More than a decade ago, GenBank release 159 (April 15, 2007) already hosted 72
+million DNA sequences that were gauged to have the potential to resolve phylogenetic
+relationships of `r round(236023/240708, digits=4)*100`% of the almost 241,000
+distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
+Assembling a DNA alignment from such a massive database can be done "by hand",
+but it is a largely time consuming and mostly non-reproducible approach.
+Computational pipelines that mine DNA databases fast, efficiently, and reproducibly,
+have been applied to infer phylogenetic relationships in a variety of organisms
+(e.g., \cite{smith2009mega, antonelli2017toward, izquierdo2014pumper}).
+However, fine-grained curated markers and alignments can improve phylogenetic
+reconstructions, even in phylogenomic analyses \cite{fragoso2017pilot}.
+
+There are almost 8,200 publicly available, peer-reviewed alignments, covering
+around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, which
+can be used as seeds to mine molecular databases, and as "jump-start" alignments
+for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
+update and compare existing phylogenetic knowledge.
+
+Physcraper is a Python pipeline using OpenTree's taxonomy and programmatic access
+protocols (API's) to implement a database interoperability framework that automatically
+links phylogenies that have been standardized to OpenTree taxonomy, to alignments
+from TreeBASE, data from GenBank, and phylogenies from OpenTree's Phylesystem.
+Physcraper aims to demonstrate the benefits of reproducible workflows and open
+science in phylogenetics, and encourage better data sharing practices in the community.
+
 
 \section*{Implementation}
-Text for this section\ldots
-\subsection*{Sub-heading for section}
-Text for this sub-heading\ldots
-\subsubsection*{Sub-sub heading for section}
-Text for this sub-sub-heading\ldots
-\paragraph*{Sub-sub-sub heading for section}
-Text for this sub-sub-sub-heading\ldots
 
+The general Physcraper framework (Figure 1) consists of 4 steps: 1)identifying and
+processing a tree and its underlying alignment; 2) performing a BLAST search of
+DNA sequences from original alignment on GenBank, and filtering of new sequences;
+3) profile-aligning new sequences to original alignment; 4) performing a phylogenetic
+analysis and comparing the updated tree to existing phylogenies.
 
+\subsection*{The inputs: a tree and an alignment}
 
-(also see \cite{koon,xjon,marg,schn,koha,issnic}). 
+Taxon names in the input tree must be standardized to OpenTree taxonomy
+\cite{rees2017automated} using OpenTree's bulk Taxonomic Name Resolution Service
+\href{https://tree.opentreeoflife.org/curator/tnrs/}{TNRS} tool. Users can upload their
+own tree, or choose from among the 2, 950 standardized trees stored in OpenTree's
+\href{https://github.com/opentreeoflife/phylesystem}{Phylesystem} that also have
+alignments available on TreeBASE \cite{piel2009treebase}.
+
+The input alignment is a single locus DNA dataset that was used in part or in
+whole to generate the input tree. Physcraper retrieves TreeBASE alignments
+automatically. Alternatively, users must provide the path to a local copy of the
+alignment.
+Only taxa that are both in the sequence alignment and in the tree are considered
+further for analysis; at least one taxon and its corresponding sequence are required.
+
+\subsection*{DNA sequence search and filtering}
+
+The Basic Local Alignment Search Tool, BLAST \cite{altschul1990basic} is used for DNA
+sequence search on a remote or local GenBank database. It is constrained to a
+"search taxon", a taxonomic group in the NCBI taxonomy that is automatically
+identified using the OpenTree
+\href{<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>}{API}
+\cite{rees2017automated}, as the most recent common ancestor of ingroup taxa that is
+also a named clade in the NCBI taxonomy (Figure 1).
+
+BLAST is implemented with the `blastn` function \cite{camacho2009blast} and the BioPython
+\cite{cock2009biopython} BLAST function from
+\href{https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html}{NCBIWWW module}
+modified to accept an alternative BLAST address.
+Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
+New sequences are excluded for analysis if they 1) are not in the search taxon;
+2) have an e-value above the cutoff (default to 0.00001); 3) fall outside a min
+and max length threshold, defined as the proportion of the average length without
+gaps of all sequences in input alignment (default values of 80% and 120%,
+respectively); 4) or if they are either identical to or shorter than an existing
+sequence in the input alignment and they represent the same taxon in OpenTree or
+NCBI taxonomy.
+An arbitrary maximum number of randomly chosen sequences per taxon are allowed
+(default to 5).
+
+Reverse, complement, and reverse-complement sequences are identified and translated
+using BioPython internal functions \cite{cock2009biopython}.
+Iterative cycles of BLAST searches can be performed, by blasting all new sequences
+until no new ones are found. By default only one BLAST cycle is performed.
+
+\subsection*{New DNA sequence alignment}
+
+MUSCLE \cite{edgar2004muscle} is used to perform a profile alignment in which the
+original alignment is used as a template of homology criteria to align new sequences.
+The final alignment is not further automatically checked, and additional inspection
+and refinement are recommended.
+
+\subsection*{Tree reconstruction and comparison}
+
+RAxML \cite{stamatakis2014raxml} is implemented to reconstruct a Maximum Likelihood
+(ML) gene tree for each input alignment with default settings (GTRCAT model and
+100 bootstrap replicates with default algorithm), using input tree as starting
+tree for ML searches.
+Bootstrap results are summarized using DendroPy's SumTrees module
+\cite{sukumaran2010dendropy}.
+
+Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
+Updated and original tree are compared with Robinson-Foulds weighted and unweighted
+metrics estimated with Dendropy \cite{sukumaran2010dendropy}, and with a node by node
+comparison between the synthetic OpenTree and original and updated tree individually,
+using OpenTree's conflict API \cite{redelings2017supertree}.
+
+(also see \cite{koon,xjon,marg,schn,koha,issnic}).
 
 
 \section*{Results}
@@ -402,7 +527,10 @@ comments on this manuscript.
 
 \section*{Figures}
   \begin{figure}[h!]
-  \caption{Sample figure title}
+  \caption{The Physcraper framework consists of 4 general steps (see text). The software is fully
+  described on its documentation website at \href{https://physcraper.readthedocs.io}{https://physcraper.readthedocs.io},
+  along with installation instructions, function usage descriptions, examples and tutorials.
+}
 \end{figure}
 
 \begin{figure}[h!]
