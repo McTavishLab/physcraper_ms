@@ -404,11 +404,55 @@ metrics estimated with Dendropy \cite{sukumaran2010dendropy}, and with a node by
 comparison between the synthetic OpenTree and original and updated tree individually,
 using OpenTree's conflict API \cite{redelings2017supertree}.
 
-(also see \cite{koon,xjon,marg,schn,koha,issnic}).
 
 
 \section*{Results}
-Text for this section\ldots
+\subsection*{Case Study: The hollies}
+
+A user is interested in phylogenetic relationships within the genus *Ilex*. Commonly
+known as "hollies", the genus encompasses between 400-700 living species, and is
+the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering
+plants.
+
+An online literature review in June 2020 (Google scholar search for "ilex phylogeny")
+reveals that there are several published phylogenies showing relationships within
+the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
+selbach2009new}, but only two have data publicly available \cite{gottlieb2005molecular, yao2020phylogeny}.
+\cite{gottlieb2005molecular} made original tree and alignment available in
+\href{https://treebase.org/treebase-web/search/study/summary.html?id=1091}{TreeBASE study 1091}.
+The tree sampling 41 species was also added to
+OpenTree's Phylesystem \href{https://tree.opentreeoflife.org/curator/study/edit/pg_2827/?tab=home}{study pg\_2827}
+and it has been integrated into OpenTree's synthetic tree
+\href{https://devtree.opentreeoflife.org/opentree/opentree12.3@mrcaott68451ott89474/Ilex-theizans--Ilex-dumosa}{here}.
+
+The most recent *Ilex* tree \cite{yao2020phylogeny} is available in
+OpenTree's Phylesystem \href{https://tree.opentreeoflife.org/curator/study/view/ot_1984}{study ot\_1984}
+and in the DRYAD repository \cite{yao2020dryad}.
+With 175 tips, the \cite{yao2020phylogeny} tree is the best sampled phylogeny yet available for
+the hollies.
+
+We ran Physcraper on a laptop Linux computer to update an internal transcribed
+spacer DNA region (ITS) alignment from \cite{gottlieb2005molecular}, using a local
+GenBank database.  BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
+analyses taking an additional 13hrs.
+<!-- **MTH: you probably need some details about the hardware, given the fact
+hat you are discussing running times** -->
+The updated \cite{gottlieb2005molecular} tree (Fig. \@ref(fig:results)) displays
+all 41 distinct
+taxa from the original study plus 231 new tips, contributing phylogenetic data to
+84 additional *Ilex* taxa. The best RaxML tree is 99% resolved, with 25% of nodes
+with bootstrap support < 0.1 and 48% nodes with bootstrap support > 0.75.
+A large portion of internal branches are negligibly small, with 30 branches
+< 0.00001 substitution rate units, from which only 9 have a bootstrap support > 0.75
+(Figure 2).
+For comparison, \cite{yao2020phylogeny} also contains all 41 distinct taxa from
+the original
+\cite{gottlieb2005molecular} study,
+and contributes phylogenetic data to 134 additional *Ilex* taxa, from which
+`r 135-68` are also in updated \cite{gottlieb2005molecular}. While \cite{yao2020phylogeny} also used
+ITS as a marker, their GenBank data is not released yet, so Physcraper was unable
+to incorporate 68 additional taxa into the analysis. However, Physcraper was able
+to incorporate 18 taxa that were not in \cite{yao2020phylogeny}.
 
 \section*{Discussion}
 Text for this section\ldots
@@ -534,7 +578,15 @@ comments on this manuscript.
 \end{figure}
 
 \begin{figure}[h!]
-  \caption{Sample figure title}
+  \caption{A) Phylogeny updated with Physcraper from original
+  \cite{gottlieb2005molecular} tree in B.
+  Tips in original alignment and new tips added with Physcraper are depicted in
+  black and red, respectively. Physcraper obtained sequences from the GenBank
+  database via local BLAST of all sequences in the original alignment that generated
+  tree in B), filtered them following criteria from section "DNA sequence search and
+  filtering", aligned them to original alignment using MUSCLE and performed a
+  phylogenetic reconstruction using RAxML with 100 bootstraps. B-D conflict analyses
+  performed with OpenTree tools.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
