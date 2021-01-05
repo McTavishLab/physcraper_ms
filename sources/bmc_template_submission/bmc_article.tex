@@ -267,7 +267,47 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 %%
 \section*{Background}
 Phylogenies capture the shared history of organisms and provide key evolutionary
-context for our biological observations.
+context for our biological observations \cite{Dobzhansky maybe}.
+A challenge for phylogenetic reconstruction
+is assembling high-quality homology hypotheses.
+While genomics has, and will continue to, revolutionize phylogenetic inference,
+the diversity of alternative genomic sequencing approaches implemented produce
+largely non-overlapping homology hypotheses across taxa \cite{BLA}, creating challenges for
+reconstructing the shared evolutionary history of taxa separated phylogenetically
+at deep scales \cite{BLA}.
+
+While phylogenomics tackles this problem by focusing on targeted capture of informative
+regions \cite{andermann2020guide, it is expensive. Few labs around the world can afford
+to implement it for all their study groups, or at all. It does not contribute to
+democratization of research yet.
+
+Decades of single locus sequencing have generated
+massive amounts of homologous DNA datasets that can be used for phylogenetic
+reconstruction at many scales.
+More than a decade ago, GenBank release 159 (April 15, 2007) already hosted 72
+million DNA sequences that were gauged to have the potential to resolve phylogenetic
+relationships of 98.05\% of the almost 241,000
+distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
+How much of this is available on OpenTree??
+
+Is genomic data on genbank available for a smaller percentage of all life, compared to
+single loci in the same database?
+
+Notable examples of phylogenies constructed using multi-locus, database mined, super matrix approach:
+Magallon, Soltis, examples with fish, bats,
+
+These studies are widely cited and immensely relevant for the biological community.
+
+
+Some of these multilocus phylogenetic studies have implemented pipelines such as PHLAWD,
+other studies have curated their matrices by hand, which is largely non-reproducible.
+
+
+
+
+
+
+
 Public biological databases constitute an amazing resource for evolutionary
 studies. Updating existing phylogenies with molecular data that has never been
 incorporated into any phylogenetic estimate, geographical location, fossils, and
@@ -290,22 +330,10 @@ Center for Biodiversity Information (NCBI) molecular database GenBank
 \cite{benson2000genbank}, among others. The OpenTree taxonomy represents a key resource
 for connecting data from any biological database that has been integrated to it.
 
-Another challenge for incorporating public molecular data into existing phylogenies
-is assembling high-quality homology hypotheses.
-While genomics has, and will continue to, revolutionize phylogenetic inference,
-the variety of alternative genomic sequencing approaches it uses produce largely
-non-overlapping genomic datasets across taxa, creating challenges in wide scale
-phylogenetic reconstruction.
+----------
 
-Phylogenomics ameliorate this problem by focusing on targeted capture of informative
-loci \cite{andermann2020guide}. Yet, decades of single locus sequencing have generated
-massive amounts of homologous DNA datasets that can be used for phylogenetic
-reconstruction at many scales.
 
-More than a decade ago, GenBank release 159 (April 15, 2007) already hosted 72
-million DNA sequences that were gauged to have the potential to resolve phylogenetic
-relationships of 98.05\% of the almost 241,000
-distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
+
 Assembling a DNA alignment from such a massive database can be done "by hand",
 but it is a largely time consuming and mostly non-reproducible approach.
 Computational pipelines that mine DNA databases fast, efficiently, and reproducibly,

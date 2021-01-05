@@ -30,7 +30,8 @@ and the upgraded version of PHLAWD, PyPHLAWD.
 Notably large phylogenies have been constructed using some of these tools,
 Some others have not been used that much. So, how well accepted is this approach in the community?
 
-Various efforts to automatize parts of the process in order to be able to take advantage of data in public databases.
+Various efforts to automatize parts of the process in order to be able to take
+advantage of data in public databases.
 
 Most of this tools were envisioned for phylogenomics, were the analyses and processing of huge amounts of genetic data is naturally needed. Without automatization, curation of a phylogenomics database is a task that could not be finished in human time.
 Some pipelines sacrificed precision and accuracy for quantity. But many tools to check
