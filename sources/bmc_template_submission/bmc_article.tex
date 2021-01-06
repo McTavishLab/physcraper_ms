@@ -267,19 +267,19 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 %%
 \section*{Background}
 Phylogenies capture the shared history of organisms and provide key evolutionary
-context for our biological observations \cite{Dobzhansky maybe}.
+context for our biological observations \cite{dobzhansky1973nothing}.
 A challenge for phylogenetic reconstruction
 is assembling high-quality homology hypotheses.
 While genomics has, and will continue to, revolutionize phylogenetic inference,
 the diversity of alternative genomic sequencing approaches implemented produce
-largely non-overlapping homology hypotheses across taxa \cite{BLA}, creating challenges for
-reconstructing the shared evolutionary history of taxa separated phylogenetically
-at deep scales \cite{BLA}.
+largely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
+creating challenges for phylogenetic reconstruction.
+
 
 While phylogenomics tackles this problem by focusing on targeted capture of informative
-regions \cite{andermann2020guide, it is expensive. Few labs around the world can afford
+regions \cite{andermann2020guide}, it is expensive. Few labs around the world can afford
 to implement it for all their study groups, or at all. It does not contribute to
-democratization of research yet.
+democratization of research yet \cite{li2017enabling}.
 
 Decades of single locus sequencing have generated
 massive amounts of homologous DNA datasets that can be used for phylogenetic
@@ -288,7 +288,11 @@ More than a decade ago, GenBank release 159 (April 15, 2007) already hosted 72
 million DNA sequences that were gauged to have the potential to resolve phylogenetic
 relationships of 98.05\% of the almost 241,000
 distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
-How much of this is available on OpenTree??
+The Open Tree of Life project (OpenTree)
+constructs a comprehensive tree of life by synthesizing published phylogenies
+and taxonomy. OpenTree's "synthetic" tree comprises 2.3 million tips, of which
+around 90,000 (87,740) are supported by phylogenies - the remaining 1.4 million taxa are
+placed in the tree based on taxonomy. Meaning that there is a lot of information
 
 Is genomic data on genbank available for a smaller percentage of all life, compared to
 single loci in the same database?
@@ -302,9 +306,22 @@ These studies are widely cited and immensely relevant for the biological communi
 Some of these multilocus phylogenetic studies have implemented pipelines such as PHLAWD,
 other studies have curated their matrices by hand, which is largely non-reproducible.
 
+Make emphasis on these really great studies (and pipelines) that do not rely on
+genomic data, and that there is a lot of single locus data that can be analysed
 
+Assembling a DNA alignment from such a massive database can be done "by hand",
+but it is a largely time consuming and mostly non-reproducible approach.
+Computational pipelines that mine DNA databases fast, efficiently, and reproducibly,
+have been applied to infer phylogenetic relationships in a variety of organisms
+(e.g., \cite{smith2009mega, antonelli2017toward, izquierdo2014pumper}).
+However, fine-grained curated markers and alignments can improve phylogenetic
+reconstructions, even in phylogenomic analyses \cite{fragoso2017pilot}.
 
-
+There are almost 8,200 publicly available, peer-reviewed alignments, covering
+around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, which
+can be used as seeds to mine molecular databases, and as "jump-start" alignments
+for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
+update and compare existing phylogenetic knowledge.
 
 
 
@@ -320,11 +337,9 @@ with public DNA data.
 
 Taxonomic idiosyncrasies across databases represent a huge challenge for automatic
 integration of data into phylogenies, which can be addressed with a unified
-taxonomy for name standardization. The Open Tree of Life project (OpenTree)
-constructs a comprehensive tree of life by synthesizing published phylogenies
-and taxonomy. OpenTree's "synthetic" tree comprises 2.3 million tips, of which
-around 90,000 are supported by phylogenies - the remaining 1.4 million taxa are
-placed in the tree based on taxonomy. To achieve this, OpenTree unifies taxonomic
+taxonomy for name standardization.
+
+To achieve this, OpenTree unifies taxonomic
 data from various databases \cite{rees2017automated}, including the USA National
 Center for Biodiversity Information (NCBI) molecular database GenBank
 \cite{benson2000genbank}, among others. The OpenTree taxonomy represents a key resource
@@ -334,19 +349,7 @@ for connecting data from any biological database that has been integrated to it.
 
 
 
-Assembling a DNA alignment from such a massive database can be done "by hand",
-but it is a largely time consuming and mostly non-reproducible approach.
-Computational pipelines that mine DNA databases fast, efficiently, and reproducibly,
-have been applied to infer phylogenetic relationships in a variety of organisms
-(e.g., \cite{smith2009mega, antonelli2017toward, izquierdo2014pumper}).
-However, fine-grained curated markers and alignments can improve phylogenetic
-reconstructions, even in phylogenomic analyses \cite{fragoso2017pilot}.
 
-There are almost 8,200 publicly available, peer-reviewed alignments, covering
-around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, which
-can be used as seeds to mine molecular databases, and as "jump-start" alignments
-for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
-update and compare existing phylogenetic knowledge.
 
 Physcraper is a Python pipeline using OpenTree's taxonomy and programmatic access
 protocols (API's) to implement a database interoperability framework that automatically
