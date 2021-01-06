@@ -1,0 +1,23 @@
+While genomics has, and will continue to, revolutionize phylogenetic inference,
+the diversity of alternative genomic sequencing approaches implemented produce
+largely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
+creating challenges for phylogenetic reconstruction.
+Phylogenomics addresses this problem by focusing on targeted capture of informative
+regions \cite{andermann2020guide}. Yet, it is expensive. Few labs around the world can afford
+to implement it for all their study groups, or at all. Creating a wealth gap for
+science, while free information is still available to provide new knowledge.
+Genomics does not contribute yet to democratization of phylogenetic research \cite{li2017enabling}.
+
+%% Is genomic data on genbank available for a smaller percentage of all life, compared to
+%% single loci in the same database?
+
+Public biological databases constitute an amazing resource for evolutionary
+studies. Connecting existing phylogenies to molecular data that has never been
+incorporated into any phylogenetic estimate, geographical location, fossils, and
+other data in a reproducible and continuous manner is possible by establishing a
+data interoperability framework for biological databases. Here, we introduce
+Physcraper, a tool that automates biological database connections
+with the main goal of building upon homology
+hypotheses that taxon specialists have assessed and deemed appropriate for a
+specific phylogenetic scope to update a starting tree and single locus alignments
+with public DNA data.

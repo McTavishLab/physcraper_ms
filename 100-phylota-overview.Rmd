@@ -239,7 +239,7 @@ data set to be used for phylogenetic reconstruction:
     species tree.
     - A study of the effect of poliploidy on niche evolution [@baniaga2018polyploid],
     uses phylota to get a DNA data set for 132 unique taxa of vascular plants from
-    16 families and 25 genera,and a tree of 33 genera from 20 different families
+    16 families and 25 genera, and a tree of 33 genera from 20 different families
     comprising 1706 taxa.
 3. When the website was used to identify sequences and markers available in
 GenBank for a particular group. In this cases, the dataset mining was either performed

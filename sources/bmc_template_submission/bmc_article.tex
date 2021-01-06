@@ -268,37 +268,35 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 \section*{Background}
 Phylogenies capture the shared history of organisms and provide key evolutionary
 context for our biological observations \cite{dobzhansky1973nothing}.
-A challenge for phylogenetic reconstruction
-is assembling high-quality homology hypotheses.
-While genomics has, and will continue to, revolutionize phylogenetic inference,
-the diversity of alternative genomic sequencing approaches implemented produce
-largely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
-creating challenges for phylogenetic reconstruction.
-
-
-While phylogenomics tackles this problem by focusing on targeted capture of informative
-regions \cite{andermann2020guide}, it is expensive. Few labs around the world can afford
-to implement it for all their study groups, or at all. It does not contribute to
-democratization of research yet \cite{li2017enabling}.
-
-Decades of single locus sequencing have generated
-massive amounts of homologous DNA datasets that can be used for phylogenetic
-reconstruction at many scales.
-More than a decade ago, GenBank release 159 (April 15, 2007) already hosted 72
-million DNA sequences that were gauged to have the potential to resolve phylogenetic
-relationships of 98.05\% of the almost 241,000
-distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
 The Open Tree of Life project (OpenTree)
 constructs a comprehensive tree of life by synthesizing published phylogenies
 and taxonomy. OpenTree's "synthetic" tree comprises 2.3 million tips, of which
 around 90,000 (87,740) are supported by phylogenies - the remaining 1.4 million taxa are
-placed in the tree based on taxonomy. Meaning that there is a lot of information
+placed in the tree based on taxonomy. Meaning that there is still a lot of work
+to do to complete a full phylogenetic tree of all life.
 
-Is genomic data on genbank available for a smaller percentage of all life, compared to
-single loci in the same database?
+Decades of single locus sequencing have generated
+massive amounts of homologous DNA datasets that have the potential to be used for phylogenetic
+reconstruction at many scales \cite{sanderson2008phylota}.
+More than a decade ago, GenBank release 159 (April 15, 2007) already hosted 72
+million DNA sequences that were gauged to have the potential to resolve phylogenetic
+relationships of 98.05\% of the almost 241,000
+distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
+
+With more than XXXX million single locus
+sequences in GenBank today, there is a considerable amount of phylogenetically
+informative data in GenBank that has not been analysed and/or made publicly available
+with the potential to give phylogenetic light to the tree of life.
+
+Phylogenies constructed from single locus super mayrix datasets are still widely
+generated and relevant to the field. Notable examples include the
 
 Notable examples of phylogenies constructed using multi-locus, database mined, super matrix approach:
 Magallon, Soltis, examples with fish, bats,
+\cite{magallon2015metacalibrated} mining by hand - flowering plant families - has been cited 561 times
+\cite{smith2018constructing} 38k clades of plants with seeds - cited 176 times
+\cite{jetz2012global} 6k bird species - cited
+\cite{rabosky2018inverse} mining with phlawd - cited 202 times
 
 These studies are widely cited and immensely relevant for the biological community.
 
@@ -307,7 +305,7 @@ Some of these multilocus phylogenetic studies have implemented pipelines such as
 other studies have curated their matrices by hand, which is largely non-reproducible.
 
 Make emphasis on these really great studies (and pipelines) that do not rely on
-genomic data, and that there is a lot of single locus data that can be analysed
+genomic data, and that there is a lot of single locus data that can be analysed.
 
 Assembling a DNA alignment from such a massive database can be done "by hand",
 but it is a largely time consuming and mostly non-reproducible approach.
@@ -325,15 +323,7 @@ update and compare existing phylogenetic knowledge.
 
 
 
-Public biological databases constitute an amazing resource for evolutionary
-studies. Updating existing phylogenies with molecular data that has never been
-incorporated into any phylogenetic estimate, geographical location, fossils, and
-other data in a reproducible and continuous manner is possible by establishing a
-data interoperability framework for biological databases. Here, we introduce
-Physcraper, a tool that automates database connections to build upon homology
-hypotheses that taxon specialists have assessed and deemed appropriate for a
-specific phylogenetic scope to update a starting tree and single locus alignments
-with public DNA data.
+
 
 Taxonomic idiosyncrasies across databases represent a huge challenge for automatic
 integration of data into phylogenies, which can be addressed with a unified
