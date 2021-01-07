@@ -268,8 +268,30 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 \section*{Background}
 Phylogenies capture the shared history of organisms and provide key evolutionary
 context for our biological observations \cite{dobzhansky1973nothing}.
+Public biological databases constitute an amazing resource for evolutionary
+studies. Connecting existing phylogenies to molecular data that has never been
+incorporated into any phylogenetic estimate, geographical location, fossils, and
+other data in a reproducible and continuous manner is possible by establishing a
+data interoperability framework for biological databases. Here, we introduce
+Physcraper, a tool that automates biological database connections
+with the main goal of building upon homology
+hypotheses that taxon specialists have assessed and deemed appropriate for a
+specific phylogenetic scope to update a starting tree and single locus alignments
+with public DNA data, with the added capability to connect the lineages represented
+in the phylogeny to biological data in public databases.
+
+One of the main challenges for automatic
+integration of biological data into phylogenies are varying taxonomic idiosyncrasies
+across databases. To address this challenge, the Open Tree of Life project (OpenTree)
+unifies taxonomic
+data from various databases \cite{rees2017automated}, including the USA National
+Center for Biodiversity Information (NCBI) molecular database GenBank
+\cite{benson2000genbank}, among others. The OpenTree taxonomy represents a key resource
+that remains to be leveraged for connecting data from any biological database that
+has been integrated to it.
+
 The Open Tree of Life project (OpenTree)
-constructs a comprehensive tree of life by synthesizing published phylogenies
+also constructs a comprehensive tree of life by synthesizing published phylogenies
 and taxonomy. OpenTree's "synthetic" tree comprises 2.3 million tips, of which
 around 90,000 (87,740) are supported by phylogenies - the remaining 1.4 million taxa are
 placed in the tree based on taxonomy. Meaning that there is still a lot of work
@@ -320,20 +342,6 @@ around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, w
 can be used as seeds to mine molecular databases, and as "jump-start" alignments
 for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
 update and compare existing phylogenetic knowledge.
-
-
-
-
-
-Taxonomic idiosyncrasies across databases represent a huge challenge for automatic
-integration of data into phylogenies, which can be addressed with a unified
-taxonomy for name standardization.
-
-To achieve this, OpenTree unifies taxonomic
-data from various databases \cite{rees2017automated}, including the USA National
-Center for Biodiversity Information (NCBI) molecular database GenBank
-\cite{benson2000genbank}, among others. The OpenTree taxonomy represents a key resource
-for connecting data from any biological database that has been integrated to it.
 
 ----------
 

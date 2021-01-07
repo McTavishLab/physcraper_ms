@@ -11,13 +11,15 @@ Genomics does not contribute yet to democratization of phylogenetic research \ci
 %% Is genomic data on genbank available for a smaller percentage of all life, compared to
 %% single loci in the same database?
 
-Public biological databases constitute an amazing resource for evolutionary
-studies. Connecting existing phylogenies to molecular data that has never been
-incorporated into any phylogenetic estimate, geographical location, fossils, and
-other data in a reproducible and continuous manner is possible by establishing a
-data interoperability framework for biological databases. Here, we introduce
-Physcraper, a tool that automates biological database connections
-with the main goal of building upon homology
-hypotheses that taxon specialists have assessed and deemed appropriate for a
-specific phylogenetic scope to update a starting tree and single locus alignments
-with public DNA data.
+
+
+\cite{pyron2011phylogeny} PHLAWD, Colubroidea, 334 citations
+
+Large genomic dataset limit the complexity of evolutionary models that can be applied.
+Single locus allows for more complex evolutionary models, and therefore might
+provide better evolutionary estimates \cite{}.
+
+Single locus super-matrix have provided very good phylogenegic inferences, sometimes even better than genomic based estimates. SL also, allow for construction of large phylogenies and
+
+Line 78- Add extra sentence about advantages of Physcraper's implementation
+Physcraper has speciifc advantages over existing pipelines.
