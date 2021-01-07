@@ -4,6 +4,11 @@ open science in facilitating phylogenetic placement of public molecular data and
 accelerating enrichment and updating of phylogenetic relationships in any region
 of the tree of life.
 
+The PUMPER pipeline \cite{izquierdo2014pumper} also uses the concept of updating
+pre-existing alignments to incorporate public molecular data into phylogenies.
+Unfortunately, installation was unsuccessful following instructions from the author,
+and a comparison analysis between Physcraper and PUMPER is unfeasible at present.
+%% **MTH: add some more details about what aspect of the PUMPER install failed**
 
 Genomics is expensive. Few labs around the world can afford
 to implement it for all their study groups, or at all. Creating a wealth gap for
