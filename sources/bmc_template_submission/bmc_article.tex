@@ -369,9 +369,9 @@ analysis and comparing the updated tree to existing phylogenies.
 
 Taxon names in the input tree must be standardized to OpenTree taxonomy
 \cite{rees2017automated} using OpenTree's bulk Taxonomic Name Resolution Service
-\href{https://tree.opentreeoflife.org/curator/tnrs/}{TNRS} tool. Users can upload their
+(TNRS) tool \cite{TNRStool}. Users can upload their
 own tree, or choose from among the 2, 950 standardized trees stored in OpenTree's
-\href{https://github.com/opentreeoflife/phylesystem}{Phylesystem} that also have
+Phylesystem \cite{phylesystemGithub, mctavish2015phylesystem} that also have
 alignments available on TreeBASE \cite{piel2009treebase}.
 
 The input alignment is a single locus DNA dataset that was used in part or in
@@ -386,14 +386,12 @@ further for analysis; at least one taxon and its corresponding sequence are requ
 The Basic Local Alignment Search Tool, BLAST \cite{altschul1990basic} is used for DNA
 sequence search on a remote or local GenBank database. It is constrained to a
 "search taxon", a taxonomic group in the NCBI taxonomy that is automatically
-identified using the OpenTree
-\href{<https://github.com/OpenTreeOfLife/germinator/wiki/Taxonomy-API-v3#mrca>}{API}
-\cite{rees2017automated}, as the most recent common ancestor of ingroup taxa that is
+identified using the OpenTree's taxonomic Most Recent Common Ancestor (MRCA) API
+\cite{mrcaAPI, rees2017automated}, as the MRCA of all ingroup taxa that is
 also a named clade in the NCBI taxonomy (Figure 1).
 
-BLAST is implemented with the `blastn` function \cite{camacho2009blast} and the BioPython
-\cite{cock2009biopython} BLAST function from
-\href{https://biopython.org/DIST/docs/api/Bio.Blast.NCBIWWW-module.html}{NCBIWWW module}
+BLAST is performed using the `blastn` algorithm \cite{camacho2009blast}
+implemented in BioPython's \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
 modified to accept an alternative BLAST address.
 Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
 New sequences are excluded for analysis if they 1) are not in the search taxon;
@@ -447,18 +445,17 @@ An online literature review in June 2020 (Google scholar search for "ilex phylog
 reveals that there are several published phylogenies showing relationships within
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
 selbach2009new}, but only two have data publicly available \cite{gottlieb2005molecular, yao2020phylogeny}.
-\cite{gottlieb2005molecular} made original tree and alignment available in
-\href{https://treebase.org/treebase-web/search/study/summary.html?id=1091}{TreeBASE study 1091}.
-The tree sampling 41 species was also added to
-OpenTree's Phylesystem \href{https://tree.opentreeoflife.org/curator/study/edit/pg_2827/?tab=home}{study pg\_2827}
-and it has been integrated into OpenTree's synthetic tree
-\href{https://devtree.opentreeoflife.org/opentree/opentree12.3@mrcaott68451ott89474/Ilex-theizans--Ilex-dumosa}{here}.
-
+\cite{gottlieb2005molecular} made original tree and alignment available in TreeBASE
+(study 1091 \cite{treebase1091}). The tree sampling 41 species is also available from
+OpenTree's Phylesystem (study pg\_2827 \cite{pg2827}),
+and has been integrated into OpenTree's synthetic tree \cite{mrcaott68451ott89474}.
 The most recent \textit{Ilex} tree \cite{yao2020phylogeny} is available in
-OpenTree's Phylesystem \href{https://tree.opentreeoflife.org/curator/study/view/ot_1984}{study ot\_1984}
+OpenTree's Phylesystem (study ot\_1984 \cite{ot1984}),
 and in the DRYAD repository \cite{yao2020dryad}.
 With 175 tips, the \cite{yao2020phylogeny} tree is the best sampled phylogeny yet available for
 the hollies.
+
+
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
 spacer DNA region (ITS) alignment from \cite{gottlieb2005molecular}, using a local
@@ -560,6 +557,14 @@ Text for this section\ldots
 \section*{Abbreviations}
 
 \textbf{OpenTree:} The Open Tree of Life project
+
+\textbf{TNRS:} Taxonomic Name Resolution Service
+
+\textbf{MRCA:} Most Recent Common Ancestor
+
+\textbf{BLAST:} Basic Local Alignment Search Tool
+
+\textbf{NCBI:} USA National Center for Biodiversity Information
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
