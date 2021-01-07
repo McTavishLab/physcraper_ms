@@ -450,65 +450,46 @@ to incorporate 68 additional taxa into the analysis. However, Physcraper was abl
 to incorporate 18 taxa that were not in \cite{yao2020phylogeny}.
 
 \section*{Discussion}
-
 Databases preserving and democratizing access to biological data
 have become essential resources for science.
 New molecular data keep accumulating and tools facilitating its integration into
 existent evolutionary knowledge contribute to the acceleration of scientific discovery.
 
-To our knowledge, Physcraper is the first tool establishing an interoperability
-framework for phylogenetic analyses (should we say this???).
 We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics,
 facilitating phylogenetic knowledge for ecologists and other non-specialists, effectively
 democratizing phylogenetic studies.
 
 As a tool for automatizing phylogenetic reconstruction from molecular databases,
-we believe it presents several advantages over existing phylogenetic pipelines designed to
+Physcraper presents several advantages over existing phylogenetic pipelines designed to
 make evolutionary sense of the vast amount of
-public molecular data available. Phylota \cite{sanderson2008phylota},
-and PHLAWD \cite{smith2009mega} were the first of the kind and have been cited and used
-abundantly for phylogenetic reconstruction and mining of molecular databases. While these are
-strong tools that will probably still be widely used with great potential in their
-more recent updated versions (phylotar \cite{bennett2018phylotar} and PyPHLAWD \cite{smith2019pyphlawd}),
-they do not take into account prior work and knowledge on phylogenetic relationships
-and alignment construction, which makes them prone to error (requiring more
-manual downstream processing) and difficults comparison with previous phylogenetic
-knowledge.
+public molecular data available. 
 
-SUPERSMART \cite{antonelli2017toward}) and PUMPER \cite{izquierdo2014pumper}
-share conceptual strengths, but present many challenges for installation and user
-experience, which have resulted in a low level of adoption of these tools
-in the community, and have been applied in very few phylogenetic analyses since their
-publication (put number of citations as of today or to harsh??).
+Several analysis tools create full phylogenies \textit{de novo} by mining of molecular databases \cite{antonelli2017toward, sanderson2008phylota, smith2019pyphlawd, bennett2018phylotar, pearse2013phylogenerator}.
+In particular, Phylota \cite{sanderson2008phylota},
+and PHLAWD \cite{smith2009mega}, have been cited and used abundantly. 
 
-Phylogenerator \cite{pearse2013phylogenerator} gathers genetic data by relying only on
-genetic marker names and descriptions in the GenBank database, which can be prone
-to error due to misslabelling. Any form of sequence similarity analysis, such as BLAST
-\cite{camacho2009blast} greatly improves correct homologous identification and should
-be preferred for obtaining high-quality phylogenetic hypotheses.
+Physcraper builds on this automated database mining concept by incorporating prior phylogenetic work and existing taxonomic domain knowledge on appropriate markers and alignment construction.
+This decreases error (requiring more manual downstream processing) and eases comparison with previous phylogenetic
+knowledge. 
+Unlike placement approaches \cite{berger_performance_2011, matsen_pplacer_2010}, which add new taxa without modifying the input tree, Physcraper estimates all the relationships in the context of the new data.
+PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no longer under active development, is challenging to install and run, and has resulted in very few phylogenetic analyses since its publication.
 
-While Physcraper generates individual gene trees, which generally fail to capture the complexity of
-species' evolutionary history \cite{song2012resolving}, it facilitates
+Physcraper generates gene trees, which individually do not capture the full complexity of species' evolutionary history \cite{song2012resolving}.
+However, physcraper facilitates
 gathering alignments and gene trees for multiple loci from a group of interest,
-that can be used to reconstruct species trees with ASTRAL \cite{mirarab2014astral},
+that together can be used to reconstruct species trees taking into account coalescent processes with ASTRAL \cite{mirarab2014astral},
 BEAST2 \cite{bouckaert2019beast}, or SVD Quartets \cite{chifman2014quartet}).
+Rigorous analyses of multiple loci allows for more complex evolutionary models than analyses of large genomic data sets, and can provide better evolutionary estimates.
 
-Physcraper has the unique advantage to link phylogenies to data available in any of the
-taxonomies integrated in the OpenTree taxonomy \cite{rees2017automated}, such as
-geographical locations from the Global Biodiversity Information Facility, or
-fossils from the Paleobiology Database.
-%% a resource that is contributing to achieve the goal of "exploring and
-%% analysing biodiversity at an accelerated pace, and returning systematics into
-%% the mainstream of science" \cite{wilson2003encyclopedia}.
-The Physcraper workflow can be used to rapidly (in a matter of hours)
-address challenges overarching both fields of ecology and evolution, such as
+Physcraper has the added advantage of linking taxonomic information about tips in the output phylogenies to data available in a variety of biological databases \cite{rees2017automated}, such as
+geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
+
+The Physcraper workflow can be used to rapidly (in a matter of hours) to create phylogenies which can address challenges overarching both fields of ecology and evolution, such as
 phylogenetically placing newly discovered species \cite{webb2010biodiversity},
-systematizing molecular (and other) databases, i.e., curating taxonomic assignations
+curating taxonomic assignments
 \cite{san2010molecular},
 and generating custom trees for ecological \cite{helmus2012phylogenetic} and
 evolutionary downstream analyses \cite{stoltzfus2013phylotastic}.
-
-
 
 \section*{Conclusions}
 Data repositories hold more information than meets the eye.
@@ -547,6 +528,8 @@ importance of data sharing and open science in the field, biology and science.
 \textbf{BLAST:} Basic Local Alignment Search Tool
 
 \textbf{NCBI:} USA National Center for Biodiversity Information
+
+\textbf{GBIF:} Global Biodiversity Information Facility
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
