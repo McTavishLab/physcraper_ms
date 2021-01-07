@@ -1,9 +1,11 @@
-While genomics has, and will continue to, revolutionize phylogenetic inference,
-the diversity of alternative genomic sequencing approaches implemented produce
-largely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
-creating challenges for phylogenetic reconstruction.
-Phylogenomics addresses this problem by focusing on targeted capture of informative
-regions \cite{andermann2020guide}. Yet, it is expensive. Few labs around the world can afford
+While Physcraper does not generate phylogenies \textit{de novo} in a traditional sense,
+it successfully generates new phylogenetic knowledge, revealing the importance of
+open science in facilitating phylogenetic placement of public molecular data and
+accelerating enrichment and updating of phylogenetic relationships in any region
+of the tree of life.
+
+
+Genomics is expensive. Few labs around the world can afford
 to implement it for all their study groups, or at all. Creating a wealth gap for
 science, while free information is still available to provide new knowledge.
 Genomics does not contribute yet to democratization of phylogenetic research \cite{li2017enabling}.
@@ -11,6 +13,25 @@ Genomics does not contribute yet to democratization of phylogenetic research \ci
 %% Is genomic data on genbank available for a smaller percentage of all life, compared to
 %% single loci in the same database?
 
+%% While taxonomic trees are useful, trees inferred from evolutionary estimates are
+preferred.
+
+
+Notable examples of phylogenies constructed using multi-locus, database mined, super matrix approach:
+Magallon, Soltis, examples with fish, bats,
+\cite{magallon2015metacalibrated} mining by hand - flowering plant families - has been cited 561 times
+\cite{smith2018constructing} 38k clades of plants with seeds - cited 176 times
+\cite{jetz2012global} 6k bird species - cited
+\cite{rabosky2018inverse} mining with phlawd - cited 202 times
+
+These studies are widely cited and immensely relevant for the biological community.
+
+
+Some of these multilocus phylogenetic studies have implemented pipelines such as PHLAWD,
+other studies have curated their matrices by hand, which is largely non-reproducible.
+
+Make emphasis on these really great studies (and pipelines) that do not rely on
+genomic data, and that there is a lot of single locus data that can be analysed.
 
 
 \cite{pyron2011phylogeny} PHLAWD, Colubroidea, 334 citations

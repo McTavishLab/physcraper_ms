@@ -267,35 +267,39 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 %%
 \section*{Background}
 Phylogenies capture the shared history of organisms and provide key evolutionary
-context for our biological observations \cite{dobzhansky1973nothing}.
-Public biological databases constitute an amazing resource for evolutionary
-studies. Connecting existing phylogenies to molecular data that has never been
-incorporated into any phylogenetic estimate, geographical location, fossils, and
-other data in a reproducible and continuous manner is possible by establishing a
-data interoperability framework for biological databases. Here, we introduce
-Physcraper, a tool that automates biological database connections
+context for our biological observations \cite{dobzhansky1973nothing}. Data such as
+geographical location, fossil ranges, and genetic and phenotypic information increasingly
+available in public databases constitute an amazing
+resource for biological discovery \cite{baxevanis2015importance}.
+Connecting existing phylogenies with public biological data in a reproducible and
+continuous manner would represent a key tool for evolutionary studies.
+
+Here, we introduce Physcraper, a tool that automates biological database connections
 with the main goal of building upon homology
 hypotheses that taxon specialists have assessed and deemed appropriate for a
 specific phylogenetic scope to update a starting tree and single locus alignments
 with public DNA data, with the added capability to connect the lineages represented
-in the phylogeny to biological data in public databases.
+in the phylogeny to biological data from public databases.
 
 One of the main challenges for automatic
 integration of biological data into phylogenies are varying taxonomic idiosyncrasies
 across databases. To address this challenge, the Open Tree of Life project (OpenTree)
-unifies taxonomic
-data from various databases \cite{rees2017automated}, including the USA National
+created a unified taxonomy for name standardization, by integrating taxonomic
+data from several databases \cite{rees2017automated}, including the USA National
 Center for Biodiversity Information (NCBI) molecular database GenBank
-\cite{benson2000genbank}, among others. The OpenTree taxonomy represents a key resource
-that remains to be leveraged for connecting data from any biological database that
-has been integrated to it.
+\cite{benson2000genbank}, among others.
+Existing OpenTree taxonomy programmatic tools
+are a key resource that can be used to establish a framework for connecting data from any
+biological database that has been integrated to OpenTree's unified taxonomy.
 
-The Open Tree of Life project (OpenTree)
-also constructs a comprehensive tree of life by synthesizing published phylogenies
-and taxonomy. OpenTree's "synthetic" tree comprises 2.3 million tips, of which
+OpenTree's unified taxonomy is used to construct OpenTree's comprehensive tree of
+life that synthesizes published phylogenies and taxonomy. It comprises 2.3 million tips, of which
 around 90,000 (87,740) are supported by phylogenies - the remaining 1.4 million taxa are
-placed in the tree based on taxonomy. Meaning that there is still a lot of work
-to do to complete a full phylogenetic tree of all life.
+placed in the tree based on taxonomy.
+This large gap in public phylogenetic knowledge is due to several factors:
+- lack of data sharing, most analyses essentially lost forever;
+- lack of data, we still lack genetic data for a large portion of organisms; and
+- lack of analyticla power of existing data.
 
 Decades of single locus sequencing have generated
 massive amounts of homologous DNA datasets that have the potential to be used for phylogenetic
@@ -305,51 +309,36 @@ million DNA sequences that were gauged to have the potential to resolve phylogen
 relationships of 98.05\% of the almost 241,000
 distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
 
-With more than XXXX million single locus
-sequences in GenBank today, there is a considerable amount of phylogenetically
+With more than 221 million single locus
+sequences in GenBank today \cite{genbankstats}, there is a considerable amount of phylogenetically
 informative data in GenBank that has not been analysed and/or made publicly available
-with the potential to give phylogenetic light to the tree of life.
-
-Phylogenies constructed from single locus super mayrix datasets are still widely
-generated and relevant to the field. Notable examples include the
-
-Notable examples of phylogenies constructed using multi-locus, database mined, super matrix approach:
-Magallon, Soltis, examples with fish, bats,
-\cite{magallon2015metacalibrated} mining by hand - flowering plant families - has been cited 561 times
-\cite{smith2018constructing} 38k clades of plants with seeds - cited 176 times
-\cite{jetz2012global} 6k bird species - cited
-\cite{rabosky2018inverse} mining with phlawd - cited 202 times
-
-These studies are widely cited and immensely relevant for the biological community.
-
-
-Some of these multilocus phylogenetic studies have implemented pipelines such as PHLAWD,
-other studies have curated their matrices by hand, which is largely non-reproducible.
-
-Make emphasis on these really great studies (and pipelines) that do not rely on
-genomic data, and that there is a lot of single locus data that can be analysed.
+with the potential to significantly fill phylogenetic gaps in the tree of life.
 
 Assembling a DNA alignment from such a massive database can be done "by hand",
 but it is a largely time consuming and mostly non-reproducible approach.
-Computational pipelines that mine DNA databases fast, efficiently, and reproducibly,
+Computational pipelines that mine DNA databases fast, efficiently, and reproducibly
 have been applied to infer phylogenetic relationships in a variety of organisms
 (e.g., \cite{smith2009mega, antonelli2017toward, izquierdo2014pumper}).
-However, fine-grained curated markers and alignments can improve phylogenetic
+While genomics has, and will continue to, revolutionize phylogenetic inference,
+the diversity of alternative genomic sequencing approaches implemented produce
+largely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
+creating challenges for phylogenetic reconstruction.
+Phylogenomics addresses this problem by focusing on targeted capture of informative
+regions \cite{andermann2020guide}.
+However, fine-grained curated markers and alignments can significantly improve phylogenetic
 reconstructions, even in phylogenomic analyses \cite{fragoso2017pilot}.
 
-There are almost 8,200 publicly available, peer-reviewed alignments, covering
+There are almost 8,200 publicly available, peer-reviewed curated alignments, covering
 around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, which
-can be used as seeds to mine molecular databases, and as "jump-start" alignments
+can be leveraged as seeds to mine molecular databases, and as "jump-start" alignments
 for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
 update and compare existing phylogenetic knowledge.
 
-----------
+Such an approach was proposed in PUMPER but the community has not picked it up,
+probably due to installation difficulties.
+Physcraper extends this approach by allowing for interoperability.
 
-
-
-
-
-Physcraper is a Python pipeline using OpenTree's taxonomy and programmatic access
+Physcraper is implemented as a Python pipeline using OpenTree's taxonomy and programmatic access
 protocols (API's) to implement a database interoperability framework that automatically
 links phylogenies that have been standardized to OpenTree taxonomy, to alignments
 from TreeBASE, data from GenBank, and phylogenies from OpenTree's Phylesystem.
@@ -455,8 +444,6 @@ and in the DRYAD repository \cite{yao2020dryad}.
 With 175 tips, the \cite{yao2020phylogeny} tree is the best sampled phylogeny yet available for
 the hollies.
 
-
-
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
 spacer DNA region (ITS) alignment from \cite{gottlieb2005molecular}, using a local
 GenBank database.  BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
@@ -484,20 +471,25 @@ to incorporate 18 taxa that were not in \cite{yao2020phylogeny}.
 Databases preserving and democratizing access to biological data
 have become essential resources for science.
 New molecular data keep accumulating and tools facilitating its integration into
-existent evolutionary knowledge are needed.
+existent evolutionary knowledge contribute to the acceleration of scientific discovery.
 
-Phylogenetic pipelines designed to make evolutionary sense of the vast amount of
-public molecular data (e.g., Phylota \cite{sanderson2008phylota},
-PHLAWD \cite{smith2009mega},
-SUPERSMART \cite{antonelli2017toward}) focus on generating full phylogenies \textit{de novo},
+Physcraper is the first tool for interoperability in phylogenetic analyses (???)
+As a tool for automatization of phylogenetic reconstruction from molecular databases,
+we believe it presents several advantages over existing phylogenetic pipelines designed to
+make evolutionary sense of the vast amount of
+public molecular data. Phylota \cite{sanderson2008phylota},
+and PHLAWD \cite{smith2009mega} are the first ones and have been cited and used
+the most for actual phylogenetic reconstruction and mining of databases. These are
+strong tools that will probably still have a great potential in their recent updated versions
+(phylotar \cite{bennett2018phylotar} and PyPHLAWD \cite{smith2019pyphlawd}).
+They focus on generating full phylogenies \textit{de novo},
 i.e., inferring phylogenetic relationships from a newly generated homology hypothesis,
 as opposed to e.g., supertrees, that are generated by summarizing previous
-phylogenetic estimates.
-While Physcraper does not generate phylogenies \textit{de novo} in a traditional sense,
-it successfully generates new phylogenetic knowledge, revealing the importance of
-open science in facilitating phylogenetic placement of public molecular data and
-accelerating enrichment and updating of phylogenetic relationships in any region
-of the tree of life.
+phylogenetic estimates, which requires more manual adjustment later and difficults
+comparison with previous phylogenetic information.
+
+SUPERSMART \cite{antonelli2017toward}) and PUMPER \cite{izquierdo2014pumper}
+
 The PUMPER pipeline \cite{izquierdo2014pumper} also uses the concept of updating
 pre-existing alignments to incorporate public molecular data into phylogenies.
 Unfortunately, installation was unsuccessful following instructions from the author,
