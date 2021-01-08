@@ -268,7 +268,8 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 \section*{Background}
 Phylogenies capture the shared history of organisms and provide key evolutionary
 context for our biological observations \cite{dobzhansky1973nothing}.
-Updating existing phylogenies with molecular sequence data that has never been
+Updating existing phylogenies with publicly available molecular sequence data that
+has never been
 incorporated into any phylogenetic estimate provides the opportunity to capture
 the evolutionary history of many taxa.
 Here, we introduce Physcraper, a tool that automates database connections
@@ -332,7 +333,7 @@ update and compare existing phylogenetic knowledge.
 Physcraper is a Python pipeline using OpenTree's programmatic access
 protocols (API's) to automatically
 link phylogenies mapped to a standardized taxonomy \cite{mctavish2015phylesystem}, to alignments
-from TreeBASE \cite{sanderson1994treebase}, data from GenBank \cite{benson2000genbank}.
+from TreeBASE \cite{sanderson1994treebase}, and data from GenBank \cite{benson2000genbank}.
 Physcraper provides automated and reproducible workflows for updating existing phylogenetic estimates.
 
 
@@ -469,29 +470,44 @@ democratizing phylogenetic studies.
 As a tool for automatizing phylogenetic reconstruction from molecular databases,
 Physcraper presents several advantages over existing phylogenetic pipelines designed to
 make evolutionary sense of the vast amount of
-public molecular data available. 
+public molecular data available.
 
-Several analysis tools create full phylogenies \textit{de novo} by mining of molecular databases \cite{antonelli2017toward, sanderson2008phylota, smith2019pyphlawd, bennett2018phylotar, pearse2013phylogenerator}.
+Several analysis tools create full phylogenies \textit{de novo} by mining of molecular
+databases \cite{antonelli2017toward, sanderson2008phylota, smith2019pyphlawd,
+bennett2018phylotar, pearse2013phylogenerator}.
 In particular, Phylota \cite{sanderson2008phylota},
-and PHLAWD \cite{smith2009mega}, have been cited and used abundantly. 
+and PHLAWD \cite{smith2009mega}, have been cited and used abundantly.
 
-Physcraper builds on this automated database mining concept by incorporating prior phylogenetic work and existing taxonomic domain knowledge on appropriate markers and alignment construction.
-This decreases error (requiring more manual downstream processing) and eases comparison with previous phylogenetic
-knowledge. 
-Unlike placement approaches \cite{berger_performance_2011, matsen_pplacer_2010}, which add new taxa without modifying the input tree, Physcraper estimates all the relationships in the context of the new data.
-PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no longer under active development, is challenging to install and run, and has resulted in very few phylogenetic analyses since its publication.
+Physcraper builds on this automated database mining concept by incorporating prior
+phylogenetic work and existing taxonomic domain knowledge on appropriate markers
+and alignment construction.
+This decreases error (requiring less manual downstream processing) and
+eases comparison with previous phylogenetic
+knowledge.
+Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
+which add new taxa without modifying the input tree, Physcraper estimates all
+the relationships anew in the context of the new data.
+PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no
+longer under active development, is challenging to install and run, and has resulted
+in very few phylogenetic analyses since its publication.
 
-Physcraper generates gene trees, which individually do not capture the full complexity of species' evolutionary history \cite{song2012resolving}.
-However, physcraper facilitates
+Physcraper generates gene trees, which individually do not capture the full complexity
+of species' evolutionary history \cite{song2012resolving}.
+However, Physcraper facilitates
 gathering alignments and gene trees for multiple loci from a group of interest,
-that together can be used to reconstruct species trees taking into account coalescent processes with ASTRAL \cite{mirarab2014astral},
+that together can be used to reconstruct species trees taking into account coalescent
+processes with ASTRAL \cite{mirarab2014astral},
 BEAST2 \cite{bouckaert2019beast}, or SVD Quartets \cite{chifman2014quartet}).
-Rigorous analyses of multiple loci allows for more complex evolutionary models than analyses of large genomic data sets, and can provide better evolutionary estimates.
+Rigorous analyses of multiple loci allows for more complex evolutionary models
+than analyses of large genomic data sets, and can provide better evolutionary estimates.
 
-Physcraper has the added advantage of linking taxonomic information about tips in the output phylogenies to data available in a variety of biological databases \cite{rees2017automated}, such as
+Physcraper has the added advantage of linking taxonomic information about tips
+in the output phylogenies to data available in a variety of biological databases
+\cite{rees2017automated}, such as
 geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
 
-The Physcraper workflow can be used to rapidly (in a matter of hours) to create phylogenies which can address challenges overarching both fields of ecology and evolution, such as
+The Physcraper workflow can be used to rapidly (in a matter of hours) create 
+phylogenies which can address challenges overarching both fields of ecology and evolution, such as
 phylogenetically placing newly discovered species \cite{webb2010biodiversity},
 curating taxonomic assignments
 \cite{san2010molecular},
