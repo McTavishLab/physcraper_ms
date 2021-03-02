@@ -1,0 +1,674 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%          <8 June 2012>              %%
+%%                                     %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.html and the instructions for   %%
+%% authors page on the biomed central website                      %%
+%% https://www.biomedcentral.com/getpublished                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% https://miktex.org/                                             %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% additional documentclass options:
+%  [doublespacing]
+%  [linenumbers]   - put the line numbers on margins
+
+%%% loading packages, author definitions
+
+%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+\documentclass{bmcart}
+
+%%% Load packages
+\usepackage{amsthm,amsmath}
+%\RequirePackage[numbers]{natbib}
+%\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
+\RequirePackage{hyperref}
+\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+%\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\includegraphic{}
+\def\includegraphics{}
+
+%%% Put your definitions there:
+\startlocaldefs
+\endlocaldefs
+
+%%% Begin ...
+\begin{document}
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Physcraper: A Python package for continually updated phylogenetic trees using the Open Tree of Life}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+  addressref={aff1},                   % id's of addresses, e.g. {aff1,aff2}
+  corref={aff1},                       % id of corresponding address, if any
+% noteref={n1},                        % id's of article notes, if any
+  email={sanchez.reyes.luna@gmail.com}   % email address
+]{\inits{L.L.}\fnm{Luna L.} \snm{Sanchez Reyes}}
+\author[
+  addressref={aff1,aff2},
+  email={kandziom@natur.cuni.cz}
+]{\inits{M.}\fnm{Martha} \snm{Kandziora}}
+\author[
+  addressref={aff1},
+  corref={aff1},
+  email={ejmctavish@ucmerced.edu}
+]{\inits{E.J.}\fnm{Emily Jane} \snm{McTavish}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors' addresses here        %%
+%%                                          %%
+%% Repeat \address commands as much as      %%
+%% required.                                %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\address[id=aff1]{%                           % unique id
+  \orgdiv{School of Natural Sciences},             % department, if any
+  \orgname{University of California},          % university, etc
+  \city{Merced},                              % city
+  \cny{USA}                                    % country
+}
+\address[id=aff2]{%
+  \orgdiv{Department of Botany, Faculty of Science},
+  \orgname{Charles University},
+  %\street{},
+  %\postcode{}
+  \city{Prague },
+  \cny{Czech Republic}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{artnotes}
+%%\note{Sample of title note}     % note to the article
+%\note[id=n1]{Equal contributor} % note, connected to author
+%\end{artnotes}
+
+\end{fmbox}% comment this for two column layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                           %%
+%% The Abstract begins here                  %%
+%%                                           %%
+%% Please refer to the Instructions for      %%
+%% authors on https://www.biomedcentral.com/ %%
+%% and include the section headings          %%
+%% accordingly for your article type.        %%
+%%                                           %%
+%% I followed sections from here:            %%
+%% https://bmcbioinformatics.biomedcentral.com/submission-guidelines/preparing-your-manuscript/software-article
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstractbox}
+
+\begin{abstract}
+\parttitle{Background}
+Phylogenies are a key part of research in many areas of biology. Tools that automate
+some parts of the process of phylogenetic reconstruction, mainly molecular character matrix assembly,
+have been developed for the advantage of both specialists in the field of phylogenetics and non-specialists.
+However, interpretation of results, comparison with previously available phylogenetic
+hypotheses, and selection of one phylogeny for downstream analyses and discussion still impose difficulties
+to one that is not a specialist either on phylogenetic methods or on a particular group of study.
+
+\parttitle{Results}
+Physcraper is a command-line Python program that automates the update of published
+phylogenies by adding public DNA sequences to underlying alignments of previously
+published phylogenies. It also provides a framework for straightforward comparison
+of published phylogenies with their updated versions, by leveraging upon tools from
+the Open Tree of Life project to link taxonomic information across databases.
+The program can be used by the nonspecialist, as a tool to generate phylogenetic
+hypotheses based on publicly available expert phylogenetic knowledge.
+Phylogeneticists and taxonomic group specialists will find it useful as a tool
+to facilitate molecular dataset gathering and comparison
+of alternative phylogenetic hypotheses (topologies).
+
+\parttitle{Conclusions}
+The Physcraper workflow showcases the benefits of doing open science for
+phylogenetics, encouraging researchers to strive for better sharing practices.
+Physcraper can be used with any OS and is released under an open-source license.
+Detailed instructions for installation and
+usage are available at \href{https://physcraper.readthedocs.io}{https://physcraper.readthedocs.io}.
+
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The keywords begin here                  %%
+%%                                          %%
+%% Put each keyword in separate \kwd{}.     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{keyword}
+\kwd{gene tree}
+\kwd{interoperability}
+\kwd{open science}
+\kwd{reproducibility}
+\kwd{public database}
+\kwd{DNA alignment}
+\end{keyword}
+
+% MSC classifications codes, if any
+%\begin{keyword}[class=AMS]
+%\kwd[Primary ]{}
+%\kwd{}
+%\kwd[; secondary ]{}
+%\end{keyword}
+
+\end{abstractbox}
+%
+%\end{fmbox}% uncomment this for two column layout
+
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                            %%
+%% The Main Body begins here                  %%
+%%                                            %%
+%% Please refer to the instructions for       %%
+%% authors on:                                %%
+%% https://www.biomedcentral.com/getpublished %%
+%% and include the section headings           %%
+%% accordingly for your article type.         %%
+%%                                            %%
+%% See the Results and Discussion section     %%
+%% for details on how to create sub-sections  %%
+%%                                            %%
+%% use \cite{...} to cite references          %%
+%%  \cite{koon} and                           %%
+%%  \cite{oreg,khar,zvai,xjon,schn,pond}      %%
+%%                                            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% start of article main body
+% <put your article body there>
+
+%%%%%%%%%%%%%%%%
+%% Background %%
+%%
+\section*{Background}
+Phylogenies capture the shared history of organisms and provide key evolutionary
+context for our biological observations \cite{dobzhansky1973nothing}.
+Updating existing phylogenies with publicly available molecular sequence data that
+has never been
+incorporated into any phylogenetic estimate provides the opportunity to study
+the evolutionary history of many taxa in a reproducible and continuous manner.
+Here, we introduce Physcraper, a tool that establishes a data interoperability
+framework for biological databases to automate data connections across databases,
+with the main goal of building on published alignments and extending existing
+phylogenetic inferences with more data and taxa.
+Physcraper updates a starting tree and single locus alignments
+with public DNA data, and links the tips in these trees to a unified, interoperable
+taxonomic resource \cite{rees2017automated}.
+
+Data such as
+geographical location, fossil ranges, and genetic and phenotypic information increasingly
+available in public databases constitute an amazing
+resource for biological discovery \cite{baxevanis2015importance}.
+One of the main challenges for automatic
+integration of biological data across databases are varying taxonomic idiosyncrasies.
+To address this challenge, the Open Tree of Life project (OpenTree)
+created a unified taxonomy for name standardization, by integrating taxonomic
+data from several databases \cite{rees2017automated}, including the USA National
+Center for Biodiversity Information (NCBI) taxonomy \cite{federhen_ncbi_2012, schoch_ncbi_2020},
+and the Global Biodiversity Information Facility (GBIF) \cite{gbif_secretariat_gbif_2019} among others.
+By using the existing OpenTree taxonomy programmatic tools to map tip names,
+Physcraper has a framework for connecting updated phylogenies with data from any
+biological database.
+
+Decades of single locus sequencing have generated
+massive amounts of homologous DNA datasets that have the potential to be used for phylogenetic
+reconstruction at many scales \cite{sanderson2008phylota}.
+More than a decade ago, GenBank release 159 (April 15, 2007) already hosted 72
+million DNA sequences that were gauged to have the potential to resolve phylogenetic
+relationships of 98.05\% of the almost 241,000
+distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
+However, even thirteen years later, phylogenetic estimates for many of these taxa are not available \cite{mctavish_how_2017}.
+OpenTree's comprehensive tree of life comprises 2.3 million tips, of which around
+90,000 are supported by phylogenies - the remaining 1.4 million taxa are placed
+in the tree based on taxonomy.
+There is a considerable amount of phylogenetically
+informative data in GenBank with the potential to fill these phylogenetic gaps in
+the tree of life, but this data either has not been analysed or the analyses
+have not been made publicly available \cite{mctavish_how_2017}.
+
+Assembling a DNA alignment from such a massive database as GenBank can be done "by hand",
+but that is a time consuming approach which is not highly reproducible.
+A variety of computational pipelines that mine DNA databases fast, efficiently, and reproducibly
+have been developed and used to infer phylogenetic relationships in a variety of organisms
+(e.g., \cite{smith2009mega, antonelli2017toward, izquierdo2014pumper, pearse2013phylogenerator}).
+While genomics has, and will continue to, revolutionize phylogenetic inference,
+the diversity of alternative genomic sequencing approaches implemented produce
+largely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
+creating challenges for phylogenetic reconstruction.
+Phylogenomics addresses this problem by focusing on targeted capture of informative
+regions \cite{andermann2020guide}.
+However, fine-grained curated markers and alignments can significantly improve phylogenetic
+reconstructions, even in phylogenomic analyses \cite{fragoso2017pilot}.
+
+Physcraper improves on previous work in automating phylogenetic reconstruction by leveraging
+the power of existing homology hypotheses that taxon specialists have assessed
+and deemed appropriate for a specific phylogenetic scope.
+There are almost 8,200 publicly available, peer-reviewed curated alignments, covering
+around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, which
+can be leveraged as seeds to mine molecular databases, and as ``jump-start'' alignments
+for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
+update and compare existing phylogenetic knowledge.
+
+Physcraper is implemented as a Python pipeline that uses OpenTree's programmatic access
+protocols (API's) to automatically
+link any phylogeny mapped to OpenTree's standardized taxonomy \cite{mctavish2015phylesystem},
+to alignments
+from TreeBASE \cite{sanderson1994treebase}, and data from GenBank \cite{benson2000genbank}.
+Its utility and functionalities are presented with a case-study analysis of a
+group of flowering plants, the hollies.
+
+
+\section*{Implementation}
+
+The general Physcraper framework (Figure 1) consists of 4 steps: 1) identifying and
+processing a tree and its underlying alignment; 2) performing a BLAST search of
+DNA sequences from original alignment on GenBank, and filtering of new sequences;
+3) profile-aligning new sequences to original alignment; 4) performing a phylogenetic
+analysis and comparing the updated tree to existing phylogenies.
+
+\subsection*{The inputs: a tree and an alignment}
+
+Taxon names in the input tree must be standardized to OpenTree taxonomy
+\cite{rees2017automated} using OpenTree's bulk Taxonomic Name Resolution Service
+(TNRS) tool \cite{TNRStool}. Users can upload their
+own tree, or choose from among the 2, 950 standardized trees stored in OpenTree's
+Phylesystem \cite{phylesystemGithub, mctavish2015phylesystem} that also have
+alignments available on TreeBASE \cite{piel2009treebase}.
+
+The input alignment is a single locus DNA dataset that was used in part or in
+whole to generate the input tree. Physcraper retrieves TreeBASE alignments
+automatically. Alternatively, users must provide the path to a local copy of the
+alignment.
+Only taxa that are both in the sequence alignment and in the tree are considered
+further for analysis; at least one taxon and its corresponding sequence are required.
+
+\subsection*{DNA sequence search and filtering}
+
+The Basic Local Alignment Search Tool, BLAST \cite{altschul1990basic} is used for DNA
+sequence search on a remote or local GenBank database. It is constrained to a
+"search taxon", a taxonomic group in the NCBI taxonomy that is automatically
+identified using the OpenTree's taxonomic Most Recent Common Ancestor (MRCA) API
+\cite{mrcaAPI, rees2017automated}, as the MRCA of all ingroup taxa that is
+also a named clade in the NCBI taxonomy (Figure 1).
+
+BLAST is performed using the `blastn` algorithm \cite{camacho2009blast}
+implemented in BioPython's \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
+modified to accept an alternative BLAST address.
+Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
+New sequences are excluded for analysis if they 1) are not in the search taxon;
+2) have an e-value above the cutoff (default to 0.00001); 3) fall outside a min
+and max length threshold, defined as the proportion of the average length without
+gaps of all sequences in input alignment (default values of 80% and 120%,
+respectively); 4) or if they are either identical to or shorter than an existing
+sequence in the input alignment and they represent the same taxon in OpenTree or
+NCBI taxonomy.
+An arbitrary maximum number of randomly chosen sequences per taxon are allowed
+(default to 5).
+
+Reverse, complement, and reverse-complement sequences are identified and translated
+using BioPython internal functions \cite{cock2009biopython}.
+Iterative cycles of BLAST searches can be performed, by blasting all new sequences
+until no new ones are found. By default only one BLAST cycle is performed.
+
+\subsection*{New DNA sequence alignment}
+
+MUSCLE \cite{edgar2004muscle} is used to perform a profile alignment in which the
+original alignment is used as a template of homology criteria to align new sequences.
+The final alignment is not further automatically checked, and additional inspection
+and refinement are recommended.
+
+\subsection*{Tree reconstruction and comparison}
+
+RAxML \cite{stamatakis2014raxml} is implemented to reconstruct a Maximum Likelihood
+(ML) gene tree for each input alignment with default settings (GTRCAT model and
+100 bootstrap replicates with default algorithm), using input tree as starting
+tree for ML searches.
+Bootstrap results are summarized using DendroPy's SumTrees module
+\cite{sukumaran2010dendropy}.
+
+Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
+Updated and original tree are compared with Robinson-Foulds weighted and unweighted
+metrics estimated with Dendropy \cite{sukumaran2010dendropy}, and with a node by node
+comparison between the synthetic OpenTree and original and updated tree individually,
+using OpenTree's conflict API \cite{redelings2017supertree}.
+
+
+
+\section*{Results}
+\subsection*{Case Study: The hollies}
+
+A user is interested in phylogenetic relationships within the genus \textit{Ilex}. Commonly
+known as "hollies", the genus encompasses between 400-700 living species, and is
+the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering
+plants.
+
+An online literature review in June 2020 (Google scholar search for "ilex phylogeny")
+reveals that there are several published phylogenies showing relationships within
+the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
+selbach2009new}, but only two have data publicly available \cite{gottlieb2005molecular, yao2020phylogeny}.
+\cite{gottlieb2005molecular} made original tree and alignment available in TreeBASE
+(study 1091 \cite{treebase1091}). The tree sampling 41 species is also available from
+OpenTree's Phylesystem (study pg\_2827 \cite{pg2827}),
+and has been integrated into OpenTree's synthetic tree \cite{mrcaott68451ott89474}.
+The most recent \textit{Ilex} tree \cite{yao2020phylogeny} is available in
+OpenTree's Phylesystem (study ot\_1984 \cite{ot1984}),
+and in the DRYAD repository \cite{yao2020dryad}.
+With 175 tips, the \cite{yao2020phylogeny} tree is the best sampled phylogeny yet available for
+the hollies.
+
+We ran Physcraper on a laptop Linux computer to update an internal transcribed
+spacer DNA region (ITS) alignment from \cite{gottlieb2005molecular}, using a local
+GenBank database.  BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
+analyses taking an additional 13hrs.
+%% <!-- MTH: you probably need some details about the hardware, given the fact that you are discussing running times -->
+The updated \cite{gottlieb2005molecular} tree (Figure 2) displays
+all 41 distinct
+taxa from the original study plus 231 new tips, contributing phylogenetic data to
+84 additional \textit{Ilex} taxa. The best RaxML tree is 99\% resolved, with 25\% of nodes
+with bootstrap support $<$ 0.1 and 48\% nodes with bootstrap support $>$ 0.75.
+A large portion of internal branches are negligibly small, with 30 branches
+$<$ 0.00001 substitution rate units, from which only 9 have a bootstrap support $>$ 0.75
+(Figure 2).
+For comparison, \cite{yao2020phylogeny} also contains all 41 distinct taxa from
+the original
+\cite{gottlieb2005molecular} study,
+and contributes phylogenetic data to 134 additional \textit{Ilex} taxa, from which
+67 are also in updated \cite{gottlieb2005molecular}. While \cite{yao2020phylogeny} also used
+ITS as a marker, their GenBank data is not released yet, so Physcraper was unable
+to incorporate 68 additional taxa into the analysis. However, Physcraper was able
+to incorporate 18 taxa that were not in \cite{yao2020phylogeny}.
+
+\section*{Discussion}
+Databases preserving and democratizing access to biological data
+have become essential resources for science.
+New molecular data keep accumulating and tools facilitating its integration into
+existent evolutionary knowledge contribute to the acceleration of scientific discovery.
+
+We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics,
+facilitating phylogenetic knowledge for ecologists and other non-specialists, effectively
+democratizing phylogenetic studies.
+
+As a tool for automatizing phylogenetic reconstruction from molecular databases,
+Physcraper presents several advantages over existing phylogenetic pipelines designed to
+make evolutionary sense of the vast amount of
+public molecular data available.
+
+Several analysis tools create full phylogenies \textit{de novo} by mining of molecular
+databases \cite{antonelli2017toward, sanderson2008phylota, smith2019pyphlawd,
+bennett2018phylotar, pearse2013phylogenerator}.
+In particular, Phylota \cite{sanderson2008phylota},
+and PHLAWD \cite{smith2009mega}, have been cited and used abundantly.
+
+Physcraper builds on this automated database mining concept by incorporating prior
+phylogenetic work and existing taxonomic domain knowledge on appropriate markers
+and alignment construction.
+This decreases error (requiring less manual downstream processing) and
+eases comparison with previous phylogenetic
+knowledge.
+Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
+which add new taxa without modifying the input tree, Physcraper estimates all
+the relationships anew in the context of the new data.
+PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no
+longer under active development, is challenging to install and run, and has resulted
+in very few phylogenetic analyses since its publication.
+
+Physcraper generates gene trees, which individually do not capture the full complexity
+of species' evolutionary history \cite{song2012resolving}.
+However, Physcraper facilitates
+gathering alignments and gene trees for multiple loci from a group of interest,
+that together can be used to reconstruct species trees taking into account coalescent
+processes with ASTRAL \cite{mirarab2014astral},
+BEAST2 \cite{bouckaert2019beast}, or SVD Quartets \cite{chifman2014quartet}).
+Rigorous analyses of multiple loci allows for more complex evolutionary models
+than analyses of large genomic data sets, and can provide better evolutionary estimates.
+
+Physcraper has the added advantage of facilitating the linkage of taxonomic information about tips
+in the output phylogenies to data available in a variety of biological databases
+\cite{rees2017automated}, such as
+geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
+
+The Physcraper workflow can be used to rapidly (in a matter of hours) create
+phylogenies which can address challenges overarching both fields of ecology and evolution, such as
+phylogenetically placing newly discovered species \cite{webb2010biodiversity},
+curating taxonomic assignments
+\cite{san2010molecular},
+and generating custom trees for ecological \cite{helmus2012phylogenetic} and
+evolutionary downstream analyses \cite{stoltzfus2013phylotastic}.
+
+\section*{Conclusions}
+Data repositories hold more information than meets the eye.
+Beyond the main data, they are rich sources of metadata that can be leveraged
+for the advantage of all areas of biology as well as the advancement of scientific
+policy and applications.
+Initial ideas about the data are constantly changed by results from new analyses.
+Physcraper provides a framework for reproducible phylogenetics that has the
+potential to consistently provide context for these ideas, highlighting the
+importance of data sharing and open science in the field, biology and science.
+
+\section*{Availability and requirements}
+
+\textbf{Project name:} Physcraper
+
+\textbf{Project home page:} \href{https://physcraper.readthedocs.io/en/latest/index.html}{https://physcraper.readthedocs.io/en/latest/index.html}
+
+\textbf{Operating System:} Linux, Mac, Windows
+
+\textbf{Programming Language:} Python
+
+\textbf{Other requirements:} Dependencies
+
+\textbf{License:} GNU
+
+\textbf{Any restrictions to use by non-academics:} As specified by the License
+
+\section*{Abbreviations}
+
+\textbf{OpenTree:} The Open Tree of Life project
+
+\textbf{TNRS:} Taxonomic Name Resolution Service
+
+\textbf{MRCA:} Most Recent Common Ancestor
+
+\textbf{BLAST:} Basic Local Alignment Search Tool
+
+\textbf{NCBI:} USA National Center for Biodiversity Information
+
+\textbf{GBIF:} Global Biodiversity Information Facility
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Backmatter begins here                   %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Declarations}
+
+\begin{backmatter}
+
+\section*{Ethics approval and consent to participate}
+Not applicable.
+
+\section*{Consent for publication}
+Not applicable.
+
+\section*{Availability of data and materials}
+
+The datasets generated and analysed during the current study are available in
+the repositories "physcraper" containing the source code,
+\href{https://github.com/McTavishLab/physcraper}{https://github.com/McTavishLab/physcraper};
+"physcraperex" containing the examples,
+\href{https://github.com/McTavishLab/physcraperex}{https://github.com/McTavishLab/physcraperex};
+and, "physcraper\_ms" containing this reproducible manuscript,
+\href{https://github.com/McTavishLab/physcraper\_ms}{https://github.com/McTavishLab/physcraper\_ms}.
+
+\section*{Competing interests}
+The authors declare that they have no competing interests.
+
+\section*{Funding}
+This research was supported by the grant "Sustaining the Open Tree of Life", NSF ABI
+No. 1759838, and ABI No. 1759846.
+Computer time was provided by the Multi-Environment Research Computer for
+Exploration and Discovery (MERCED) cluster from the University of California,
+Merced (UCM), supported by the NSF Grant No. ACI-1429783.
+
+\section*{Authors' contributions}
+LLSR wrote manuscript, alignment code, documentation, performed analyses and developed examples; MK wrote code for ncbidataparser module, filtering of sequences per OTU and using offline blast searches, wrote documentation and tests; EJM conceived study, wrote most of the code, documentation and tests.
+All authors contributed to the manuscript and gave final approval for publication.
+\ldots
+
+\section*{Acknowledgements}
+We thank the members of the OpenTree development team and the "short bar" Science
+and Engineering Building 1, UCM, joint lab paper discussion group for valuable
+comments on this manuscript.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  Bmc_mathpys.bst  will be used to                       %%
+%%  create a .BBL file for submission.                     %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if your bibliography is in bibtex format, use those commands:
+\bibliographystyle{bmc-mathphys} % Style BST file (bmc-mathphys, vancouver, spbasic).
+\bibliography{bmc_article}      % Bibliography file (usually '*.bib' )
+% for author-year bibliography (bmc-mathphys or spbasic)
+% a) write to bib file (bmc-mathphys only)
+% @settings{label, options="nameyear"}
+% b) uncomment next line
+%\nocite{label}
+
+% or include bibliography directly:
+% \begin{thebibliography}
+% \bibitem{b1}
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+\section*{Figures}
+  \begin{figure}[h!]
+  \caption{The Physcraper framework consists of four general steps. The software is fully
+  described on its documentation website at \href{https://physcraper.readthedocs.io}{https://physcraper.readthedocs.io},
+  along with installation instructions, function usage descriptions, examples and tutorials.
+}
+\end{figure}
+
+\begin{figure}[h!]
+  \caption{A) Phylogeny updated with Physcraper from original
+  \cite{gottlieb2005molecular} tree in B.
+  Tips in original alignment and new tips added with Physcraper are depicted in
+  black and red, respectively. Physcraper obtained sequences from the GenBank
+  database via local BLAST of all sequences in the original alignment that generated
+  tree in B), filtered them following criteria from section "DNA sequence search and
+  filtering", aligned them to original alignment using MUSCLE and performed a
+  phylogenetic reconstruction using RAxML with 100 bootstraps. B-D conflict analyses
+  performed with OpenTree tools.}
+\end{figure}
+
+
+\end{backmatter}
+\end{document}
