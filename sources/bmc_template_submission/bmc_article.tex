@@ -274,7 +274,7 @@ incorporated into any phylogenetic estimate provides the opportunity to study
 the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
 framework for biological databases to automate data connections across databases,
-with the main goal of building on published alignments and extending existing
+with the main goal of building upon published alignments to extend existing
 phylogenetic inferences with more data and taxa.
 Physcraper updates a starting tree and single locus alignments
 with public DNA data, and links the tips in these trees to a unified, interoperable
@@ -432,13 +432,13 @@ reveals that there are several published phylogenies showing relationships withi
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
 selbach2009new}, but only two have data publicly available \cite{gottlieb2005molecular, yao2020phylogeny}.
 \cite{gottlieb2005molecular} made original tree and alignment available in TreeBASE
-(study 1091 \cite{treebase1091}). The tree sampling 41 species is also available from
+(study 1091 \cite{treebase1091}). The tree samples 41 species, is available from
 OpenTree's Phylesystem (study pg\_2827 \cite{pg2827}),
 and has been integrated into OpenTree's synthetic tree \cite{mrcaott68451ott89474}.
 The most recent \textit{Ilex} tree \cite{yao2020phylogeny} is available in
 OpenTree's Phylesystem (study ot\_1984 \cite{ot1984}),
 and in the DRYAD repository \cite{yao2020dryad}.
-With 175 tips, the \cite{yao2020phylogeny} tree is the best sampled phylogeny yet available for
+With 175 tips, the tree from \cite{yao2020phylogeny} is the best sampled phylogeny yet available for
 the hollies.
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
@@ -462,6 +462,19 @@ and contributes phylogenetic data to 134 additional \textit{Ilex} taxa, from whi
 ITS as a marker, their GenBank data is not released yet, so Physcraper was unable
 to incorporate 68 additional taxa into the analysis. However, Physcraper was able
 to incorporate 18 taxa that were not in \cite{yao2020phylogeny}.
+
+\subsection*{Verification test}
+
+We pruned 9 out of the 41 original tips of the Gottlieb et al. tree, corresponding
+to a 20\% trim, excluding the outgroups. We then performed a Physcraper run to test
+if we would recover the dropped tips.
+We successfully recovered 6 out of 9 pruned tips in the updated tree.
+Closer examination of results revealed that the 3 missing tips were correctly retrieved
+with BLAST along with the other 6 tips that were included in the updated tree. Examining
+the ITS sequences belonging to the tips missed by the test, by following the GenBank
+accession numbers reported in the original publication, showed that these sequences
+contain a 100 bp long gap of unidentified nucleotides (Ns). These Ns were absent
+in the 3 sequences published in the original alignment.
 
 \section*{Discussion}
 Databases preserving and democratizing access to biological data
