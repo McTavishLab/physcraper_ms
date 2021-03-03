@@ -1,5 +1,22 @@
 # Physcraper manuscript
 
+## To render the revised BMC Bioinformatics version:
+
+First create the "differences.tex" file using [latexdiff](https://www.ctan.org/pkg/latexdiff)
+(I installed latexdiff using brew with `brew install latexdiff`):
+
+
+    latexdiff sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex sources/bmc_template_submission/bmc_article.tex > sources/bmc_template_submission/differences.tex
+
+
+Then I rendered the differences.tex file with R:
+
+    tools::texi2pdf(file = "sources/bmc_template_submission/differences.tex", clean=TRUE)
+
+And moved it to the folder I want it to be in:
+
+    mv differences.pdf docs/submission-bmc-2021-01-08-reviews.pdf
+
 ## To render the BMC Bioinformatics template version:
 
 ```
