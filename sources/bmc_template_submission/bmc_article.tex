@@ -432,21 +432,21 @@ reveals that there are several published phylogenies showing relationships withi
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
 selbach2009new}, but only two have data publicly available \cite{gottlieb2005molecular, yao2020phylogeny}.
 \cite{gottlieb2005molecular} made original tree and alignment available in TreeBASE
-(study 1091 \cite{treebase1091}). The tree samples 41 species, is available from
+(study 1091 \cite{treebase1091}). This tree (Gottlieb2005 tree from now on) samples 41 species, is available from
 OpenTree's Phylesystem (study pg\_2827 \cite{pg2827}),
 and has been integrated into OpenTree's synthetic tree \cite{mrcaott68451ott89474}.
-The most recent \textit{Ilex} tree \cite{yao2020phylogeny} is available in
+The most recent \textit{Ilex} tree \cite{yao2020phylogeny} (Yao2020 tree from now on) is available in
 OpenTree's Phylesystem (study ot\_1984 \cite{ot1984}),
 and in the DRYAD repository \cite{yao2020dryad}.
-With 175 tips, the tree from \cite{yao2020phylogeny} is the best sampled phylogeny yet available for
-the hollies.
+With 175 tips, the Yao2020 tree is the best sampled phylogeny yet available for
+the genus \textiy{Ilex}.
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
 spacer DNA region (ITS) alignment from \cite{gottlieb2005molecular}, using a local
 GenBank database.  BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
 analyses taking an additional 13hrs.
 %% <!-- MTH: you probably need some details about the hardware, given the fact that you are discussing running times -->
-The updated \cite{gottlieb2005molecular} tree (Figure 2) displays
+The updated Gottlieb2005 tree (Figure 2) displays
 all 41 distinct
 taxa from the original study plus 231 new tips, contributing phylogenetic data to
 84 additional \textit{Ilex} taxa. The best RaxML tree is 99\% resolved, with 25\% of nodes
@@ -454,14 +454,19 @@ with bootstrap support $<$ 0.1 and 48\% nodes with bootstrap support $>$ 0.75.
 A large portion of internal branches are negligibly small, with 30 branches
 $<$ 0.00001 substitution rate units, from which only 9 have a bootstrap support $>$ 0.75
 (Figure 2).
-For comparison, \cite{yao2020phylogeny} also contains all 41 distinct taxa from
-the original
-\cite{gottlieb2005molecular} study,
-and contributes phylogenetic data to 134 additional \textit{Ilex} taxa, from which
-67 are also in updated \cite{gottlieb2005molecular}. While \cite{yao2020phylogeny} also used
-ITS as a marker, their GenBank data is not released yet, so Physcraper was unable
-to incorporate 68 additional taxa into the analysis. However, Physcraper was able
-to incorporate 18 taxa that were not in \cite{yao2020phylogeny}.
+The Yao2020 tree \cite{yao2020phylogeny} also contains all 41 distinct taxa
+sampled in the Gottlieb2005 tree \cite{gottlieb2005molecular},
+while contributing phylogenetic data to 134 additional \textit{Ilex} taxa. From these,
+67 taxa are also in the Physcraper updated Gottlieb2005 tree \cite{gottlieb2005molecular}.
+While the Yao2020 tree \cite{yao2020phylogeny} was also constructed using
+ITS as a marker, their GenBank data is not released yet. Hence, Physcraper was unable
+to incorporate 68 taxa that are only on the Yao2020 tree because the DNA data is unavailable.
+We also note that Physcraper incorporates 18 \textit{Ilex} taxa that are not in the Yao2020
+tree \cite{yao2020phylogeny}. These taxa appear nested among other \textit{Ilex} species
+and visual inspection of the DNA sequences suggests they are correctly assigned as \textit{Ilex}.
+The ITS alignment that underlies the Yao2020 tree was constructed without any tool to
+scrape GenBank \cite{yao2020phylogeny}, which could explain why Physcraper was able to
+incorporate these 18 additional \textit{Ilex} taxa.
 
 \subsection*{Verification test}
 
@@ -481,6 +486,10 @@ Databases preserving and democratizing access to biological data
 have become essential resources for science.
 New molecular data keep accumulating and tools facilitating its integration into
 existent evolutionary knowledge contribute to the acceleration of scientific discovery.
+
+Physcraper is a tool that builds upon previous knowledge stored in published
+alignments, with the main goal to extend our knowledge of phylogenetic relationships
+across the tree of life.
 
 We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics,
 facilitating phylogenetic knowledge for ecologists and other non-specialists, effectively
@@ -503,6 +512,15 @@ and alignment construction.
 This decreases error (requiring less manual downstream processing) and
 eases comparison with previous phylogenetic
 knowledge.
+
+Results from the verification test highlight the importance of incorporating existing expertly
+curated homology statements to automatically update phylogenetic relationships, instead
+of ignoring the information they contain and building homology statements fully \textit{de novo}.
+The three sequences that were in the original tree but were not included in
+the updated tree by Physcraper in the verification test were excluded because
+they contain a 100 bp long gap of unidentified nucleotides (Ns) in GenBank that
+was manually curated and trimmed in the original alignment.
+
 Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
 which add new taxa without modifying the input tree, Physcraper estimates all
 the relationships anew in the context of the new data.
