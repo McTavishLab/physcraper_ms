@@ -438,26 +438,28 @@ and has been integrated into OpenTree's synthetic tree \cite{mrcaott68451ott8947
 The most recent \textit{Ilex} tree \cite{yao2020phylogeny} (Yao2020 tree from now on) is available in
 OpenTree's Phylesystem (study ot\_1984 \cite{ot1984}),
 and in the DRYAD repository \cite{yao2020dryad}.
-With 175 tips, the Yao2020 tree is the best sampled phylogeny yet available for
-the genus \textiy{Ilex}.
+With 175 tips, the Yao2020 tree \cite{yao2020phylogeny} is the best sampled phylogeny available for
+the genus \textit{Ilex}.
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
-spacer DNA region (ITS) alignment from \cite{gottlieb2005molecular}, using a local
-GenBank database.  BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
+spacer DNA region (ITS) alignment that was used to construct the tree from \cite{gottlieb2005molecular},
+using a local GenBank database.  BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
 analyses taking an additional 13hrs.
 %% <!-- MTH: you probably need some details about the hardware, given the fact that you are discussing running times -->
-The updated Gottlieb2005 tree (Figure 2) displays
-all 41 distinct
+The Gottlieb2005 tree \cite{gottlieb2005molecular} updated using Physcraper (Figure 2;
+Physcraper updated tree from now on) displays all 41 distinct
 taxa from the original study plus 231 new tips, contributing phylogenetic data to
-84 additional \textit{Ilex} taxa. The best RaxML tree is 99\% resolved, with 25\% of nodes
-with bootstrap support $<$ 0.1 and 48\% nodes with bootstrap support $>$ 0.75.
+84 additional \textit{Ilex} taxa. The best ML tree from the RAxML analysis is 99\%
+resolved, with 25\% of nodes with bootstrap support $<$ 0.1 and 48\% nodes with
+bootstrap support $>$ 0.75.
 A large portion of internal branches are negligibly small, with 30 branches
 $<$ 0.00001 substitution rate units, from which only 9 have a bootstrap support $>$ 0.75
 (Figure 2).
-The Yao2020 tree \cite{yao2020phylogeny} also contains all 41 distinct taxa
+As comparison with the Physraper updated tree, the Yao2020 tree \cite{yao2020phylogeny}
+also contains all 41 distinct taxa
 sampled in the Gottlieb2005 tree \cite{gottlieb2005molecular},
 while contributing phylogenetic data to 134 additional \textit{Ilex} taxa. From these,
-67 taxa are also in the Physcraper updated Gottlieb2005 tree \cite{gottlieb2005molecular}.
+67 taxa are also in the Physcraper updated tree.
 While the Yao2020 tree \cite{yao2020phylogeny} was also constructed using
 ITS as a marker, their GenBank data is not released yet. Hence, Physcraper was unable
 to incorporate 68 taxa that are only on the Yao2020 tree because the DNA data is unavailable.
@@ -466,7 +468,7 @@ tree \cite{yao2020phylogeny}. These taxa appear nested among other \textit{Ilex}
 and visual inspection of the DNA sequences suggests they are correctly assigned as \textit{Ilex}.
 The ITS alignment that underlies the Yao2020 tree was constructed without any tool to
 scrape GenBank \cite{yao2020phylogeny}, which could explain why Physcraper was able to
-incorporate these 18 additional \textit{Ilex} taxa.
+incorporate these 18 additional \textit{Ilex} taxa in the updated tree (Figure 2).
 
 \subsection*{Verification test}
 
