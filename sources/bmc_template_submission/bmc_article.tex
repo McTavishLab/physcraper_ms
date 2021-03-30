@@ -268,9 +268,7 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 \section*{Background}
 Phylogenies capture the shared history of organisms and provide key evolutionary
 context for our biological observations \cite{dobzhansky1973nothing}.
-Updating existing phylogenies with publicly available molecular sequence data that
-has never been
-incorporated into any phylogenetic estimate provides the opportunity to study
+Updating existing phylogenies with publicly available molecular sequence data provides the opportunity to study
 the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
 framework for biological databases to automate data connections across databases,
@@ -423,10 +421,9 @@ Bootstrap results are summarized using DendroPy's SumTrees module
 
 Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
 Updated and original tree are compared with Robinson-Foulds weighted and unweighted
-metrics estimated with Dendropy \cite{sukumaran2010dendropy}, and with a node by node
+metrics calculated with Dendropy \cite{sukumaran2010dendropy}, and with a node by node
 comparison between the synthetic OpenTree and original and updated tree individually,
 using OpenTree's conflict API \cite{redelings2017supertree}.
-
 
 
 \section*{Results}
@@ -465,7 +462,7 @@ bootstrap support $>$ 0.75.
 A large portion of internal branches are negligibly small, with 30 branches
 $<$ 0.00001 substitution rate units, from which only 9 have a bootstrap support $>$ 0.75
 (Figure 2).
-As comparison with the Physraper updated tree, the Yao2020 tree \cite{yao2020phylogeny}
+As comparison with the Physcraper updated tree, the Yao2020 tree \cite{yao2020phylogeny}
 also contains all 41 distinct taxa
 sampled in the Gottlieb2005 tree \cite{gottlieb2005molecular},
 while contributing phylogenetic data to 134 additional \textit{Ilex} taxa. From these,
@@ -479,6 +476,8 @@ and visual inspection of the DNA sequences suggests they are correctly assigned 
 The ITS alignment that underlies the Yao2020 tree was constructed without any tool to
 scrape GenBank \cite{yao2020phylogeny}, which could explain why Physcraper was able to
 incorporate these 18 additional \textit{Ilex} taxa in the updated tree (Figure 2).
+
+%% Maybe show conflict results? and then discuss in the discussion.
 
 \subsection*{Verification test}
 
@@ -531,7 +530,35 @@ of ignoring the information they contain and building homology statements fully 
 The three sequences that were in the original tree but were not included in
 the updated tree by Physcraper in the verification test were excluded because
 they contain a 100 bp long gap of unidentified nucleotides (Ns) in GenBank that
-was manually curated and trimmed in the original alignment.
+was manually curated and removed from in the original alignment.
+
+These sequences do appear in the Physcraper results in the list of matches from GenBank which did not fit the sequence length cutoffs set in the configuration. 
+This ``seqlen\_mismatch.txt'' file includes the accession number, taxon, and sequence length of all sequences culled based on sequence length. 
+
+We encourage users to look at this file, and potentially modify their sequence length cutoff parameters based on the excluded sequences.
+The default relative sequence length thresholds are arbitrary, but we hope that by making the process of locating homologous sequences online reproducible, and tracking what cutoffs are used, we make it easier for researchers to delve into the effect that different choices have on their inferences. 
+This is in contrast to ‘manual’ searches for taxa, where similarly arbitrary cutoffs are applied, but are difficult to trace.
+As many studies have shown \cite{huang_what_2009} the effect of missing data can be enigmatic, and interact with the true phylogenetic relationships for the data set at hand. 
+There is not currently strong support in the literature for any cutoffs, and rather than prescribe specific approaches, we encourage users to explore the effects of different choices on inference. 
+
+Organellar genome sequences, such as chloroplasts and mitochondria will also generally be excluded from automatic addition based on length cutoffs.
+Multiple sequence alignment of loci of drastically different lengths is unfeasible, and we have found in testing often returns incorrect results, splitting shorter sequences with many long gaps to align with exact matches across the entire longer locus. 
+While it would be possible to directly extract the blast match from genomes, this match would exclude potentially homologous flanking regions which are not matched by blasts local search algorithm, but may be important for phylogenetic inference.
+Instead we list the accession numbers for these matches in the seqlen\_mismatch file, for users to assess appropriate homologous regions to their alignment of interest.
+
+
+Single gene phylogenies with very high numbers of taxa may lack sufficient signal for accurate resolution \cite{morel_phylogenetic_2020}.
+The Physcraper workflow avoids some of these challenges, by focussing on ingroup taxa of an exisiting phylogeny, using markers that have been assessed and proven apporpraite for that phylogenetic scope in past publictions.
+In addition, we thin alignments by removing identical sequences, and by setting a maximum number of sequences per taxon.
+Nonetheless, it is encumbent on users to assess their final inference with respect to statistical support and biological plausibility.
+
+Most of the default thresholds parameter values and software choices in the Physcraper pipeline are arbitrary. 
+We hope that by making the process of locating homologous sequences online reproducible, 
+and tracking what cutoffs are used, we make it easier for researchers to delve into the effect that different choices have on their inferences.
+In addition, by providing the output files at each step of the analysis, 
+it is straightforward to assess how changing parameter and software choices do or do not drive differences in phylogenetic inference.
+By gathering the sequences, and making the unaligned files easily available to users, researchers can compare if applying any alternate alignment tool of their choice affects inferences. 
+Once sequences are aligned, they can apply and compare inferences from any phylogenetics software.
 
 Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
 which add new taxa without modifying the input tree, Physcraper estimates all
@@ -545,15 +572,27 @@ of species' evolutionary history \cite{song2012resolving}.
 However, Physcraper facilitates
 gathering alignments and gene trees for multiple loci from a group of interest,
 that together can be used to reconstruct species trees taking into account coalescent
-processes with ASTRAL \cite{mirarab2014astral},
-BEAST2 \cite{bouckaert2019beast}, or SVD Quartets \cite{chifman2014quartet}).
+processes with ASTRAL \cite{mirarab2014astral} or SVD Quartets \cite{chifman2014quartet}).
 Rigorous analyses of multiple loci allows for more complex evolutionary models
 than analyses of large genomic data sets, and can provide better evolutionary estimates.
+For example \cite{zhu_complexity_2021} show that when applying coalescent models, there is more information in two genes of 300 bp each than in 600 independent sites 
+We have included a script (``multi_locus.py'') and examples of how to automatically merge the outputs of Physcraper runs at different loci into input files for ASTRAL, SVD Quartets, or as concatenated alignments for concatenated analyses.
 
 Physcraper has the added advantage of facilitating the linkage of taxonomic information about tips
 in the output phylogenies to data available in a variety of biological databases
 \cite{rees2017automated}, such as
 geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
+These taxonomic links, and comparisons to existing published phylogenies in the OpenTree data store can also help flag paralogous sequences.
+Accidentally including paralogs as homologs is a risk in phylogenetic analyses, and can be more prevalent in automated analyses than in manually curated analyses.
+We provide users with several tools to try to assess homology of their aligned sequences. 
+The estimated gene tree itself is an evolutionarily explicit way to visualize gene evolution, which in concert with taxonomic labelling can reveal paralogy.
+Our conflict analysis tool informs the users of whether their tree contains major conflicts with established taxonomy. 
+This conflict tool also returns information on if these taxonomic conflicts existed in the original input tree. 
+These conflicts may be a sign that taxonomy needs to be updated, or may be a sign that non-homologous sequences have been included in the analysis. 
+These taxonomic and phylogenetic conflicts flag regions for the tree for the researcher to more closely examine and assess homology.
+
+
+%% Biological plausibility of example??
 
 The Physcraper workflow can be used to rapidly (in a matter of hours) create
 phylogenies which can address challenges overarching both fields of ecology and evolution, such as
