@@ -346,8 +346,14 @@ group of flowering plants, the hollies.
 \section*{Implementation}
 
 Physcraper is implemented with Python and can also be run on the command line.
-It currently consists of HOW MANY modules, classes, methods and functions.
-For testing the quality of the Python code syntax we used Pylint \cite{pylintWeb, pylintManual}.
+It currently consists of 12 modules.
+%% , classes, methods and functions.%%
+For testing and improving the quality of the Python code syntax in the Phsycraper code,
+we used the Pylint \cite{pylintWeb, pylintManual} software with a configuration file.
+We improved the code syntax on modules with low Pylint scores and fixed errors by
+following Pylint's recommendations.
+In some cases, we overruled Pylint's recommendations by using its check-disabling
+system. As of now, all modules have a Pylint score of 10/10.
 
 The general Physcraper framework (Figure 1) consists of 4 steps: 1) identifying and
 processing a tree and its underlying alignment; 2) performing a BLAST search of
