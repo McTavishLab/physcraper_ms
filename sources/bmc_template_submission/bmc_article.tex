@@ -268,12 +268,17 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 \section*{Background}
 Phylogenies capture the shared history of organisms and provide key evolutionary
 context for our biological observations \cite{dobzhansky1973nothing}.
-Updating existing phylogenies with publicly available molecular sequence data provides the opportunity to study
+Updating existing phylogenies with publicly available molecular sequence data provides
+the opportunity to study
 the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
-framework for biological databases to automate data connections across databases,
-with the main goal of building upon published alignments to extend existing
-phylogenetic inferences with more data and taxa.
+framework for biological databases to automate data connections across databases.
+Physcraper's main goal is to build upon published alignments to extend existing
+phylogenetic inferences with more data and taxa, which have been proved to improve
+phylogenetic reconstruction \cite{hillis1996inferring, natsidis2019phylogenomics},
+time of divergence estimates \cite{schulte2013undersampling, soares2015influence} and
+biogeographic analyses \cite{kayaalp2017back},
+as well as help in resolving phylogenetic conflict \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}.
 Physcraper updates a starting tree and single locus alignments
 with public DNA data, and links the tips in these trees to a unified, interoperable
 taxonomic resource \cite{rees2017automated}.
@@ -521,8 +526,7 @@ Physcraper builds on this automated database mining concept by incorporating pri
 phylogenetic work and existing taxonomic domain knowledge on appropriate markers
 and alignment construction.
 This decreases error (requiring less manual downstream processing) and
-eases comparison with previous phylogenetic
-knowledge.
+eases comparison with previous phylogenetic knowledge.
 
 Results from the verification test highlight the importance of incorporating existing expertly
 curated homology statements to automatically update phylogenetic relationships, instead
