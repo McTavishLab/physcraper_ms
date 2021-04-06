@@ -1,3 +1,23 @@
+
+There is ample evidence that increased taxon sampling benefits phylogenetic inference. It breaks long branches (Hillis 1996), increases phylogenetic accuracy (Zwickl and Hillis, 2002), resolves phylogenetic conflict between gene trees (Hedtke et al. 2006), and resolves contentious phylogenetic relationships (Townsend & Lopez-Giraldez 2010; Natsidis et al. 2019), reveal hidden orthologs and paralogs (Martin-Duran et al. 2017). It has been the focus to give insight into phylogenetic relationships of many different taxa.
+Applied phylogenetic analyses have largely focused on improving taxon sampling to gain better insight in a group’s evolutionary history:
+in fish (Salmonidae, Crête et al. 2012; flounders, Vinnikov et al. 2018),
+birds (Wang et al. 2017)
+Gastropods (Oskars et al. 2015)
+Insects (Hemiptera, Song et al. 2019; Diptera, Shin et al. 2018; Lepidopetra, Wilson 2011; Orthoptera, Vandergast et al. 2017),
+amphibians (Peloso et al. 2016)
+Mammals (Cetartiodactyla, Agnarsson & May-Collado 2008)
+Squamate reptiles (Ketchum & Benson 2010)
+turtles (Vitek et al. 2018)
+flowering plants (Cornales, Xiang et al. 2011; Caryophyllales, Crawley & Hilu 2012; Campanula, Mansion et al. 2012, Rosids, Sun et al. 2020)
+unicellular organisms (Ciliates, Tang & Zhao 2016; Xu et al. 2021; chlamydomonas, Nakada et al. 2019)
+Spiders (Kallal et al. 2020)
+Sponges (Alvizu et al. 2018)
+fungi (Prsanna et al. 2020)
+biogeography (bees, Kayaalp et al. 2017; gallus, )
+Increased taxon sampling also improves time of divergence estimates (Schulte 2013; Soares & Schrago 2015)
+
+
 <!-- databases designed to preserve and democratize access to biological data constitute an amazing resource for evolutionary estimation -->
 
 *COMPARE WITH PERFORMANCE OF OTHER PIPELINES FOR SEQUENCE SCRAPING*

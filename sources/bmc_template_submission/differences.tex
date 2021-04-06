@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Tue Apr  6 13:04:05 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Tue Apr  6 13:28:01 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -517,7 +517,13 @@ With 175 tips, the \DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
 tree }\DIFdelend \DIFaddbegin \DIFadd{Yao2020 tree \mbox{%DIFAUXCMD
 \cite{yao2020phylogeny} }\hspace{0pt}%DIFAUXCMD
 }\DIFaddend is the best sampled phylogeny \DIFdelbegin \DIFdel{yet }\DIFdelend available for
-the \DIFdelbegin \DIFdel{hollies}\DIFdelend \DIFaddbegin \DIFadd{genus }\textit{\DIFadd{Ilex}}\DIFaddend .
+the \DIFdelbegin \DIFdel{hollies.
+}\DIFdelend \DIFaddbegin \DIFadd{genus }\textit{\DIFadd{Ilex}}\DIFadd{.
+In order to showcase Physcraper's performance, we updated
+the tree with the smallest number of tips (the Gottlieb2005 tree) with the expectation
+to use the tree with the largest number of tips (the Yao2020 tree) as a standard
+for comparison and verification of Physcraper's results.
+}\DIFaddend 
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
 spacer DNA region (ITS) alignment \DIFaddbegin \DIFadd{that was used to construct the tree }\DIFaddend from \cite{gottlieb2005molecular},
@@ -687,7 +693,7 @@ that together can be used to reconstruct species trees taking into account coale
 processes with ASTRAL \cite{mirarab2014astral} \DIFdelbegin \DIFdel{,
 BEAST2 \mbox{%DIFAUXCMD
 \cite{bouckaert2019beast}}\hspace{0pt}%DIFAUXCMD
-, }\DIFdelend or SVD Quartets \cite{chifman2014quartet}).
+, }\DIFdelend or SVD Quartets \cite{chifman2014quartet}\DIFdelbegin \DIFdel{)}\DIFdelend .
 Rigorous analyses of multiple loci allows for more complex evolutionary models
 than analyses of large genomic data sets, and can provide better evolutionary estimates.
 
