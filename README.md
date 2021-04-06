@@ -11,7 +11,7 @@ First create the "differences.tex" file using [latexdiff](https://www.ctan.org/p
 
 Then I rendered the differences.tex file with R:
 
-    tools::texi2pdf(file = "sources/bmc_template_submission/differences.tex", clean=TRUE)
+    R -e 'tools::texi2pdf(file = "sources/bmc_template_submission/differences.tex", clean=TRUE)'
 
 And moved it to the folder I want it to be in:
 
