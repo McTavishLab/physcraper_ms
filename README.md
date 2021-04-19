@@ -62,6 +62,6 @@ Trying output_yaml worked. You just have to use the yaml params that are common 
 To compile a .tex file to pdf I simply use the compile pdf button from RStudio,
 which I think uses `tools::texi2pdf(output, clean=clean)`; tip taken from this [RStudio community thread](https://community.rstudio.com/t/what-commands-are-run-when-the-compile-pdf-button-is-clicked/6291/4)
 
-To get the relevant figures from the physraperex package:
+To get the relevant figures from the `physcraperex` package:
 
     curl -o docs/figs/ilex-updated-tree.png https://raw.githubusercontent.com/McTavishLab/physcraperex/master/docs/articles/ilex_files/figure-html/plot-tips-and-branches-1.png
