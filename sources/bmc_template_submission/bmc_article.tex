@@ -112,7 +112,6 @@
 \author[
   addressref={aff1},                   % id's of addresses, e.g. {aff1,aff2}
   corref={aff1},                       % id of corresponding address, if any
-% noteref={n1},                        % id's of article notes, if any
   email={sanchez.reyes.luna@gmail.com}   % email address
 ]{\inits{L.L.}\fnm{Luna L.} \snm{Sanchez Reyes}}
 \author[
@@ -705,12 +704,13 @@ Merced (UCM), supported by the NSF Grant No. ACI-1429783.
 \section*{Authors' contributions}
 LLSR wrote manuscript, alignment code, documentation, performed analyses and developed examples; MK wrote code for ncbidataparser module, filtering of sequences per OTU and using offline blast searches, wrote documentation and tests; EJM conceived study, wrote most of the code, documentation and tests.
 All authors contributed to the manuscript and gave final approval for publication.
-\ldots
+
 
 \section*{Acknowledgements}
 We thank the members of the OpenTree development team and the "short bar" Science
 and Engineering Building 1, UCM, joint lab paper discussion group for valuable
-comments on this manuscript.
+comments on this manuscript. We thank the valuable comments of David Posada, Rutger Vos,
+and an anonymous reviewer that greatly improved earlier versions of this manuscript.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -766,14 +766,13 @@ comments on this manuscript.
 
 \begin{figure}[h!]
   \caption{A) Phylogeny updated with Physcraper from original
-  \cite{gottlieb2005molecular} tree in B.
+  \cite{gottlieb2005molecular} tree.
   Tips in original alignment and new tips added with Physcraper are depicted in
-  black and red, respectively. Physcraper obtained sequences from the GenBank
+  black and golden, respectively. Physcraper obtained sequences from the GenBank
   database via local BLAST of all sequences in the original alignment that generated
   tree in B), filtered them following criteria from section "DNA sequence search and
   filtering", aligned them to original alignment using MUSCLE and performed a
-  phylogenetic reconstruction using RAxML with 100 bootstraps. B-D conflict analyses
-  performed with OpenTree tools.}
+  phylogenetic reconstruction using RAxML with 100 bootstraps.}
 \end{figure}
 
 
