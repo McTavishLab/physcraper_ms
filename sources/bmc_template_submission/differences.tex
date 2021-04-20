@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 18:46:48 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 19:07:28 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -646,7 +646,8 @@ New molecular data keep accumulating and tools facilitating its integration into
 existent evolutionary knowledge contribute to the acceleration of scientific discovery.
 
 \DIFaddbegin \DIFadd{Physcraper is a tool that builds upon previous knowledge stored in published
-alignments, with the main goal to extend our knowledge of phylogenetic relationships
+alignments and phylogenies, taking advantage of OpenTree's services to facilitate comparison
+of phylogenies, with the main goal of extending our knowledge of phylogenetic relationships
 across the tree of life.
 }
 
@@ -677,37 +678,59 @@ curated homology statements to automatically update phylogenetic relationships, 
 of ignoring the information they contain and building homology statements fully }\textit{\DIFadd{de novo}}\DIFadd{.
 }
 
-\DIFadd{We encourage users to look at this file, and potentially modify their sequence length cutoff parameters based on the excluded sequences.
-The default relative sequence length thresholds are arbitrary, but we hope that by making the process of locating homologous sequences online reproducible, and tracking what cutoffs are used, we make it easier for researchers to delve into the effect that different choices have on their inferences.
-This is in contrast to ``manual" searches for taxa, where similarly arbitrary cutoffs are applied, but are difficult to trace.
+\DIFadd{We encourage users to look at the output files containing information about the
+filtered sequences, and potentially modify configuration parameters such as the
+sequence length cutoff parameter, based on the filtered sequences.
+Default filtering parameters are arbitrary, but we hope that by making the process
+of locating homologous sequences online reproducible, and tracking what filters
+are used, we make it easier for researchers to delve into the effect that different
+choices have on their inferences.
+This is in contrast to ``manual" searches for taxa, where similarly arbitrary filters
+are applied, but are difficult to trace.
 As many studies have shown \mbox{%DIFAUXCMD
 \cite{huang_what_2009} }\hspace{0pt}%DIFAUXCMD
-the effect of missing data can be enigmatic, and interact with the true phylogenetic relationships for the data set at hand.
-There is not currently strong support in the literature for any cutoffs, and rather than prescribe specific approaches, we encourage users to explore the effects of different choices on inference.
+the effect of missing data can
+be enigmatic, and interact with the true phylogenetic relationships for the data
+set at hand.
+There is not currently strong support in the literature for any particular cutoffs
+value, and rather than prescribe specific approaches, we encourage users to explore
+the effects of different choices on their phylogenetic inferences.
+In addition, by providing the output files at each step of the analysis,
+it is straightforward to assess how changing parameter and software choices do or
+do not drive differences in phylogenetic inference.
+By gathering the sequences, and making the unaligned files easily available to users,
+researchers can compare if applying any alternate alignment tool of their choice
+affects inferences.
+Once sequences are aligned, they can apply and compare inferences from any phylogenetic
+software.
 }
 
-\DIFadd{Organellar genome sequences, such as chloroplasts and mitochondria will also generally be excluded from automatic addition based on length cutoffs.
-Multiple sequence alignment of loci of drastically different lengths is unfeasible, and we have found in testing that it often returns incorrect results, splitting shorter sequences with many long gaps to align with exact matches across the entire longer locus.
-While it would be possible to directly extract the blast match from genomes, this match would exclude potentially homologous flanking regions which are not matched by blasts local search algorithm, but may be important for phylogenetic inference.
-Instead we list the accession numbers for these matches in the ``seqlen\_mismatch.txt" file, for users to assess appropriate homologous regions for their alignment of interest.
+
+\DIFadd{Organellar genome sequences, such as chloroplasts and mitochondria will also generally
+be excluded from automatic addition based on length cutoffs.
+Multiple sequence alignment of loci of drastically different lengths is unfeasible,
+and we have found in testing that it often returns incorrect results, splitting
+shorter sequences with many long gaps to align with exact matches across the entire
+longer locus.
+While it would be possible to directly extract the blast match from genomes, this
+match would exclude potentially homologous flanking regions which are not matched
+by blasts local search algorithm, but may be important for phylogenetic inference.
+Instead we list the accession numbers for these matches in the ``seqlen\_mismatch.txt"
+file, for users to assess appropriate homologous regions for their alignment of interest.
 }
 
 
-\DIFadd{Single gene phylogenies with very high numbers of taxa may lack sufficient signal for accurate resolution \mbox{%DIFAUXCMD
+\DIFadd{Single gene phylogenies with very high numbers of taxa may lack sufficient signal
+for accurate resolution \mbox{%DIFAUXCMD
 \cite{morel_phylogenetic_2020}}\hspace{0pt}%DIFAUXCMD
 .
-The Physcraper workflow avoids some of these challenges, by focussing on ingroup taxa of an existing phylogeny, using markers that have been assessed and proven apporpraite for that phylogenetic scope in past publictions.
-In addition, Physcraper thins alignments by removing identical sequences, and by setting a maximum number of sequences per taxon.
-Nonetheless, it is incumbent on users to assess their final inference with respect to statistical support and biological plausibility.
-}
-
-\DIFadd{Most of the default thresholds parameter values and software choices in the Physcraper pipeline are arbitrary.
-We hope that by making the process of locating homologous sequences online reproducible,
-and tracking what cutoffs are used, we make it easier for researchers to delve into the effect that different choices have on their inferences.
-In addition, by providing the output files at each step of the analysis,
-it is straightforward to assess how changing parameter and software choices do or do not drive differences in phylogenetic inference.
-By gathering the sequences, and making the unaligned files easily available to users, researchers can compare if applying any alternate alignment tool of their choice affects inferences.
-Once sequences are aligned, they can apply and compare inferences from any phylogenetic software.
+The Physcraper workflow avoids some of these challenges, by focussing on ingroup
+taxa of an existing phylogeny, using markers that have been assessed and proven
+apporpraite for that phylogenetic scope in past publictions.
+In addition, Physcraper thins alignments by removing identical sequences, and by
+setting a maximum number of sequences per taxon.
+Nonetheless, it is incumbent on users to assess their final inference with respect
+to statistical support and biological plausibility.
 }
 
 \DIFaddend Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
@@ -731,8 +754,11 @@ than analyses of large genomic data sets, and can provide better evolutionary es
 
 \DIFaddbegin \DIFadd{For example \mbox{%DIFAUXCMD
 \cite{zhu_complexity_2021} }\hspace{0pt}%DIFAUXCMD
-show that when applying coalescent models, there is more information in two genes of 300 bp each than in 600 independent sites
-We have included a script (``multi\_locus.py'') and examples of how to automatically merge the outputs of Physcraper runs at different loci into input files for ASTRAL, SVD Quartets, or as concatenated alignments for concatenated analyses.
+show that when applying coalescent models,
+there is more information in two genes of 300 bp each than in 600 independent sites
+We have included a script (``multi\_locus.py'') and examples of how to automatically
+merge the outputs of Physcraper runs at different loci into input files for ASTRAL,
+SVD Quartets, or as concatenated alignments for concatenated analyses.
 }
 
 
@@ -740,14 +766,21 @@ We have included a script (``multi\_locus.py'') and examples of how to automatic
 in the output phylogenies to data available in a variety of biological databases
 \cite{rees2017automated}, such as
 geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
-\DIFaddbegin \DIFadd{Taxonomic links, and comparisons to existing published phylogenies in the OpenTree data store can also help flag paralogous sequences.
-Accidentally including paralogs as homologs is a risk in phylogenetic analyses, and can be more prevalent in automated analyses than in manually curated analyses.
+\DIFaddbegin \DIFadd{Taxonomic links, and comparisons to existing published phylogenies in the OpenTree
+data store can also help flag paralogous sequences.
+Accidentally including paralogs as homologs is a risk in phylogenetic analyses,
+and can be more prevalent in automated analyses than in manually curated analyses.
 We provide users with several tools to try to assess homology of their aligned sequences.
-The estimated gene tree itself is an evolutionarily explicit way to visualize gene evolution, which in concert with taxonomic labelling can reveal paralogy.
-Our conflict analysis tool informs the users of whether their tree contains major conflicts with established taxonomy.
-This conflict tool also returns information on if these taxonomic conflicts existed in the original input tree.
-These conflicts may be a sign that taxonomy needs to be updated, or may be a sign that non-homologous sequences have been included in the analysis.
-These taxonomic and phylogenetic conflicts flag regions for the tree for the researcher to more closely examine and assess homology.
+The estimated gene tree itself is an evolutionarily explicit way to visualize gene
+evolution, which in concert with taxonomic labelling can reveal paralogy.
+Our conflict analysis tool informs the users of whether their tree contains major
+conflicts with established taxonomy.
+This conflict tool also returns information on if these taxonomic conflicts existed
+in the original input tree.
+These conflicts may be a sign that taxonomy needs to be updated, or may be a sign
+that non-homologous sequences have been included in the analysis.
+These taxonomic and phylogenetic conflicts flag regions for the tree for the researcher
+to more closely examine and assess homology.
 }\DIFaddend 
 
 
@@ -759,9 +792,9 @@ corresponding to the ingroup cluster together forming a monophyletic group. We a
 note that samples belonging to the same }\textit{\DIFadd{Ilex}} \DIFadd{species also cluster together forming
 monophyletic groups. A notable exception is }\textit{\DIFadd{Ilex theeizans}}\DIFadd{, which appears as
 non-monophyletic in the updated tree and the original Gottlieb et al. 2005 tree.
-%DIF > This suggests that the samples might represent two ifferent species, but further analyses should be conducted
-A visual comparison
-of the Yao et al. 2020 tree and the original Gottlieb et al. 2005 tree suggests
+%DIF > This suggests that the samples might represent two ifferent species, but further
+analyses should be conducted
+A visual comparison of the Yao et al. 2020 tree and the original Gottlieb et al. 2005 tree suggests
 that the relationships within the genus }\textit{\DIFadd{Ilex}} \DIFadd{are still being determined, and that
 increased taxon sampling is helping with it.
 }
