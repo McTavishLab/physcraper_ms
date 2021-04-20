@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 12:21:38 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 12:57:18 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -414,22 +414,42 @@ group of flowering plants, the hollies.
 \DIFaddbegin \DIFadd{Physcraper is implemented with Python and can also be run on the command line.
 It currently consists of 12 modules.
 %DIF > % , classes, methods and functions.%%
-For testing and improving the quality of the Python code syntax in the Phsycraper code,
-we used the Pylint \mbox{%DIFAUXCMD
-\cite{pylintWeb, pylintManual} }\hspace{0pt}%DIFAUXCMD
-software with a configuration file.
-We improved the code syntax on modules with low Pylint scores and fixed errors by
+For testing and improving Python code’s syntax quality of the Phsycraper code, we
+used the Pylint software following instructions from their website \mbox{%DIFAUXCMD
+\citep{pylintWeb}
+ }\hspace{0pt}%DIFAUXCMD
+and manual \mbox{%DIFAUXCMD
+\citep{pylintManual}}\hspace{0pt}%DIFAUXCMD
+, with a "".pylintrc" configuration file.
+}
+
+\DIFadd{We improved code's syntax on modules with low Pylint scores and fixed code errors by
 following Pylint's recommendations.
 Based on Physcraper's software design choices, some of Pylint's recommendations were overruled
 by using its check-disabling system, and are explained in the code.
-As of now, all modules have a Pylint score of 10/10.
+As of now, all Physcraper modules have a Pylint score of 10/10.
 }
+
+%DIF >  Pylint score for each module and locally disabled Pylint reccomendations
+%DIF >  physcraper/aligntreetax.py		10/10	pylint disabling “too many branches” and “too many locals”
+%DIF >  physcraper/configobj.py 		10/10  pylint global disabling attributes defined outside init
+%DIF >  physcraper/helpers.py		10/10
+%DIF >  physcraper/ids.py			10/10 	pylint disabled unused-variables that are used later by other functions
+%DIF >  physcraper/ncbi_data_parser.py	10/10
+%DIF >  physcraper/opentree_helpers.py 10/10		we pylint-disabled “too many local variables”, “too many branches” and “too many statements”
+%DIF >  physcraper/scrape.py		10/10	commented out a bare except and pylint-disabled ”globals”, “too many public methods”, “too many local variables”, “too many lines in module”, “too many branches”, “too many statements” and “no self use”
+%DIF >  physcraper/treetaxon.py		10/10
+%DIF >  bin/find_trees.py			10/10
+%DIF >  bin/physcraper.py			10/10
+%DIF >  bin/tree_comparison.py		10/10
+%DIF >  bin/multi_loci.py			10/10 		Global disabled “redefined-outer-name”, “protected-access”, “too-many-branches”, “too-many-statements”, “too-many-locals”
 
 \DIFaddend The general Physcraper framework (Figure 1) consists of 4 steps: 1) identifying and
 processing a tree and its underlying alignment; 2) performing a BLAST search of
 DNA sequences from original alignment on GenBank, and filtering of new sequences;
 3) profile-aligning new sequences to original alignment; 4) performing a phylogenetic
 analysis and comparing the updated tree to existing phylogenies.
+
 
 \subsection*{The inputs: a tree and an alignment}
 
