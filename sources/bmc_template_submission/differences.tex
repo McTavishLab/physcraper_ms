@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 18:02:16 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 18:46:48 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -608,7 +608,8 @@ scrape GenBank \mbox{%DIFAUXCMD
 , which could explain why }\DIFaddend Physcraper was able to
 incorporate \DIFaddbegin \DIFadd{these }\DIFaddend 18 \DIFdelbegin \DIFdel{taxa that were not in \mbox{%DIFAUXCMD
 \cite{yao2020phylogeny}}\hspace{0pt}%DIFAUXCMD
-. }\DIFdelend \DIFaddbegin \DIFadd{additional }\textit{\DIFadd{Ilex}} \DIFadd{taxa in the updated tree (Figure 2).
+.
+}\DIFdelend \DIFaddbegin \DIFadd{additional }\textit{\DIFadd{Ilex}} \DIFadd{taxa in the updated tree (Figure 2).
 }\DIFaddend 
 
 %DIF > % Maybe show conflict results? and then discuss in the discussion.
@@ -616,17 +617,27 @@ incorporate \DIFaddbegin \DIFadd{these }\DIFaddend 18 \DIFdelbegin \DIFdel{taxa 
 
 \subsection*{\DIFadd{Verification test}}
 
-\DIFadd{We pruned 9 out of the 41 original tips of the Gottlieb et al. tree, corresponding
-to a 20\% trim, excluding the outgroups. We then performed a Physcraper run to test
-if we would recover the dropped tips.
+\DIFadd{To test the accuracy of Physcraper we designed a verification test.
+We pruned 9 out of the 41 original tips of the Gottlieb2005 tree \mbox{%DIFAUXCMD
+\cite{gottlieb2005molecular}}\hspace{0pt}%DIFAUXCMD
+,
+corresponding to a 20\% trim, excluding the outgroups. We then performed a Physcraper
+run to test if we would recover the dropped tips.
 We successfully recovered 6 out of 9 pruned tips in the updated tree.
-Closer examination of results revealed that the 3 missing tips were correctly retrieved
-with BLAST along with the other 6 tips that were included in the updated tree. Examining
-the ITS sequences belonging to the tips missed by the test, by following the GenBank
-accession numbers reported in the original publication, showed that these sequences
-contain a 100 bp long gap of unidentified nucleotides (Ns). These Ns were absent
-in the 3 sequences published in the original alignment.
+Closer examination of results revealed that sequences for the 3 missing tips were correctly retrieved
+with BLAST along with sequences from the other 6 tips recovered in the updated tree.
+By following the GenBank accession numbers reported in the original publication
+belonging to the ITS sequences of the missing tips, we observed that these three sequences
+contain a 100 bp long gap of unidentified nucleotides (Ns) that is completely absent
+from any of the sequences in the original alignment. This caused these three GenBank sequences
+in particular to exceed Physcraper's default sequence length cutoff of 120\%, being thus
+filtered and excluded from the alignment step onwards.
+These sequences do appear in the Physcraper results in the list of matches from
+GenBank which did not fit the sequence length cutoffs set in the configuration file.
+This ``seqlen\_mismatch.txt" file includes the accession number, taxon, and sequence
+length of all sequences filtered based on sequence length.
 }
+
 
 \DIFaddend \section*{Discussion}
 Databases preserving and democratizing access to biological data
@@ -664,14 +675,6 @@ eases comparison with previous phylogenetic knowledge.
 \DIFadd{Results from the verification test highlight the importance of incorporating existing expertly
 curated homology statements to automatically update phylogenetic relationships, instead
 of ignoring the information they contain and building homology statements fully }\textit{\DIFadd{de novo}}\DIFadd{.
-The three sequences that were in the original tree but were not included in
-the updated tree by Physcraper in the verification test were excluded because
-they contain a 100 bp long gap of unidentified nucleotides (Ns) in GenBank that
-was manually curated and removed from in the original alignment.
-}
-
-\DIFadd{These sequences do appear in the Physcraper results in the list of matches from GenBank which did not fit the sequence length cutoffs set in the configuration.
-This ``seqlen\_mismatch.txt" file includes the accession number, taxon, and sequence length of all sequences filtered based on sequence length.
 }
 
 \DIFadd{We encourage users to look at this file, and potentially modify their sequence length cutoff parameters based on the excluded sequences.
