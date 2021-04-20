@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 17:43:50 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 18:02:16 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -413,11 +413,12 @@ group of flowering plants, the hollies.
 
 \section*{Implementation}
 
-\DIFaddbegin \DIFadd{Physcraper is implemented with Python and can also be run on the command line.
+\DIFaddbegin \DIFadd{Physcraper is implemented with Python and can be run on a Python interactive session,
+as a Python script or using the command line interface we developped for it.
 It currently consists of 12 modules.
 %DIF > % , classes, methods and functions.%%
 For testing and improving Physcraper's Python code syntax quality, we
-used the Pylint software following instructions from their website \mbox{%DIFAUXCMD
+used the Pylint software following instructions from its website \mbox{%DIFAUXCMD
 \cite{pylintWeb}
  }\hspace{0pt}%DIFAUXCMD
 and manual \mbox{%DIFAUXCMD
@@ -485,8 +486,9 @@ Each sequence in the alignment is BLASTed once against all DNA sequences in GenB
 New sequences are excluded for analysis if they 1) are not in the search taxon;
 2) have an e-value above the cutoff (default to 0.00001); 3) fall outside a min
 and max length threshold, defined as the proportion of the average length without
-gaps of all sequences in input alignment (default values of 80% and 120%,
-respectively); 4) or if they are either identical to or shorter than an existing
+gaps of all sequences in input alignment (default values of 80%DIF <  and 120%,
+\DIFaddbegin \DIFadd{\% and 120\%,
+}\DIFaddend respectively); 4) or if they are either identical to or shorter than an existing
 sequence in the input alignment and they represent the same taxon in OpenTree or
 NCBI taxonomy.
 An arbitrary maximum number of randomly chosen sequences per taxon are allowed
@@ -524,11 +526,11 @@ using OpenTree's conflict API \cite{redelings2017supertree}.
 \subsection*{Case Study: The hollies}
 
 A user is interested in phylogenetic relationships within the genus \textit{Ilex}. Commonly
-known as "hollies", the genus encompasses between 400-700 living species, and is
+known as \DIFdelbegin \DIFdel{"}\DIFdelend \DIFaddbegin \DIFadd{``}\DIFaddend hollies", the genus encompasses between 400-700 living species, and is
 the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering
 plants.
 
-An online literature review in June 2020 (Google scholar search for "ilex phylogeny")
+An online literature review in June 2020 (Google scholar search for \DIFdelbegin \DIFdel{"}\DIFdelend \DIFaddbegin \DIFadd{``}\DIFaddend ilex phylogeny")
 reveals that there are several published phylogenies showing relationships within
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
 selbach2009new}, but only two have data publicly available \cite{gottlieb2005molecular, yao2020phylogeny}.
