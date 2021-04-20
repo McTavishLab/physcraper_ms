@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 14:42:17 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 17:18:48 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -396,7 +396,7 @@ the power of existing homology hypotheses that taxon specialists have assessed
 and deemed appropriate for a specific phylogenetic scope.
 There are almost 8,200 publicly available, peer-reviewed curated alignments, covering
 around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, which
-can be leveraged as seeds to mine molecular databases, and as \DIFdelbegin \DIFdel{``}\DIFdelend \DIFaddbegin \DIFadd{"}\DIFaddend jump-start\DIFdelbegin \DIFdel{'' }\DIFdelend \DIFaddbegin \DIFadd{" }\DIFaddend alignments
+can be leveraged as seeds to mine molecular databases, and as ``jump-start'' alignments
 for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
 update and compare existing phylogenetic knowledge.
 
@@ -414,19 +414,19 @@ group of flowering plants, the hollies.
 \DIFaddbegin \DIFadd{Physcraper is implemented with Python and can also be run on the command line.
 It currently consists of 12 modules.
 %DIF > % , classes, methods and functions.%%
-For testing and improving Python code’s syntax quality of the Phsycraper code, we
+For testing and improving Physcraper's Python code syntax quality, we
 used the Pylint software following instructions from their website \mbox{%DIFAUXCMD
 \cite{pylintWeb}
  }\hspace{0pt}%DIFAUXCMD
 and manual \mbox{%DIFAUXCMD
 \cite{pylintManual}}\hspace{0pt}%DIFAUXCMD
-, with a ".pylintrc" configuration file.
+, with a ``.pylintrc" configuration file.
 }
 
-\DIFadd{We improved code's syntax on modules with low Pylint scores and fixed code errors by
+\DIFadd{We improved code syntax of Physcraper's modules with low Pylint scores, and fixed code errors by
 following Pylint's recommendations.
 Based on Physcraper's software design choices, some of Pylint's recommendations were overruled
-by using its check-disabling system, and are explained in the code.
+by using its check-disabling system, and are explained along the code.
 As of now, all Physcraper modules have a Pylint score of 10/10.
 }
 
@@ -667,12 +667,12 @@ was manually curated and removed from in the original alignment.
 }
 
 \DIFadd{These sequences do appear in the Physcraper results in the list of matches from GenBank which did not fit the sequence length cutoffs set in the configuration.
-This "seqlen\_mismatch.txt" file includes the accession number, taxon, and sequence length of all sequences filtered based on sequence length.
+This ``seqlen\_mismatch.txt" file includes the accession number, taxon, and sequence length of all sequences filtered based on sequence length.
 }
 
 \DIFadd{We encourage users to look at this file, and potentially modify their sequence length cutoff parameters based on the excluded sequences.
 The default relative sequence length thresholds are arbitrary, but we hope that by making the process of locating homologous sequences online reproducible, and tracking what cutoffs are used, we make it easier for researchers to delve into the effect that different choices have on their inferences.
-This is in contrast to ‘manual’ searches for taxa, where similarly arbitrary cutoffs are applied, but are difficult to trace.
+This is in contrast to ``manual" searches for taxa, where similarly arbitrary cutoffs are applied, but are difficult to trace.
 As many studies have shown \mbox{%DIFAUXCMD
 \cite{huang_what_2009} }\hspace{0pt}%DIFAUXCMD
 the effect of missing data can be enigmatic, and interact with the true phylogenetic relationships for the data set at hand.
@@ -682,7 +682,7 @@ There is not currently strong support in the literature for any cutoffs, and rat
 \DIFadd{Organellar genome sequences, such as chloroplasts and mitochondria will also generally be excluded from automatic addition based on length cutoffs.
 Multiple sequence alignment of loci of drastically different lengths is unfeasible, and we have found in testing that it often returns incorrect results, splitting shorter sequences with many long gaps to align with exact matches across the entire longer locus.
 While it would be possible to directly extract the blast match from genomes, this match would exclude potentially homologous flanking regions which are not matched by blasts local search algorithm, but may be important for phylogenetic inference.
-Instead we list the accession numbers for these matches in the "seqlen\_mismatch.txt" file, for users to assess appropriate homologous regions for their alignment of interest.
+Instead we list the accession numbers for these matches in the ``seqlen\_mismatch.txt" file, for users to assess appropriate homologous regions for their alignment of interest.
 }
 
 
