@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 17:18:48 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri Apr 23 17:34:54 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -274,7 +274,9 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 \kwd{reproducibility}
 \kwd{public database}
 \kwd{DNA alignment}
-\end{keyword}
+\DIFaddbegin \kwd{Open Tree of Life}
+\kwd{otol}
+\DIFaddend \end{keyword}
 
 % MSC classifications codes, if any
 %\begin{keyword}[class=AMS]
@@ -324,9 +326,9 @@ the opportunity to study
 the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
 framework for biological databases to automate data connections across databases\DIFdelbegin \DIFdel{,
-with the main goal of building on published alignments and extending }\DIFdelend \DIFaddbegin \DIFadd{.
-Physcraper's main goal is to build upon published alignments to extend }\DIFaddend existing
-phylogenetic inferences with more data and taxa\DIFaddbegin \DIFadd{, which improve
+with the main goal of building on }\DIFdelend \DIFaddbegin \DIFadd{.
+Physcraper's main goal is to build upon }\DIFaddend published alignments and \DIFdelbegin \DIFdel{extending }\DIFdelend \DIFaddbegin \DIFadd{published phylogenies
+to extend }\DIFaddend existing phylogenetic inferences with more data and taxa\DIFaddbegin \DIFadd{, which improve
 phylogenetic reconstruction \mbox{%DIFAUXCMD
 \cite{hillis1996inferring, natsidis2019phylogenomics}}\hspace{0pt}%DIFAUXCMD
 ,
