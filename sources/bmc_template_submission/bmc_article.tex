@@ -331,12 +331,12 @@ regions \cite{andermann2020guide}.
 However, fine-grained curated markers and alignments can significantly improve phylogenetic
 reconstructions, even in phylogenomic analyses \cite{fragoso2017pilot}.
 
-Physcraper improves on previous work in automating phylogenetic reconstruction by leveraging
-the power of existing homology hypotheses that taxon specialists have assessed
+Physcraper improves on previous work to automate phylogenetic reconstruction by leveraging
+the power of existing homology hypotheses that phylogeneticists and taxon specialists have assessed
 and deemed appropriate for a specific phylogenetic scope.
 There are almost 8,200 publicly available, peer-reviewed curated alignments, covering
 around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, which
-can be leveraged as seeds to mine molecular databases, and as ``jump-start'' alignments
+can be used as seeds to mine molecular databases, and as ``jump-start'' alignments
 for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
 update and compare existing phylogenetic knowledge.
 
@@ -352,8 +352,8 @@ group of flowering plants, the hollies.
 \section*{Implementation}
 
 Physcraper is implemented with Python and can be run on a Python interactive session,
-as a Python script or using the command line interface we developped for it.
-It currently consists of 12 modules.
+as a Python script or using the command line interface developed for it.
+It currently consists of 13 modules.
 %% , classes, methods and functions.%%
 For testing and improving Physcraper's Python code syntax quality, we
 used the Pylint software following instructions from its website \cite{pylintWeb}
@@ -579,7 +579,7 @@ are applied, but are difficult to trace.
 As many studies have shown \cite{huang_what_2009} the effect of missing data can
 be enigmatic, and interact with the true phylogenetic relationships for the data
 set at hand.
-There is not currently strong support in the literature for any particular cutoffs
+There is not currently strong support in the literature for any particular cutoff
 value, and rather than prescribe specific approaches, we encourage users to explore
 the effects of different choices on their phylogenetic inferences.
 In addition, by providing the output files at each step of the analysis,
@@ -593,27 +593,17 @@ software.
 
 
 Organellar genome sequences, such as chloroplasts and mitochondria will also generally
-be excluded from automatic addition based on length cutoffs.
+be excluded from automatic addition based on default Physcraper length cutoffs.
 Multiple sequence alignment of loci of drastically different lengths is unfeasible,
 and we have found in testing that it often returns incorrect results, splitting
 shorter sequences with many long gaps to align with exact matches across the entire
 longer locus.
-While it would be possible to directly extract the blast match from genomes, this
-match would exclude potentially homologous flanking regions which are not matched
-by blasts local search algorithm, but may be important for phylogenetic inference.
+While it would be possible to directly extract the BLAST match from genomes, this
+ would exclude potentially homologous flanking regions which are not matched
+by BLAST's local search algorithm, but that may be important for phylogenetic inference.
 Instead we list the accession numbers for these matches in the ``seqlen\_mismatch.txt"
-file, for users to assess appropriate homologous regions for their alignment of interest.
-
-
-Single gene phylogenies with very high numbers of taxa may lack sufficient signal
-for accurate resolution \cite{morel_phylogenetic_2020}.
-The Physcraper workflow avoids some of these challenges, by focussing on ingroup
-taxa of an existing phylogeny, using markers that have been assessed and proven
-apporpraite for that phylogenetic scope in past publictions.
-In addition, Physcraper thins alignments by removing identical sequences, and by
-setting a maximum number of sequences per taxon.
-Nonetheless, it is incumbent on users to assess their final inference with respect
-to statistical support and biological plausibility.
+file, for users to assess and incorporate appropriate homologous regions to their
+alignment of interest.
 
 Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
 which add new taxa without modifying the input tree, Physcraper estimates all
@@ -623,19 +613,29 @@ longer under active development, is challenging to install and run, and has resu
 in very few phylogenetic analyses since its publication.
 
 Physcraper generates gene trees, which individually do not capture the full complexity
-of species' evolutionary history \cite{song2012resolving}.
-However, Physcraper facilitates
+of species' evolutionary history \cite{song2012resolving}. In addition, single gene
+phylogenies with very high numbers of taxa may lack sufficient signal
+for accurate phylogenetic resolution \cite{morel_phylogenetic_2020}.
+The Physcraper workflow avoids this challenge by focusing on ingroup
+taxa of an existing phylogeny, using markers that have been assessed and proven
+appropriate for that phylogenetic scope in past publications.
+Also, Physcraper thins alignments by removing sequences identical to original
+and newly added sequences, and by setting a maximum number of sequences per taxon.
+Nonetheless, it is incumbent on users to assess their final inference with respect
+to statistical support and biological plausibility.
+
+Rigorous analyses of multiple loci allow for more complex evolutionary models
+than analyses of large genomic data sets, and can provide better evolutionary estimates.
+For example \cite{zhu_complexity_2021} show that when applying coalescent models,
+there is more information in two genes of 300 bp each than in 600 independent sites.
+Physcraper is desighed to facilitate
 gathering alignments and gene trees for multiple loci from a group of interest,
 that together can be used to reconstruct species trees taking into account coalescent
 processes with ASTRAL \cite{mirarab2014astral} or SVD Quartets \cite{chifman2014quartet}.
-Rigorous analyses of multiple loci allows for more complex evolutionary models
-than analyses of large genomic data sets, and can provide better evolutionary estimates.
-
-For example \cite{zhu_complexity_2021} show that when applying coalescent models,
-there is more information in two genes of 300 bp each than in 600 independent sites
 We have included a script (``multi\_locus.py'') and examples of how to automatically
-merge the outputs of Physcraper runs at different loci into input files for ASTRAL,
-SVD Quartets, or as concatenated alignments for concatenated analyses.
+merge the outputs of Physcraper runs at different loci into input files for these
+two software, or as concatenated alignments for supermatrix analyses.
+
 
 
 Physcraper has the added advantage of facilitating the linkage of taxonomic information about tips
@@ -651,11 +651,11 @@ The estimated gene tree itself is an evolutionarily explicit way to visualize ge
 evolution, which in concert with taxonomic labelling can reveal paralogy.
 Our conflict analysis tool informs the users of whether their tree contains major
 conflicts with established taxonomy.
-This conflict tool also returns information on if these taxonomic conflicts existed
+This tool also returns information on taxonomic conflicts that exist
 in the original input tree.
-These conflicts may be a sign that taxonomy needs to be updated, or may be a sign
+Detected conflicts may be a sign that taxonomy needs to be updated, or may be a sign
 that non-homologous sequences have been included in the analysis.
-These taxonomic and phylogenetic conflicts flag regions for the tree for the researcher
+These taxonomic and phylogenetic conflicts flag regions of the tree for the researcher
 to more closely examine and assess homology.
 
 
