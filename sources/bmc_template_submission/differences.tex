@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Sat Apr 24 16:37:09 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Sat Apr 24 16:58:38 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -188,14 +188,24 @@
   \city{Merced},                              % city
   \cny{USA}                                    % country
 }
-\address[id=aff2]{%
+\DIFdelbegin %DIFDELCMD < \address[id=aff2]{%
+%DIFDELCMD <   \orgdiv{Department of Botany, Faculty of Science},
+%DIFDELCMD <   \orgname{Charles University},
+%DIFDELCMD <   %\street{},
+%DIFDELCMD <   %\postcode{}
+%DIFDELCMD <   \city{Prague },
+%DIFDELCMD <   \cny{Czech Republic}
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \address[id=aff2]{%
   \orgdiv{Department of Botany, Faculty of Science},
   \orgname{Charles University},
   %\street{},
   %\postcode{}
-  \city{Prague },
+  \city{Prague},
   \cny{Czech Republic}
 }
+\DIFaddend 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -757,15 +767,30 @@ BEAST2 \mbox{%DIFAUXCMD
 \cite{bouckaert2019beast}}\hspace{0pt}%DIFAUXCMD
 , }\DIFdelend or SVD Quartets \cite{chifman2014quartet}\DIFdelbegin \DIFdel{).
 Rigorous analyses of multiple loci allows for more complex evolutionary models
-than analyses of large genomic data sets, and can provide better evolutionary estimates}\DIFdelend .
-\DIFaddbegin \DIFadd{We have included a script (``multi\_locus.py'') and examples of how to automatically
+than analysesof large genomic data sets, and can provide better evolutionary estimates. }\DIFdelend \DIFaddbegin \DIFadd{.
+We have included a script (``multi\_locus.py'') and examples of how to automatically
 merge the outputs of Physcraper runs at different loci into input files for these
 two software, or as concatenated alignments for supermatrix analyses.
 }\DIFaddend 
 
 
+%DIF > % Biological plausibility of example??
+\DIFaddbegin \DIFadd{Our example application of Physcraper to update a holly phylogeny is based on a
+single marker, so we expect for it to be not as well resolved as trees from studies
+using multiple markers. Although not perfect,
+we think the updated phylogeny seems biologically reasonable in different ways. All samples
+corresponding to the ingroup cluster together forming a monophyletic group, and
+samples belonging to the same }\textit{\DIFadd{Ilex}} \DIFadd{species also form
+monophyletic groups. A notable exception is }\textit{\DIFadd{Ilex theeizans}}\DIFadd{, which appears as
+non-monophyletic in the Physcraper updated phylogeny as well as in the original Gottlieb2005 tree.
+%DIF > This suggests that the samples might represent two different species, but further
+analyses should be conducted
+A visual comparison of the Yao2020 tree and the original Gottlieb2005 tree suggests
+that the relationships within the genus }\textit{\DIFadd{Ilex}} \DIFadd{are still being actively
+determined, and that increased taxon sampling might be key to resolve them.
+}
 
-Physcraper has the added advantage of facilitating the linkage of taxonomic information about tips
+\DIFaddend Physcraper has the added advantage of facilitating the linkage of taxonomic information about tips
 in the output phylogenies to data available in a variety of biological databases
 \cite{rees2017automated}, such as
 geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
@@ -786,23 +811,7 @@ These taxonomic and phylogenetic conflicts flag regions of the tree for the rese
 to more closely examine and assess homology.
 }\DIFaddend 
 
-
-%DIF > % Biological plausibility of example??
-\DIFaddbegin \DIFadd{The updated holly tree is based on a single marker, so we expect for it to be
-not as well resolved as trees from studies using multiple markers. Although not perfect,
-we think the tree seems biologically reasonable in different ways. All samples
-corresponding to the ingroup cluster together forming a monophyletic group. We also
-note that samples belonging to the same }\textit{\DIFadd{Ilex}} \DIFadd{species also cluster together forming
-monophyletic groups. A notable exception is }\textit{\DIFadd{Ilex theeizans}}\DIFadd{, which appears as
-non-monophyletic in the updated tree and the original Gottlieb et al. 2005 tree.
-%DIF > This suggests that the samples might represent two ifferent species, but further
-analyses should be conducted
-A visual comparison of the Yao et al. 2020 tree and the original Gottlieb et al. 2005 tree suggests
-that the relationships within the genus }\textit{\DIFadd{Ilex}} \DIFadd{are still being determined, and that
-increased taxon sampling is helping with it.
-}
-
-\DIFaddend The Physcraper workflow can be used to rapidly (in a matter of hours) create
+The Physcraper workflow can be used to rapidly (in a matter of hours) create
 phylogenies which can address challenges overarching both fields of ecology and evolution, such as
 phylogenetically placing newly discovered species \cite{webb2010biodiversity},
 curating taxonomic assignments
@@ -818,11 +827,14 @@ policy and applications.
 Initial ideas about the data are constantly changed by results from new analyses.
 Physcraper provides a framework for reproducible phylogenetics that has the
 potential to consistently provide context for these ideas, highlighting the
-importance of data sharing and open science in the field, biology and science.
+importance of data sharing and open science in \DIFdelbegin \DIFdel{the field}\DIFdelend \DIFaddbegin \DIFadd{phylogenetics}\DIFaddend , biology and science.
 
 \section*{Availability and requirements}
 
-\textbf{Project name:} Physcraper
+\DIFdelbegin \textbf{\DIFdel{Project name:}} %DIFAUXCMD
+\DIFdel{Physcraper
+}\DIFdelend \DIFaddbegin \par{\textbf{Project name:} Physcraper}
+\DIFaddend 
 
 \textbf{Project home page:} \href{https://physcraper.readthedocs.io/en/latest/index.html}{https://physcraper.readthedocs.io/en/latest/index.html}
 
@@ -838,7 +850,10 @@ importance of data sharing and open science in the field, biology and science.
 
 \section*{Abbreviations}
 
-\textbf{OpenTree:} The Open Tree of Life project
+\DIFdelbegin \textbf{\DIFdel{OpenTree:}} %DIFAUXCMD
+\DIFdel{The Open Tree of Life project
+}\DIFdelend \DIFaddbegin \par{\textbf{OpenTree:} The Open Tree of Life project}
+\DIFaddend 
 
 \textbf{TNRS:} Taxonomic Name Resolution Service
 
@@ -867,7 +882,7 @@ Not applicable.
 
 \section*{Availability of data and materials}
 
-The datasets generated and analysed during the current study are available in
+\DIFdelbegin \DIFdel{The }\DIFdelend \DIFaddbegin \DIFadd{Code and }\DIFaddend datasets generated and analysed during the current study are available in
 the repositories "physcraper" containing the source code,
 \href{https://github.com/McTavishLab/physcraper}{https://github.com/McTavishLab/physcraper};
 "physcraperex" containing the examples,
@@ -895,8 +910,8 @@ All authors contributed to the manuscript and gave final approval for publicatio
 \section*{Acknowledgements}
 We thank the members of the OpenTree development team and the "short bar" Science
 and Engineering Building 1, UCM, joint lab paper discussion group for valuable
-comments on this manuscript. \DIFaddbegin \DIFadd{We thank the valuable comments of David Posada, Rutger Vos,
-and an anonymous reviewer that greatly improved earlier versions of this manuscript.
+comments on this manuscript. \DIFaddbegin \DIFadd{We also thank the valuable comments of David Posada, Rutger Vos,
+and an anonymous reviewer that greatly improved an earlier version of this manuscript.
 }\DIFaddend 
 
 

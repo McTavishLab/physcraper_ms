@@ -143,7 +143,7 @@
   \orgname{Charles University},
   %\street{},
   %\postcode{}
-  \city{Prague },
+  \city{Prague},
   \cny{Czech Republic}
 }
 
@@ -637,6 +637,20 @@ merge the outputs of Physcraper runs at different loci into input files for thes
 two software, or as concatenated alignments for supermatrix analyses.
 
 
+%% Biological plausibility of example??
+Our example application of Physcraper to update a holly phylogeny is based on a
+single marker, so we expect for it to be not as well resolved as trees from studies
+using multiple markers. Although not perfect,
+we think the updated phylogeny seems biologically reasonable in different ways. All samples
+corresponding to the ingroup cluster together forming a monophyletic group, and
+samples belonging to the same \textit{Ilex} species also form
+monophyletic groups. A notable exception is \textit{Ilex theeizans}, which appears as
+non-monophyletic in the Physcraper updated phylogeny as well as in the original Gottlieb2005 tree.
+%This suggests that the samples might represent two different species, but further
+analyses should be conducted
+A visual comparison of the Yao2020 tree and the original Gottlieb2005 tree suggests
+that the relationships within the genus \textit{Ilex} are still being actively
+determined, and that increased taxon sampling might be key to resolve them.
 
 Physcraper has the added advantage of facilitating the linkage of taxonomic information about tips
 in the output phylogenies to data available in a variety of biological databases
@@ -658,21 +672,6 @@ that non-homologous sequences have been included in the analysis.
 These taxonomic and phylogenetic conflicts flag regions of the tree for the researcher
 to more closely examine and assess homology.
 
-
-%% Biological plausibility of example??
-The updated holly tree is based on a single marker, so we expect for it to be
-not as well resolved as trees from studies using multiple markers. Although not perfect,
-we think the tree seems biologically reasonable in different ways. All samples
-corresponding to the ingroup cluster together forming a monophyletic group. We also
-note that samples belonging to the same \textit{Ilex} species also cluster together forming
-monophyletic groups. A notable exception is \textit{Ilex theeizans}, which appears as
-non-monophyletic in the updated tree and the original Gottlieb et al. 2005 tree.
-%This suggests that the samples might represent two ifferent species, but further
-analyses should be conducted
-A visual comparison of the Yao et al. 2020 tree and the original Gottlieb et al. 2005 tree suggests
-that the relationships within the genus \textit{Ilex} are still being determined, and that
-increased taxon sampling is helping with it.
-
 The Physcraper workflow can be used to rapidly (in a matter of hours) create
 phylogenies which can address challenges overarching both fields of ecology and evolution, such as
 phylogenetically placing newly discovered species \cite{webb2010biodiversity},
@@ -689,11 +688,11 @@ policy and applications.
 Initial ideas about the data are constantly changed by results from new analyses.
 Physcraper provides a framework for reproducible phylogenetics that has the
 potential to consistently provide context for these ideas, highlighting the
-importance of data sharing and open science in the field, biology and science.
+importance of data sharing and open science in phylogenetics, biology and science.
 
 \section*{Availability and requirements}
 
-\textbf{Project name:} Physcraper
+\par{\textbf{Project name:} Physcraper}
 
 \textbf{Project home page:} \href{https://physcraper.readthedocs.io/en/latest/index.html}{https://physcraper.readthedocs.io/en/latest/index.html}
 
@@ -709,7 +708,7 @@ importance of data sharing and open science in the field, biology and science.
 
 \section*{Abbreviations}
 
-\textbf{OpenTree:} The Open Tree of Life project
+\par{\textbf{OpenTree:} The Open Tree of Life project}
 
 \textbf{TNRS:} Taxonomic Name Resolution Service
 
@@ -738,7 +737,7 @@ Not applicable.
 
 \section*{Availability of data and materials}
 
-The datasets generated and analysed during the current study are available in
+Code and datasets generated and analysed during the current study are available in
 the repositories "physcraper" containing the source code,
 \href{https://github.com/McTavishLab/physcraper}{https://github.com/McTavishLab/physcraper};
 "physcraperex" containing the examples,
@@ -764,8 +763,8 @@ All authors contributed to the manuscript and gave final approval for publicatio
 \section*{Acknowledgements}
 We thank the members of the OpenTree development team and the "short bar" Science
 and Engineering Building 1, UCM, joint lab paper discussion group for valuable
-comments on this manuscript. We thank the valuable comments of David Posada, Rutger Vos,
-and an anonymous reviewer that greatly improved earlier versions of this manuscript.
+comments on this manuscript. We also thank the valuable comments of David Posada, Rutger Vos,
+and an anonymous reviewer that greatly improved an earlier version of this manuscript.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
