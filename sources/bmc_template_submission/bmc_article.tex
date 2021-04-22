@@ -335,8 +335,9 @@ Physcraper improves on previous work to automate phylogenetic reconstruction by 
 the power of existing homology hypotheses that phylogeneticists and taxon specialists have assessed
 and deemed appropriate for a specific phylogenetic scope.
 There are almost 8,200 publicly available, peer-reviewed curated alignments, covering
-around 100,000 distinct taxa in the TreeBASE database \cite{piel2009treebase}, which
-can be used as seeds to mine molecular databases, and as ``jump-start'' alignments
+around 100,000 distinct taxa in the TreeBASE database
+\cite{piel2009treebase, vos2012nexml, piel2018treebasedmp, treebase_website, supertreebase}, 
+which can be used as seeds to mine molecular databases, and as ``jump-start'' alignments
 for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
 update and compare existing phylogenetic knowledge.
 
@@ -344,7 +345,7 @@ Physcraper is implemented as a Python pipeline that uses OpenTree's programmatic
 protocols (API's) to automatically
 link any phylogeny mapped to OpenTree's standardized taxonomy \cite{mctavish2015phylesystem},
 to alignments
-from TreeBASE \cite{sanderson1994treebase}, and data from GenBank \cite{benson2000genbank}.
+from TreeBASE, and data from GenBank \cite{benson2000genbank}.
 Its utility and functionalities are presented with a case-study analysis of a
 group of flowering plants, the hollies.
 
@@ -393,7 +394,7 @@ Taxon names in the input tree must be standardized to OpenTree taxonomy
 (TNRS) tool \cite{TNRStool}. Users can upload their
 own tree, or choose from among the 2, 950 curated trees stored in OpenTree's
 Phylesystem database \cite{phylesystemGithub, mctavish2015phylesystem} that also have
-alignments available on TreeBASE \cite{piel2009treebase}.
+alignments available on TreeBASE.
 
 The input alignment is a single locus DNA dataset that was used in part or in
 whole to generate the input tree. Physcraper retrieves TreeBASE alignments
