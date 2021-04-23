@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Mar  2 14:52:09 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Sat Apr 24 17:45:16 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Mon Apr 26 13:28:22 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -412,7 +412,7 @@ around 100,000 distinct taxa in the TreeBASE database
 \cite{piel2009treebase}}\hspace{0pt}%DIFAUXCMD
 }\DIFdelend \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
 \cite{piel2009treebase, vos2012nexml, piel2018treebasedmp, treebase_website, supertreebase}}\hspace{0pt}%DIFAUXCMD
-}\DIFaddend , 
+}\DIFaddend ,
 which can be \DIFdelbegin \DIFdel{leveraged }\DIFdelend \DIFaddbegin \DIFadd{used }\DIFaddend as seeds to mine molecular databases, and as ``jump-start'' alignments
 for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
 update and compare existing phylogenetic knowledge.
@@ -499,7 +499,7 @@ identified using the OpenTree's taxonomic Most Recent Common Ancestor (MRCA) API
 also a named clade in the NCBI taxonomy (Figure 1).
 
 BLAST is performed using the `blastn` algorithm \cite{camacho2009blast}
-implemented in BioPython's \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
+implemented in BioPython \DIFdelbegin \DIFdel{'s }\DIFdelend \DIFaddbegin \DIFadd{1.71 }\DIFaddend \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
 modified to accept an alternative BLAST address.
 Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
 New sequences are excluded for analysis if they 1) are not in the search taxon;

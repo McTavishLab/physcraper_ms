@@ -336,7 +336,7 @@ the power of existing homology hypotheses that phylogeneticists and taxon specia
 and deemed appropriate for a specific phylogenetic scope.
 There are almost 8,200 publicly available, peer-reviewed curated alignments, covering
 around 100,000 distinct taxa in the TreeBASE database
-\cite{piel2009treebase, vos2012nexml, piel2018treebasedmp, treebase_website, supertreebase}, 
+\cite{piel2009treebase, vos2012nexml, piel2018treebasedmp, treebase_website, supertreebase},
 which can be used as seeds to mine molecular databases, and as ``jump-start'' alignments
 for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
 update and compare existing phylogenetic knowledge.
@@ -413,7 +413,7 @@ identified using the OpenTree's taxonomic Most Recent Common Ancestor (MRCA) API
 also a named clade in the NCBI taxonomy (Figure 1).
 
 BLAST is performed using the `blastn` algorithm \cite{camacho2009blast}
-implemented in BioPython's \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
+implemented in BioPython 1.71 \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
 modified to accept an alternative BLAST address.
 Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
 New sequences are excluded for analysis if they 1) are not in the search taxon;
