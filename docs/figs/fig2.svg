@@ -12,7 +12,7 @@
    inkscape:version="1.0 (4035a4f, 2020-05-01)"
    id="svg8"
    version="1.1"
-   viewBox="0 0 701.6383 380.15952"
+   viewBox="0 0 701.63831 380.15952"
    height="380.15952mm"
    width="701.63831mm">
   <defs
@@ -84,9 +84,9 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="751.02677"
-     inkscape:cx="1303.6396"
-     inkscape:zoom="0.36876302"
+     inkscape:cy="718.41168"
+     inkscape:cx="1325.9307"
+     inkscape:zoom="0.42045939"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -42346,6 +42346,50 @@
          x="148.93594"
          y="30.201456" />
     </g>
+    <text
+       id="text14666"
+       y="45.431347"
+       x="707.08759"
+       style="font-size:8.81944px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:8.81944px;stroke-width:0.264583"
+         y="45.431347"
+         x="707.08759"
+         id="tspan14664"
+         sodipodi:role="line">Resolves</tspan><tspan
+         id="tspan14668"
+         style="font-size:8.81944px;stroke-width:0.264583"
+         y="56.455647"
+         x="707.08759"
+         sodipodi:role="line">Agrees</tspan><tspan
+         id="tspan14670"
+         style="font-size:8.81944px;stroke-width:0.264583"
+         y="67.47995"
+         x="707.08759"
+         sodipodi:role="line">Conflicts</tspan></text>
+    <text
+       id="text14674"
+       y="32.98069"
+       x="679.14014"
+       style="font-size:10.5833px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial, Normal';stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:10.5833px;stroke-width:0.264583"
+         y="32.98069"
+         x="679.14014"
+         id="tspan14672"
+         sodipodi:role="line">Branch status</tspan></text>
+    <path
+       id="path14678"
+       d="m 696.6024,42.577086 h 8.02322"
+       style="fill:none;stroke:#00bb00;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#3366ff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 696.6024,53.160426 h 8.02322"
+       id="path14689" />
+    <path
+       id="path14691"
+       d="m 696.6024,65.331267 h 8.02322"
+       style="fill:none;stroke:#ee8800;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
   <style
      id="tree-view-style"
