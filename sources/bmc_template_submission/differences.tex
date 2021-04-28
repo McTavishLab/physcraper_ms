@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Tue Apr 27 23:58:14 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Tue Apr 27 23:57:14 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Wed Apr 28 12:43:07 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -971,32 +971,19 @@ and an anonymous reviewer that greatly improved an earlier version of this manus
 \end{figure}
 
 \begin{figure}[h!]
-  \DIFdelbeginFL %DIFDELCMD < \caption{%
-{%DIFAUXCMD
-\DIFdelFL{A) Phylogeny updated with Physcraper from original
-  \mbox{%DIFAUXCMD
-\cite{gottlieb2005molecular} }\hspace{0pt}%DIFAUXCMD
-tree in B.
+  \caption{A) Phylogeny updated with Physcraper \DIFaddbeginFL \DIFaddFL{using a starting phylogeny and alignment }\DIFaddendFL from
+  \DIFdelbeginFL \DIFdelFL{original
+  }\DIFdelendFL \cite{gottlieb2005molecular} \DIFdelbeginFL \DIFdelFL{tree }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{(Gottlieb2005 data }\DIFaddendFL in \DIFdelbeginFL \DIFdelFL{B}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{text)}\DIFaddendFL .
   Tips in original alignment and new tips added with Physcraper are depicted in
   black and red, respectively. Physcraper obtained sequences from the GenBank
-  database via local BLAST of all sequences in the original alignment that generated
-  tree in B), filtered them following criteria from section "DNA sequence search and
-  filtering", aligned them to original alignment using MUSCLE and performed a
-  phylogenetic reconstruction using RAxML with 100 bootstraps. B-D conflict analyses
-  performed with OpenTree tools.}}
-%DIFAUXCMD
-\DIFdelendFL \DIFaddbeginFL \caption{\DIFaddFL{A) Phylogeny updated with Physcraper using a starting phylogeny and alignment from
-  \mbox{%DIFAUXCMD
-\cite{gottlieb2005molecular} }\hspace{0pt}%DIFAUXCMD
-(Gottlieb2005 data in text).
-  Tips in original alignment and new tips added with Physcraper are depicted in
-  black and red, respectively. Physcraper obtained sequences from the GenBank
-  database via local BLAST of all sequences in the Gottlieb2005 internal transcribed
-  spacer DNA region (ITS) alignment,
-  filtered them following criteria described in section "DNA sequence search and
-  filtering", aligned them to the original alignment using MUSCLE, and performed a
-  phylogenetic reconstruction using RAxML, with 100 bootstraps. B) Results of conflict
-  analysis performed using OpenTree's conflict tool \mbox{%DIFAUXCMD
+  database via local BLAST of all sequences in the \DIFdelbeginFL \DIFdelFL{original alignment that generated
+  tree in B}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Gottlieb2005 internal transcribed
+  spacer DNA region (ITS}\DIFaddendFL ) \DIFaddbeginFL \DIFaddFL{alignment}\DIFaddendFL ,
+  filtered them following criteria \DIFdelbeginFL \DIFdelFL{from }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{described in }\DIFaddendFL section "DNA sequence search and
+  filtering", aligned them to \DIFaddbeginFL \DIFaddFL{the }\DIFaddendFL original alignment using MUSCLE\DIFaddbeginFL \DIFaddFL{, }\DIFaddendFL and performed a
+  phylogenetic reconstruction using RAxML\DIFaddbeginFL \DIFaddFL{, }\DIFaddendFL with 100 bootstraps. \DIFdelbeginFL \DIFdelFL{B-D }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{B) Results of }\DIFaddendFL conflict
+  \DIFdelbeginFL \DIFdelFL{analyses
+  }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{analysis }\DIFaddendFL performed \DIFdelbeginFL \DIFdelFL{with }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{using }\DIFaddendFL OpenTree\DIFdelbeginFL \DIFdelFL{tools}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{'s conflict tool \mbox{%DIFAUXCMD
 \cite{redelings2017supertree}}\hspace{0pt}%DIFAUXCMD
 .
   The Physcraper updated Gottlieb2005 phylogeny in (A) was compared to an }\textit{\DIFaddFL{Ilex}}
@@ -1004,8 +991,9 @@ tree in B.
 \cite{ott727571} }\hspace{0pt}%DIFAUXCMD
 constructed using taxonomy of the genus
   as backbone and resolving branches based on phylogenetic data from the original
-  Gottlieb2005 phylogeny.
-}\DIFaddendFL \end{figure}
+  Gottlieb2005 phylogeny}\DIFaddendFL .
+}
+\end{figure}
 
 
 \end{backmatter}
