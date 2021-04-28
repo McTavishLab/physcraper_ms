@@ -625,7 +625,8 @@ and newly added sequences, and by setting a maximum number of sequences per taxo
 Nonetheless, it is incumbent on users to assess their final inference with respect
 to statistical support and biological plausibility.
 
-Rigorous analyses of multiple loci allow for more complex evolutionary models
+In the era of phylogenomics, rigorous analyses of multiple loci still allow for
+more complex evolutionary models
 than analyses of large genomic data sets, and can provide better evolutionary estimates.
 For example \cite{zhu_complexity_2021} show that when applying coalescent models,
 there is more information in two genes of 300 bp each than in 600 independent sites.
@@ -664,9 +665,9 @@ and can be more prevalent in automated analyses than in manually curated analyse
 We provide users with several tools to try to assess homology of their aligned sequences.
 The estimated gene tree itself is an evolutionarily explicit way to visualize gene
 evolution, which in concert with taxonomic labelling can reveal paralogy.
-Our conflict analysis tool informs the users of whether their tree contains major
-conflicts with established taxonomy.
-This tool also returns information on taxonomic conflicts that exist
+OpenTree's conflict analysis tool informs the users of whether their tree contains major
+conflicts with established taxonomy and any phylogenetic context they wish to compare to.
+This tool also returns information on taxonomic and phylogenetic conflicts that exist
 in the original input tree.
 Detected conflicts may be a sign that taxonomy needs to be updated, or may be a sign
 that non-homologous sequences have been included in the analysis.
@@ -820,14 +821,20 @@ and an anonymous reviewer that greatly improved an earlier version of this manus
 \end{figure}
 
 \begin{figure}[h!]
-  \caption{A) Phylogeny updated with Physcraper from original
-  \cite{gottlieb2005molecular} tree.
+  \caption{A) Phylogeny updated with Physcraper using a starting phylogeny and alignment from
+  \cite{gottlieb2005molecular} (Gottlieb2005 data in text).
   Tips in original alignment and new tips added with Physcraper are depicted in
-  black and golden, respectively. Physcraper obtained sequences from the GenBank
-  database via local BLAST of all sequences in the original alignment that generated
-  tree in B), filtered them following criteria from section "DNA sequence search and
-  filtering", aligned them to original alignment using MUSCLE and performed a
-  phylogenetic reconstruction using RAxML with 100 bootstraps.}
+  black and red, respectively. Physcraper obtained sequences from the GenBank
+  database via local BLAST of all sequences in the Gottlieb2005 internal transcribed
+  spacer DNA region (ITS) alignment,
+  filtered them following criteria described in section "DNA sequence search and
+  filtering", aligned them to the original alignment using MUSCLE, and performed a
+  phylogenetic reconstruction using RAxML, with 100 bootstraps. B) Results of conflict
+  analysis performed using OpenTree's conflict tool \cite{redelings2017supertree}.
+  The Physcraper updated Gottlieb2005 phylogeny in (A) was compared to an \textit{Ilex}
+  OpenTree synthetic subtree v. 12.3 \cite{ott727571} constructed using taxonomy of the genus
+  as backbone and resolving branches based on phylogenetic data from the original
+  Gottlieb2005 phylogeny.
 \end{figure}
 
 
