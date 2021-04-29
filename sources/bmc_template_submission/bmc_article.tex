@@ -297,8 +297,8 @@ created a unified taxonomy for automatic taxonomic name standardization, by inte
 data from several databases \cite{rees2017automated}, including the USA National
 Center for Biodiversity Information (NCBI) taxonomy \cite{federhen_ncbi_2012, schoch_ncbi_2020},
 and the Global Biodiversity Information Facility (GBIF) \cite{gbif_secretariat_gbif_2019}, among many others.
-All of OpenTree tools and methods are carried out via OpenTree's Application Programming Interfaces (APIs),
-that are open as services for use by the general public \cite{opentreeAPIs}.
+All of OpenTree tools and methods are implemented via OpenTree's Application Programming Interfaces (APIs),
+as open programmatic access services for use by the general public \cite{opentreeAPIs}.
 Physcraper leverages on existing OpenTree's taxonomic APIs to
 standardize taxon names in any phylogeny, providing
 a framework for automatic connection of updated phylogenies with data from any biological database.
@@ -650,7 +650,7 @@ two software mentioned above, or as concatenated alignments for supermatrix anal
 
 
 %% Biological plausibility of example??
-Our example application of Physcraper to update a phylogeny of the genus \textit{Ilex} is based on a
+Our case study application of Physcraper to update a phylogeny of the genus \textit{Ilex} is based on a
 single marker, so we expect for it to be not as well resolved as phylogenies resulting from analyses
 that used multiple markers. Although not perfect,
 we think the Physcraper updated \textit{Ilex} phylogeny seems biologically reasonable
@@ -659,8 +659,8 @@ corresponding to the ingroup cluster together forming a monophyletic group (Figu
 samples belonging to the same \textit{Ilex} species also form
 monophyletic groups (Figure 2B). A notable exception is samples of the species \textit{Ilex theeizans}, which appear as
 non-monophyletic in the updated phylogeny as well as in the original Gottlieb2005 phylogeny.
-%This suggests that the samples might represent two different species, but further
-analyses should be conducted
+% This suggests that the samples might represent two different species, but further
+% analyses should be conducted.
 A visual comparison of the Yao2020 phylogeny and the original Gottlieb2005 phylogeny suggests
 that the relationships within the genus \textit{Ilex} are still being actively
 determined, and that increased taxon sampling might be key to resolve them.
