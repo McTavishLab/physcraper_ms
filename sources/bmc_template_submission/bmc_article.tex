@@ -466,12 +466,13 @@ the only extant taxon within the family Aquifoliaceae, in the order Aquifoliales
 plants \cite{chase2016update}.
 
 An online literature review in June 2020 (Google scholar search for ``ilex phylogeny")
-revealed that there are several published phylogenies showing relationships within
-the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
-selbach2009new}, but only two have data openly available, the ``Gottlieb2005" study
-\cite{gottlieb2005molecular} and the ``Yao2020" study \cite{yao2020phylogeny}.
-Gottlieb2005 made their original published phylogeny and alignment openly available in TreeBASE
-(study 1091 \cite{treebase1091}). The Gottlieb2005 phylogeny samples 41 species, is available from
+revealed that there are several published studies addressing phylogenetic relationships within
+the hollies \cite{cuenoud2000molecular, gottlieb2005molecular, manen2010history,
+setoguchi2000intersectional, selbach2009new, yao2020phylogeny}, but only the ``Gottlieb2005"
+study \cite{gottlieb2005molecular} and the ``Yao2020" study \cite{yao2020phylogeny}
+have data openly available.
+The Gottlieb2005 phylogeny and alignment are available in TreeBASE study 1091 \cite{treebase1091}.
+The Gottlieb2005 phylogeny samples 41 species, is available in
 OpenTree's Phylesystem (study pg\_2827 \cite{pg2827}),
 and has been integrated into OpenTree's synthetic tree \cite{mrcaott68451ott89474}.
 The Yao2020 \textit{Ilex} phylogeny is the most recent one for the genus \cite{yao2020phylogeny},
@@ -480,14 +481,15 @@ and in the DRYAD repository \cite{yao2020dryad}.
 With 175 tips, the Yao2020 phylogeny \cite{yao2020phylogeny} is the best sampled phylogeny available for
 the genus \textit{Ilex}.
 In order to showcase Physcraper's performance, we chose the Gottlieb2005 phylogeny
-and alignment as Physcraper inputs to update relationships in the genus \textit{Ilex}.
-Currently being the best sampled and most recent phylogenetic hypothesis for the genus,
-we used the Yao2020 phylogeny as a golden standard to compare our results and verify
-Physcraper's performance.
+and a corresponding single locus alignment of the internal transcribed
+spacer DNA region (ITS) as Physcraper inputs, to update relationships in the genus \textit{Ilex}.
+Currently being the best sampled and most recent phylogenetic hypothesis for \textit{Ilex},
+we used the Yao2020 phylogeny as the ideal standard to compare results from this
+Physcraper case study.
 
-We ran Physcraper on a laptop Linux computer to update an internal transcribed
-spacer DNA region (ITS) alignment that was used to construct the phylogeny from \cite{gottlieb2005molecular},
-using a local GenBank database.  BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
+We ran Physcraper on a computer node of the Multi-Environment Research Computer for
+Exploration and Discovery (MERCED) cluster from the University of California,
+Merced, using one core at 2301 MHz RAM. BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
 analyses taking an additional 13hrs.
 %% <!-- MTH: you probably need some details about the hardware, given the fact that you are discussing running times -->
 The Gottlieb2005 phylogeny \cite{gottlieb2005molecular} updated using Physcraper (Figure 2;
@@ -495,7 +497,7 @@ Physcraper updated phylogeny from now on) displays all 41 distinct
 taxa from the original study plus 231 new tips, contributing phylogenetic data to
 84 additional \textit{Ilex} taxa. The best ML phylogeny from the RAxML analysis is 99\%
 resolved, with 25\% of nodes with bootstrap support $<$ 0.1 and 48\% nodes with
-bootstrap support $>$ 0.75.
+bootstrap support $>$ 0.75 (figure 2A).
 A large portion of internal branches are negligibly small, with 30 branches
 $<$ 0.00001 substitution rate units, from which only 9 have a bootstrap support $>$ 0.75
 (Figure 2).
@@ -508,17 +510,18 @@ While the Yao2020 phylogeny \cite{yao2020phylogeny} was also constructed using
 ITS as a marker, their GenBank data is not released yet. Hence, Physcraper was unable
 to incorporate 68 taxa that are only on the Yao2020 phylogeny because the DNA data is unavailable.
 We also note that Physcraper incorporates 18 \textit{Ilex} taxa that are not in the Yao2020
-phylogeny \cite{yao2020phylogeny}. These taxa appear nested among other \textit{Ilex} species
-and visual inspection of the DNA sequences suggests they are correctly assigned as \textit{Ilex}.
+phylogeny \cite{yao2020phylogeny}. These taxa appear nested among other \textit{Ilex}
+species (Figure 2B) and visual inspection of the DNA sequences suggests they are
+correctly assigned as \textit{Ilex}.
 The ITS alignment that underlies the Yao2020 phylogeny was constructed without any tool to
-scrape GenBank \cite{yao2020phylogeny}, which could explain why Physcraper was able to
-incorporate these 18 additional \textit{Ilex} taxa in the Physcraper updated phylogeny (Figure 2).
+mine GenBank \cite{yao2020phylogeny}, which could explain why Physcraper was able to
+incorporate these 18 additional \textit{Ilex} taxa in the Physcraper updated phylogeny.
 
-%% Maybe show conflict results? and then discuss in the discussion.
+%% Maybe show conflict results? and then add to the discussion. YES
 
 \subsection*{Verification test}
 
-To test the accuracy of Physcraper we performed a verification test in which
+To test the performance of Physcraper we performed a verification test in which
 we pruned 9 out of the 41 tips in the original Gottlieb2005 phylogeny \cite{gottlieb2005molecular},
 corresponding to a 20\% trim, excluding the outgroups. We then performed a Physcraper
 run to test if we would recover the pruned tips. To perform the BLAST searches,
