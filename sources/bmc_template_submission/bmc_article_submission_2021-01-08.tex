@@ -311,7 +311,7 @@ informative data in GenBank with the potential to fill these phylogenetic gaps i
 the tree of life, but this data either has not been analysed or the analyses
 have not been made publicly available \cite{mctavish_how_2017}.
 
-Assembling a DNA alignment from such a massive database as GenBank can be done "by hand",
+Assembling a DNA alignment from such a massive database as GenBank can be done ``by hand",
 but that is a time consuming approach which is not highly reproducible.
 A variety of computational pipelines that mine DNA databases fast, efficiently, and reproducibly
 have been developed and used to infer phylogenetic relationships in a variety of organisms
@@ -338,7 +338,7 @@ Physcraper is implemented as a Python pipeline that uses OpenTree's programmatic
 protocols (API's) to automatically
 link any phylogeny mapped to OpenTree's standardized taxonomy \cite{mctavish2015phylesystem},
 to alignments
-from TreeBASE \cite{sanderson1994treebase}, and data from GenBank \cite{benson2000genbank}.
+from TreeBASE, and data from GenBank.
 Its utility and functionalities are presented with a case-study analysis of a
 group of flowering plants, the hollies.
 
@@ -371,12 +371,12 @@ further for analysis; at least one taxon and its corresponding sequence are requ
 
 The Basic Local Alignment Search Tool, BLAST \cite{altschul1990basic} is used for DNA
 sequence search on a remote or local GenBank database. It is constrained to a
-"search taxon", a taxonomic group in the NCBI taxonomy that is automatically
+ ``search taxon", a taxonomic group in the NCBI taxonomy that is automatically
 identified using the OpenTree's taxonomic Most Recent Common Ancestor (MRCA) API
 \cite{mrcaAPI, rees2017automated}, as the MRCA of all ingroup taxa that is
 also a named clade in the NCBI taxonomy (Figure 1).
 
-BLAST is performed using the `blastn` algorithm \cite{camacho2009blast}
+BLAST is performed using the blastn algorithm \cite{camacho2009blast}
 implemented in BioPython's \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
 modified to accept an alternative BLAST address.
 Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
@@ -423,11 +423,11 @@ using OpenTree's conflict API \cite{redelings2017supertree}.
 \subsection*{Case Study: The hollies}
 
 A user is interested in phylogenetic relationships within the genus \textit{Ilex}. Commonly
-known as "hollies", the genus encompasses between 400-700 living species, and is
+known as ``hollies", the genus encompasses between 400-700 living species, and is
 the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering
 plants.
 
-An online literature review in June 2020 (Google scholar search for "ilex phylogeny")
+An online literature review in June 2020 (Google scholar search for ``ilex phylogeny")
 reveals that there are several published phylogenies showing relationships within
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
 selbach2009new}, but only two have data publicly available \cite{gottlieb2005molecular, yao2020phylogeny}.
@@ -532,7 +532,7 @@ importance of data sharing and open science in the field, biology and science.
 
 \section*{Availability and requirements}
 
-\par{\textbf{Project name:} Physcraper}
+\textbf{Project name:} Physcraper
 
 \textbf{Project home page:} \href{https://physcraper.readthedocs.io/en/latest/index.html}{https://physcraper.readthedocs.io/en/latest/index.html}
 
@@ -548,7 +548,7 @@ importance of data sharing and open science in the field, biology and science.
 
 \section*{Abbreviations}
 
-\par{\textbf{OpenTree:} The Open Tree of Life project}
+\textbf{OpenTree:} The Open Tree of Life project
 
 \textbf{TNRS:} Taxonomic Name Resolution Service
 
@@ -578,18 +578,18 @@ Not applicable.
 \section*{Availability of data and materials}
 
 The datasets generated and analysed during the current study are available in
-the repositories "physcraper" containing the source code,
+the repositories ``physcraper" containing the source code,
 \href{https://github.com/McTavishLab/physcraper}{https://github.com/McTavishLab/physcraper};
-"physcraperex" containing the examples,
+ ``physcraperex" containing the examples,
 \href{https://github.com/McTavishLab/physcraperex}{https://github.com/McTavishLab/physcraperex};
-and, "physcraper\_ms" containing this reproducible manuscript,
+and, ``physcraper\_ms" containing this reproducible manuscript,
 \href{https://github.com/McTavishLab/physcraper\_ms}{https://github.com/McTavishLab/physcraper\_ms}.
 
 \section*{Competing interests}
 The authors declare that they have no competing interests.
 
 \section*{Funding}
-This research was supported by the grant "Sustaining the Open Tree of Life", NSF ABI
+This research was supported by the grant ``Sustaining the Open Tree of Life", NSF ABI
 No. 1759838, and ABI No. 1759846.
 Computer time was provided by the Multi-Environment Research Computer for
 Exploration and Discovery (MERCED) cluster from the University of California,
@@ -598,10 +598,9 @@ Merced (UCM), supported by the NSF Grant No. ACI-1429783.
 \section*{Authors' contributions}
 LLSR wrote manuscript, alignment code, documentation, performed analyses and developed examples; MK wrote code for ncbidataparser module, filtering of sequences per OTU and using offline blast searches, wrote documentation and tests; EJM conceived study, wrote most of the code, documentation and tests.
 All authors contributed to the manuscript and gave final approval for publication.
-\ldots
 
 \section*{Acknowledgements}
-We thank the members of the OpenTree development team and the "short bar" Science
+We thank the members of the OpenTree development team and the ``short bar" Science
 and Engineering Building 1, UCM, joint lab paper discussion group for valuable
 comments on this manuscript.
 
@@ -663,7 +662,7 @@ comments on this manuscript.
   Tips in original alignment and new tips added with Physcraper are depicted in
   black and red, respectively. Physcraper obtained sequences from the GenBank
   database via local BLAST of all sequences in the original alignment that generated
-  tree in B), filtered them following criteria from section "DNA sequence search and
+  tree in B), filtered them following criteria from section ``DNA sequence search and
   filtering", aligned them to original alignment using MUSCLE and performed a
   phylogenetic reconstruction using RAxML with 100 bootstraps. B-D conflict analyses
   performed with OpenTree tools.}
