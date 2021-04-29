@@ -270,10 +270,10 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 Phylogenies capture the shared history of organisms and provide key evolutionary
 context for our biological observations \cite{dobzhansky1973nothing}.
 Updating existing phylogenies with publicly available molecular sequence data provides
-the opportunity to study
+the opportunity to simultaneously study
 the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
-framework for biological databases to automate data connections across databases.
+framework for biological databases to automate data connections across biological databases.
 Physcraper's main goal is to build upon published alignments and published phylogenies
 to extend existing phylogenetic inferences with more data and taxa, which improve
 phylogenetic reconstruction \cite{hillis1996inferring, natsidis2019phylogenomics},
@@ -281,23 +281,25 @@ time of divergence estimates \cite{schulte2013undersampling, soares2015influence
 biogeographic analyses \cite{kayaalp2017back},
 as well as help in resolving phylogenetic conflict \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}.
 Physcraper updates a starting single locus alignment and corresponding tree
-with public DNA data, and links the tips in the updated trees to a unified, interoperable
+with public DNA data from GenBank \cite{benson2000genbank}, and links the tips in the updated trees to a unified, interoperable
 taxonomic resource \cite{rees2017automated}.
 
 Data such as
 geographical location, fossil ranges, and genetic and phenotypic information increasingly
-available in public databases constitute an amazing
-resource for biological discovery \cite{baxevanis2015importance}.
+available in public biological databases constitute an amazing
+resource for scientific discovery \cite{baxevanis2015importance}.
 One of the main challenges for automatic
-integration of biological data across databases are varying taxonomic idiosyncrasies.
+integration of data across biological databases are varying taxonomic idiosyncrasies.
 To address this challenge, the Open Tree of Life project (OpenTree)
-created a unified taxonomy for name standardization, by integrating taxonomic
+created a unified taxonomy for automatic taxonomic name standardization, by integrating taxonomic
 data from several databases \cite{rees2017automated}, including the USA National
 Center for Biodiversity Information (NCBI) taxonomy \cite{federhen_ncbi_2012, schoch_ncbi_2020},
-and the Global Biodiversity Information Facility (GBIF) \cite{gbif_secretariat_gbif_2019} among others.
-By using the existing OpenTree taxonomy programmatic tools to map tip names,
-Physcraper has a framework for connecting updated phylogenies with data from any
-biological database.
+and the Global Biodiversity Information Facility (GBIF) \cite{gbif_secretariat_gbif_2019}, among many others.
+All of OpenTree tools and methods are carried out via OpenTree's Application Programming Interfaces (APIs),
+that are open as services for use by the general public \cite{opentreeAPIs}.
+Physcraper leverages on existing OpenTree's taxonomic APIs to
+standardize taxon names in any phylogeny, providing
+a framework for automatic connection of updated phylogenies with data from any biological database.
 
 Decades of single locus sequencing have generated
 massive amounts of homologous DNA datasets that have the potential to be used for phylogenetic
@@ -308,52 +310,51 @@ relationships of 98.05\% of the almost 241,000
 distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
 However, even thirteen years later, phylogenetic estimates for most of these taxa
 are still not available \cite{mctavish_how_2017}.
-The Open Tree of Life project assembles a comprehensive synthetic tree of life comprising
+Using its unified taxonomy, OpenTree assembles a comprehensive synthetic tree of life comprising
 2.3 million tips, of which around only
-90,000 are supported by phylogenetic data uploaded to OpenTrees' database (the Phylesystem) by curators - the remaining 1.4 million taxa are placed
+90,000 are supported by phylogenetic data uploaded to OpenTrees' database (the Phylesystem
+\cite{mctavish2015phylesystem}) by curators - the remaining 1.4 million taxa are placed
 in the tree based on taxonomy.
 There is a considerable amount of phylogenetically
 informative data in GenBank with the potential to fill these phylogenetic gaps in
 the tree of life, but this data either has not been analysed or the analyses
 have not been made publicly available \cite{mctavish_how_2017}.
 
-Assembling a DNA alignment from such a massive database as GenBank can be done "by hand",
-but that is a time consuming approach which is not highly reproducible.
-A variety of computational pipelines that mine DNA databases fast, efficiently, and reproducibly
-have been developed and used to infer phylogenetic relationships in a variety of organisms
+Assembling a DNA alignment from a massive database such as GenBank can be done ``by hand",
+but that is a time-consuming approach which is largely not reproducible.
+Various computational pipelines that mine DNA databases fast, efficiently, and reproducibly
+have been developed and used to infer phylogenetic relationships of many organisms
 (e.g., \cite{smith2009mega, antonelli2017toward, izquierdo2014pumper, pearse2013phylogenerator}).
 While genomics has, and will continue to, revolutionize phylogenetic inference,
-the diversity of alternative genomic sequencing approaches implemented produce
-largely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
+the diversity of alternative genomic sequencing approaches that are implemented produce
+widely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
 creating challenges for phylogenetic reconstruction.
 Phylogenomics addresses this problem by focusing on targeted capture of informative
 regions \cite{andermann2020guide}.
 However, fine-grained curated markers and alignments can significantly improve phylogenetic
 reconstructions, even in phylogenomic analyses \cite{fragoso2017pilot}.
 
-Physcraper improves on previous work to automate phylogenetic reconstruction by leveraging
-the power of existing homology hypotheses that phylogeneticists and taxon specialists have assessed
+Physcraper improves on previous work that automates phylogenetic reconstruction, by leveraging
+on the knowledge contained in existing homology hypotheses that phylogeneticists and taxon specialists have assessed
 and deemed appropriate for a specific phylogenetic scope.
 There are almost 8,200 publicly available, peer-reviewed curated alignments, covering
 around 100,000 distinct taxa in the TreeBASE database
-\cite{piel2009treebase, vos2012nexml, piel2018treebasedmp, treebase_website, supertreebase},
+\cite{piel2009treebase, vos2012nexml, piel2018treebasedmp},
 which can be used as seeds to mine molecular databases, and as ``jump-start'' alignments
 for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
-update and compare existing phylogenetic knowledge.
+update and compare new phylogenetic hypotheses to existing knowledge.
 
-Physcraper is implemented as a Python pipeline that uses OpenTree's programmatic access
-protocols (API's) to automatically
-link any phylogeny mapped to OpenTree's standardized taxonomy \cite{mctavish2015phylesystem},
-to alignments
-from TreeBASE, and data from GenBank \cite{benson2000genbank}.
-Its utility and functionalities are presented with a case-study analysis of a
+Physcraper is implemented as a Python pipeline that uses OpenTree's APIs to automatically
+link any phylogeny mapped to OpenTree's standardized taxonomy,
+to alignments from TreeBASE, and data from GenBank.
+Physcraper's usage and functionalities are presented with a case-study analysis of a
 group of flowering plants, the hollies.
 
 
 \section*{Implementation}
 
 Physcraper is implemented with Python and can be run on a Python interactive session,
-as a Python script or using the command line interface developed for it.
+as a Python script, or using the command line interface we developed for it.
 It currently consists of 13 modules.
 %% , classes, methods and functions.%%
 For testing and improving Physcraper's Python code syntax quality, we
@@ -366,7 +367,7 @@ Based on Physcraper's software design choices, some of Pylint's recommendations 
 by using its check-disabling system, and are explained along the code.
 As of now, all Physcraper modules have a Pylint score of 10/10.
 
-% Pylint score for each module and locally disabled Pylint reccomendations
+% Pylint score for each module and locally disabled Pylint reccommendations
 % physcraper/aligntreetax.py		10/10	pylint disabling “too many branches” and “too many locals”
 % physcraper/configobj.py 		10/10  pylint global disabling attributes defined outside init
 % physcraper/helpers.py		10/10
@@ -389,39 +390,38 @@ analysis and comparing the updated tree to existing phylogenies.
 
 \subsection*{The inputs: a tree and an alignment}
 
-Taxon names in the input tree must be standardized to OpenTree taxonomy
-\cite{rees2017automated} using OpenTree's bulk Taxonomic Name Resolution Service
+Taxon names in the input tree must be standardized to the OpenTree taxonomy
+\cite{ott3.2} using OpenTree's bulk Taxonomic Name Resolution Service
 (TNRS) tool \cite{TNRStool}. Users can upload their
-own tree, or choose from among the 2, 950 curated trees stored in OpenTree's
-Phylesystem database \cite{phylesystemGithub, mctavish2015phylesystem} that also have
-alignments available on TreeBASE.
+own phylogeny, or choose from among the 2, 950 curated phylogenies stored in OpenTree's
+Phylesystem database \cite{phylesystemGithub} that also have
+alignments available on the TreeBASE database \cite{treebase_website, supertreebase}.
 
 The input alignment is a single locus DNA dataset that was used in part or in
-whole to generate the input tree. Physcraper retrieves TreeBASE alignments
-automatically. Alternatively, users must provide the path to a local copy of the
-alignment.
-Only taxa that are both in the sequence alignment and in the tree are considered
+whole to generate the input phylogeny. Physcraper retrieves TreeBASE alignments
+automatically. Alternatively, users can provide the path to a local copy of the
+alignment of their choosing.
+Only taxa that are both in the sequence alignment and in the phylogeny are considered
 further for analysis; at least one taxon and its corresponding sequence are required.
 
 \subsection*{DNA sequence search and filtering}
 
 The Basic Local Alignment Search Tool, BLAST \cite{altschul1990basic} is used for DNA
 sequence search on a remote or local GenBank database. It is constrained to a
-"search taxon", a taxonomic group in the NCBI taxonomy that is automatically
-identified using the OpenTree's taxonomic Most Recent Common Ancestor (MRCA) API
-\cite{mrcaAPI, rees2017automated}, as the MRCA of all ingroup taxa that is
-also a named clade in the NCBI taxonomy (Figure 1).
+ ``search taxon", which corresponds to the Most Recent Common Ancestor (MRCA) of
+all ingroup taxa that is also a named clade in the NCBI taxonomy (Figure 1). The
+search taxon is identified using OpenTree's taxonomic API \cite{mrcaAPI}.
 
-BLAST is performed using the `blastn` algorithm \cite{camacho2009blast}
+BLAST is performed using the blastn algorithm \cite{camacho2009blast}
 implemented in BioPython 1.71 \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
 modified to accept an alternative BLAST address.
 Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
 New sequences are excluded for analysis if they 1) are not in the search taxon;
-2) have an e-value above the cutoff (default to 0.00001); 3) fall outside a min
-and max length threshold, defined as the proportion of the average length without
-gaps of all sequences in input alignment (default values of 80\% and 120\%,
-respectively); 4) or if they are either identical to or shorter than an existing
-sequence in the input alignment and they represent the same taxon in OpenTree or
+2) have an e-value above the cutoff (default to 0.00001); 3) fall outside a minimum
+and maximum sequence length threshold, defined as a proportion of the average sequence length without
+gaps of all sequences in the input alignment (default values of 80\% and 120\%,
+respectively); 4) or, if they are either identical to or shorter than an existing
+sequence in the input alignment and they represent the same taxon in OpenTree's or
 NCBI taxonomy.
 An arbitrary maximum number of randomly chosen sequences per taxon are allowed
 (default to 5).
@@ -458,27 +458,29 @@ using OpenTree's conflict API \cite{redelings2017supertree}.
 \subsection*{Case Study: The hollies}
 
 A user is interested in phylogenetic relationships within the genus \textit{Ilex}. Commonly
-known as ``hollies", the genus encompasses between 400-700 living species, and is
-the only extant clade within the family Aquifoliaceae, order Aquifoliales of flowering
-plants.
+known as ``hollies", the genus encompasses between 400 \cite{gottlieb2005molecular}
+and 500 accepted living species \cite{plantlist}, and is
+the only extant taxon within the family Aquifoliaceae, order Aquifoliales of flowering
+plants \cite{plantlist}.
 
 An online literature review in June 2020 (Google scholar search for ``ilex phylogeny")
 reveals that there are several published phylogenies showing relationships within
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
-selbach2009new}, but only two have data publicly available \cite{gottlieb2005molecular, yao2020phylogeny}.
-\cite{gottlieb2005molecular} made original tree and alignment available in TreeBASE
-(study 1091 \cite{treebase1091}). This tree (Gottlieb2005 tree from now on) samples 41 species, is available from
+selbach2009new}, but only two have data publicly available, the ``Gottlieb2005" study
+\cite{gottlieb2005molecular} and the ``Yao2020" study \cite{yao2020phylogeny}.
+Gottlieb2005 made their original published phylogeny and alignment openly available in TreeBASE
+(study 1091 \cite{treebase1091}). The Gottlieb2005 phylogeny samples 41 species, is available from
 OpenTree's Phylesystem (study pg\_2827 \cite{pg2827}),
 and has been integrated into OpenTree's synthetic tree \cite{mrcaott68451ott89474}.
-The most recent \textit{Ilex} tree \cite{yao2020phylogeny} (Yao2020 tree from now on) is available in
-OpenTree's Phylesystem (study ot\_1984 \cite{ot1984}),
+The Yao2020 \textit{Ilex} phylogeny is the most recent one for the genus \cite{yao2020phylogeny},
+and it is only available in OpenTree's Phylesystem (study ot\_1984 \cite{ot1984}),
 and in the DRYAD repository \cite{yao2020dryad}.
-With 175 tips, the Yao2020 tree \cite{yao2020phylogeny} is the best sampled phylogeny available for
+With 175 tips, the Yao2020 phylogeny \cite{yao2020phylogeny} is the best sampled phylogeny available for
 the genus \textit{Ilex}.
-In order to showcase Physcraper's performance, we updated
-the tree with the smallest number of tips (the Gottlieb2005 tree) with the expectation
-to use the tree with the largest number of tips (the Yao2020 tree) as a standard
-for comparison and verification of Physcraper's results.
+In order to showcase Physcraper's performance, we used the Gottlieb2005 phylogeny
+and alignment to update relationships in the genus \textot{Ilex},
+with the expectation to use the Yao2020 phylogeny, the best sampled and most recent
+one, as a ``gold" standard to compare and verify Physcraper's results.
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
 spacer DNA region (ITS) alignment that was used to construct the tree from \cite{gottlieb2005molecular},
@@ -592,7 +594,6 @@ affects inferences.
 Once sequences are aligned, they can apply and compare inferences from any phylogenetic
 software.
 
-
 Organellar genome sequences, such as chloroplasts and mitochondria will also generally
 be excluded from automatic addition based on default Physcraper length cutoffs.
 Multiple sequence alignment of loci of drastically different lengths is unfeasible,
@@ -694,7 +695,7 @@ importance of data sharing and open science in phylogenetics, biology and scienc
 
 \section*{Availability and requirements}
 
-\par{\textbf{Project name:} Physcraper}
+\textbf{Project name:} Physcraper
 
 \textbf{Project home page:} \href{https://physcraper.readthedocs.io/en/latest/index.html}{https://physcraper.readthedocs.io/en/latest/index.html}
 
@@ -710,7 +711,7 @@ importance of data sharing and open science in phylogenetics, biology and scienc
 
 \section*{Abbreviations}
 
-\par{\textbf{OpenTree:} The Open Tree of Life project}
+\textbf{OpenTree:} The Open Tree of Life project
 
 \textbf{TNRS:} Taxonomic Name Resolution Service
 
@@ -721,6 +722,8 @@ importance of data sharing and open science in phylogenetics, biology and scienc
 \textbf{NCBI:} USA National Center for Biodiversity Information
 
 \textbf{GBIF:} Global Biodiversity Information Facility
+
+\textbf{API:} Application Programming Interface
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -740,18 +743,18 @@ Not applicable.
 \section*{Availability of data and materials}
 
 Code and datasets generated and analysed during the current study are available in
-the repositories "physcraper" containing the source code,
+the repositories ``physcraper" containing the source code,
 \href{https://github.com/McTavishLab/physcraper}{https://github.com/McTavishLab/physcraper};
-"physcraperex" containing the examples,
+ ``physcraperex" containing the examples,
 \href{https://github.com/McTavishLab/physcraperex}{https://github.com/McTavishLab/physcraperex};
-and, "physcraper\_ms" containing this reproducible manuscript,
+and, ``physcraper\_ms" containing this reproducible manuscript,
 \href{https://github.com/McTavishLab/physcraper\_ms}{https://github.com/McTavishLab/physcraper\_ms}.
 
 \section*{Competing interests}
 The authors declare that they have no competing interests.
 
 \section*{Funding}
-This research was supported by the grant "Sustaining the Open Tree of Life", NSF ABI
+This research was supported by the grant ``Sustaining the Open Tree of Life", NSF ABI
 No. 1759838, and ABI No. 1759846.
 Computer time was provided by the Multi-Environment Research Computer for
 Exploration and Discovery (MERCED) cluster from the University of California,
@@ -763,7 +766,7 @@ All authors contributed to the manuscript and gave final approval for publicatio
 
 
 \section*{Acknowledgements}
-We thank the members of the OpenTree development team and the "short bar" Science
+We thank the members of the OpenTree development team and the ``short bar" Science
 and Engineering Building 1, UCM, joint lab paper discussion group for valuable
 comments on this manuscript. We also thank the valuable comments of David Posada, Rutger Vos,
 and an anonymous reviewer that greatly improved an earlier version of this manuscript.
@@ -821,13 +824,13 @@ and an anonymous reviewer that greatly improved an earlier version of this manus
 \end{figure}
 
 \begin{figure}[h!]
-  \caption{A) Phylogeny updated with Physcraper using a starting phylogeny and alignment from
+  \caption{A) Phylogeny updated with Physcraper using a starting phylogeny and an alignment from
   \cite{gottlieb2005molecular} (Gottlieb2005 data in text).
   Tips in original alignment and new tips added with Physcraper are depicted in
   black and red, respectively. Physcraper obtained sequences from the GenBank
-  database via local BLAST of all sequences in the Gottlieb2005 internal transcribed
-  spacer DNA region (ITS) alignment,
-  filtered them following criteria described in section "DNA sequence search and
+  database via local BLAST of all sequences from the Gottlieb2005 internal transcribed
+  spacer DNA region (ITS) original alignment,
+  filtered them following criteria described in section ``DNA sequence search and
   filtering", aligned them to the original alignment using MUSCLE, and performed a
   phylogenetic reconstruction using RAxML, with 100 bootstraps. B) Results of conflict
   analysis performed using OpenTree's conflict tool \cite{redelings2017supertree}.
