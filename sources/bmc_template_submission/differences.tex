@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Wed Apr 28 22:42:18 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Wed Apr 28 22:53:06 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Wed Apr 28 23:05:14 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -279,7 +279,9 @@ usage are available at \href{https://physcraper.readthedocs.io}{https://physcrap
 
 \begin{keyword}
 \kwd{gene tree}
-\kwd{interoperability}
+\DIFaddbegin \kwd{gene phylogeny}
+\kwd{multilocus}
+\DIFaddend \kwd{interoperability}
 \kwd{open science}
 \kwd{reproducibility}
 \kwd{public database}
@@ -352,7 +354,7 @@ as well as help in resolving phylogenetic conflict \mbox{%DIFAUXCMD
 \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}}\hspace{0pt}%DIFAUXCMD
 }\DIFaddend .
 Physcraper updates a starting \DIFdelbegin \DIFdel{tree and single locus alignments
-}\DIFdelend \DIFaddbegin \DIFadd{single locus alignment and corresponding tree
+}\DIFdelend \DIFaddbegin \DIFadd{single locus alignment and corresponding phylogeny
 }\DIFaddend with public DNA data \DIFaddbegin \DIFadd{from GenBank \mbox{%DIFAUXCMD
 \cite{benson2000genbank}}\hspace{0pt}%DIFAUXCMD
 }\DIFaddend , and links the tips in \DIFdelbegin \DIFdel{these }\DIFdelend \DIFaddbegin \DIFadd{the updated }\DIFaddend trees to a unified, interoperable
@@ -479,15 +481,15 @@ As of now, all Physcraper modules have a Pylint score of 10/10.
 %DIF >  bin/multi_loci.py			10/10 		Global disabled “redefined-outer-name”, “protected-access”, “too-many-branches”, “too-many-statements”, “too-many-locals”
 
 \DIFaddend The general Physcraper framework (Figure 1) consists of 4 steps: 1) identifying and
-processing a tree and its underlying alignment; 2) performing a BLAST search of
+processing a \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylogeny }\DIFaddend and its underlying alignment; 2) performing a BLAST search of
 DNA sequences from original alignment on GenBank, and filtering of new sequences;
 3) profile-aligning new sequences to original alignment; 4) performing a phylogenetic
-analysis and comparing the updated tree to existing phylogenies.
+analysis and comparing the updated \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{results }\DIFaddend to existing phylogenies.
 
 
-\subsection*{The inputs: a tree and an alignment}
+\subsection*{The inputs: a \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylogeny }\DIFaddend and an alignment}
 
-Taxon names in the input tree must be standardized to \DIFdelbegin \DIFdel{OpenTree taxonomy
+Taxon names in the input \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylogeny }\DIFaddend must be standardized to \DIFdelbegin \DIFdel{OpenTree taxonomy
 \mbox{%DIFAUXCMD
 \cite{rees2017automated} }\hspace{0pt}%DIFAUXCMD
 }\DIFdelend \DIFaddbegin \DIFadd{the OpenTree taxonomy
@@ -557,19 +559,19 @@ original alignment is used as a template of homology criteria to align new seque
 The final alignment is not further automatically checked, and additional inspection
 and refinement are recommended.
 
-\subsection*{Tree reconstruction and comparison}
+\subsection*{\DIFdelbegin \DIFdel{Tree }\DIFdelend \DIFaddbegin \DIFadd{Phylogenetic }\DIFaddend reconstruction and comparison}
 
 RAxML \cite{stamatakis2014raxml} is implemented to reconstruct a Maximum Likelihood
-(ML) gene tree for each input alignment with default settings (GTRCAT model and
-100 bootstrap replicates with default algorithm), using input tree as starting
+(ML) gene \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylogeny }\DIFaddend for each input alignment with default settings (GTRCAT model and
+100 bootstrap replicates with default algorithm), using \DIFdelbegin \DIFdel{input tree }\DIFdelend \DIFaddbegin \DIFadd{the input phylogeny }\DIFaddend as starting
 tree for ML searches.
 Bootstrap results are summarized using DendroPy's SumTrees module
 \cite{sukumaran2010dendropy}.
 
 Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
-Updated and original tree are compared with Robinson-Foulds weighted and unweighted
+Updated and original \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylpogeny }\DIFaddend are compared with Robinson-Foulds weighted and unweighted
 metrics \DIFdelbegin \DIFdel{estimated }\DIFdelend \DIFaddbegin \DIFadd{calculated }\DIFaddend with Dendropy \cite{sukumaran2010dendropy}, and with a node by node
-comparison between the synthetic OpenTree and original and updated tree individually,
+comparison between the synthetic OpenTree and \DIFaddbegin \DIFadd{the }\DIFaddend original and updated \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylogenies }\DIFaddend individually,
 using OpenTree's conflict API \cite{redelings2017supertree}.
 
 
@@ -627,31 +629,31 @@ one, as a ``gold" standard to compare and verify Physcraper's results.
 }\DIFaddend 
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
-spacer DNA region (ITS) alignment \DIFaddbegin \DIFadd{that was used to construct the tree }\DIFaddend from \cite{gottlieb2005molecular},
+spacer DNA region (ITS) alignment \DIFaddbegin \DIFadd{that was used to construct the phylogeny }\DIFaddend from \cite{gottlieb2005molecular},
 using a local GenBank database.  BLAST and RAxML analyses ran for 19hrs 45min, with bootstrap
 analyses taking an additional 13hrs.
 %% <!-- MTH: you probably need some details about the hardware, given the fact that you are discussing running times -->
 The \DIFdelbegin \DIFdel{updated \mbox{%DIFAUXCMD
 \cite{gottlieb2005molecular} }\hspace{0pt}%DIFAUXCMD
-tree }\DIFdelend \DIFaddbegin \DIFadd{Gottlieb2005 tree \mbox{%DIFAUXCMD
+tree }\DIFdelend \DIFaddbegin \DIFadd{Gottlieb2005 phylogeny \mbox{%DIFAUXCMD
 \cite{gottlieb2005molecular} }\hspace{0pt}%DIFAUXCMD
 updated using Physcraper }\DIFaddend (Figure 2\DIFaddbegin \DIFadd{;
-Physcraper updated tree from now on}\DIFaddend ) displays all 41 distinct
+Physcraper updated phylogeny from now on}\DIFaddend ) displays all 41 distinct
 taxa from the original study plus 231 new tips, contributing phylogenetic data to
-84 additional \textit{Ilex} taxa. The best \DIFdelbegin \DIFdel{RaxML tree }\DIFdelend \DIFaddbegin \DIFadd{ML tree from the RAxML analysis }\DIFaddend is 99\%
+84 additional \textit{Ilex} taxa. The best \DIFdelbegin \DIFdel{RaxML tree }\DIFdelend \DIFaddbegin \DIFadd{ML phylogeny from the RAxML analysis }\DIFaddend is 99\%
 resolved, with 25\% of nodes with bootstrap support $<$ 0.1 and 48\% nodes with
 bootstrap support $>$ 0.75.
 A large portion of internal branches are negligibly small, with 30 branches
 $<$ 0.00001 substitution rate units, from which only 9 have a bootstrap support $>$ 0.75
 (Figure 2).
-\DIFdelbegin \DIFdel{For comparison , }\DIFdelend \DIFaddbegin \DIFadd{As comparison with the Physcraper updated tree, the Yao2020 tree }\DIFaddend \cite{yao2020phylogeny}
+\DIFdelbegin \DIFdel{For comparison , }\DIFdelend \DIFaddbegin \DIFadd{As comparison with the Physcraper updated phylogeny, the Yao2020 phylogeny }\DIFaddend \cite{yao2020phylogeny}
 also contains all 41 distinct taxa
 \DIFdelbegin \DIFdel{from
 the original
 \mbox{%DIFAUXCMD
 \cite{gottlieb2005molecular}}\hspace{0pt}%DIFAUXCMD
 study,
-and contributes }\DIFdelend \DIFaddbegin \DIFadd{sampled in the Gottlieb2005 tree \mbox{%DIFAUXCMD
+and contributes }\DIFdelend \DIFaddbegin \DIFadd{sampled in the Gottlieb2005 phylogeny \mbox{%DIFAUXCMD
 \cite{gottlieb2005molecular}}\hspace{0pt}%DIFAUXCMD
 ,
 while contributing }\DIFaddend phylogenetic data to 134 additional \textit{Ilex} taxa\DIFdelbegin \DIFdel{, from which
@@ -662,26 +664,26 @@ while contributing }\DIFaddend phylogenetic data to 134 additional \textit{Ilex}
 While \mbox{%DIFAUXCMD
 \cite{yao2020phylogeny} }\hspace{0pt}%DIFAUXCMD
 also used
-}\DIFdelend \DIFaddbegin \DIFadd{the Physcraper updated tree.
-While the Yao2020 tree \mbox{%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{the Physcraper updated phylogeny.
+While the Yao2020 phylogeny \mbox{%DIFAUXCMD
 \cite{yao2020phylogeny} }\hspace{0pt}%DIFAUXCMD
 was also constructed using
 }\DIFaddend ITS as a marker, their GenBank data is not released yet\DIFdelbegin \DIFdel{, so }\DIFdelend \DIFaddbegin \DIFadd{. Hence, }\DIFaddend Physcraper was unable
 to incorporate 68 \DIFdelbegin \DIFdel{additional taxa into the analysis.
-However, }\DIFdelend \DIFaddbegin \DIFadd{taxa that are only on the Yao2020 tree because the DNA data is unavailable.
+However, }\DIFdelend \DIFaddbegin \DIFadd{taxa that are only on the Yao2020 phylogeny because the DNA data is unavailable.
 We also note that Physcraper incorporates 18 }\textit{\DIFadd{Ilex}} \DIFadd{taxa that are not in the Yao2020
-tree \mbox{%DIFAUXCMD
+phylogeny \mbox{%DIFAUXCMD
 \cite{yao2020phylogeny}}\hspace{0pt}%DIFAUXCMD
 . These taxa appear nested among other }\textit{\DIFadd{Ilex}} \DIFadd{species
 and visual inspection of the DNA sequences suggests they are correctly assigned as }\textit{\DIFadd{Ilex}}\DIFadd{.
-The ITS alignment that underlies the Yao2020 tree was constructed without any tool to
+The ITS alignment that underlies the Yao2020 phylogeny was constructed without any tool to
 scrape GenBank \mbox{%DIFAUXCMD
 \cite{yao2020phylogeny}}\hspace{0pt}%DIFAUXCMD
 , which could explain why }\DIFaddend Physcraper was able to
 incorporate \DIFaddbegin \DIFadd{these }\DIFaddend 18 \DIFdelbegin \DIFdel{taxa that were not in \mbox{%DIFAUXCMD
 \cite{yao2020phylogeny}}\hspace{0pt}%DIFAUXCMD
 .
-}\DIFdelend \DIFaddbegin \DIFadd{additional }\textit{\DIFadd{Ilex}} \DIFadd{taxa in the updated tree (Figure 2).
+}\DIFdelend \DIFaddbegin \DIFadd{additional }\textit{\DIFadd{Ilex}} \DIFadd{taxa in the Physcraper updated phylogeny (Figure 2).
 }\DIFaddend 
 
 %DIF > % Maybe show conflict results? and then discuss in the discussion.
@@ -690,14 +692,14 @@ incorporate \DIFaddbegin \DIFadd{these }\DIFaddend 18 \DIFdelbegin \DIFdel{taxa 
 \subsection*{\DIFadd{Verification test}}
 
 \DIFadd{To test the accuracy of Physcraper we designed a verification test.
-We pruned 9 out of the 41 original tips of the Gottlieb2005 tree \mbox{%DIFAUXCMD
+We pruned 9 out of the 41 original tips of the Gottlieb2005 phylogeny \mbox{%DIFAUXCMD
 \cite{gottlieb2005molecular}}\hspace{0pt}%DIFAUXCMD
 ,
 corresponding to a 20\% trim, excluding the outgroups. We then performed a Physcraper
 run to test if we would recover the dropped tips.
-We successfully recovered 6 out of 9 pruned tips in the updated tree.
+We successfully recovered 6 out of 9 pruned tips in the Physcraper updated phylogeny.
 Closer examination of results revealed that sequences for the 3 missing tips were correctly retrieved
-with BLAST along with sequences from the other 6 tips recovered in the updated tree.
+with BLAST along with sequences from the other 6 tips recovered in the updated phylogeny.
 By following the GenBank accession numbers reported in the original publication
 belonging to the ITS sequences of the missing tips, we observed that these three sequences
 contain a 100 bp long gap of unidentified nucleotides (Ns) that is completely absent
@@ -792,7 +794,7 @@ alignment of interest.
 }
 
 \DIFaddend Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
-which add new taxa without modifying the input tree, Physcraper estimates all
+which add new taxa without modifying the input \DIFdelbegin \DIFdel{tree}\DIFdelend \DIFaddbegin \DIFadd{phylogeny}\DIFaddend , Physcraper estimates all
 the relationships anew in the context of the new data.
 PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no
 longer under active development, is challenging to install and run, and has resulted
@@ -861,15 +863,15 @@ data store can also help flag paralogous sequences.
 Accidentally including paralogs as homologs is a risk in phylogenetic analyses,
 and can be more prevalent in automated analyses than in manually curated analyses.
 We provide users with several tools to try to assess homology of their aligned sequences.
-The estimated gene tree itself is an evolutionarily explicit way to visualize gene
+The estimated gene phylogeny itself is an evolutionarily explicit way to visualize gene
 evolution, which in concert with taxonomic labelling can reveal paralogy.
-OpenTree's conflict analysis tool informs the users of whether their tree contains major
+OpenTree's conflict analysis tool informs the users of whether their phylogeny contains major
 conflicts with established taxonomy and any phylogenetic context they wish to compare to.
 This tool also returns information on taxonomic and phylogenetic conflicts that exist
-in the original input tree.
+in the original input phylogeny.
 Detected conflicts may be a sign that taxonomy needs to be updated, or may be a sign
 that non-homologous sequences have been included in the analysis.
-These taxonomic and phylogenetic conflicts flag regions of the tree for the researcher
+These taxonomic and phylogenetic conflicts flag regions of the phylogeny for the researcher
 to more closely examine and assess homology.
 }\DIFaddend 
 
