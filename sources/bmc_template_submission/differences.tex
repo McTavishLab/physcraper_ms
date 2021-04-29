@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Wed Apr 28 22:42:18 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Wed Apr 28 23:49:10 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Thu Apr 29 00:01:40 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -582,7 +582,7 @@ A user is interested in phylogenetic relationships within the genus \textit{Ilex
 known as ``hollies", the genus encompasses between \DIFdelbegin \DIFdel{400-700 living species }\DIFdelend \DIFaddbegin \DIFadd{400 \mbox{%DIFAUXCMD
 \cite{gottlieb2005molecular}
 }\hspace{0pt}%DIFAUXCMD
-and 500 accepted living species \mbox{%DIFAUXCMD
+and 500 recognized living species \mbox{%DIFAUXCMD
 \cite{plantlist}}\hspace{0pt}%DIFAUXCMD
 }\DIFaddend , and is
 the only extant \DIFdelbegin \DIFdel{clade }\DIFdelend \DIFaddbegin \DIFadd{taxon }\DIFaddend within the family Aquifoliaceae, \DIFaddbegin \DIFadd{in the }\DIFaddend order Aquifoliales of flowering
@@ -591,7 +591,7 @@ plants \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
 }\DIFaddend .
 
 An online literature review in June 2020 (Google scholar search for ``ilex phylogeny")
-reveals that there are several published phylogenies showing relationships within
+\DIFdelbegin \DIFdel{reveals }\DIFdelend \DIFaddbegin \DIFadd{revealed }\DIFaddend that there are several published phylogenies showing relationships within
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
 selbach2009new}, but only two have data openly available\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
 \cite{gottlieb2005molecular, yao2020phylogeny}}\hspace{0pt}%DIFAUXCMD
@@ -622,10 +622,11 @@ tree }\DIFdelend \DIFaddbegin \DIFadd{Yao2020 phylogeny \mbox{%DIFAUXCMD
 }\DIFaddend is the best sampled phylogeny \DIFdelbegin \DIFdel{yet }\DIFdelend available for
 the \DIFdelbegin \DIFdel{hollies.
 }\DIFdelend \DIFaddbegin \DIFadd{genus }\textit{\DIFadd{Ilex}}\DIFadd{.
-In order to showcase Physcraper's performance, we used the Gottlieb2005 phylogeny
-and alignment to update relationships in the genus }\textit{\DIFadd{Ilex}}\DIFadd{,
-with the expectation to use the Yao2020 phylogeny, the best sampled and most recent
-one, as a ``gold" standard to compare and verify Physcraper's results.
+In order to showcase Physcraper's performance, we chose the Gottlieb2005 phylogeny
+and alignment as Physcraper inputs to update relationships in the genus }\textit{\DIFadd{Ilex}}\DIFadd{.
+Currently being the best sampled and most recent phylogenetic hypothesis for the genus,
+we used the Yao2020 phylogeny as a golden standard to compare our results and verify
+Physcraper's performance.
 }\DIFaddend 
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
@@ -695,8 +696,9 @@ we pruned 9 out of the 41 tips in the original Gottlieb2005 phylogeny \mbox{%DIF
 \cite{gottlieb2005molecular}}\hspace{0pt}%DIFAUXCMD
 ,
 corresponding to a 20\% trim, excluding the outgroups. We then performed a Physcraper
-run to test if we would recover the pruned tips. Physcraper automatically dropped
-from the alignment the taxa pruned from the phylogeny to perform the BLAST searches.
+run to test if we would recover the pruned tips. To perform the BLAST searches,
+Physcraper automatically drops sequences from the alignment belonging to taxa
+absent from the input phylogeny.
 The Physcraper updated phylogeny successfully recovered only 6 out of 9 pruned tips.
 Closer examination of results revealed that sequences for the 3 missing tips were correctly retrieved
 with BLAST along with the 6 sequences belonging to the remaining pruned tips.

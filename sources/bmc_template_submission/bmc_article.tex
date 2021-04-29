@@ -461,12 +461,12 @@ using OpenTree's conflict API \cite{redelings2017supertree}.
 
 A user is interested in phylogenetic relationships within the genus \textit{Ilex}. Commonly
 known as ``hollies", the genus encompasses between 400 \cite{gottlieb2005molecular}
-and 500 accepted living species \cite{plantlist}, and is
+and 500 recognized living species \cite{plantlist}, and is
 the only extant taxon within the family Aquifoliaceae, in the order Aquifoliales of flowering
 plants \cite{chase2016update}.
 
 An online literature review in June 2020 (Google scholar search for ``ilex phylogeny")
-reveals that there are several published phylogenies showing relationships within
+revealed that there are several published phylogenies showing relationships within
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
 selbach2009new}, but only two have data openly available, the ``Gottlieb2005" study
 \cite{gottlieb2005molecular} and the ``Yao2020" study \cite{yao2020phylogeny}.
@@ -479,10 +479,11 @@ and it is only available in OpenTree's Phylesystem (study ot\_1984 \cite{ot1984}
 and in the DRYAD repository \cite{yao2020dryad}.
 With 175 tips, the Yao2020 phylogeny \cite{yao2020phylogeny} is the best sampled phylogeny available for
 the genus \textit{Ilex}.
-In order to showcase Physcraper's performance, we used the Gottlieb2005 phylogeny
-and alignment to update relationships in the genus \textit{Ilex},
-with the expectation to use the Yao2020 phylogeny, the best sampled and most recent
-one, as a ``gold" standard to compare and verify Physcraper's results.
+In order to showcase Physcraper's performance, we chose the Gottlieb2005 phylogeny
+and alignment as Physcraper inputs to update relationships in the genus \textit{Ilex}.
+Currently being the best sampled and most recent phylogenetic hypothesis for the genus,
+we used the Yao2020 phylogeny as a golden standard to compare our results and verify
+Physcraper's performance.
 
 We ran Physcraper on a laptop Linux computer to update an internal transcribed
 spacer DNA region (ITS) alignment that was used to construct the phylogeny from \cite{gottlieb2005molecular},
@@ -520,8 +521,9 @@ incorporate these 18 additional \textit{Ilex} taxa in the Physcraper updated phy
 To test the accuracy of Physcraper we performed a verification test in which
 we pruned 9 out of the 41 tips in the original Gottlieb2005 phylogeny \cite{gottlieb2005molecular},
 corresponding to a 20\% trim, excluding the outgroups. We then performed a Physcraper
-run to test if we would recover the pruned tips. Physcraper automatically dropped
-from the alignment the taxa pruned from the phylogeny to perform the BLAST searches.
+run to test if we would recover the pruned tips. To perform the BLAST searches,
+Physcraper automatically drops sequences from the alignment belonging to taxa
+absent from the input phylogeny.
 The Physcraper updated phylogeny successfully recovered only 6 out of 9 pruned tips.
 Closer examination of results revealed that sequences for the 3 missing tips were correctly retrieved
 with BLAST along with the 6 sequences belonging to the remaining pruned tips.
