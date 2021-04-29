@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Wed Apr 28 17:22:44 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Wed Apr 28 22:22:50 2021
+%DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Wed Apr 28 22:42:18 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Wed Apr 28 22:53:06 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -583,15 +583,15 @@ known as ``hollies", the genus encompasses between \DIFdelbegin \DIFdel{400-700 
 and 500 accepted living species \mbox{%DIFAUXCMD
 \cite{plantlist}}\hspace{0pt}%DIFAUXCMD
 }\DIFaddend , and is
-the only extant \DIFdelbegin \DIFdel{clade }\DIFdelend \DIFaddbegin \DIFadd{taxon }\DIFaddend within the family Aquifoliaceae, order Aquifoliales of flowering
+the only extant \DIFdelbegin \DIFdel{clade }\DIFdelend \DIFaddbegin \DIFadd{taxon }\DIFaddend within the family Aquifoliaceae, \DIFaddbegin \DIFadd{in the }\DIFaddend order Aquifoliales of flowering
 plants \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
-\cite{plantlist}}\hspace{0pt}%DIFAUXCMD
+\cite{chase2016update}}\hspace{0pt}%DIFAUXCMD
 }\DIFaddend .
 
 An online literature review in June 2020 (Google scholar search for ``ilex phylogeny")
 reveals that there are several published phylogenies showing relationships within
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
-selbach2009new}, but only two have data publicly available\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+selbach2009new}, but only two have data openly available\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
 \cite{gottlieb2005molecular, yao2020phylogeny}}\hspace{0pt}%DIFAUXCMD
 .
 \mbox{%DIFAUXCMD
@@ -621,7 +621,7 @@ tree }\DIFdelend \DIFaddbegin \DIFadd{Yao2020 phylogeny \mbox{%DIFAUXCMD
 the \DIFdelbegin \DIFdel{hollies.
 }\DIFdelend \DIFaddbegin \DIFadd{genus }\textit{\DIFadd{Ilex}}\DIFadd{.
 In order to showcase Physcraper's performance, we used the Gottlieb2005 phylogeny
-and alignment to update relationships in the genus }\textot{\DIFadd{Ilex}}\DIFadd{,
+and alignment to update relationships in the genus }\textit{\DIFadd{Ilex}}\DIFadd{,
 with the expectation to use the Yao2020 phylogeny, the best sampled and most recent
 one, as a ``gold" standard to compare and verify Physcraper's results.
 }\DIFaddend 
@@ -816,43 +816,43 @@ to statistical support and biological plausibility.
 
 \DIFadd{In the era of phylogenomics, rigorous analyses of multiple loci still allow for
 more complex evolutionary models
-than analyses of large genomic data sets, and can provide better evolutionary estimates.
+than analyses of large genomic data sets, and in many cases can provide better evolutionary estimates.
 For example \mbox{%DIFAUXCMD
 \cite{zhu_complexity_2021} }\hspace{0pt}%DIFAUXCMD
 show that when applying coalescent models,
 there is more information in two genes of 300 bp each than in 600 independent sites.
-Physcraper is desighed to facilitate
+Physcraper is designed to facilitate
 }\DIFaddend gathering alignments and gene trees for multiple loci from a group of interest,
 that together can be used to reconstruct species trees taking into account coalescent
 processes with ASTRAL \cite{mirarab2014astral} \DIFdelbegin \DIFdel{,
 BEAST2 \mbox{%DIFAUXCMD
 \cite{bouckaert2019beast}}\hspace{0pt}%DIFAUXCMD
-, }\DIFdelend or SVD Quartets \cite{chifman2014quartet}\DIFdelbegin \DIFdel{).
-Rigorous analyses of multiple loci allows for more complex evolutionary models
-than analysesof large genomic data sets, and can provide better evolutionary estimates. }\DIFdelend \DIFaddbegin \DIFadd{.
-We have included a script (``multi\_locus.py'') and examples of how to automatically
-merge the outputs of Physcraper runs at different loci into input files for these
-two software, or as concatenated alignments for supermatrix analyses.
-}\DIFaddend 
+, }\DIFdelend or SVD Quartets \cite{chifman2014quartet}\DIFaddbegin \DIFadd{.
+Physcraper's ``multi\_locus.py'' module allows to automatically
+merge the outputs of Physcraper runs from different loci into input files for the
+two software mentioned above, or as concatenated alignments for supermatrix analyses.
+}
 
 
 %DIF > % Biological plausibility of example??
-\DIFaddbegin \DIFadd{Our example application of Physcraper to update a holly phylogeny is based on a
-single marker, so we expect for it to be not as well resolved as trees from studies
-using multiple markers. Although not perfect,
-we think the updated phylogeny seems biologically reasonable in different ways. All samples
-corresponding to the ingroup cluster together forming a monophyletic group, and
+\DIFadd{Our example application of Physcraper to update a phylogeny of the genus }\textit{\DIFadd{Ilex}} \DIFadd{is based on a
+single marker, so we expect for it to be not as well resolved as phylogenies resulting from analyses
+that used multiple markers. Although not perfect,
+we think the Physcraper updated }\textit{\DIFadd{Ilex}} \DIFadd{phylogeny seems biologically reasonable
+in different ways. All samples
+corresponding to the ingroup cluster together forming a monophyletic group (Figure 2A), and
 samples belonging to the same }\textit{\DIFadd{Ilex}} \DIFadd{species also form
-monophyletic groups. A notable exception is }\textit{\DIFadd{Ilex theeizans}}\DIFadd{, which appears as
-non-monophyletic in the Physcraper updated phylogeny as well as in the original Gottlieb2005 tree.
+monophyletic groups (Figure 2B}\DIFaddend ). \DIFdelbegin \DIFdel{Rigorous analyses of multiple loci allows for more complex evolutionary models
+than analysesof large genomic data sets, and can provide better evolutionary estimates. }\DIFdelend \DIFaddbegin \DIFadd{A notable exception is samples of the species }\textit{\DIFadd{Ilex theeizans}}\DIFadd{, which appear as
+non-monophyletic in the updated phylogeny as well as in the original Gottlieb2005 phylogeny.
 %DIF > This suggests that the samples might represent two different species, but further
 analyses should be conducted
-A visual comparison of the Yao2020 tree and the original Gottlieb2005 tree suggests
+A visual comparison of the Yao2020 phylogeny and the original Gottlieb2005 phylogeny suggests
 that the relationships within the genus }\textit{\DIFadd{Ilex}} \DIFadd{are still being actively
 determined, and that increased taxon sampling might be key to resolve them.
-}
+}\DIFaddend 
 
-\DIFaddend Physcraper has the added advantage of facilitating the linkage of taxonomic information about tips
+Physcraper has the added advantage of facilitating the linkage of taxonomic information about tips
 in the output phylogenies to data available in a variety of biological databases
 \cite{rees2017automated}, such as
 geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
@@ -885,11 +885,11 @@ evolutionary downstream analyses \cite{stoltzfus2013phylotastic}.
 Data repositories hold more information than meets the eye.
 Beyond the main data, they are rich sources of metadata that can be leveraged
 for the advantage of all areas of biology as well as the advancement of scientific
-policy and applications.
+policy\DIFdelbegin \DIFdel{and applications }\DIFdelend \DIFaddbegin \DIFadd{, applications and education}\DIFaddend .
 Initial ideas about the data are constantly changed by results from new analyses.
 Physcraper provides a framework for reproducible phylogenetics that has the
 potential to consistently provide context for these ideas, highlighting the
-importance of data sharing and open science in \DIFdelbegin \DIFdel{the field}\DIFdelend \DIFaddbegin \DIFadd{phylogenetics}\DIFaddend , biology and science.
+importance of data sharing and open science \DIFdelbegin \DIFdel{in the field}\DIFdelend \DIFaddbegin \DIFadd{for phylogenetics}\DIFaddend , biology and science.
 
 \section*{Availability and requirements}
 

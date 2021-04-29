@@ -460,13 +460,13 @@ using OpenTree's conflict API \cite{redelings2017supertree}.
 A user is interested in phylogenetic relationships within the genus \textit{Ilex}. Commonly
 known as ``hollies", the genus encompasses between 400 \cite{gottlieb2005molecular}
 and 500 accepted living species \cite{plantlist}, and is
-the only extant taxon within the family Aquifoliaceae, order Aquifoliales of flowering
-plants \cite{plantlist}.
+the only extant taxon within the family Aquifoliaceae, in the order Aquifoliales of flowering
+plants \cite{chase2016update}.
 
 An online literature review in June 2020 (Google scholar search for ``ilex phylogeny")
 reveals that there are several published phylogenies showing relationships within
 the hollies \cite{cuenoud2000molecular, manen2010history, setoguchi2000intersectional,
-selbach2009new}, but only two have data publicly available, the ``Gottlieb2005" study
+selbach2009new}, but only two have data openly available, the ``Gottlieb2005" study
 \cite{gottlieb2005molecular} and the ``Yao2020" study \cite{yao2020phylogeny}.
 Gottlieb2005 made their original published phylogeny and alignment openly available in TreeBASE
 (study 1091 \cite{treebase1091}). The Gottlieb2005 phylogeny samples 41 species, is available from
@@ -478,7 +478,7 @@ and in the DRYAD repository \cite{yao2020dryad}.
 With 175 tips, the Yao2020 phylogeny \cite{yao2020phylogeny} is the best sampled phylogeny available for
 the genus \textit{Ilex}.
 In order to showcase Physcraper's performance, we used the Gottlieb2005 phylogeny
-and alignment to update relationships in the genus \textot{Ilex},
+and alignment to update relationships in the genus \textit{Ilex},
 with the expectation to use the Yao2020 phylogeny, the best sampled and most recent
 one, as a ``gold" standard to compare and verify Physcraper's results.
 
@@ -628,30 +628,31 @@ to statistical support and biological plausibility.
 
 In the era of phylogenomics, rigorous analyses of multiple loci still allow for
 more complex evolutionary models
-than analyses of large genomic data sets, and can provide better evolutionary estimates.
+than analyses of large genomic data sets, and in many cases can provide better evolutionary estimates.
 For example \cite{zhu_complexity_2021} show that when applying coalescent models,
 there is more information in two genes of 300 bp each than in 600 independent sites.
-Physcraper is desighed to facilitate
+Physcraper is designed to facilitate
 gathering alignments and gene trees for multiple loci from a group of interest,
 that together can be used to reconstruct species trees taking into account coalescent
 processes with ASTRAL \cite{mirarab2014astral} or SVD Quartets \cite{chifman2014quartet}.
-We have included a script (``multi\_locus.py'') and examples of how to automatically
-merge the outputs of Physcraper runs at different loci into input files for these
-two software, or as concatenated alignments for supermatrix analyses.
+Physcraper's ``multi\_locus.py'' module allows to automatically
+merge the outputs of Physcraper runs from different loci into input files for the
+two software mentioned above, or as concatenated alignments for supermatrix analyses.
 
 
 %% Biological plausibility of example??
-Our example application of Physcraper to update a holly phylogeny is based on a
-single marker, so we expect for it to be not as well resolved as trees from studies
-using multiple markers. Although not perfect,
-we think the updated phylogeny seems biologically reasonable in different ways. All samples
-corresponding to the ingroup cluster together forming a monophyletic group, and
+Our example application of Physcraper to update a phylogeny of the genus \textit{Ilex} is based on a
+single marker, so we expect for it to be not as well resolved as phylogenies resulting from analyses
+that used multiple markers. Although not perfect,
+we think the Physcraper updated \textit{Ilex} phylogeny seems biologically reasonable
+in different ways. All samples
+corresponding to the ingroup cluster together forming a monophyletic group (Figure 2A), and
 samples belonging to the same \textit{Ilex} species also form
-monophyletic groups. A notable exception is \textit{Ilex theeizans}, which appears as
-non-monophyletic in the Physcraper updated phylogeny as well as in the original Gottlieb2005 tree.
+monophyletic groups (Figure 2B). A notable exception is samples of the species \textit{Ilex theeizans}, which appear as
+non-monophyletic in the updated phylogeny as well as in the original Gottlieb2005 phylogeny.
 %This suggests that the samples might represent two different species, but further
 analyses should be conducted
-A visual comparison of the Yao2020 tree and the original Gottlieb2005 tree suggests
+A visual comparison of the Yao2020 phylogeny and the original Gottlieb2005 phylogeny suggests
 that the relationships within the genus \textit{Ilex} are still being actively
 determined, and that increased taxon sampling might be key to resolve them.
 
@@ -687,11 +688,11 @@ evolutionary downstream analyses \cite{stoltzfus2013phylotastic}.
 Data repositories hold more information than meets the eye.
 Beyond the main data, they are rich sources of metadata that can be leveraged
 for the advantage of all areas of biology as well as the advancement of scientific
-policy and applications.
+policy, applications and education.
 Initial ideas about the data are constantly changed by results from new analyses.
 Physcraper provides a framework for reproducible phylogenetics that has the
 potential to consistently provide context for these ideas, highlighting the
-importance of data sharing and open science in phylogenetics, biology and science.
+importance of data sharing and open science for phylogenetics, biology and science.
 
 \section*{Availability and requirements}
 
