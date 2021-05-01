@@ -302,7 +302,7 @@ created a unified taxonomy for automatic taxonomic name standardization, by inte
 data from several resources \cite{rees2017automated}, including the USA National
 Center for Biodiversity Information (NCBI) taxonomy \cite{federhen_ncbi_2012, schoch_ncbi_2020},
 and the Global Biodiversity Information Facility (GBIF) \cite{gbif_secretariat_gbif_2019}, among many others.
-OpenTree's unfified taxonomy, along with tools and methods to manage it, are available
+OpenTree's unified taxonomy, along with tools and methods to manage it, are available
 as Application Programming Interfaces (APIs),
 which are implemented as open access services for the general public \cite{opentreeAPIs}.
 Physcraper leverages on existing OpenTree's unified taxonomy APIs to automatically
@@ -395,7 +395,7 @@ analysis and comparing the updated results to existing phylogenies.
 
 \subsection*{The inputs: a phylogeny and an alignment}
 
-Taxon names in the input phylogeny must be standardized to OpenTree's unfified taxonomy
+Taxon names in the input phylogeny must be standardized to OpenTree's unified taxonomy
 \cite{ott3.2} using OpenTree's bulk Taxonomic Name Resolution Service
 (TNRS) tool \cite{TNRStool}. Users can upload their
 own phylogeny, or choose from among the 2, 950 curated phylogenies stored in OpenTree's
@@ -427,7 +427,7 @@ and maximum sequence length threshold, defined as a proportion of the average se
 gaps of all sequences in the input alignment (default values of 80\% and 120\%,
 respectively); 4) or, if they are either identical to or shorter than an existing
 sequence in the input alignment and they represent the same taxon in NCBI's or
-OpenTree's unififed taxonomy.
+OpenTree's unified taxonomy.
 By default, an arbitrary maximum number of 5 sequences per taxon are chosen at random
 from the set of matching sequences that passed the filtering step.
 
