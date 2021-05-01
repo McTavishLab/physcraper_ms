@@ -276,15 +276,15 @@ the opportunity to simultaneously study
 the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
 framework for biological databases to automate data connections across biological databases.
-Physcraper's main goal is to build upon published alignments and phylogenies
-to extend existing phylogenetic inferences with more data and taxa, which are known to improve
+Physcraper's main goal is to use its interoperability framework to build upon published alignments and phylogenies
+to extend existing phylogenetic inferences with more data and taxa, which improve our
 phylogenetic reconstructions \cite{hillis1996inferring, natsidis2019phylogenomics},
 time of divergence estimates \cite{schulte2013undersampling, soares2015influence},
 biogeographic analyses \cite{kayaalp2017back},
-as well as help in resolving phylogenetic conflict \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}.
+and help in resolving phylogenetic conflict \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}.
 Physcraper updates a starting single locus alignment and corresponding phylogeny
 with public DNA data from GenBank \cite{benson2000genbank}, and links tip taxon labels in the updated trees to a unified, interoperable
-taxonomic resource \cite{rees2017automated}.
+taxonomic resource \cite{rees2017automated}, streamlining connections across biological databases.
 
 Data such as
 geographical location, fossil ranges, and genetic and phenotypic information increasingly
@@ -298,7 +298,7 @@ data from several databases \cite{rees2017automated}, including the USA National
 Center for Biodiversity Information (NCBI) taxonomy \cite{federhen_ncbi_2012, schoch_ncbi_2020},
 and the Global Biodiversity Information Facility (GBIF) \cite{gbif_secretariat_gbif_2019}, among many others.
 All of OpenTree tools and methods are implemented via OpenTree's Application Programming Interfaces (APIs),
-as open programmatic access services for use by the general public \cite{opentreeAPIs}.
+as open access services for use by the general public \cite{opentreeAPIs}.
 Physcraper leverages on existing OpenTree's taxonomic APIs to
 standardize taxon names in any phylogeny, providing
 a framework for automatic connection of updated phylogenies with data from any biological database.
@@ -314,26 +314,26 @@ However, even thirteen years later, phylogenetic estimates for most of these tax
 are still not available \cite{mctavish_how_2017}.
 Using its unified taxonomy, OpenTree assembles a comprehensive synthetic tree of life comprising
 2.3 million tips, of which around only
-90,000 are supported by phylogenetic data uploaded to OpenTrees' database (the Phylesystem
-\cite{mctavish2015phylesystem}) by curators - the remaining 1.4 million taxa are placed
-in the tree based on taxonomy.
+90,000 are supported by publicly available expert phylogenetic data, uploaded to OpenTrees' database (the Phylesystem
+\cite{mctavish2015phylesystem}) by human curators - the remaining 1.4 million taxa are placed
+in the synthetic tree based on taxonomy.
 There is a considerable amount of phylogenetically
 informative data in GenBank with the potential to fill these phylogenetic gaps in
 the tree of life, but this data either has not been analysed or the analyses
 have not been made publicly available \cite{mctavish_how_2017}.
 
 Assembling a DNA alignment from a massive database such as GenBank can be done ``by hand",
-but that is a time-consuming approach which is largely not reproducible.
+but that is a time-consuming approach which is largely non reproducible.
 Various computational pipelines that mine DNA databases fast, efficiently, and reproducibly
 have been developed and used to infer phylogenetic relationships of many organisms
 (e.g., \cite{smith2009mega, antonelli2017toward, izquierdo2014pumper, pearse2013phylogenerator}).
 While genomics has, and will continue to, revolutionize phylogenetic inference,
 the diversity of alternative genomic sequencing approaches that are implemented produce
-widely non-overlapping homology hypotheses across taxa \cite{jones2016targeted},
-creating challenges for phylogenetic reconstruction.
+widely non-overlapping homology hypotheses across taxa,
+creating challenges for phylogenetic reconstruction \cite{jones2016targeted}.
 Phylogenomics addresses this problem by focusing on targeted capture of informative
 regions \cite{andermann2020guide}.
-However, fine-grained curated markers and alignments can significantly improve phylogenetic
+However, carefully curated markers and alignments can significantly improve phylogenetic
 reconstructions, even in phylogenomic analyses \cite{fragoso2017pilot}.
 
 Physcraper improves on previous work that automates phylogenetic reconstruction, by leveraging
@@ -343,7 +343,7 @@ There are almost 8,200 publicly available, peer-reviewed curated alignments, cov
 around 100,000 distinct taxa in the TreeBASE database
 \cite{piel2009treebase, vos2012nexml, piel2018treebasedmp},
 which can be used as seeds to mine molecular databases, and as ``jump-start'' alignments
-for phylogenetic reconstructions \cite{morrison2006multiple} to continually enrich,
+for phylogenetic reconstruction \cite{morrison2006multiple} to continually enrich,
 update and compare new phylogenetic hypotheses to existing knowledge.
 
 Physcraper is implemented as a Python pipeline that uses OpenTree's APIs to automatically
