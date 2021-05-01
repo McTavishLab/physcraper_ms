@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Mon May  3 19:18:01 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Tue May  4 00:10:58 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Tue May  4 00:39:13 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -339,8 +339,12 @@ the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
 framework for biological databases to automate data connections across \DIFdelbegin \DIFdel{databases,
 with the main goal of building on }\DIFdelend \DIFaddbegin \DIFadd{biological databases.
-Physcraper's main goal is to use its interoperability framework to build upon }\DIFaddend published alignments and \DIFdelbegin \DIFdel{extending }\DIFdelend \DIFaddbegin \DIFadd{phylogenies
-to extend }\DIFaddend existing phylogenetic inferences with more data and taxa\DIFaddbegin \DIFadd{, which improve our
+Physcraper's main goal is to use its interoperability framework to build upon }\DIFaddend published
+alignments and \DIFdelbegin \DIFdel{extending }\DIFdelend \DIFaddbegin \DIFadd{phylogenies
+to extend }\DIFaddend existing phylogenetic inferences with \DIFdelbegin \DIFdel{more data and taxa. Physcraper updates a starting tree and single locus alignments
+with public DNA data,
+and links the tips in these }\DIFdelend \DIFaddbegin \DIFadd{sequence data available in public
+DNA databases for more taxa. Increased taxonomic sampling improves
 phylogenetic reconstructions \mbox{%DIFAUXCMD
 \cite{hillis1996inferring, natsidis2019phylogenomics}}\hspace{0pt}%DIFAUXCMD
 ,
@@ -352,17 +356,13 @@ and biogeographic analyses \mbox{%DIFAUXCMD
 ,
 and help in resolving phylogenetic conflict \mbox{%DIFAUXCMD
 \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}}\hspace{0pt}%DIFAUXCMD
-}\DIFaddend .
-Physcraper updates a starting \DIFdelbegin \DIFdel{tree and single locus alignments
-}\DIFdelend \DIFaddbegin \DIFadd{single locus alignment and corresponding phylogeny
-}\DIFaddend with public DNA data \DIFaddbegin \DIFadd{from GenBank \mbox{%DIFAUXCMD
-\cite{benson2000genbank}}\hspace{0pt}%DIFAUXCMD
-}\DIFaddend , and links \DIFdelbegin \DIFdel{the tips in these }\DIFdelend \DIFaddbegin \DIFadd{tip taxon labels in the updated trees to a unified, interoperable
-taxonomic resource \mbox{%DIFAUXCMD
-\cite{rees2017automated}}\hspace{0pt}%DIFAUXCMD
-, streamlining connections between phylogenies and biological data.
+.
+%DIF >  Physcraper updates the starting single locus alignment and corresponding phylogeny
+%DIF >  with public DNA data from GenBank \cite{benson2000genbank}, and links tip taxon
+%DIF >  labels in the updated trees to a unified, interoperable
+%DIF >  taxonomic resource \cite{rees2017automated}, streamlining connections between phylogenies and biological data.
 Physcraper links tip taxon labels in the updated }\DIFaddend trees to a unified, interoperable
-taxonomic resource \cite{rees2017automated}\DIFaddbegin \DIFadd{, eefectively streamlining connections between phylogenies and biological data}\DIFaddend .
+taxonomic resource \cite{rees2017automated}\DIFaddbegin \DIFadd{, effectively streamlining connections between phylogenies and biological data}\DIFaddend .
 
 Data such as
 geographical location, fossil ranges, and genetic and phenotypic information increasingly
@@ -548,9 +548,8 @@ NCBItaxonomy.
 An }\DIFdelend \DIFaddbegin \DIFadd{NCBI's or
 OpenTree's unififed taxonomy.
 By default, an }\DIFaddend arbitrary maximum number of \DIFdelbegin \DIFdel{randomly chosen }\DIFdelend \DIFaddbegin \DIFadd{5 }\DIFaddend sequences per taxon are \DIFdelbegin \DIFdel{allowed
-}\DIFdelend \DIFaddbegin \DIFadd{chosen at random
-from the set of matching sequences that passed the filtering step.
-}\DIFaddend (default to 5).
+(default to 5)}\DIFdelend \DIFaddbegin \DIFadd{chosen at random
+from the set of matching sequences that passed the filtering step}\DIFaddend .
 
 Reverse, complement, and reverse-complement sequences are identified and translated
 using BioPython internal functions \cite{cock2009biopython}.
@@ -841,6 +840,7 @@ Also, Physcraper thins alignments by removing sequences identical to original
 and newly added sequences, and by setting a maximum number of sequences per taxon.
 Nonetheless, it is incumbent on users to assess their final inference with respect
 to statistical support and biological plausibility.
+%DIF >  Add citation of good things about thining alignments
 }
 
 \DIFadd{In the era of phylogenomics, rigorous analyses of multiple loci still allow for
@@ -1075,7 +1075,9 @@ and an anonymous reviewer that greatly improved an earlier version of this manus
 \cite{ott727571} }\hspace{0pt}%DIFAUXCMD
 constructed using taxonomy of the genus
   as backbone and resolving branches based on phylogenetic data from the original
-  Gottlieb2005 phylogeny}\DIFaddendFL .
+  Gottlieb2005 phylogeny. Green branches are resolved by the updated phylogeny,
+  blue branches are in agreement between the updated phylogeny and the syntehtic subtree, and
+  orange branches are in conflict between the two}\DIFaddendFL .
 }
 \end{figure}
 

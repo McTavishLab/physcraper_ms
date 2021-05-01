@@ -276,17 +276,20 @@ the opportunity to simultaneously study
 the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
 framework for biological databases to automate data connections across biological databases.
-Physcraper's main goal is to use its interoperability framework to build upon published alignments and phylogenies
-to extend existing phylogenetic inferences with more data and taxa, which improve our
+Physcraper's main goal is to use its interoperability framework to build upon published
+alignments and phylogenies
+to extend existing phylogenetic inferences with sequence data available in public
+DNA databases for more taxa. Increased taxonomic sampling improves
 phylogenetic reconstructions \cite{hillis1996inferring, natsidis2019phylogenomics},
 time of divergence estimates \cite{schulte2013undersampling, soares2015influence},
 and biogeographic analyses \cite{kayaalp2017back},
 and help in resolving phylogenetic conflict \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}.
-Physcraper updates a starting single locus alignment and corresponding phylogeny
-with public DNA data from GenBank \cite{benson2000genbank}, and links tip taxon labels in the updated trees to a unified, interoperable
-taxonomic resource \cite{rees2017automated}, streamlining connections between phylogenies and biological data.
+% Physcraper updates the starting single locus alignment and corresponding phylogeny
+% with public DNA data from GenBank \cite{benson2000genbank}, and links tip taxon
+% labels in the updated trees to a unified, interoperable
+% taxonomic resource \cite{rees2017automated}, streamlining connections between phylogenies and biological data.
 Physcraper links tip taxon labels in the updated trees to a unified, interoperable
-taxonomic resource \cite{rees2017automated}, eefectively streamlining connections between phylogenies and biological data.
+taxonomic resource \cite{rees2017automated}, effectively streamlining connections between phylogenies and biological data.
 
 Data such as
 geographical location, fossil ranges, and genetic and phenotypic information increasingly
@@ -427,7 +430,6 @@ sequence in the input alignment and they represent the same taxon in NCBI's or
 OpenTree's unififed taxonomy.
 By default, an arbitrary maximum number of 5 sequences per taxon are chosen at random
 from the set of matching sequences that passed the filtering step.
-(default to 5).
 
 Reverse, complement, and reverse-complement sequences are identified and translated
 using BioPython internal functions \cite{cock2009biopython}.
@@ -635,6 +637,7 @@ Also, Physcraper thins alignments by removing sequences identical to original
 and newly added sequences, and by setting a maximum number of sequences per taxon.
 Nonetheless, it is incumbent on users to assess their final inference with respect
 to statistical support and biological plausibility.
+% Add citation of good things about thining alignments
 
 In the era of phylogenomics, rigorous analyses of multiple loci still allow for
 more complex evolutionary models
@@ -850,7 +853,9 @@ and an anonymous reviewer that greatly improved an earlier version of this manus
   The Physcraper updated Gottlieb2005 phylogeny in (A) was compared to an \textit{Ilex}
   OpenTree synthetic subtree v. 12.3 \cite{ott727571} constructed using taxonomy of the genus
   as backbone and resolving branches based on phylogenetic data from the original
-  Gottlieb2005 phylogeny.
+  Gottlieb2005 phylogeny. Green branches are resolved by the updated phylogeny,
+  blue branches are in agreement between the updated phylogeny and the syntehtic subtree, and
+  orange branches are in conflict between the two.
 }
 \end{figure}
 
