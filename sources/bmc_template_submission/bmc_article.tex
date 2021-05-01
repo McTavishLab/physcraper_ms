@@ -276,14 +276,14 @@ the opportunity to simultaneously study
 the evolutionary history of many taxa in a reproducible and continuous manner.
 Here, we introduce Physcraper, a tool that establishes a data interoperability
 framework for biological databases to automate data connections across biological databases.
-Physcraper's main goal is to build upon published alignments and published phylogenies
-to extend existing phylogenetic inferences with more data and taxa, which improve
-phylogenetic reconstruction \cite{hillis1996inferring, natsidis2019phylogenomics},
+Physcraper's main goal is to build upon published alignments and phylogenies
+to extend existing phylogenetic inferences with more data and taxa, which are known to improve
+phylogenetic reconstructions \cite{hillis1996inferring, natsidis2019phylogenomics},
 time of divergence estimates \cite{schulte2013undersampling, soares2015influence},
 biogeographic analyses \cite{kayaalp2017back},
 as well as help in resolving phylogenetic conflict \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}.
 Physcraper updates a starting single locus alignment and corresponding phylogeny
-with public DNA data from GenBank \cite{benson2000genbank}, and links the tips in the updated trees to a unified, interoperable
+with public DNA data from GenBank \cite{benson2000genbank}, and links tip taxon labels in the updated trees to a unified, interoperable
 taxonomic resource \cite{rees2017automated}.
 
 Data such as
@@ -362,11 +362,8 @@ It currently consists of 13 modules.
 For testing and improving Physcraper's Python code syntax quality, we
 used the Pylint software following instructions from its website \cite{pylintWeb}
  and manual \cite{pylintManual}, with a ``.pylintrc" configuration file.
-
-We improved code syntax of Physcraper's modules with low Pylint scores, and fixed code errors by
-following Pylint's recommendations.
-Based on Physcraper's software design choices, some of Pylint's recommendations were overruled
-by using its check-disabling system, and are explained along the code.
+% Based on Physcraper's software design choices, some of Pylint's recommendations were overruled
+% by using its check-disabling system, and are explained along the code.
 As of now, all Physcraper modules have a Pylint score of 10/10.
 
 % Pylint score for each module and locally disabled Pylint reccommendations
@@ -450,7 +447,7 @@ Bootstrap results are summarized using DendroPy's SumTrees module
 \cite{sukumaran2010dendropy}.
 
 Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
-Updated and original phylpogeny are compared with Robinson-Foulds weighted and unweighted
+Updated and original phylogeny are compared with Robinson-Foulds weighted and unweighted
 metrics calculated with Dendropy \cite{sukumaran2010dendropy}, and with a node by node
 comparison between the synthetic OpenTree and the original and updated phylogenies individually,
 using OpenTree's conflict API \cite{redelings2017supertree}.
