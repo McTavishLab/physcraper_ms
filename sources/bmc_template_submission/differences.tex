@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Mon May  3 16:58:33 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Mon May  3 17:21:53 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Mon May  3 19:12:49 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -347,7 +347,7 @@ phylogenetic reconstructions \mbox{%DIFAUXCMD
 time of divergence estimates \mbox{%DIFAUXCMD
 \cite{schulte2013undersampling, soares2015influence}}\hspace{0pt}%DIFAUXCMD
 ,
-biogeographic analyses \mbox{%DIFAUXCMD
+and biogeographic analyses \mbox{%DIFAUXCMD
 \cite{kayaalp2017back}}\hspace{0pt}%DIFAUXCMD
 ,
 and help in resolving phylogenetic conflict \mbox{%DIFAUXCMD
@@ -357,8 +357,12 @@ Physcraper updates a starting \DIFdelbegin \DIFdel{tree and single locus alignme
 }\DIFdelend \DIFaddbegin \DIFadd{single locus alignment and corresponding phylogeny
 }\DIFaddend with public DNA data \DIFaddbegin \DIFadd{from GenBank \mbox{%DIFAUXCMD
 \cite{benson2000genbank}}\hspace{0pt}%DIFAUXCMD
-}\DIFaddend , and links \DIFdelbegin \DIFdel{the tips in these }\DIFdelend \DIFaddbegin \DIFadd{tip taxon labels in the updated }\DIFaddend trees to a unified, interoperable
-taxonomic resource \cite{rees2017automated}\DIFaddbegin \DIFadd{, streamlining connections across biological databases}\DIFaddend .
+}\DIFaddend , and links \DIFdelbegin \DIFdel{the tips in these }\DIFdelend \DIFaddbegin \DIFadd{tip taxon labels in the updated trees to a unified, interoperable
+taxonomic resource \mbox{%DIFAUXCMD
+\cite{rees2017automated}}\hspace{0pt}%DIFAUXCMD
+, streamlining connections between phylogenies and biological data.
+Physcraper links tip taxon labels in the updated }\DIFaddend trees to a unified, interoperable
+taxonomic resource \cite{rees2017automated}\DIFaddbegin \DIFadd{, eefectively streamlining connections between phylogenies and biological data}\DIFaddend .
 
 Data such as
 geographical location, fossil ranges, and genetic and phenotypic information increasingly
@@ -375,7 +379,7 @@ By using the existing OpenTree taxonomy programmatic tools to
 map tip names ,
 Physcraper has }\DIFdelend \DIFaddbegin \DIFadd{, among many others.
 All of OpenTree tools and methods are implemented via OpenTree's Application Programming Interfaces (APIs),
-as open access services for use by the general public \mbox{%DIFAUXCMD
+as open access services for the general public \mbox{%DIFAUXCMD
 \cite{opentreeAPIs}}\hspace{0pt}%DIFAUXCMD
 .
 Physcraper leverages on existing OpenTree's taxonomic APIs to
@@ -391,17 +395,17 @@ relationships of 98.05\% of the almost 241,000
 distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
 However, even thirteen years later, phylogenetic estimates for \DIFdelbegin \DIFdel{many }\DIFdelend \DIFaddbegin \DIFadd{most }\DIFaddend of these taxa
 are \DIFaddbegin \DIFadd{still }\DIFaddend not available \cite{mctavish_how_2017}.
-\DIFdelbegin \DIFdel{OpenTree's comprehensive }\DIFdelend \DIFaddbegin \DIFadd{Using its unified taxonomy, OpenTree assembles a comprehensive synthetic }\DIFaddend tree of life \DIFdelbegin \DIFdel{comprises }\DIFdelend \DIFaddbegin \DIFadd{comprising
-}\DIFaddend 2.3 million tips, of which around \DIFaddbegin \DIFadd{only
-}\DIFaddend 90,000 are supported by \DIFdelbegin \DIFdel{phylogenies }\DIFdelend \DIFaddbegin \DIFadd{publicly available expert phylogenetic data, uploaded to OpenTrees' database (the Phylesystem
+OpenTree \DIFdelbegin \DIFdel{'s comprehensive }\DIFdelend \DIFaddbegin \DIFadd{assembles a comprehensive synthetic }\DIFaddend tree of life \DIFdelbegin \DIFdel{comprises }\DIFdelend \DIFaddbegin \DIFadd{comprising
+}\DIFaddend 2.3 million tips, of which around
+90,000 are supported by \DIFdelbegin \DIFdel{phylogenies }\DIFdelend \DIFaddbegin \DIFadd{publicly available expert phylogenetic data, uploaded to OpenTrees' database (the Phylesystem
 \mbox{%DIFAUXCMD
 \cite{mctavish2015phylesystem}}\hspace{0pt}%DIFAUXCMD
-) by human curators }\DIFaddend - the remaining 1.4 million taxa are placed
-in the \DIFaddbegin \DIFadd{synthetic }\DIFaddend tree based on taxonomy.
+) by volunteer curators }\DIFaddend - the remaining 1.4 million taxa are placed
+in the \DIFaddbegin \DIFadd{synthetic }\DIFaddend tree based on \DIFaddbegin \DIFadd{OpenTree's unified }\DIFaddend taxonomy.
 There is a considerable amount of phylogenetically
 informative data in GenBank with the potential to fill these phylogenetic gaps in
 the tree of life, but this data either has not been analysed or the analyses
-have not been made publicly available \cite{mctavish_how_2017}.
+have not been made publicly available \DIFaddbegin \DIFadd{and accesible }\DIFaddend \cite{mctavish_how_2017}.
 
 Assembling a DNA alignment from \DIFdelbegin \DIFdel{such }\DIFdelend a massive database \DIFaddbegin \DIFadd{such }\DIFaddend as GenBank can be done ``by hand",
 but that is a time-consuming approach which is \DIFdelbegin \DIFdel{not highly reproducible.

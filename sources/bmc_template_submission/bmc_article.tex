@@ -280,11 +280,13 @@ Physcraper's main goal is to use its interoperability framework to build upon pu
 to extend existing phylogenetic inferences with more data and taxa, which improve our
 phylogenetic reconstructions \cite{hillis1996inferring, natsidis2019phylogenomics},
 time of divergence estimates \cite{schulte2013undersampling, soares2015influence},
-biogeographic analyses \cite{kayaalp2017back},
+and biogeographic analyses \cite{kayaalp2017back},
 and help in resolving phylogenetic conflict \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}.
 Physcraper updates a starting single locus alignment and corresponding phylogeny
 with public DNA data from GenBank \cite{benson2000genbank}, and links tip taxon labels in the updated trees to a unified, interoperable
-taxonomic resource \cite{rees2017automated}, streamlining connections across biological databases.
+taxonomic resource \cite{rees2017automated}, streamlining connections between phylogenies and biological data.
+Physcraper links tip taxon labels in the updated trees to a unified, interoperable
+taxonomic resource \cite{rees2017automated}, eefectively streamlining connections between phylogenies and biological data.
 
 Data such as
 geographical location, fossil ranges, and genetic and phenotypic information increasingly
@@ -298,7 +300,7 @@ data from several databases \cite{rees2017automated}, including the USA National
 Center for Biodiversity Information (NCBI) taxonomy \cite{federhen_ncbi_2012, schoch_ncbi_2020},
 and the Global Biodiversity Information Facility (GBIF) \cite{gbif_secretariat_gbif_2019}, among many others.
 All of OpenTree tools and methods are implemented via OpenTree's Application Programming Interfaces (APIs),
-as open access services for use by the general public \cite{opentreeAPIs}.
+as open access services for the general public \cite{opentreeAPIs}.
 Physcraper leverages on existing OpenTree's taxonomic APIs to
 standardize taxon names in any phylogeny, providing
 a framework for automatic connection of updated phylogenies with data from any biological database.
@@ -312,15 +314,15 @@ relationships of 98.05\% of the almost 241,000
 distinct taxa in the NCBI taxonomy at the time \cite{sanderson2008phylota}.
 However, even thirteen years later, phylogenetic estimates for most of these taxa
 are still not available \cite{mctavish_how_2017}.
-Using its unified taxonomy, OpenTree assembles a comprehensive synthetic tree of life comprising
-2.3 million tips, of which around only
+OpenTree assembles a comprehensive synthetic tree of life comprising
+2.3 million tips, of which around
 90,000 are supported by publicly available expert phylogenetic data, uploaded to OpenTrees' database (the Phylesystem
-\cite{mctavish2015phylesystem}) by human curators - the remaining 1.4 million taxa are placed
-in the synthetic tree based on taxonomy.
+\cite{mctavish2015phylesystem}) by volunteer curators - the remaining 1.4 million taxa are placed
+in the synthetic tree based on OpenTree's unified taxonomy.
 There is a considerable amount of phylogenetically
 informative data in GenBank with the potential to fill these phylogenetic gaps in
 the tree of life, but this data either has not been analysed or the analyses
-have not been made publicly available \cite{mctavish_how_2017}.
+have not been made publicly available and accesible \cite{mctavish_how_2017}.
 
 Assembling a DNA alignment from a massive database such as GenBank can be done ``by hand",
 but that is a time-consuming approach which is largely non reproducible.
