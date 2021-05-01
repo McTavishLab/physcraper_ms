@@ -274,25 +274,26 @@ context for our biological observations \cite{dobzhansky1973nothing}.
 Updating existing phylogenies with publicly available molecular sequence data provides
 the opportunity to simultaneously study
 the evolutionary history of many taxa in a reproducible and continuous manner.
-Here, we introduce Physcraper, a tool that establishes a data interoperability
-framework for biological databases to automate data connections across biological databases.
-Physcraper's main goal is to use its interoperability framework to build upon published
-alignments and phylogenies
-to extend existing phylogenetic inferences with sequence data available in public
-DNA databases for more taxa. Increased taxonomic sampling improves
+Increased taxonomic sampling improves
 phylogenetic reconstructions \cite{hillis1996inferring, natsidis2019phylogenomics},
 time of divergence estimates \cite{schulte2013undersampling, soares2015influence},
 and biogeographic analyses \cite{kayaalp2017back},
 and help in resolving phylogenetic conflict \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}.
+Here, we introduce Physcraper, a Python package that provides a data interoperability
+framework to automate data connections across biological databases,
+with the main goal to build upon published alignments and phylogenies
+to extend existing phylogenetic inferences with sequence data available for more taxa
+in public DNA databases.
 % Physcraper updates the starting single locus alignment and corresponding phylogeny
 % with public DNA data from GenBank \cite{benson2000genbank}, and links tip taxon
 % labels in the updated trees to a unified, interoperable
 % taxonomic resource \cite{rees2017automated}, streamlining connections between phylogenies and biological data.
 Physcraper links tip taxon labels in the updated trees to a unified, interoperable
-taxonomic resource \cite{rees2017automated}, effectively streamlining connections between phylogenies and biological data.
+taxonomic resource \cite{rees2017automated}, effectively streamlining connections
+between phylogenies and any type of biological data.
 
-Data such as
-geographical location, fossil ranges, and genetic and phenotypic information increasingly
+Information such as
+geographical location, fossil ranges, and genetic and phenotypic data increasingly
 available in public biological databases constitute an amazing
 resource for scientific discovery \cite{baxevanis2015importance}.
 One of the main challenges for automatic

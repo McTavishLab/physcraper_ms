@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Mon May  3 19:18:01 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Tue May  4 00:42:43 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Tue May  4 00:51:43 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -336,15 +336,7 @@ has never been
 incorporated into any phylogenetic estimate }\DIFdelend provides
 the opportunity to \DIFaddbegin \DIFadd{simultaneously }\DIFaddend study
 the evolutionary history of many taxa in a reproducible and continuous manner.
-Here, we introduce Physcraper, a tool that establishes a data interoperability
-framework for biological databases to automate data connections across \DIFdelbegin \DIFdel{databases,
-with the main goal of building on }\DIFdelend \DIFaddbegin \DIFadd{biological databases.
-Physcraper's main goal is to use its interoperability framework to build upon }\DIFaddend published
-alignments and \DIFdelbegin \DIFdel{extending }\DIFdelend \DIFaddbegin \DIFadd{phylogenies
-to extend }\DIFaddend existing phylogenetic inferences with \DIFdelbegin \DIFdel{more data and taxa. Physcraper updates a starting tree and single locus alignments
-with public DNA data,
-and links the tips in these }\DIFdelend \DIFaddbegin \DIFadd{sequence data available in public
-DNA databases for more taxa. Increased taxonomic sampling improves
+\DIFaddbegin \DIFadd{Increased taxonomic sampling improves
 phylogenetic reconstructions \mbox{%DIFAUXCMD
 \cite{hillis1996inferring, natsidis2019phylogenomics}}\hspace{0pt}%DIFAUXCMD
 ,
@@ -357,15 +349,24 @@ and biogeographic analyses \mbox{%DIFAUXCMD
 and help in resolving phylogenetic conflict \mbox{%DIFAUXCMD
 \cite{hedtke2006resolution, townsend2010optimal, natsidis2019phylogenomics}}\hspace{0pt}%DIFAUXCMD
 .
+}\DIFaddend Here, we introduce Physcraper, a \DIFdelbegin \DIFdel{tool that establishes }\DIFdelend \DIFaddbegin \DIFadd{Python package that provides }\DIFaddend a data interoperability
+framework \DIFdelbegin \DIFdel{for biological databases }\DIFdelend to automate data connections across \DIFaddbegin \DIFadd{biological }\DIFaddend databases,
+with the main goal \DIFdelbegin \DIFdel{of building on }\DIFdelend \DIFaddbegin \DIFadd{to build upon }\DIFaddend published alignments and \DIFdelbegin \DIFdel{extending }\DIFdelend \DIFaddbegin \DIFadd{phylogenies
+to extend }\DIFaddend existing phylogenetic inferences with \DIFdelbegin \DIFdel{more data and taxa
+.
+Physcraper updates a starting tree and single locus alignments
+with public DNA data, and links the tips in these }\DIFdelend \DIFaddbegin \DIFadd{sequence data available for more taxa
+in public DNA databases.
 %DIF >  Physcraper updates the starting single locus alignment and corresponding phylogeny
 %DIF >  with public DNA data from GenBank \cite{benson2000genbank}, and links tip taxon
 %DIF >  labels in the updated trees to a unified, interoperable
 %DIF >  taxonomic resource \cite{rees2017automated}, streamlining connections between phylogenies and biological data.
 Physcraper links tip taxon labels in the updated }\DIFaddend trees to a unified, interoperable
-taxonomic resource \cite{rees2017automated}\DIFaddbegin \DIFadd{, effectively streamlining connections between phylogenies and biological data}\DIFaddend .
+taxonomic resource \cite{rees2017automated}\DIFaddbegin \DIFadd{, effectively streamlining connections
+between phylogenies and any type of biological data}\DIFaddend .
 
-Data such as
-geographical location, fossil ranges, and genetic and phenotypic information increasingly
+\DIFdelbegin \DIFdel{Data }\DIFdelend \DIFaddbegin \DIFadd{Information }\DIFaddend such as
+geographical location, fossil ranges, and genetic and phenotypic \DIFdelbegin \DIFdel{information }\DIFdelend \DIFaddbegin \DIFadd{data }\DIFaddend increasingly
 available in public \DIFaddbegin \DIFadd{biological }\DIFaddend databases constitute an amazing
 resource for \DIFdelbegin \DIFdel{biological }\DIFdelend \DIFaddbegin \DIFadd{scientific }\DIFaddend discovery \cite{baxevanis2015importance}.
 One of the main challenges for automatic
