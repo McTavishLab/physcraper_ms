@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Mon May  3 16:58:33 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Mon May  3 19:12:49 2021
+%DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-01-08.tex   Mon May  3 19:18:01 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Tue May  4 00:10:58 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -372,19 +372,19 @@ One of the main challenges for automatic
 integration of \DIFdelbegin \DIFdel{biological data across }\DIFdelend \DIFaddbegin \DIFadd{data across biological }\DIFaddend databases are varying taxonomic idiosyncrasies.
 To address this challenge, the Open Tree of Life project (OpenTree)
 created a unified taxonomy for \DIFaddbegin \DIFadd{automatic taxonomic }\DIFaddend name standardization, by integrating taxonomic
-data from several databases \cite{rees2017automated}, including the USA National
+data from several resources \cite{rees2017automated}, including the USA National
 Center for Biodiversity Information (NCBI) taxonomy \cite{federhen_ncbi_2012, schoch_ncbi_2020},
 and the Global Biodiversity Information Facility (GBIF) \cite{gbif_secretariat_gbif_2019}\DIFdelbegin \DIFdel{among others.
-By using the existing OpenTree taxonomy programmatic tools to
-map tip names ,
+By using the existing OpenTree taxonomy programmatic tools to map tip names ,
 Physcraper has }\DIFdelend \DIFaddbegin \DIFadd{, among many others.
-All of OpenTree tools and methods are implemented via OpenTree's Application Programming Interfaces (APIs),
-as open access services for the general public \mbox{%DIFAUXCMD
+OpenTree's unfified taxonomy, along with tools and methods to manage it, are available
+as Application Programming Interfaces (APIs),
+which are implemented as open access services for the general public \mbox{%DIFAUXCMD
 \cite{opentreeAPIs}}\hspace{0pt}%DIFAUXCMD
 .
-Physcraper leverages on existing OpenTree's taxonomic APIs to
+Physcraper leverages on existing OpenTree's unified taxonomy APIs to automatically
 standardize taxon names in any phylogeny, providing
-}\DIFaddend a framework for \DIFdelbegin \DIFdel{connecting }\DIFdelend \DIFaddbegin \DIFadd{automatic connection of }\DIFaddend updated phylogenies with data from any biological database.
+}\DIFaddend a framework for \DIFdelbegin \DIFdel{connecting }\DIFdelend \DIFaddbegin \DIFadd{connection of }\DIFaddend updated phylogenies with data from any biological database.
 
 Decades of single locus sequencing have generated
 massive amounts of homologous DNA datasets that have the potential to be used for phylogenetic
@@ -413,15 +413,11 @@ A variety of }\DIFdelend \DIFaddbegin \DIFadd{largely non reproducible.
 Various }\DIFaddend computational pipelines that mine DNA databases fast, efficiently, and reproducibly
 have been developed and used to infer phylogenetic relationships \DIFdelbegin \DIFdel{in a variety of }\DIFdelend \DIFaddbegin \DIFadd{of many }\DIFaddend organisms
 (e.g., \cite{smith2009mega, antonelli2017toward, izquierdo2014pumper, pearse2013phylogenerator}).
-While genomics has, and will continue to, revolutionize phylogenetic inference,
+While genomics has, and will continue to \DIFdelbegin \DIFdel{, }\DIFdelend revolutionize phylogenetic inference,
 the diversity of alternative genomic sequencing approaches \DIFdelbegin \DIFdel{implemented produce
 largely }\DIFdelend \DIFaddbegin \DIFadd{that are implemented produce
-widely }\DIFaddend non-overlapping homology hypotheses across taxa\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
-\cite{jones2016targeted}}\hspace{0pt}%DIFAUXCMD
-}\DIFdelend ,
-creating challenges for phylogenetic reconstruction \DIFaddbegin \DIFadd{\mbox{%DIFAUXCMD
-\cite{jones2016targeted}}\hspace{0pt}%DIFAUXCMD
-}\DIFaddend .
+widely }\DIFaddend non-overlapping homology hypotheses across taxa,
+creating challenges for phylogenetic reconstruction \cite{jones2016targeted}.
 Phylogenomics addresses this problem by focusing on targeted capture of informative
 regions \cite{andermann2020guide}.
 However, carefully curated markers and alignments can significantly improve phylogenetic
@@ -440,13 +436,13 @@ around 100,000 distinct taxa in the TreeBASE database
 }\DIFaddend ,
 which can be \DIFdelbegin \DIFdel{leveraged }\DIFdelend \DIFaddbegin \DIFadd{used }\DIFaddend as seeds to mine molecular databases, and as ``jump-start'' alignments
 for phylogenetic reconstruction \cite{morrison2006multiple} to continually enrich,
-update and compare \DIFdelbegin \DIFdel{existing phylogenetic }\DIFdelend \DIFaddbegin \DIFadd{new phylogenetic hypotheses to existing }\DIFaddend knowledge.
+update and compare \DIFdelbegin \DIFdel{existing phylogenetic }\DIFdelend \DIFaddbegin \DIFadd{phylogenetic hypotheses to existing evolutionary }\DIFaddend knowledge.
 
 Physcraper is implemented as a Python pipeline that uses OpenTree's \DIFdelbegin \DIFdel{programmatic access
 protocols (API's) }\DIFdelend \DIFaddbegin \DIFadd{APIs }\DIFaddend to automatically
-link any phylogeny mapped to OpenTree's standardized taxonomy\DIFdelbegin \DIFdel{\mbox{%DIFAUXCMD
+link any phylogeny mapped to OpenTree's \DIFdelbegin \DIFdel{standardized taxonomy\mbox{%DIFAUXCMD
 \cite{mctavish2015phylesystem}}\hspace{0pt}%DIFAUXCMD
-}\DIFdelend ,
+}\DIFdelend \DIFaddbegin \DIFadd{unified taxonomy}\DIFaddend ,
 to alignments from TreeBASE, and data from GenBank.
 \DIFdelbegin \DIFdel{Its utility }\DIFdelend \DIFaddbegin \DIFadd{Physcraper's usage }\DIFaddend and functionalities are presented with a case-study analysis of a
 group of flowering plants, the hollies.
@@ -493,10 +489,10 @@ analysis and comparing the updated \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFadd
 
 \subsection*{The inputs: a \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylogeny }\DIFaddend and an alignment}
 
-Taxon names in the input \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylogeny }\DIFaddend must be standardized to \DIFdelbegin \DIFdel{OpenTree taxonomy
+Taxon names in the input \DIFdelbegin \DIFdel{tree }\DIFdelend \DIFaddbegin \DIFadd{phylogeny }\DIFaddend must be standardized to OpenTree\DIFdelbegin \DIFdel{taxonomy
 \mbox{%DIFAUXCMD
 \cite{rees2017automated} }\hspace{0pt}%DIFAUXCMD
-}\DIFdelend \DIFaddbegin \DIFadd{the OpenTree taxonomy
+}\DIFdelend \DIFaddbegin \DIFadd{'s unfified taxonomy
 \mbox{%DIFAUXCMD
 \cite{ott3.2} }\hspace{0pt}%DIFAUXCMD
 }\DIFaddend using OpenTree's bulk Taxonomic Name Resolution Service
@@ -523,14 +519,14 @@ further for analysis; at least one taxon and its corresponding sequence are requ
 \subsection*{DNA sequence search and filtering}
 
 The Basic Local Alignment Search Tool, BLAST \cite{altschul1990basic} is used for DNA
-sequence search on a remote or local GenBank database. It is constrained to a
+sequence search \DIFaddbegin \DIFadd{either }\DIFaddend on a remote or \DIFaddbegin \DIFadd{a }\DIFaddend local GenBank database. It is constrained to a
  ``search taxon", \DIFdelbegin \DIFdel{a taxonomic group in the NCBI taxonomy that is automatically
 identified using the OpenTree's taxonomic }\DIFdelend \DIFaddbegin \DIFadd{which corresponds to the }\DIFaddend Most Recent Common Ancestor (MRCA) \DIFdelbegin \DIFdel{API
 \mbox{%DIFAUXCMD
 \cite{mrcaAPI, rees2017automated}}\hspace{0pt}%DIFAUXCMD
 , as the MRCA }\DIFdelend of
 all ingroup taxa that is also a named clade in the NCBI taxonomy (Figure 1). \DIFaddbegin \DIFadd{The
-search taxon is identified using OpenTree's taxonomic API \mbox{%DIFAUXCMD
+search taxon is identified using OpenTree's unified taxonomic API \mbox{%DIFAUXCMD
 \cite{mrcaAPI}}\hspace{0pt}%DIFAUXCMD
 .
 }\DIFaddend 
@@ -538,18 +534,23 @@ search taxon is identified using OpenTree's taxonomic API \mbox{%DIFAUXCMD
 BLAST is performed using the blastn algorithm \cite{camacho2009blast}
 implemented in BioPython \DIFdelbegin \DIFdel{'s }\DIFdelend \DIFaddbegin \DIFadd{1.71 }\DIFaddend \cite{cock2009biopython} NCBIWWW module \cite{ncbiwww}
 modified to accept an alternative BLAST address.
-Each sequence in the alignment is BLASTed once against all DNA sequences in GenBank.
-New sequences are excluded for analysis if they 1) are not in the search taxon;
+Each sequence in the alignment is BLASTed once against \DIFdelbegin \DIFdel{all DNA sequences in GenBank .
+New sequences are excluded for }\DIFdelend \DIFaddbegin \DIFadd{the GenBank database.
+Matching sequences are filtered and excluded from the }\DIFaddend analysis if they 1) are not in the search taxon;
 2) have an e-value above the cutoff (default to 0.00001); 3) fall outside a \DIFdelbegin \DIFdel{min
 and max }\DIFdelend \DIFaddbegin \DIFadd{minimum
 and maximum sequence }\DIFaddend length threshold, defined as \DIFdelbegin \DIFdel{the }\DIFdelend \DIFaddbegin \DIFadd{a }\DIFaddend proportion of the average \DIFaddbegin \DIFadd{sequence }\DIFaddend length without
 gaps of all sequences in \DIFaddbegin \DIFadd{the }\DIFaddend input alignment (default values of 80%DIF <  and 120%,
 \DIFaddbegin \DIFadd{\% and 120\%,
 }\DIFaddend respectively); 4) or\DIFaddbegin \DIFadd{, }\DIFaddend if they are either identical to or shorter than an existing
-sequence in the input alignment and they represent the same taxon in OpenTree\DIFaddbegin \DIFadd{'s }\DIFaddend or
-NCBI taxonomy.
-An arbitrary maximum number of randomly chosen sequences per taxon are allowed
-(default to 5).
+sequence in the input alignment and they represent the same taxon in \DIFdelbegin \DIFdel{OpenTree or
+NCBItaxonomy.
+An }\DIFdelend \DIFaddbegin \DIFadd{NCBI's or
+OpenTree's unififed taxonomy.
+By default, an }\DIFaddend arbitrary maximum number of \DIFdelbegin \DIFdel{randomly chosen }\DIFdelend \DIFaddbegin \DIFadd{5 }\DIFaddend sequences per taxon are \DIFdelbegin \DIFdel{allowed
+}\DIFdelend \DIFaddbegin \DIFadd{chosen at random
+from the set of matching sequences that passed the filtering step.
+}\DIFaddend (default to 5).
 
 Reverse, complement, and reverse-complement sequences are identified and translated
 using BioPython internal functions \cite{cock2009biopython}.
@@ -1045,7 +1046,9 @@ and an anonymous reviewer that greatly improved an earlier version of this manus
 
 \section*{Figures}
   \begin{figure}[h!]
-  \caption{The Physcraper framework consists of four general steps. The software is fully
+  \caption{The Physcraper framework consists of four general steps. The \DIFaddbeginFL \DIFaddFL{star represents
+  the ``search taxon", the Most Recent Common Ancestor (MRCA) of all taxa in the
+  ingroup that is also a named clade in the NCBI taxonomy. The }\DIFaddendFL software is fully
   described on its documentation website at \href{https://physcraper.readthedocs.io}{https://physcraper.readthedocs.io},
   along with installation instructions, function usage descriptions, examples and tutorials.
 }
