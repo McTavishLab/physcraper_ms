@@ -327,7 +327,7 @@ in the synthetic tree based on OpenTree's unified taxonomy.
 There is a considerable amount of phylogenetically
 informative data in GenBank with the potential to fill these phylogenetic gaps in
 the tree of life, but this data either has not been analysed or the analyses
-have not been made publicly available and accesible \cite{mctavish_how_2017}.
+have not been made publicly available and accessible \cite{mctavish_how_2017}.
 
 Assembling a DNA alignment from a massive database such as GenBank can be done ``by hand",
 but that is a time-consuming approach which is largely non reproducible.
@@ -454,7 +454,7 @@ Bootstrap results are summarized using DendroPy's SumTrees module
 \cite{sukumaran2010dendropy}.
 
 Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
-Updated and original phylogeies are compared with Robinson-Foulds weighted and unweighted
+Updated and original phylogenies are compared with Robinson-Foulds weighted and unweighted
 metrics calculated with Dendropy \cite{sukumaran2010dendropy}, and with a node by node
 comparison between the synthetic OpenTree and the original and updated phylogenies individually,
 using OpenTree's conflict API \cite{redelings2017supertree}.
@@ -558,9 +558,8 @@ alignments and phylogenies, taking advantage of OpenTree's services to facilitat
 of phylogenies, with the main goal of extending our knowledge of phylogenetic relationships
 across the tree of life.
 
-We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics,
-facilitating phylogenetic knowledge for ecologists and other non-specialists, effectively
-democratizing phylogenetic studies.
+We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics.
+It contributes to the democratization of the field by facilitating access to phylogenetic knowledge for ecologists and other non-specialists.
 
 As a tool for automatizing phylogenetic reconstruction from molecular databases,
 Physcraper presents several advantages over existing phylogenetic pipelines designed to
@@ -593,19 +592,17 @@ choices have on their inferences.
 This is in contrast to ``manual" searches for taxa, where similarly arbitrary filters
 are applied, but are difficult to trace.
 As many studies have shown \cite{huang_what_2009} the effect of missing data can
-be enigmatic, and interact with the true phylogenetic relationships for the data
-set at hand.
+be enigmatic, and interact with the true phylogenetic relationships for the dataset at hand.
 There is not currently strong support in the literature for any particular cutoff
 value, and rather than prescribe specific approaches, we encourage users to explore
 the effects of different choices on their phylogenetic inferences.
 In addition, by providing the output files at each step of the analysis,
 it is straightforward to assess how changing parameter and software choices do or
 do not drive differences in phylogenetic inference.
-By gathering the sequences, and making the unaligned files easily available to users,
-researchers can compare if applying any alternate alignment tool of their choice
-affects inferences.
-Once sequences are aligned, they can apply and compare inferences from any phylogenetic
-software.
+By gathering the DNA sequences, and making the unaligned files easily accessible and reusable,
+Physcraper facilitates the exploration of alternative aligning tools to determine their effect on phylogenetic inferences.
+Once sequences are aligned, users can apply practically any phylogenetic
+software and compare results using Physcraper tools.
 
 Organellar genome sequences, such as chloroplasts and mitochondria will also generally
 be excluded from automatic addition based on default Physcraper length cutoffs.
@@ -615,7 +612,7 @@ shorter sequences with many long gaps to align with exact matches across the ent
 longer locus.
 While it would be possible to directly extract the BLAST match from genomes, this
  would exclude potentially homologous flanking regions which are not matched
-by BLAST's local search algorithm, but that may be important for phylogenetic inference.
+using BLAST's local search algorithm, but that may be important for phylogenetic inference.
 Instead we list the accession numbers for these matches in the ``seqlen\_mismatch.txt"
 file, for users to assess and incorporate appropriate homologous regions to their
 alignment of interest.
@@ -624,8 +621,8 @@ Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_p
 which add new taxa without modifying the input phylogeny, Physcraper estimates all
 the relationships anew in the context of the new data.
 PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no
-longer under active development, is challenging to install and run, and has resulted
-in very few phylogenetic analyses since its publication.
+longer under active development, is challenging to install and run, and has produced
+ very few published phylogenetic analyses since its publication.
 
 Physcraper generates gene trees, which individually do not capture the full complexity
 of species' evolutionary history \cite{song2012resolving}. In addition, single gene
@@ -638,7 +635,7 @@ Also, Physcraper thins alignments by removing sequences identical to original
 and newly added sequences, and by setting a maximum number of sequences per taxon.
 Nonetheless, it is incumbent on users to assess their final inference with respect
 to statistical support and biological plausibility.
-% Add citation of good things about thining alignments
+% Add citation of good things about thinning alignments?
 
 In the era of phylogenomics, rigorous analyses of multiple loci still allow for
 more complex evolutionary models
@@ -660,9 +657,9 @@ single marker, so we expect for it to be not as well resolved as phylogenies res
 that used multiple markers. Although not perfect,
 we think the Physcraper updated \textit{Ilex} phylogeny seems biologically reasonable
 in different ways. All samples
-corresponding to the ingroup cluster together forming a monophyletic group (Figure 2A), and
+corresponding to the ingroup are clustered together, forming a monophyletic group (Figure 2A), and
 samples belonging to the same \textit{Ilex} species also form
-monophyletic groups (Figure 2B). A notable exception is samples of the species \textit{Ilex theeizans}, which appear as
+monophyletic groups (Figure 2B). A notable exception are samples of the species \textit{Ilex theeizans}, which appear as
 non-monophyletic in the updated phylogeny as well as in the original Gottlieb2005 phylogeny.
 % This suggests that the samples might represent two different species, but further
 % analyses should be conducted.
@@ -676,12 +673,12 @@ in the output phylogenies to data available in a variety of biological databases
 geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
 Taxonomic links, and comparisons to existing published phylogenies in the OpenTree
 data store can also help flag paralogous sequences.
-Accidentally including paralogs as homologs is a risk in phylogenetic analyses,
-and can be more prevalent in automated analyses than in manually curated analyses.
-We provide users with several tools to try to assess homology of their aligned sequences.
+Accidentally including paralogs as homologs is a known risk of assembling a dataset for phlyogenetic analysis,
+and can be more prevalent in automatically assembled dtasets than in manually curated ones.
+We provide users with several tools to assess homology of aligned sequences.
 The estimated gene phylogeny itself is an evolutionarily explicit way to visualize gene
 evolution, which in concert with taxonomic labelling can reveal paralogy.
-OpenTree's conflict analysis tool informs the users of whether their phylogeny contains major
+OpenTree's conflict analysis tool implemented in Physcraper informs the users of whether their phylogeny contains major
 conflicts with established taxonomy and any phylogenetic context they wish to compare to.
 This tool also returns information on taxonomic and phylogenetic conflicts that exist
 in the original input phylogeny.
@@ -703,10 +700,10 @@ Data repositories hold more information than meets the eye.
 Beyond the main data, they are rich sources of metadata that can be leveraged
 for the advantage of all areas of biology as well as the advancement of scientific
 policy, applications and education.
-Initial ideas about the data are constantly changed by results from new analyses.
+Initial understanding about scientific data is constantly challenged and reframed by new data and analyses.
 Physcraper provides a framework for reproducible phylogenetics that has the
-potential to consistently provide context for these ideas, highlighting the
-importance of data sharing and open science for phylogenetics, biology and science.
+potential to consistently contextualize new knowledge in the light of previous knowledge,
+showcasing the utility and importance of good data sharing practices and open science for phylogenetics, biology and science.
 
 \section*{Availability and requirements}
 
@@ -757,12 +754,12 @@ Not applicable.
 
 \section*{Availability of data and materials}
 
-Code and datasets generated and analysed during the current study are available in
-the repositories ``physcraper" containing the source code,
+Code and datasets developed and analysed for this study are available at
+the following GitHub repositories: ``physcraper" -- contains the source code,
 \href{https://github.com/McTavishLab/physcraper}{https://github.com/McTavishLab/physcraper};
- ``physcraperex" containing the examples,
+ ``physcraperex" -- contains the examples,
 \href{https://github.com/McTavishLab/physcraperex}{https://github.com/McTavishLab/physcraperex};
-and, ``physcraper\_ms" containing this reproducible manuscript,
+and, ``physcraper\_ms" -- contains this reproducible manuscript,
 \href{https://github.com/McTavishLab/physcraper\_ms}{https://github.com/McTavishLab/physcraper\_ms}.
 
 \section*{Competing interests}
@@ -774,15 +771,18 @@ No. 1759838, and ABI No. 1759846.
 Computer time was provided by the Multi-Environment Research Computer for
 Exploration and Discovery (MERCED) cluster from the University of California,
 Merced (UCM), supported by the NSF Grant No. ACI-1429783.
+The funding body did not play any roles in the design of the study and collection,
+analysis, and interpretation of data nor in writing the manuscript.
 
 \section*{Authors' contributions}
 LLSR wrote manuscript, alignment code, documentation, performed analyses and developed examples; MK wrote code for ncbidataparser module, filtering of sequences per OTU and using offline blast searches, wrote documentation and tests; EJM conceived study, wrote most of the code, documentation and tests.
-All authors contributed to the manuscript and gave final approval for publication.
+All authors contributed to the manuscript, and have read and approved the final manuscript for publication.
 
 
 \section*{Acknowledgements}
-We thank the members of the OpenTree development team and the ``short bar" Science
-and Engineering Building 1, UCM, joint lab paper discussion group for valuable
+We thank the members of the current OpenTree development team (MH, KC, MTH, and JA),
+and the ``short bar" Science
+and Engineering Building 1, UCM, Bloise-McTavish joint lab paper discussion group for valuable
 comments on this manuscript. We also thank the valuable comments of David Posada, Rutger Vos,
 and an anonymous reviewer that greatly improved an earlier version of this manuscript.
 
@@ -844,18 +844,18 @@ and an anonymous reviewer that greatly improved an earlier version of this manus
   \caption{A) Phylogeny updated with Physcraper using a starting phylogeny and an alignment from
   \cite{gottlieb2005molecular} (Gottlieb2005 data in text).
   Tips in original alignment and new tips added with Physcraper are depicted in
-  black and red, respectively. Physcraper obtained sequences from the GenBank
-  database via local BLAST of all sequences from the Gottlieb2005 internal transcribed
-  spacer DNA region (ITS) original alignment,
-  filtered them following criteria described in section ``DNA sequence search and
-  filtering", aligned them to the original alignment using MUSCLE, and performed a
+  black and red, respectively. First, Physcraper obtained sequences from the GenBank
+  database via local BLAST of all sequences in the Gottlieb2005 original alignment of the internal transcribed
+  spacer DNA region (ITS). Then, it
+  filtered the obtained sequences following criteria described in section ``DNA sequence search and
+  filtering", and aligned them to the original Gottlieb2005 alignment using MUSCLE. Finally, Physcraper performed a
   phylogenetic reconstruction using RAxML, with 100 bootstraps. B) Results of conflict
   analysis performed using OpenTree's conflict tool \cite{redelings2017supertree}.
   The Physcraper updated Gottlieb2005 phylogeny in (A) was compared to an \textit{Ilex}
   OpenTree synthetic subtree v. 12.3 \cite{ott727571} constructed using taxonomy of the genus
   as backbone and resolving branches based on phylogenetic data from the original
   Gottlieb2005 phylogeny. Green branches are resolved by the updated phylogeny,
-  blue branches are in agreement between the updated phylogeny and the syntehtic subtree, and
+  blue branches are in agreement between the updated phylogeny and the synthetic subtree, and
   orange branches are in conflict between the two.
 }
 \end{figure}
