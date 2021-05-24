@@ -1,7 +1,4 @@
 %% BioMed_Central_Tex_Template_v1.06
-%DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-05-04.tex   Fri May 28 13:49:33 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Thu May 27 01:46:04 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -82,47 +79,6 @@
 \endlocaldefs
 
 %%% Begin ...
-%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
-%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
-\RequirePackage[normalem]{ulem} %DIF PREAMBLE
-\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
-\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
-%DIF SAFE PREAMBLE %DIF PREAMBLE
-\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
-\providecommand{\DIFaddend}{} %DIF PREAMBLE
-\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
-\providecommand{\DIFdelend}{} %DIF PREAMBLE
-\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
-\providecommand{\DIFmodend}{} %DIF PREAMBLE
-%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
-\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
-\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
-\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
-\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
-\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
-\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
-%DIF HYPERREF PREAMBLE %DIF PREAMBLE
-\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
-%DIF LISTINGS PREAMBLE %DIF PREAMBLE
-\RequirePackage{listings} %DIF PREAMBLE
-\RequirePackage{color} %DIF PREAMBLE
-\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
-%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
-  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
-  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
-} %DIF PREAMBLE
-\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
-	language=DIFcode, %DIF PREAMBLE
-	basicstyle=\ttfamily, %DIF PREAMBLE
-	columns=fullflexible, %DIF PREAMBLE
-	keepspaces=true %DIF PREAMBLE
-} %DIF PREAMBLE
-\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
-\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
-%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
-
 \begin{document}
 
 %%% Start of article front matter
@@ -371,7 +327,7 @@ in the synthetic tree based on OpenTree's unified taxonomy.
 There is a considerable amount of phylogenetically
 informative data in GenBank with the potential to fill these phylogenetic gaps in
 the tree of life, but this data either has not been analysed or the analyses
-have not been made publicly available and \DIFdelbegin \DIFdel{accesible }\DIFdelend \DIFaddbegin \DIFadd{accessible }\DIFaddend \cite{mctavish_how_2017}.
+have not been made publicly available and accesible \cite{mctavish_how_2017}.
 
 Assembling a DNA alignment from a massive database such as GenBank can be done ``by hand",
 but that is a time-consuming approach which is largely non reproducible.
@@ -498,7 +454,7 @@ Bootstrap results are summarized using DendroPy's SumTrees module
 \cite{sukumaran2010dendropy}.
 
 Physcraper's main result is an updated phylogenetic hypothesis for the search taxon.
-Updated and original \DIFdelbegin \DIFdel{phylogeies }\DIFdelend \DIFaddbegin \DIFadd{phylogenies }\DIFaddend are compared with Robinson-Foulds weighted and unweighted
+Updated and original phylogeies are compared with Robinson-Foulds weighted and unweighted
 metrics calculated with Dendropy \cite{sukumaran2010dendropy}, and with a node by node
 comparison between the synthetic OpenTree and the original and updated phylogenies individually,
 using OpenTree's conflict API \cite{redelings2017supertree}.
@@ -602,10 +558,9 @@ alignments and phylogenies, taking advantage of OpenTree's services to facilitat
 of phylogenies, with the main goal of extending our knowledge of phylogenetic relationships
 across the tree of life.
 
-We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics\DIFdelbegin \DIFdel{,
-facilitating }\DIFdelend \DIFaddbegin \DIFadd{.
-It contributes to the democratization of the field by facilitating access to }\DIFaddend phylogenetic knowledge for ecologists and other non-specialists\DIFdelbegin \DIFdel{, effectively
-democratizing phylogenetic studies}\DIFdelend .
+We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics,
+facilitating phylogenetic knowledge for ecologists and other non-specialists, effectively
+democratizing phylogenetic studies.
 
 As a tool for automatizing phylogenetic reconstruction from molecular databases,
 Physcraper presents several advantages over existing phylogenetic pipelines designed to
@@ -638,20 +593,19 @@ choices have on their inferences.
 This is in contrast to ``manual" searches for taxa, where similarly arbitrary filters
 are applied, but are difficult to trace.
 As many studies have shown \cite{huang_what_2009} the effect of missing data can
-be enigmatic, and interact with the true phylogenetic relationships for the \DIFdelbegin \DIFdel{data
-set }\DIFdelend \DIFaddbegin \DIFadd{dataset }\DIFaddend at hand.
+be enigmatic, and interact with the true phylogenetic relationships for the data
+set at hand.
 There is not currently strong support in the literature for any particular cutoff
 value, and rather than prescribe specific approaches, we encourage users to explore
 the effects of different choices on their phylogenetic inferences.
 In addition, by providing the output files at each step of the analysis,
 it is straightforward to assess how changing parameter and software choices do or
 do not drive differences in phylogenetic inference.
-By gathering the \DIFaddbegin \DIFadd{DNA }\DIFaddend sequences, and making the unaligned files easily \DIFdelbegin \DIFdel{available to users,
+By gathering the sequences, and making the unaligned files easily available to users,
 researchers can compare if applying any alternate alignment tool of their choice
-affects }\DIFdelend \DIFaddbegin \DIFadd{accessible and reusable,
-Physcraper facilitates the exploration of alternative aligning tools to determine their effect on phylogenetic }\DIFaddend inferences.
-Once sequences are aligned, \DIFdelbegin \DIFdel{they can apply and compare inferences from }\DIFdelend \DIFaddbegin \DIFadd{users can apply practically }\DIFaddend any phylogenetic
-software \DIFaddbegin \DIFadd{and compare results using Physcraper tools}\DIFaddend .
+affects inferences.
+Once sequences are aligned, they can apply and compare inferences from any phylogenetic
+software.
 
 Organellar genome sequences, such as chloroplasts and mitochondria will also generally
 be excluded from automatic addition based on default Physcraper length cutoffs.
@@ -661,7 +615,7 @@ shorter sequences with many long gaps to align with exact matches across the ent
 longer locus.
 While it would be possible to directly extract the BLAST match from genomes, this
  would exclude potentially homologous flanking regions which are not matched
-\DIFdelbegin \DIFdel{by }\DIFdelend \DIFaddbegin \DIFadd{using }\DIFaddend BLAST's local search algorithm, but that may be important for phylogenetic inference.
+by BLAST's local search algorithm, but that may be important for phylogenetic inference.
 Instead we list the accession numbers for these matches in the ``seqlen\_mismatch.txt"
 file, for users to assess and incorporate appropriate homologous regions to their
 alignment of interest.
@@ -670,9 +624,8 @@ Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_p
 which add new taxa without modifying the input phylogeny, Physcraper estimates all
 the relationships anew in the context of the new data.
 PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no
-longer under active development, is challenging to install and run, and has \DIFdelbegin \DIFdel{resulted
-in very few }\DIFdelend \DIFaddbegin \DIFadd{produced
- very few published }\DIFaddend phylogenetic analyses since its publication.
+longer under active development, is challenging to install and run, and has resulted
+in very few phylogenetic analyses since its publication.
 
 Physcraper generates gene trees, which individually do not capture the full complexity
 of species' evolutionary history \cite{song2012resolving}. In addition, single gene
@@ -685,8 +638,7 @@ Also, Physcraper thins alignments by removing sequences identical to original
 and newly added sequences, and by setting a maximum number of sequences per taxon.
 Nonetheless, it is incumbent on users to assess their final inference with respect
 to statistical support and biological plausibility.
-%DIF <  Add citation of good things about thining alignments
-%DIF >  Add citation of good things about thinning alignments?
+% Add citation of good things about thining alignments
 
 In the era of phylogenomics, rigorous analyses of multiple loci still allow for
 more complex evolutionary models
@@ -708,9 +660,9 @@ single marker, so we expect for it to be not as well resolved as phylogenies res
 that used multiple markers. Although not perfect,
 we think the Physcraper updated \textit{Ilex} phylogeny seems biologically reasonable
 in different ways. All samples
-corresponding to the ingroup \DIFdelbegin \DIFdel{cluster together}\DIFdelend \DIFaddbegin \DIFadd{are clustered together, }\DIFaddend forming a monophyletic group (Figure 2A), and
+corresponding to the ingroup cluster together forming a monophyletic group (Figure 2A), and
 samples belonging to the same \textit{Ilex} species also form
-monophyletic groups (Figure 2B). A notable exception \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{are }\DIFaddend samples of the species \textit{Ilex theeizans}, which appear as
+monophyletic groups (Figure 2B). A notable exception is samples of the species \textit{Ilex theeizans}, which appear as
 non-monophyletic in the updated phylogeny as well as in the original Gottlieb2005 phylogeny.
 % This suggests that the samples might represent two different species, but further
 % analyses should be conducted.
@@ -724,12 +676,12 @@ in the output phylogenies to data available in a variety of biological databases
 geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
 Taxonomic links, and comparisons to existing published phylogenies in the OpenTree
 data store can also help flag paralogous sequences.
-Accidentally including paralogs as homologs is a \DIFdelbegin \DIFdel{risk in phylogenetic analyses}\DIFdelend \DIFaddbegin \DIFadd{known risk of assembling a dataset for phlyogenetic analysis}\DIFaddend ,
-and can be more prevalent in \DIFdelbegin \DIFdel{automated analyses }\DIFdelend \DIFaddbegin \DIFadd{automatically assembled dtasets }\DIFaddend than in manually curated \DIFdelbegin \DIFdel{analyses}\DIFdelend \DIFaddbegin \DIFadd{ones}\DIFaddend .
-We provide users with several tools to \DIFdelbegin \DIFdel{try to }\DIFdelend assess homology of \DIFdelbegin \DIFdel{their }\DIFdelend aligned sequences.
+Accidentally including paralogs as homologs is a risk in phylogenetic analyses,
+and can be more prevalent in automated analyses than in manually curated analyses.
+We provide users with several tools to try to assess homology of their aligned sequences.
 The estimated gene phylogeny itself is an evolutionarily explicit way to visualize gene
 evolution, which in concert with taxonomic labelling can reveal paralogy.
-OpenTree's conflict analysis tool \DIFaddbegin \DIFadd{implemented in Physcraper }\DIFaddend informs the users of whether their phylogeny contains major
+OpenTree's conflict analysis tool informs the users of whether their phylogeny contains major
 conflicts with established taxonomy and any phylogenetic context they wish to compare to.
 This tool also returns information on taxonomic and phylogenetic conflicts that exist
 in the original input phylogeny.
@@ -751,11 +703,10 @@ Data repositories hold more information than meets the eye.
 Beyond the main data, they are rich sources of metadata that can be leveraged
 for the advantage of all areas of biology as well as the advancement of scientific
 policy, applications and education.
-Initial \DIFdelbegin \DIFdel{ideas about the data are constantly changed by results from new }\DIFdelend \DIFaddbegin \DIFadd{understanding about scientific data is constantly challenged and reframed by new data and }\DIFaddend analyses.
+Initial ideas about the data are constantly changed by results from new analyses.
 Physcraper provides a framework for reproducible phylogenetics that has the
-potential to consistently \DIFdelbegin \DIFdel{provide context for these ideas,
-highlighting the importance of data sharing }\DIFdelend \DIFaddbegin \DIFadd{contextualize new knowledge in the light of previous knowledge,
-showcasing the utility and importance of good data sharing practices }\DIFaddend and open science for phylogenetics, biology and science.
+potential to consistently provide context for these ideas, highlighting the
+importance of data sharing and open science for phylogenetics, biology and science.
 
 \section*{Availability and requirements}
 
@@ -806,13 +757,12 @@ Not applicable.
 
 \section*{Availability of data and materials}
 
-Code and datasets \DIFdelbegin \DIFdel{generated and analysed during the current }\DIFdelend \DIFaddbegin \DIFadd{developed and analysed for this }\DIFaddend study are available \DIFdelbegin \DIFdel{in
-the repositories }\DIFdelend \DIFaddbegin \DIFadd{at
-the following GitHub repositories: }\DIFaddend ``physcraper" \DIFdelbegin \DIFdel{containing }\DIFdelend \DIFaddbegin \DIFadd{-- contains }\DIFaddend the source code,
+Code and datasets generated and analysed during the current study are available in
+the repositories ``physcraper" containing the source code,
 \href{https://github.com/McTavishLab/physcraper}{https://github.com/McTavishLab/physcraper};
- ``physcraperex" \DIFdelbegin \DIFdel{containing }\DIFdelend \DIFaddbegin \DIFadd{-- contains }\DIFaddend the examples,
+ ``physcraperex" containing the examples,
 \href{https://github.com/McTavishLab/physcraperex}{https://github.com/McTavishLab/physcraperex};
-and, ``physcraper\_ms" \DIFdelbegin \DIFdel{containing }\DIFdelend \DIFaddbegin \DIFadd{-- contains }\DIFaddend this reproducible manuscript,
+and, ``physcraper\_ms" containing this reproducible manuscript,
 \href{https://github.com/McTavishLab/physcraper\_ms}{https://github.com/McTavishLab/physcraper\_ms}.
 
 \section*{Competing interests}
@@ -824,19 +774,15 @@ No. 1759838, and ABI No. 1759846.
 Computer time was provided by the Multi-Environment Research Computer for
 Exploration and Discovery (MERCED) cluster from the University of California,
 Merced (UCM), supported by the NSF Grant No. ACI-1429783.
-\DIFaddbegin \DIFadd{The funding body did not play any roles in the design of the study and collection,
-analysis, and interpretation of data nor in writing the manuscript.
-}\DIFaddend 
 
 \section*{Authors' contributions}
 LLSR wrote manuscript, alignment code, documentation, performed analyses and developed examples; MK wrote code for ncbidataparser module, filtering of sequences per OTU and using offline blast searches, wrote documentation and tests; EJM conceived study, wrote most of the code, documentation and tests.
-All authors contributed to the manuscript\DIFdelbegin \DIFdel{and gave final approval }\DIFdelend \DIFaddbegin \DIFadd{, and have read and approved the final manuscript }\DIFaddend for publication.
+All authors contributed to the manuscript and gave final approval for publication.
 
 
 \section*{Acknowledgements}
-We thank the members of the \DIFaddbegin \DIFadd{current }\DIFaddend OpenTree development team \DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{(MH, KC, MTH, and JA),
-and }\DIFaddend the ``short bar" Science
-and Engineering Building 1, UCM, \DIFaddbegin \DIFadd{Bloise-McTavish }\DIFaddend joint lab paper discussion group for valuable
+We thank the members of the OpenTree development team and the ``short bar" Science
+and Engineering Building 1, UCM, joint lab paper discussion group for valuable
 comments on this manuscript. We also thank the valuable comments of David Posada, Rutger Vos,
 and an anonymous reviewer that greatly improved an earlier version of this manuscript.
 
@@ -898,18 +844,18 @@ and an anonymous reviewer that greatly improved an earlier version of this manus
   \caption{A) Phylogeny updated with Physcraper using a starting phylogeny and an alignment from
   \cite{gottlieb2005molecular} (Gottlieb2005 data in text).
   Tips in original alignment and new tips added with Physcraper are depicted in
-  black and red, respectively. \DIFaddbeginFL \DIFaddFL{First, }\DIFaddendFL Physcraper obtained sequences from the GenBank
-  database via local BLAST of all sequences \DIFdelbeginFL \DIFdelFL{from }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{in }\DIFaddendFL the Gottlieb2005 \DIFaddbeginFL \DIFaddFL{original alignment of the }\DIFaddendFL internal transcribed
-  spacer DNA region (ITS)\DIFdelbeginFL \DIFdelFL{original alignment}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{. Then}\DIFaddendFL , \DIFaddbeginFL \DIFaddFL{it
-  }\DIFaddendFL filtered \DIFdelbeginFL \DIFdelFL{them }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{the obtained sequences }\DIFaddendFL following criteria described in section ``DNA sequence search and
-  filtering", \DIFaddbeginFL \DIFaddFL{and }\DIFaddendFL aligned them to the original \DIFaddbeginFL \DIFaddFL{Gottlieb2005 }\DIFaddendFL alignment using MUSCLE\DIFaddbeginFL \DIFaddFL{. Finally}\DIFaddendFL , \DIFdelbeginFL \DIFdelFL{and }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Physcraper }\DIFaddendFL performed a
+  black and red, respectively. Physcraper obtained sequences from the GenBank
+  database via local BLAST of all sequences from the Gottlieb2005 internal transcribed
+  spacer DNA region (ITS) original alignment,
+  filtered them following criteria described in section ``DNA sequence search and
+  filtering", aligned them to the original alignment using MUSCLE, and performed a
   phylogenetic reconstruction using RAxML, with 100 bootstraps. B) Results of conflict
   analysis performed using OpenTree's conflict tool \cite{redelings2017supertree}.
   The Physcraper updated Gottlieb2005 phylogeny in (A) was compared to an \textit{Ilex}
   OpenTree synthetic subtree v. 12.3 \cite{ott727571} constructed using taxonomy of the genus
   as backbone and resolving branches based on phylogenetic data from the original
   Gottlieb2005 phylogeny. Green branches are resolved by the updated phylogeny,
-  blue branches are in agreement between the updated phylogeny and the \DIFdelbeginFL \DIFdelFL{syntehtic }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{synthetic }\DIFaddendFL subtree, and
+  blue branches are in agreement between the updated phylogeny and the syntehtic subtree, and
   orange branches are in conflict between the two.
 }
 \end{figure}
