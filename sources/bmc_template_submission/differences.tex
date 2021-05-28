@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-05-04.tex   Fri May 28 13:49:33 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Thu May 27 01:46:04 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri May 28 14:19:42 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -153,20 +153,30 @@
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author[
+\DIFdelbegin %DIFDELCMD < \author[
+%DIFDELCMD <   addressref={aff1},                   % id's of addresses, e.g. {aff1,aff2}
+%DIFDELCMD <   % corref={aff1},                       % id of corresponding address, if any
+%DIFDELCMD <   email={sanchez.reyes.luna@gmail.com}   % email address
+%DIFDELCMD < ]{%%%
+\DIFdelend \DIFaddbegin \author[
   addressref={aff1},                   % id's of addresses, e.g. {aff1,aff2}
-  % corref={aff1},                       % id of corresponding address, if any
+  corref={aff1},                       % id of corresponding address, if any
   email={sanchez.reyes.luna@gmail.com}   % email address
-]{\inits{L.L.}\fnm{Luna L.} \snm{Sanchez Reyes}}
+]{\DIFaddend \inits{L.L.}\fnm{Luna L.} \snm{Sanchez Reyes}}
 \author[
   addressref={aff1,aff2},
   email={kandziom@natur.cuni.cz}
 ]{\inits{M.}\fnm{Martha} \snm{Kandziora}}
-\author[
+\DIFdelbegin %DIFDELCMD < \author[
+%DIFDELCMD <   addressref={aff1},
+%DIFDELCMD <   corref={aff1},
+%DIFDELCMD <   email={ejmctavish@ucmerced.edu}
+%DIFDELCMD < ]{%%%
+\DIFdelend \DIFaddbegin \author[
   addressref={aff1},
-  corref={aff1},
+  % corref={aff1},
   email={ejmctavish@ucmerced.edu}
-]{\inits{E.J.}\fnm{Emily Jane} \snm{McTavish}}
+]{\DIFaddend \inits{E.J.}\fnm{Emily Jane} \snm{McTavish}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% Enter the authors' addresses here        %%
@@ -725,7 +735,7 @@ geographical locations for taxa from the GBIF \cite{gbif_secretariat_gbif_2019}.
 Taxonomic links, and comparisons to existing published phylogenies in the OpenTree
 data store can also help flag paralogous sequences.
 Accidentally including paralogs as homologs is a \DIFdelbegin \DIFdel{risk in phylogenetic analyses}\DIFdelend \DIFaddbegin \DIFadd{known risk of assembling a dataset for phlyogenetic analysis}\DIFaddend ,
-and can be more prevalent in \DIFdelbegin \DIFdel{automated analyses }\DIFdelend \DIFaddbegin \DIFadd{automatically assembled dtasets }\DIFaddend than in manually curated \DIFdelbegin \DIFdel{analyses}\DIFdelend \DIFaddbegin \DIFadd{ones}\DIFaddend .
+and can be more prevalent in \DIFdelbegin \DIFdel{automated analyses }\DIFdelend \DIFaddbegin \DIFadd{automatically assembled datasets }\DIFaddend than in manually curated \DIFdelbegin \DIFdel{analyses}\DIFdelend \DIFaddbegin \DIFadd{ones}\DIFaddend .
 We provide users with several tools to \DIFdelbegin \DIFdel{try to }\DIFdelend assess homology of \DIFdelbegin \DIFdel{their }\DIFdelend aligned sequences.
 The estimated gene phylogeny itself is an evolutionarily explicit way to visualize gene
 evolution, which in concert with taxonomic labelling can reveal paralogy.
@@ -739,7 +749,7 @@ These taxonomic and phylogenetic conflicts flag regions of the phylogeny for the
 to more closely examine and assess homology.
 
 The Physcraper workflow can be used to rapidly (in a matter of hours) create
-phylogenies which can address challenges overarching both fields of ecology and evolution, such as
+phylogenies \DIFdelbegin \DIFdel{which can }\DIFdelend \DIFaddbegin \DIFadd{to }\DIFaddend address challenges overarching both fields of ecology and evolution, such as
 phylogenetically placing newly discovered species \cite{webb2010biodiversity},
 curating taxonomic assignments
 \cite{san2010molecular},
@@ -751,10 +761,10 @@ Data repositories hold more information than meets the eye.
 Beyond the main data, they are rich sources of metadata that can be leveraged
 for the advantage of all areas of biology as well as the advancement of scientific
 policy, applications and education.
-Initial \DIFdelbegin \DIFdel{ideas about the data are constantly changed by results from new }\DIFdelend \DIFaddbegin \DIFadd{understanding about scientific data is constantly challenged and reframed by new data and }\DIFaddend analyses.
+\DIFdelbegin \DIFdel{Initial ideas about the data are constantly changed by results from new }\DIFdelend \DIFaddbegin \DIFadd{Scientific understanding is constantly challenged and reframed by new data and }\DIFaddend analyses.
 Physcraper provides a framework for reproducible phylogenetics that has the
 potential to consistently \DIFdelbegin \DIFdel{provide context for these ideas,
-highlighting the importance of data sharing }\DIFdelend \DIFaddbegin \DIFadd{contextualize new knowledge in the light of previous knowledge,
+highlighting the importance of data sharing }\DIFdelend \DIFaddbegin \DIFadd{contextualize new knowledge in the light of previous understanding,
 showcasing the utility and importance of good data sharing practices }\DIFaddend and open science for phylogenetics, biology and science.
 
 \section*{Availability and requirements}
