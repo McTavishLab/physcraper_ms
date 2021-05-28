@@ -1,7 +1,7 @@
 %% BioMed_Central_Tex_Template_v1.06
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL sources/bmc_template_submission/bmc_article_submission_2021-05-04.tex   Fri May 28 13:49:33 2021
-%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri May 28 14:19:42 2021
+%DIF ADD sources/bmc_template_submission/bmc_article.tex                         Fri May 28 15:55:47 2021
 %%                                      %
 %  bmc_article.tex            ver: 1.06 %
 %                                       %
@@ -603,65 +603,88 @@ that were filtered based on sequence length cutoffs set in the configuration fil
 
 \section*{Discussion}
 Databases preserving and democratizing access to biological data
-have become essential resources for science.
-New molecular data keep accumulating and tools facilitating its integration into
+have become essential resources for science. New molecular data keep accumulating and tools facilitating its integration into
 existent evolutionary knowledge contribute to the acceleration of scientific discovery.
+\DIFdelbegin %DIFDELCMD < 
 
-Physcraper is a tool that builds upon previous knowledge stored in published
+%DIFDELCMD < %%%
+\DIFdelend Physcraper is a tool that builds upon previous knowledge stored in published
 alignments and phylogenies, taking advantage of OpenTree's services to facilitate comparison
 of phylogenies, with the main goal of extending our knowledge of phylogenetic relationships
-across the tree of life.
+across the tree of life. \DIFdelbegin %DIFDELCMD < 
 
-We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics\DIFdelbegin \DIFdel{,
+%DIFDELCMD < %%%
+\DIFdelend We believe this is a key step to successfully establish an open, reproducible workflow for phylogenetics\DIFdelbegin \DIFdel{,
 facilitating }\DIFdelend \DIFaddbegin \DIFadd{.
-It contributes to the democratization of the field by facilitating access to }\DIFaddend phylogenetic knowledge for ecologists and other non-specialists\DIFdelbegin \DIFdel{, effectively
-democratizing phylogenetic studies}\DIFdelend .
+As such, it facilitates access to }\DIFaddend phylogenetic knowledge for \DIFdelbegin \DIFdel{ecologists and other }\DIFdelend non-specialists \DIFdelbegin \DIFdel{, effectively
+democratizing }\DIFdelend \DIFaddbegin \DIFadd{in diverse research areas (e.g., ecology, medicine),
+effectively contributing to the democratization of }\DIFaddend phylogenetic studies.
 
 As a tool for automatizing phylogenetic reconstruction from molecular databases,
 Physcraper presents several advantages over existing phylogenetic pipelines designed to
 make evolutionary sense of the vast amount of
-public molecular data available.
+public molecular data available. \DIFdelbegin %DIFDELCMD < 
 
-Several analysis tools create full phylogenies \textit{de novo} by mining of molecular
+%DIFDELCMD < %%%
+\DIFdel{Several analysis }\DIFdelend \DIFaddbegin \DIFadd{Unlike phylogenetic placement approaches \mbox{%DIFAUXCMD
+\cite{berger_performance_2011, matsen_pplacer_2010}}\hspace{0pt}%DIFAUXCMD
+,
+which add new taxa without modifying the input phylogeny, Physcraper estimates all
+the relationships anew in the context of the new data.
+The tool PUMPER \mbox{%DIFAUXCMD
+\cite{izquierdo2014pumper} }\hspace{0pt}%DIFAUXCMD
+shares these conceptual strengths, but is no
+longer under active development, is challenging to install and run, and has produced
+few published phylogenetic analyses since its publication.
+Several other existing }\DIFaddend tools create full phylogenies \textit{de novo} by mining of molecular
 databases \cite{antonelli2017toward, sanderson2008phylota, smith2019pyphlawd,
-bennett2018phylotar, pearse2013phylogenerator}.
-In particular, Phylota \cite{sanderson2008phylota},
+bennett2018phylotar, pearse2013phylogenerator}. In particular, Phylota \cite{sanderson2008phylota},
 and PHLAWD \cite{smith2009mega}, have been cited and used abundantly.
+\DIFdelbegin %DIFDELCMD < 
 
-Physcraper builds on this automated database mining concept by incorporating prior
+%DIFDELCMD < %%%
+\DIFdel{Physcraper builds on }\DIFdelend \DIFaddbegin \DIFadd{Physcraper adds to }\DIFaddend this automated database mining concept by incorporating prior
 phylogenetic work and existing taxonomic domain knowledge on appropriate markers
-and alignment construction.
+and alignment construction\DIFaddbegin \DIFadd{, to update existing phylogenetic knowledge}\DIFaddend .
 This decreases error (requiring less manual downstream processing) and
-eases comparison with previous phylogenetic knowledge.
+eases comparison with previous phylogenetic \DIFdelbegin \DIFdel{knowledge.
+}%DIFDELCMD < 
 
-Results from the verification test highlight the importance of incorporating existing expertly
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \DIFadd{hypotheses.
+}\DIFaddend Results from the verification test highlight the importance of incorporating existing expertly
 curated homology statements to automatically update phylogenetic relationships, instead
 of ignoring the information they contain and building homology statements fully \textit{de novo}.
 
 We encourage users to look at the output files containing information about the
 filtered sequences, and potentially modify configuration parameters such as the
-sequence length cutoff parameter, based on the filtered sequences.
-Default filtering parameters are arbitrary, but we hope that by making the process
+sequence length cutoff parameter, based on \DIFdelbegin \DIFdel{the filtered sequences.
+Default }\DIFdelend \DIFaddbegin \DIFadd{said information.
+Physcraper's default }\DIFaddend filtering parameters are arbitrary, but we hope that by making the process
 of locating homologous sequences online reproducible, and tracking what filters
 are used, we make it easier for researchers to delve into the effect that different
-choices have on their inferences.
+\DIFaddbegin \DIFadd{filtering }\DIFaddend choices have on their inferences.
 This is in contrast to ``manual" searches for taxa, where similarly arbitrary filters
 are applied, but are difficult to trace.
-As many studies have shown \cite{huang_what_2009} the effect of missing data can
+\DIFdelbegin \DIFdel{As many studies have shown \mbox{%DIFAUXCMD
+\cite{huang_what_2009} }\hspace{0pt}%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{It has been shown \mbox{%DIFAUXCMD
+\cite{huang_what_2009} }\hspace{0pt}%DIFAUXCMD
+that }\DIFaddend the effect of missing data \DIFaddbegin \DIFadd{in alignments }\DIFaddend can
 be enigmatic, and interact with the true phylogenetic relationships for the \DIFdelbegin \DIFdel{data
 set }\DIFdelend \DIFaddbegin \DIFadd{dataset }\DIFaddend at hand.
-There is not currently strong support in the literature for any particular cutoff
+There is not currently strong support in the literature for any particular \DIFaddbegin \DIFadd{filtering }\DIFaddend cutoff
 value, and rather than prescribe specific approaches, we encourage users to explore
-the effects of different choices on their phylogenetic inferences.
+the effects of different \DIFdelbegin \DIFdel{choices on their phylogenetic inferences}\DIFdelend \DIFaddbegin \DIFadd{parameter values on resulting phylogenetic hypotheses}\DIFaddend .
 In addition, by providing the output files at each step of the analysis,
-it is straightforward to assess how changing parameter and software choices do or
-do not drive differences in phylogenetic inference.
+it is straightforward to assess how changing \DIFdelbegin \DIFdel{parameter }\DIFdelend \DIFaddbegin \DIFadd{filtering cutoffs }\DIFaddend and software choices \DIFdelbegin \DIFdel{do or
+do not }\DIFdelend \DIFaddbegin \DIFadd{might }\DIFaddend drive differences in phylogenetic inference.
 By gathering the \DIFaddbegin \DIFadd{DNA }\DIFaddend sequences, and making the unaligned files easily \DIFdelbegin \DIFdel{available to users,
 researchers can compare if applying any alternate alignment tool of their choice
 affects }\DIFdelend \DIFaddbegin \DIFadd{accessible and reusable,
 Physcraper facilitates the exploration of alternative aligning tools to determine their effect on phylogenetic }\DIFaddend inferences.
 Once sequences are aligned, \DIFdelbegin \DIFdel{they can apply and compare inferences from }\DIFdelend \DIFaddbegin \DIFadd{users can apply practically }\DIFaddend any phylogenetic
-software \DIFaddbegin \DIFadd{and compare results using Physcraper tools}\DIFaddend .
+software \DIFaddbegin \DIFadd{and compare results using Physcraper tools in a reproducible framework}\DIFaddend .
 
 Organellar genome sequences, such as chloroplasts and mitochondria will also generally
 be excluded from automatic addition based on default Physcraper length cutoffs.
@@ -671,20 +694,25 @@ shorter sequences with many long gaps to align with exact matches across the ent
 longer locus.
 While it would be possible to directly extract the BLAST match from genomes, this
  would exclude potentially homologous flanking regions which are not matched
-\DIFdelbegin \DIFdel{by }\DIFdelend \DIFaddbegin \DIFadd{using }\DIFaddend BLAST's local search algorithm, but that may be important for phylogenetic inference.
+by BLAST's local search algorithm, but that may be important for phylogenetic inference.
 Instead we list the accession numbers for these matches in the ``seqlen\_mismatch.txt"
 file, for users to assess and incorporate appropriate homologous regions to their
 alignment of interest.
 
-Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
+\DIFdelbegin \DIFdel{Unlike phylogenetic placement approaches \mbox{%DIFAUXCMD
+\cite{berger_performance_2011, matsen_pplacer_2010}}\hspace{0pt}%DIFAUXCMD
+,
 which add new taxa without modifying the input phylogeny, Physcraper estimates all
 the relationships anew in the context of the new data.
-PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no
-longer under active development, is challenging to install and run, and has \DIFdelbegin \DIFdel{resulted
-in very few }\DIFdelend \DIFaddbegin \DIFadd{produced
- very few published }\DIFaddend phylogenetic analyses since its publication.
+PUMPER \mbox{%DIFAUXCMD
+\cite{izquierdo2014pumper} }\hspace{0pt}%DIFAUXCMD
+shares these conceptual strengths, but is no
+longer under active development, is challenging to install and run, and has resulted
+in very few phylogenetic analyses since its publication.
+}%DIFDELCMD < 
 
-Physcraper generates gene trees, which individually do not capture the full complexity
+%DIFDELCMD < %%%
+\DIFdelend Physcraper generates gene trees, which individually do not capture the full complexity
 of species' evolutionary history \cite{song2012resolving}. In addition, single gene
 phylogenies with very high numbers of taxa may lack sufficient signal
 for accurate phylogenetic resolution \cite{morel_phylogenetic_2020}.
@@ -749,7 +777,7 @@ These taxonomic and phylogenetic conflicts flag regions of the phylogeny for the
 to more closely examine and assess homology.
 
 The Physcraper workflow can be used to rapidly (in a matter of hours) create
-phylogenies \DIFdelbegin \DIFdel{which can }\DIFdelend \DIFaddbegin \DIFadd{to }\DIFaddend address challenges overarching both fields of ecology and evolution, such as
+phylogenies which can address challenges overarching both fields of ecology and evolution, such as
 phylogenetically placing newly discovered species \cite{webb2010biodiversity},
 curating taxonomic assignments
 \cite{san2010molecular},
