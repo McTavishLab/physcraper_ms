@@ -561,7 +561,7 @@ effectively contributing to the democratization of phylogenetic studies.
 As a tool for automatizing phylogenetic reconstruction from molecular databases,
 Physcraper presents several advantages over existing phylogenetic pipelines designed to
 make evolutionary sense of the vast amount of
-public molecular data available. Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
+public genetic data available. Unlike phylogenetic placement approaches \cite{berger_performance_2011, matsen_pplacer_2010},
 which add new taxa without modifying the input phylogeny, Physcraper estimates all
 the relationships anew in the context of the new data.
 The tool PUMPER \cite{izquierdo2014pumper} shares these conceptual strengths, but is no
@@ -580,14 +580,14 @@ Results from the verification test highlight the importance of incorporating exi
 curated homology statements to automatically update phylogenetic relationships, instead
 of ignoring the information they contain and building homology statements fully \textit{de novo}.
 
-We encourage users to look at the output files containing information about the
-filtered sequences, and potentially modify configuration parameters such as the
-sequence length cutoff parameter, based on said information.
+We encourage users to look at Physcraper's output files containing information about the
+filtered sequences, and use this results to potentially modify configuration parameters such as the
+sequence length cutoff parameter in subsequent Physcraper runs.
 Physcraper's default filtering parameters are arbitrary, but we hope that by making the process
 of locating homologous sequences online reproducible, and tracking what filters
 are used, we make it easier for researchers to delve into the effect that different
 filtering choices have on their inferences.
-This is in contrast to ``manual" searches for taxa, where similarly arbitrary filters
+This is in contrast to ``manual" searches for DNA sequences in molecular databases, where similarly arbitrary filters
 are applied, but are difficult to trace.
 It has been shown \cite{huang_what_2009} that the effect of missing data in alignments can
 be enigmatic, and interact with the true phylogenetic relationships for the dataset at hand.
@@ -597,7 +597,7 @@ the effects of different parameter values on resulting phylogenetic hypotheses.
 In addition, by providing the output files at each step of the analysis,
 it is straightforward to assess how changing filtering cutoffs and software choices might drive differences in phylogenetic inference.
 By gathering the DNA sequences, and making the unaligned files easily accessible and reusable,
-Physcraper facilitates the exploration of alternative aligning tools to determine their effect on phylogenetic inferences.
+Physcraper facilitates the exploration of alternative aligning tools.
 Once sequences are aligned, users can apply practically any phylogenetic
 software and compare results using Physcraper tools in a reproducible framework.
 
@@ -693,7 +693,7 @@ policy, applications and education.
 Scientific understanding is constantly challenged and reframed by new data and analyses.
 Physcraper provides a framework for reproducible phylogenetics that has the
 potential to consistently contextualize new knowledge in the light of previous understanding,
-showcasing the utility and importance of good data sharing practices and open research for phylogenetics, biology and science.
+showcasing the utility and importance of good data sharing practices and open science for the advancement of phylogenetics, biology and research.
 
 \section*{Availability and requirements}
 
