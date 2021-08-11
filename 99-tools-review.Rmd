@@ -1,7 +1,18 @@
 ---
-output:
-  redoc::redoc
+output: github_document
 ---
+
+<!-- The md file is generated from this Rmd; please edit this file and then from R do rmarkdown::render("99-tools-review.Rmd")-->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  results = "asis",
+  echo = TRUE,
+  comment = "#>"
+)
+IS_README <- TRUE
+```
 
 ## Tools that automatize any part of the process of phylogenetic reconstruction:
 
